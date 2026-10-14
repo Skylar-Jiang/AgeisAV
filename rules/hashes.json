@@ -1,0 +1,50 @@
+[
+  {
+    "sha256": "1e09d04c793205661d88d6993cb3e0ef5e5a37a8660f504c1d36b0d8562e63a2",
+    "verdict": "malicious",
+    "family": "StealC",
+    "source": "https://www.sekoia.com/blog/stealc-a-copycat-of-vidar-and-raccoon-infostealers-gaining-in-popularity-part-1",
+    "source_published": "2023-02-20",
+    "reviewed_at": "2026-10-02",
+    "label_basis": "Vendor-published standalone Stealc sample indicator; original PE not acquired locally"
+  },
+  {
+    "sha256": "77d6f1914af6caf909fa2a246fcec05f500f79dd56e5d0d466d55924695c702d",
+    "verdict": "malicious",
+    "family": "StealC",
+    "source": "https://www.sekoia.com/blog/stealc-a-copycat-of-vidar-and-raccoon-infostealers-gaining-in-popularity-part-2",
+    "source_published": "2023-02-27",
+    "reviewed_at": "2026-10-02",
+    "label_basis": "Vendor reverse-engineered Windows PE; original PE not acquired locally",
+    "metadata_source": "https://bazaar.abuse.ch/sample/77d6f1914af6caf909fa2a246fcec05f500f79dd56e5d0d466d55924695c702d/",
+    "file_type_reported": "exe",
+    "size_bytes_reported": 81408,
+    "first_seen_reported": "2023-02-21T10:28:30Z",
+    "tlsh": "T1B583E729E672A2F7C851C5BC31095AD6A23A4975305EE483FFA45F82BDF00825DC8F97",
+    "ssdeep": "1536:yYsVdxtfVnAo5lg/qrZ7B2QVu0BZFQLtqhG6ha4kUYXKl2WK:yYsPPAo5lg/A/2dYZFQLUG6hTy"
+  },
+  {
+    "sha256": "87f18bd70353e44aa74d3c2fda27a2ae5dd6e7d238c3d875f6240283bc909ba6",
+    "verdict": "malicious",
+    "family": "StealC",
+    "source": "https://www.sekoia.com/blog/stealc-a-copycat-of-vidar-and-raccoon-infostealers-gaining-in-popularity-part-1",
+    "source_published": "2023-02-20",
+    "reviewed_at": "2026-10-02",
+    "label_basis": "Vendor-published standalone Stealc sample indicator; original PE not acquired locally"
+  },
+  {
+    "sha256": "1587857ad744c322a2b32731cdd48d98eac13f8aa8ff2f2afb01ebba88d15359",
+    "verdict": "malicious",
+    "family": "StealC",
+    "source": "https://www.sekoia.com/blog/stealc-a-copycat-of-vidar-and-raccoon-infostealers-gaining-in-popularity-part-2",
+    "source_published": "2023-02-27",
+    "reviewed_at": "2026-10-02",
+    "label_basis": "Vendor reverse-engineered Windows PE with next-stage configuration; original PE not acquired locally",
+    "metadata_source": "https://bazaar.abuse.ch/sample/1587857ad744c322a2b32731cdd48d98eac13f8aa8ff2f2afb01ebba88d15359/",
+    "file_type_reported": "exe",
+    "size_bytes_reported": 2400256,
+    "first_seen_reported": "2023-02-21T15:22:55Z",
+    "tlsh": "T1FEB5183A9E025596E8DD0AF00A5DBAE4E07B0939D55518593F8F3CACB4F27A383EC153",
+    "ssdeep": "49152:nbAOGbTSWSsSsg5e9wuLGtp9FqJPqJpsfq9SXLBXbwWMObh/NO3GD8J:bXGbTSWBSJeWuLGZFqxqJpWq9CLtbwWk"
+  }
+]

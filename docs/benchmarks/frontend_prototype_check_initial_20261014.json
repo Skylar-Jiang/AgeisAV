@@ -1,0 +1,417 @@
+{
+  "schema": 1,
+  "synthetic_ui_only": true,
+  "real_detector_metrics": false,
+  "checks": [
+    {
+      "direction": "slate",
+      "view": "workspace",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-workspace-1440.png"
+    },
+    {
+      "direction": "slate",
+      "view": "workspace",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-workspace-768.png"
+    },
+    {
+      "direction": "slate",
+      "view": "workspace",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-workspace-812.png"
+    },
+    {
+      "direction": "slate",
+      "view": "detail",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-detail-1440.png"
+    },
+    {
+      "direction": "slate",
+      "view": "detail",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-detail-768.png"
+    },
+    {
+      "direction": "slate",
+      "view": "detail",
+      "width": 375,
+      "height": 812,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-detail-375.png"
+    },
+    {
+      "direction": "slate",
+      "view": "detail",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.94831418837458
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 7.750025419414445
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.747905757891742
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.656522029717248
+        }
+      ],
+      "screenshot": "output/playwright/slate-detail-812.png"
+    },
+    {
+      "direction": "slate",
+      "interactions": [
+        "search-empty-reset",
+        "error-retry",
+        "loading",
+        "file-name-only-selection",
+        "demo-progress",
+        "non-PE-detail",
+        "evidence-expand",
+        "demo-JSON-export",
+        "keyboard-skip"
+      ],
+      "passed": true
+    },
+    {
+      "direction": "obsidian",
+      "view": "workspace",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-workspace-1440.png"
+    },
+    {
+      "direction": "obsidian",
+      "view": "workspace",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-workspace-768.png"
+    },
+    {
+      "direction": "obsidian",
+      "view": "workspace",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-workspace-812.png"
+    },
+    {
+      "direction": "obsidian",
+      "view": "detail",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-detail-1440.png"
+    },
+    {
+      "direction": "obsidian",
+      "view": "detail",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-detail-768.png"
+    },
+    {
+      "direction": "obsidian",
+      "view": "detail",
+      "width": 375,
+      "height": 812,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-detail-375.png"
+    },
+    {
+      "direction": "obsidian",
+      "view": "detail",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 16.44318402114604
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 8.187478090627094
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 9.769802545053286
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 10.384091429515538
+        }
+      ],
+      "screenshot": "output/playwright/obsidian-detail-812.png"
+    },
+    {
+      "direction": "obsidian",
+      "interactions": [
+        "search-empty-reset",
+        "error-retry",
+        "loading",
+        "file-name-only-selection",
+        "demo-progress",
+        "non-PE-detail",
+        "evidence-expand",
+        "demo-JSON-export",
+        "keyboard-skip"
+      ],
+      "passed": true
+    }
+  ],
+  "failures": [
+    {
+      "direction": "slate",
+      "view": "workspace",
+      "width": 375,
+      "reason": "page overflow {\"width\":375,\"scroll\":532}"
+    },
+    {
+      "direction": "obsidian",
+      "view": "workspace",
+      "width": 375,
+      "reason": "page overflow {\"width\":375,\"scroll\":532}"
+    }
+  ],
+  "console_errors": [],
+  "unexpected_uploads": 0
+}

@@ -1,0 +1,27 @@
+[project]
+name = "aegisav"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi==0.124.0",
+  "pefile==2024.8.26",
+  "ppdeep==20260221",
+  "tlsh-python==0.1.0",
+  "uvicorn==0.54.0",
+  "yara-x==1.20.0",
+]
+
+[project.optional-dependencies]
+test = ["httpx==0.28.1", "pytest==8.4.2", "pyzipper==0.3.6"]
+ml = ["lightgbm==4.6.0", "numpy==2.2.6", "scikit-learn==1.6.1", "scipy==1.15.3", "signify==0.7.1"]
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+
+[tool.pytest.ini_options]
+pythonpath = ["backend"]
+testpaths = ["backend/tests"]

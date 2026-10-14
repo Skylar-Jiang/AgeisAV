@@ -1,0 +1,5 @@
+# Checkpoint identities bind the exact deployed bytes, including line endings.
+/vm/collect_malwarebazaar.py -text
+/vm/collection_boundary.py -text
+# Reviewed rule provenance hashes bind exact source bytes too.
+/rules/yara/** -text

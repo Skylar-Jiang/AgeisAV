@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "identity": {
+    "plan_sha256": "f5a9958fb15c1bc3cde172f737b7aa3d559b5c3646bfe088c5a636c63be7b808",
+    "source_sha256": "dcc4a03a7d835715ccffceda19380e0f9cb8e43ed5c5fc773b3c23618fa3830d",
+    "manifest": "76816a606721f48e00f696a5f265409aa72b9d5182672f24f46952075dc4b221",
+    "scripts": {
+      "collect_malwarebazaar.py": "d68d3377bb4803e9933dbf27f3377d27ae02da702454ce467876ecbb7052e106",
+      "collection_boundary.py": "4e4f968a16cd8132e06b08bfcb8c522697e7e0377c3130768705103aa560a5e7"
+    },
+    "release": "c699902f19640593",
+    "release_manifest": "c699902f19640593b7939f48d7267859784bd429f416cde228d61ce96fb9e727"
+  },
+  "dataset_role": "development_expansion",
+  "strict_final_test": false,
+  "attempts": 91,
+  "files": 91,
+  "previous_failed_attempts": 0,
+  "status_counts": {
+    "scanned": 80,
+    "error": 11
+  },
+  "accuracy_metrics": null,
+  "fixed_low_fpr_recall": null,
+  "accuracy_unavailable_reason": "Source-reported unknown labels, no independently reviewed paired validation/final cohort",
+  "thresholds_changed": false,
+  "policy_selection_performed": false,
+  "engines": {
+    "sha256": {
+      "positive": 0,
+      "negative": 80,
+      "abstained": 11,
+      "status_counts": {
+        "no_match": 80,
+        "file_not_scanned": 11
+      }
+    },
+    "fuzzy": {
+      "positive": 0,
+      "negative": 80,
+      "abstained": 11,
+      "status_counts": {
+        "no_match": 80,
+        "file_not_scanned": 11
+      }
+    },
+    "yara_x": {
+      "positive": 0,
+      "negative": 80,
+      "abstained": 11,
+      "status_counts": {
+        "no_match": 80,
+        "file_not_scanned": 11
+      }
+    },
+    "clamav": {
+      "positive": 20,
+      "negative": 60,
+      "abstained": 11,
+      "status_counts": {
+        "no_match": 60,
+        "file_not_scanned": 11,
+        "matched": 20
+      }
+    },
+    "lightgbm": {
+      "positive": 76,
+      "negative": 4,
+      "abstained": 11,
+      "status_counts": {
+        "matched": 76,
+        "file_not_scanned": 11,
+        "no_match": 4
+      }
+    }
+  },
+  "policies": {
+    "signature_or": {
+      "positive": 20,
+      "negative": 60,
+      "abstained": 11
+    },
+    "ml_only": {
+      "positive": 76,
+      "negative": 4,
+      "abstained": 11
+    },
+    "evidence_or": {
+      "positive": 76,
+      "negative": 4,
+      "abstained": 11
+    },
+    "corroborated": {
+      "positive": 20,
+      "negative": 60,
+      "abstained": 11
+    }
+  },
+  "costs": {
+    "sha256_elapsed_ms": {
+      "n": 80,
+      "p50": 1.182226,
+      "p95": 13.920466
+    },
+    "fuzzy_elapsed_ms": {
+      "n": 80,
+      "p50": 177.24644949999998,
+      "p95": 2798.26548
+    },
+    "yara_x_elapsed_ms": {
+      "n": 80,
+      "p50": 12.4665,
+      "p95": 43.792
+    },
+    "clamav_elapsed_ms": {
+      "n": 80,
+      "p50": 544.4435000000001,
+      "p95": 2810.574
+    },
+    "lightgbm_elapsed_ms": {
+      "n": 80,
+      "p50": 1407.643,
+      "p95": 3575.709
+    },
+    "attempt_elapsed_ms": {
+      "n": 91,
+      "p50": 3025.114128000041,
+      "p95": 7375.280664000002
+    },
+    "scanned_file_elapsed_ms": {
+      "n": 80,
+      "p50": 3126.2331655000253,
+      "p95": 7375.280664000002
+    },
+    "worker_peak_rss_kib": {
+      "n": 80,
+      "p50": 266132.0,
+      "p95": 271432
+    },
+    "worker_cpu_seconds": {
+      "n": 80,
+      "p50": 1.6024485,
+      "p95": 4.262449999999999
+    }
+  },
+  "timing_limitations": "Cache disabled; sequential new workers; includes startup, excludes unpack; RSS excludes descendants/clamd. Use cgroup evidence for aggregate memory. Engine timing intervals overlap.",
+  "complementarity": {
+    "ml_only_positive": 56,
+    "signatures_only_positive": 0
+  },
+  "input_sha256": "0aedaac874b5756c3cd60cbce446d89c089473200f1473d1d8ee042fc98fb22d"
+}
