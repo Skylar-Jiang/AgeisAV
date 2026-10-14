@@ -125,7 +125,7 @@ function contrast(a, b) {
   } catch (error) { report.failures.push({ reason: error.message }); }
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root, 'docs/benchmarks/frontend_linen_check_20261015.json'), JSON.stringify(report, null, 2) + '\n');
+    await fs.writeFile(path.join(root, 'docs/benchmarks/frontend_linen_check_20261015_r2.json'), JSON.stringify(report, null, 2) + '\n');
   }
   console.log(JSON.stringify({ checks: report.checks.length, failures: report.failures }));
   assert.equal(report.failures.length, 0);

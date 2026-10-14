@@ -85,7 +85,7 @@ const clear = value => value === 'none' || value === 'blur(0px)';
   } catch(error){report.failures.push(error.message);}
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root,'docs/benchmarks/linen_blur_selected_check_20261015.json'),JSON.stringify(report,null,2)+'\n');
+    await fs.writeFile(path.join(root,'docs/benchmarks/linen_blur_selected_check_20261015_r2.json'),JSON.stringify(report,null,2)+'\n');
   }
   console.log(JSON.stringify({checks:report.checks.length,failures:report.failures}));
   assert.equal(report.failures.length,0);

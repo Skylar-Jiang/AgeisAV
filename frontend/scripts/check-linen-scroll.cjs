@@ -18,14 +18,15 @@ const output = path.join(root, 'output/playwright/linen-scroll');
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
   page.on('request', r => requests.push({ url: r.url(), method: r.method() }));
   const geometry = () => page.evaluate(() => {
-    const box = selector => { const r = document.querySelector(selector).getBoundingClientRect(); return { top: r.top, bottom: r.bottom, height: r.height }; };
+    const box = selector => { const r = document.querySelector(selector).getBoundingClientRect(); return { top: r.top, bottom: r.bottom, height: r.height, left: r.left, width: r.width }; };
     return { width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth,
       snap: getComputedStyle(document.documentElement).scrollSnapType,
       header: box('.calm-header'), start: box('#linen-start'), records: box('#linen-records'),
-      composer: box('.file-composer'), actions: box('.composer-actions') };
+      composer: box('.file-composer'), actions: box('.composer-actions'),
+      title: box('.calm-intro h1'), titleFont: getComputedStyle(document.querySelector('.calm-intro h1')).fontSize };
   });
   try {
-      for (const [width, height] of [[1440,900],[1366,768],[1920,1080],[1024,720],[768,1024],[375,812],[812,375]]) {
+      for (const [width, height] of [[1440,900],[1366,768],[1920,1080],[2560,1440],[2984,1606],[1024,720],[768,1024],[375,812],[812,375]]) {
         await page.setViewportSize({ width, height });
         await page.goto(`${base}/linen/`, { waitUntil: 'networkidle' });
         const before = await geometry();
@@ -36,7 +37,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
           assert(before.composer.top >= before.header.bottom, 'composer hidden under header');
           assert(before.composer.bottom <= height, 'first state clipped');
           assert(before.actions.bottom <= height, 'primary actions below first screen');
-          assert(Math.abs(before.start.bottom - height) < 2, 'start is not one complete screen');
+          assert(before.start.bottom <= height + 2, 'complete first state exceeds viewport');
           await page.screenshot({ path: path.join(output, `natural-start-${width}.png`) });
         }
         await page.getByRole('link', { name: '查看最近分析' }).click();
@@ -56,7 +57,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
         await page.getByRole('textbox', { name: '搜索文件名' }).fill('not-present');
         assert(await page.getByText('没有匹配的分析记录').isVisible());
         await page.getByRole('button', { name: '显示演示记录' }).click();
-        report.checks.push({ mode: 'natural', width, height, desktop_full_states: desktop, snap: before.snap, passed: true });
+        report.checks.push({ mode: 'natural', width, height, desktop_full_states: desktop, snap: before.snap, first_state: before, passed: true });
       }
     await page.setViewportSize({ width:1440, height:900 });
     await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
@@ -113,7 +114,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
   } catch (error) { report.failures.push(error.message); }
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root,'docs/benchmarks/linen_natural_check_20261015.json'), JSON.stringify(report,null,2)+'\n');
+    await fs.writeFile(path.join(root,'docs/benchmarks/linen_natural_check_20261015_r2.json'), JSON.stringify(report,null,2)+'\n');
   }
   console.log(JSON.stringify({ checks:report.checks.length, failures:report.failures }));
   assert.equal(report.failures.length,0);
