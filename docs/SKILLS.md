@@ -2,6 +2,11 @@
 
 ## 2026-10-14 实际应用补充
 
+Linen滚动改进继续使用四官方Skill：UI/UX实际检索滚动/减少动效/键盘，
+Web指南重新获取并用于粘性导航偏移、无JS回退、可见焦点、URL状态和观察器清理审查。
+仅CSS原生proximity吸附与IntersectionObserver一次呈现，不引入滚动劫持/视差或重型动画库。
+代码审查与真实原生滚轮、键盘、媒体偏好等证据见`LINEN_SCROLL_REVIEW_20261014.md`。
+
 四个前端官方Skill本轮均重新完整读取，并与固定官方GitHub提交逐字节核对一致，
 不是仅登记名称。校验SHA与加载记录见`SKILL_VERIFICATION_20261014.json`。
 已实际应用于两套Next.js深色原型、UI/UX本地检索及代码/浏览器审查；具体规则落点、

@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "synthetic_ui_only": true,
+  "checks": [],
+  "failures": [
+    "Expected values to be strictly equal:\n\n'y' !== 'y proximity'\n"
+  ]
+}

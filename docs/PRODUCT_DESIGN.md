@@ -1,11 +1,12 @@
 # 产品界面当前决策
 
-当前交付为 Next.js / TypeScript / Tailwind / shadcn 的Paper/Linen浅色可运行原型。
+用户已选定Linen亚麻，当前使用 Next.js / TypeScript / Tailwind / shadcn。
+本轮完善工作台的完整状态与自然滚动/整屏吸附对比，见[滚动实验](LINEN_SCROLL_REVIEW_20261014.md)。
 此前Slate/Obsidian深色方案被用户否决，保留复现，不作为选定风格。
 设计 Token、结构对比、官方 Skills 使用及实际浏览器证据见
 [前端原型记录](FRONTEND_PROTOTYPES_20261014.md)。此前未实施的 Vite/白色界面设想已被替代。
 
-等待用户选择视觉方向后，再实现扫描工作台、批量任务、文件详情、五引擎证据、
+后续沿Linen实现扫描工作台、批量任务、文件详情、五引擎证据、
 规则/模型管理和实验统计，并接入真实 API。当前原型全部为明确标记的合成演示数据，
 不读取文件内容、不上传文件、不提供正式准确率。
 

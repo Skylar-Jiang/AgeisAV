@@ -18,8 +18,8 @@ ClamAV与模型权重需另按部署说明配置。源码测试中的私有归�
 
 `frontend`使用Next.js/TypeScript/Tailwind/shadcn；`npm ci`后运行`npm run build`。
 仓库根执行`python -m http.server 3417 --bind 127.0.0.1 --directory frontend/out`，
-访问<http://127.0.0.1:3417/>。Paper/Linen两套浅色方向仅使用明确标记的合成演示数据，不读取或上传文件，
-等待用户选择风格后再扩展业务页面与真实API联调。
+访问<http://127.0.0.1:3417/linen/>。用户已选择Linen，工作台可切换自然滚动与整屏轻吸附。
+原型仅使用明确标记的合成演示数据，不读取或上传文件，后续扩展业务页面与真实API联调。
 实际Skill应用、浏览器验收及复验见[前端记录](docs/FRONTEND_PROTOTYPES_20261014.md)。
 
 ## 安全与复现

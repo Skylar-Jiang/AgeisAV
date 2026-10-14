@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_revision": "0fa6bcc8ac701e5904afd8d583bb408c6c7f5749",
+  "source_revision": "34959387c11eb2f5ceaaf71c24a01d486060a73e",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -889,13 +889,18 @@
     },
     {
       "path": "docs/FRONTEND_PROTOTYPES_20261014.md",
-      "sha256": "495c45f2fbce7b092448adeeef4b006f10828a2606a59ad213fc860670855a34",
-      "bytes": 9201
+      "sha256": "f139f63050378aafc0cb17109814b3135c119132cc24f3371bb3610e55070b15",
+      "bytes": 9427
+    },
+    {
+      "path": "docs/LINEN_SCROLL_REVIEW_20261014.md",
+      "sha256": "c9fb9414d18547abcf73fd97251931d26f20b3cba2d6f750346c15975b9e2d64",
+      "bytes": 4978
     },
     {
       "path": "docs/PRODUCT_DESIGN.md",
-      "sha256": "3c07c47d1ffba69aabfb8450a7ee160173738fee1719763e50e55f41817ed174",
-      "bytes": 1035
+      "sha256": "130d698942dbd2802e78f7265eeacde611a05c21df977c1340c0d883625198f8",
+      "bytes": 1127
     },
     {
       "path": "docs/EXPERIMENTS.md",
@@ -904,18 +909,18 @@
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "868cda1250a55ac2240f3cd5e82448f61922e4479609b591c202a897625ccc65",
-      "bytes": 1316
+      "sha256": "097e8a89c9634092264bf43459b113e29ff97271e46a189682491369da9dc966",
+      "bytes": 1595
     },
     {
       "path": "README.md",
-      "sha256": "eb4a9c00f805ab31317936bda3110b1c8a388a2502801c19afa74357edfba875",
-      "bytes": 2281
+      "sha256": "8e2201829979e725eb40a1225c97e9b2ca0364ae23a66f2eca6b4c24959d37f0",
+      "bytes": 2314
     },
     {
       "path": "docs/SKILLS.md",
-      "sha256": "98d2b93f962331ad758701cbf7cfcc896d77d6fc84ce80c78f77fe996c3e1a41",
-      "bytes": 5526
+      "sha256": "a72b86c5da57e452ea4a626abe942dfdf18969f873526904963170b80d193c52",
+      "bytes": 5958
     },
     {
       "path": "docs/SKILL_VERIFICATION_20261014.json",
@@ -946,6 +951,16 @@
       "path": "docs/benchmarks/frontend_prototype_revision_check_20261014.json",
       "sha256": "0748b3054f43c6396e9ed18e58755703318daffb3be7fa29b1dd5cbbade6de71",
       "bytes": 11165
+    },
+    {
+      "path": "docs/benchmarks/linen_scroll_check_20261014.json",
+      "sha256": "ccc928c2f94d812fff0dadb5a7da4735cf87e25416ab061fda8ef39e7d852555",
+      "bytes": 3095
+    },
+    {
+      "path": "docs/benchmarks/linen_scroll_initial_20261014.json",
+      "sha256": "9b1ddd193749b94cd68b7f5bc2a0d64f80a12cad4969c09501fdb7fb5d8f4202",
+      "bytes": 155
     },
     {
       "path": "docs/benchmarks/upstream_windows_rule_audit_20261003.json",
@@ -1089,8 +1104,8 @@
     },
     {
       "path": "experiments/export_public_source.py",
-      "sha256": "a72706390347ad24440fac5dc48991f398657a399c1661be305deddf4ff38305",
-      "bytes": 4520
+      "sha256": "4adad9489cc279b2b44678afc0186f8e463057eb8ece02ad5df9d007e84a8635",
+      "bytes": 4677
     },
     {
       "path": "experiments/fusion_replay.py",
@@ -1168,14 +1183,19 @@
       "bytes": 220
     },
     {
+      "path": "frontend/scripts/check-linen-scroll.cjs",
+      "sha256": "d88c1d34a37d3e5708cb2453e541983ed3829f0b9814dae05801cc9d9cdd27c8",
+      "bytes": 9956
+    },
+    {
       "path": "frontend/scripts/check-prototypes.cjs",
       "sha256": "6bf929252641b6eed7f75656fd76ccb5f54c4f19f6854853aa5ebff2da147514",
       "bytes": 9211
     },
     {
       "path": "frontend/src/app/globals.css",
-      "sha256": "26ae547fe248db23f9bf6ca97f61fc2a897afff329dcb9aead55bee71f831f10",
-      "bytes": 37594
+      "sha256": "956dfd5eac06f6ab3dc9a698c0ca6fa300123f3978ba6cc279ea7ef16c145247",
+      "bytes": 40755
     },
     {
       "path": "frontend/src/app/layout.tsx",
@@ -1189,8 +1209,8 @@
     },
     {
       "path": "frontend/src/app/linen/page.tsx",
-      "sha256": "9baa14a96b4d32b1ffd0c090550b2f5eb3e9c72ebd37b86540fdd453febd64d4",
-      "bytes": 250
+      "sha256": "c8b767f733a50aa7852afe1583ff5edfd83335d96e12c716ea4d180262fdb653",
+      "bytes": 429
     },
     {
       "path": "frontend/src/app/obsidian/detail/page.tsx",
@@ -1204,8 +1224,8 @@
     },
     {
       "path": "frontend/src/app/page.tsx",
-      "sha256": "1737235968fd06967a7c74ac2b43f6d7a2a65c80fbe23a149933ea0522b6e9d8",
-      "bytes": 802
+      "sha256": "ddd04ecd787cfac3d1e15ec5cbd08f414d72f69cfde30e14f9b5efd65c6ae6b0",
+      "bytes": 809
     },
     {
       "path": "frontend/src/app/paper/detail/page.tsx",
@@ -1229,13 +1249,13 @@
     },
     {
       "path": "frontend/src/components/calm-shell.tsx",
-      "sha256": "9aeecace20f7d796d4f3076539d57a1619654d0c2c63dc199ee4901146152c87",
-      "bytes": 1155
+      "sha256": "1e2a11cf2ba6efb63999855c7d27697b10d267aa6f3f040f4e52c176187cd979",
+      "bytes": 1345
     },
     {
       "path": "frontend/src/components/calm-workspace.tsx",
-      "sha256": "6ac3147b7bc9042fb5e77d5cce8d8ff551392d3fac92ea69e3db2b9bd0140ec2",
-      "bytes": 5664
+      "sha256": "32aba77791ab6638b31e022c0ea2f5ae855e036f27a51a023863bb9f9c033726",
+      "bytes": 6340
     },
     {
       "path": "frontend/src/components/cost-figure.tsx",
@@ -1246,6 +1266,11 @@
       "path": "frontend/src/components/demo-data.ts",
       "sha256": "2f741897d8550cedf05e0dc73f77877e4160846b33cbb281dfa513e57d8dd26a",
       "bytes": 1917
+    },
+    {
+      "path": "frontend/src/components/linen-scroll-controls.tsx",
+      "sha256": "4723ce9e5931865b9fa63eb29d7fb529ce237dc6db96b4d4f8c8f4b2969c531c",
+      "bytes": 2031
     },
     {
       "path": "frontend/src/components/prototype-shell.tsx",

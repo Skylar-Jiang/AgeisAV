@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "synthetic_ui_only": true,
+  "checks": [
+    {
+      "mode": "snap",
+      "width": 1440,
+      "height": 900,
+      "desktop_full_states": true,
+      "snap": "y",
+      "passed": true
+    },
+    {
+      "mode": "snap",
+      "width": 1366,
+      "height": 768,
+      "desktop_full_states": true,
+      "snap": "y",
+      "passed": true
+    },
+    {
+      "mode": "snap",
+      "width": 1920,
+      "height": 1080,
+      "desktop_full_states": true,
+      "snap": "y",
+      "passed": true
+    },
+    {
+      "mode": "snap",
+      "width": 1024,
+      "height": 720,
+      "desktop_full_states": true,
+      "snap": "y",
+      "passed": true
+    },
+    {
+      "mode": "snap",
+      "width": 768,
+      "height": 1024,
+      "desktop_full_states": false,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "snap",
+      "width": 375,
+      "height": 812,
+      "desktop_full_states": false,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "snap",
+      "width": 812,
+      "height": 375,
+      "desktop_full_states": false,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 1440,
+      "height": 900,
+      "desktop_full_states": true,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 1366,
+      "height": 768,
+      "desktop_full_states": true,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 1920,
+      "height": 1080,
+      "desktop_full_states": true,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 1024,
+      "height": 720,
+      "desktop_full_states": true,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 768,
+      "height": 1024,
+      "desktop_full_states": false,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 375,
+      "height": 812,
+      "desktop_full_states": false,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "mode": "reveal",
+      "width": 812,
+      "height": 375,
+      "desktop_full_states": false,
+      "snap": "none",
+      "passed": true
+    },
+    {
+      "interaction": "URL/back/state-preserving mode toggle",
+      "passed": true
+    },
+    {
+      "interaction": "native wheel settles at second snap state",
+      "passed": true
+    },
+    {
+      "interaction": "natural wheel has no snap",
+      "passed": true
+    },
+    {
+      "interaction": "keyboard navigation and unobscured focus",
+      "passed": true
+    },
+    {
+      "interaction": "reduced motion exposes content and disables snap",
+      "passed": true
+    },
+    {
+      "interaction": "invalid mode falls back to natural scrolling",
+      "passed": true
+    },
+    {
+      "interaction": "no-JavaScript records remain readable",
+      "passed": true
+    },
+    {
+      "interaction": "oversized file selection stays scrollable",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "console_errors": [],
+  "unexpected_uploads": 0
+}
