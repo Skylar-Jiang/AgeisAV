@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "synthetic_ui_only": true,
+  "checks": [
+    {
+      "interaction": "scroll entry resolves 3px blur to clear",
+      "passed": true
+    }
+  ],
+  "failures": [
+    "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'none'\n- 'blur(2px)'\n"
+  ]
+}

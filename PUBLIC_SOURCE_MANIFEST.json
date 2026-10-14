@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_revision": "34959387c11eb2f5ceaaf71c24a01d486060a73e",
+  "source_revision": "3d7c3835778bb75c4847612d2a22c4fa165e99ee",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -894,13 +894,13 @@
     },
     {
       "path": "docs/LINEN_SCROLL_REVIEW_20261014.md",
-      "sha256": "c9fb9414d18547abcf73fd97251931d26f20b3cba2d6f750346c15975b9e2d64",
-      "bytes": 4978
+      "sha256": "e737d5b50fcc250aeecc82ccbcc35185c7ca2ce2a99e4f0b13f4e69b0dd019f3",
+      "bytes": 6961
     },
     {
       "path": "docs/PRODUCT_DESIGN.md",
-      "sha256": "130d698942dbd2802e78f7265eeacde611a05c21df977c1340c0d883625198f8",
-      "bytes": 1127
+      "sha256": "9a1d93e510e9cc0406276c263a679771ceb36e8b6c7d53c3bd3e004e52e1ff97",
+      "bytes": 1175
     },
     {
       "path": "docs/EXPERIMENTS.md",
@@ -909,8 +909,8 @@
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "097e8a89c9634092264bf43459b113e29ff97271e46a189682491369da9dc966",
-      "bytes": 1595
+      "sha256": "2ed30e5f9bc9f8990f39199c2ca0d3433edc30ed10c8944976d97b4409a13728",
+      "bytes": 1822
     },
     {
       "path": "README.md",
@@ -919,8 +919,8 @@
     },
     {
       "path": "docs/SKILLS.md",
-      "sha256": "a72b86c5da57e452ea4a626abe942dfdf18969f873526904963170b80d193c52",
-      "bytes": 5958
+      "sha256": "9e8c3c779a546291a9770acfcf3b8da4c0ed86373260a6bc326f55a9e74d3062",
+      "bytes": 6401
     },
     {
       "path": "docs/SKILL_VERIFICATION_20261014.json",
@@ -951,6 +951,16 @@
       "path": "docs/benchmarks/frontend_prototype_revision_check_20261014.json",
       "sha256": "0748b3054f43c6396e9ed18e58755703318daffb3be7fa29b1dd5cbbade6de71",
       "bytes": 11165
+    },
+    {
+      "path": "docs/benchmarks/linen_blur_check_20261014.json",
+      "sha256": "79f248fd86df0aff706a77392d061e964694889d48d979b9c8c7dbd9ac4323c1",
+      "bytes": 824
+    },
+    {
+      "path": "docs/benchmarks/linen_blur_initial_20261014.json",
+      "sha256": "0350d06fc5aea8d8f4fd3353ca8e387389505cc7177d5a201e6b5ef7c9a159cb",
+      "bytes": 278
     },
     {
       "path": "docs/benchmarks/linen_scroll_check_20261014.json",
@@ -1104,8 +1114,8 @@
     },
     {
       "path": "experiments/export_public_source.py",
-      "sha256": "4adad9489cc279b2b44678afc0186f8e463057eb8ece02ad5df9d007e84a8635",
-      "bytes": 4677
+      "sha256": "7bbdc7a469f48866711c9dac5b55531df792d878ad1ea16e85227c64e0fb9844",
+      "bytes": 4784
     },
     {
       "path": "experiments/fusion_replay.py",
@@ -1183,6 +1193,11 @@
       "bytes": 220
     },
     {
+      "path": "frontend/scripts/check-linen-blur.cjs",
+      "sha256": "9ae808402accbf65a6f4c43868487c726a5c2095bc69f3ecadb42f5cff87cc05",
+      "bytes": 5794
+    },
+    {
       "path": "frontend/scripts/check-linen-scroll.cjs",
       "sha256": "d88c1d34a37d3e5708cb2453e541983ed3829f0b9814dae05801cc9d9cdd27c8",
       "bytes": 9956
@@ -1194,8 +1209,8 @@
     },
     {
       "path": "frontend/src/app/globals.css",
-      "sha256": "956dfd5eac06f6ab3dc9a698c0ca6fa300123f3978ba6cc279ea7ef16c145247",
-      "bytes": 40755
+      "sha256": "6c8e27b602436ff41e5e283b020b3f1caf414e0eae7705ed714402b362cf655d",
+      "bytes": 41830
     },
     {
       "path": "frontend/src/app/layout.tsx",
@@ -1254,8 +1269,8 @@
     },
     {
       "path": "frontend/src/components/calm-workspace.tsx",
-      "sha256": "32aba77791ab6638b31e022c0ea2f5ae855e036f27a51a023863bb9f9c033726",
-      "bytes": 6340
+      "sha256": "05f23e39a063d721f1383ef1be0f4f36e440bbf5e350b521132a04e2679913ad",
+      "bytes": 7043
     },
     {
       "path": "frontend/src/components/cost-figure.tsx",
