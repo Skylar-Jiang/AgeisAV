@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "date": "2026-10-15",
+  "synthetic_ui_only": true,
+  "source_bytes_basis": "Git blob bytes and LF-normalized current source; excludes generated files",
+  "frontend_source_before_bytes": 256856,
+  "frontend_source_after_bytes": 227383,
+  "frontend_source_reduction_bytes": 29473,
+  "static_export_before_bytes": 1868801,
+  "static_export_after_bytes": 1582497,
+  "cache_before_bytes": 162909570,
+  "cache_after_bytes": 180226922,
+  "historical_public_export_cache_bytes": 118632581,
+  "historical_public_export_out_bytes": 1926679,
+  "manual_cache_cleanup": "not executed; automatic approval rejected with blocked by policy; no workaround attempted",
+  "checks": {
+    "frontend_linen_check": 11,
+    "linen_natural_check": 12,
+    "linen_blur_selected_check": 6
+  },
+  "browser_checks_passed": 29,
+  "browser_failures": 0,
+  "static_design_gate": "passed",
+  "build": "passed",
+  "typecheck": "passed",
+  "dependency_audit_vulnerabilities": 0,
+  "review": "no evidenced P1/P2; stale metadata corrected",
+  "backend_models_rules": "unchanged",
+  "real_malware_processed": false,
+  "ram_peak_measured": false,
+  "whole_repository_space_reduction_claimed": false
+}

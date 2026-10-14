@@ -3,7 +3,9 @@
 用户已选定Linen亚麻，当前使用 Next.js / TypeScript / Tailwind / shadcn。
 用户已进一步确定自然滚动版；工作台加入记录区轻微虚化、慢加载占位与就绪清晰过渡，
 见[滚动实验](LINEN_SCROLL_REVIEW_20261014.md)。
-此前Slate/Obsidian深色方案被用户否决，保留复现，不作为选定风格。
+2026-10-15：按用户要求只保留Linen自然滚动。Paper/Slate/Obsidian路由、旧布局、
+方案选择器、吸附模式及对比控件已删除；历史方案仅在Git历史与原有实验记录中保留。
+首页直接进入Linen工作台，`/linen/`及`/linen/detail/`继续可用。
 设计 Token、结构对比、官方 Skills 使用及实际浏览器证据见
 [前端原型记录](FRONTEND_PROTOTYPES_20261014.md)。此前未实施的 Vite/白色界面设想已被替代。
 

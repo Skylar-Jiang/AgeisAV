@@ -25,22 +25,19 @@ const output = path.join(root, 'output/playwright/linen-scroll');
       composer: box('.file-composer'), actions: box('.composer-actions') };
   });
   try {
-    for (const mode of ['snap', 'reveal']) {
       for (const [width, height] of [[1440,900],[1366,768],[1920,1080],[1024,720],[768,1024],[375,812],[812,375]]) {
         await page.setViewportSize({ width, height });
-        await page.goto(`${base}/linen/?scroll=${mode}`, { waitUntil: 'networkidle' });
-        await page.waitForFunction(mode => document.documentElement.dataset.linenScroll === mode, mode);
+        await page.goto(`${base}/linen/`, { waitUntil: 'networkidle' });
         const before = await geometry();
         assert(before.scrollWidth <= width + 1, 'horizontal overflow');
         const desktop = width >= 1024 && height >= 720;
-        if (desktop && mode === 'snap') assert(['y', 'y proximity'].includes(before.snap), 'expected native proximity snapping');
-        else assert.equal(before.snap, 'none');
+        assert.equal(before.snap, 'none');
         if (desktop) {
           assert(before.composer.top >= before.header.bottom, 'composer hidden under header');
           assert(before.composer.bottom <= height, 'first state clipped');
           assert(before.actions.bottom <= height, 'primary actions below first screen');
           assert(Math.abs(before.start.bottom - height) < 2, 'start is not one complete screen');
-          await page.screenshot({ path: path.join(output, `${mode}-start-${width}.png`) });
+          await page.screenshot({ path: path.join(output, `natural-start-${width}.png`) });
         }
         await page.getByRole('link', { name: '查看最近分析' }).click();
         await page.waitForFunction(desktop => {
@@ -49,42 +46,26 @@ const output = path.join(root, 'output/playwright/linen-scroll');
           return desktop ? Math.abs(r.top - h.bottom) < 3 : r.top >= -2 && r.top < innerHeight;
         }, desktop);
         await page.waitForFunction(() => getComputedStyle(document.querySelector('.calm-history')).opacity === '1');
-        const after = await geometry();
         const last = await page.getByRole('link', { name: '查看 Readme.txt 检测详情' }).boundingBox();
         if (desktop) assert(last.y + last.height <= height, 'last file clipped in records state');
         if (desktop) {
           const footer = await page.locator('.linen-state-footer').boundingBox();
           assert(footer.y + footer.height <= height, 'records footer clipped');
         }
-        await page.screenshot({ path: path.join(output, `${mode}-records-${width}.png`), fullPage: !desktop });
+        await page.screenshot({ path: path.join(output, `natural-records-${width}.png`), fullPage: !desktop });
         await page.getByRole('textbox', { name: '搜索文件名' }).fill('not-present');
         assert(await page.getByText('没有匹配的分析记录').isVisible());
         await page.getByRole('button', { name: '显示演示记录' }).click();
-        report.checks.push({ mode, width, height, desktop_full_states: desktop, snap: before.snap, passed: true });
+        report.checks.push({ mode: 'natural', width, height, desktop_full_states: desktop, snap: before.snap, passed: true });
       }
-    }
     await page.setViewportSize({ width:1440, height:900 });
-    await page.goto(`${base}/linen/?scroll=reveal`, { waitUntil:'networkidle' });
-    await page.locator('input[type=file]').setInputFiles({ name:'harmless-scroll-fixture.exe', mimeType:'application/octet-stream', buffer:Buffer.from('UI only; not executable') });
-    await page.getByRole('button', { name:'整屏吸附' }).click();
-    await page.waitForFunction(() => document.documentElement.dataset.linenScroll === 'snap');
-    assert(await page.getByText('已选择：harmless-scroll-fixture.exe').isVisible(), 'mode switch discarded file name');
-    await page.goBack();
-    await page.waitForFunction(() => document.documentElement.dataset.linenScroll === 'reveal');
-    report.checks.push({ interaction:'URL/back/state-preserving mode toggle', passed:true });
-
-    await page.goto(`${base}/linen/?scroll=snap`, { waitUntil:'networkidle' });
-    await page.mouse.move(700,450); await page.mouse.wheel(0,720);
-    await page.waitForFunction(() => Math.abs(document.querySelector('#linen-records').getBoundingClientRect().top - 80) < 3);
-    report.checks.push({ interaction:'native wheel settles at second snap state', passed:true });
-
-    await page.goto(`${base}/linen/?scroll=reveal`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
     await page.mouse.move(700,450); await page.mouse.wheel(0,370);
     await page.waitForFunction(() => scrollY >= 350);
     assert.equal((await geometry()).snap, 'none');
     report.checks.push({ interaction:'natural wheel has no snap', passed:true });
 
-    await page.goto(`${base}/linen/?scroll=snap`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.textContent), '跳到主要内容');
     await page.keyboard.press('Enter');
@@ -97,15 +78,11 @@ const output = path.join(root, 'output/playwright/linen-scroll');
     report.checks.push({ interaction:'keyboard navigation and unobscured focus', passed:true });
 
     await page.emulateMedia({ reducedMotion:'reduce' });
-    await page.goto(`${base}/linen/?scroll=snap`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
     assert.equal((await geometry()).snap, 'none');
     assert.equal(await page.locator('.calm-history').evaluate(e => getComputedStyle(e).opacity), '1');
     report.checks.push({ interaction:'reduced motion exposes content and disables snap', passed:true });
     await page.emulateMedia({ reducedMotion:'no-preference' });
-    await page.goto(`${base}/linen/?scroll=invalid`, { waitUntil:'networkidle' });
-    await page.waitForFunction(() => document.documentElement.dataset.linenScroll === 'reveal');
-    report.checks.push({ interaction:'invalid mode falls back to natural scrolling', passed:true });
-
     const fallback = await browser.newContext({ javaScriptEnabled:false, viewport:{ width:1440, height:900 } });
     const fallbackPage = await fallback.newPage();
     await fallbackPage.goto(`${base}/linen/`, { waitUntil:'networkidle' });
@@ -122,7 +99,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
     await fallback.close();
     report.checks.push({ interaction:'no-JavaScript records remain readable', passed:true });
 
-    await page.goto(`${base}/linen/?scroll=snap`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
     await page.locator('input[type=file]').setInputFiles(Array.from({length:20}, (_,index) => ({ name:`${index}-${'long-filename-'.repeat(8)}.exe`, mimeType:'application/octet-stream', buffer:Buffer.from('UI only') })));
     assert((await geometry()).scrollWidth <= 1441, 'long filenames overflow');
     await page.getByRole('button', { name:'演示扫描', exact:true }).scrollIntoViewIfNeeded();
@@ -136,7 +113,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
   } catch (error) { report.failures.push(error.message); }
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root,'docs/benchmarks/linen_scroll_check_20261014.json'), JSON.stringify(report,null,2)+'\n');
+    await fs.writeFile(path.join(root,'docs/benchmarks/linen_natural_check_20261015.json'), JSON.stringify(report,null,2)+'\n');
   }
   console.log(JSON.stringify({ checks:report.checks.length, failures:report.failures }));
   assert.equal(report.failures.length,0);

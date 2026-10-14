@@ -29,7 +29,16 @@ function contrast(a, b) {
   const requests = [];
   page.on('request', request => requests.push({ url: request.url(), method: request.method() }));
   try {
-    for (const direction of (process.env.AEGISAV_DESIGN_DIRECTIONS || 'paper,linen').split(',')) {
+    await page.goto(base + '/', { waitUntil: 'networkidle' });
+    assert(await page.getByRole('heading', { name: /从一个文件，\s*看清每一条证据。/ }).isVisible());
+    assert.equal(await page.getByRole('link', { name: /切换方案/ }).count(), 0);
+    assert.equal(await page.getByRole('group', { name: '页面滚动体验对比' }).count(), 0);
+    for (const route of ['paper', 'slate', 'obsidian']) {
+      assert.equal((await context.request.get(`${base}/${route}/`)).status(), 404);
+      assert.equal((await context.request.get(`${base}/${route}/detail/`)).status(), 404);
+    }
+    report.checks.push({ interaction: 'root opens Linen; rejected routes return 404; no design/mode switchers', passed: true });
+    for (const direction of ['linen']) {
       for (const view of ['workspace', 'detail']) {
         const route = `/${direction}/${view === 'detail' ? 'detail/' : ''}`;
         for (const [width, height] of [[1440, 1000], [768, 1024], [375, 812], [812, 375]]) {
@@ -41,7 +50,7 @@ function contrast(a, b) {
             assert(await page.getByText('演示数据', { exact: true }).isVisible());
             const dimensions = await page.evaluate(() => ({ width: innerWidth, scroll: document.documentElement.scrollWidth }));
             assert(dimensions.scroll <= dimensions.width + 1, `page overflow ${JSON.stringify(dimensions)}`);
-            const colors = await page.locator('.prototype-shell').evaluate(element => {
+            const colors = await page.locator('.calm-shell').evaluate(element => {
               const style = getComputedStyle(element);
               return Object.fromEntries(['foreground', 'background', 'muted-foreground', 'card', 'primary', 'primary-foreground', 'warning'].map(key => [key, style.getPropertyValue('--' + key)]));
             });
@@ -99,11 +108,11 @@ function contrast(a, b) {
       report.checks.push({ direction, interactions: ['search-empty-reset', 'error-retry', 'loading', 'file-name-only-selection', 'demo-progress', 'unsupported-architecture', 'non-PE-detail', 'visible-clipboard-failure', 'evidence-expand', 'demo-JSON-export', 'keyboard-skip'], passed: true });
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await page.goto(`${base}/paper/`, { waitUntil: 'networkidle' });
+    await page.goto(`${base}/linen/`, { waitUntil: 'networkidle' });
     assert.equal(await page.locator('.calm-intro-copy').evaluate(element => getComputedStyle(element).animationName), 'calm-enter');
     await page.getByRole('button', { name: '演示扫描', exact: true }).click();
     await page.locator('.calm-engine-steps li[data-phase=active]').first().waitFor();
-    await page.screenshot({ path: path.join(output, 'paper-motion-scanning.png'), fullPage: true });
+    await page.screenshot({ path: path.join(output, 'linen-motion-scanning.png'), fullPage: true });
     await page.getByRole('status').filter({ hasText: '演示完成' }).waitFor();
     assert.equal(await page.locator('.calm-engine-steps li[data-phase=done]').count(), 5);
     await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -116,7 +125,7 @@ function contrast(a, b) {
   } catch (error) { report.failures.push({ reason: error.message }); }
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root, 'docs/benchmarks/frontend_prototype_revision_check_20261014.json'), JSON.stringify(report, null, 2) + '\n');
+    await fs.writeFile(path.join(root, 'docs/benchmarks/frontend_linen_check_20261015.json'), JSON.stringify(report, null, 2) + '\n');
   }
   console.log(JSON.stringify({ checks: report.checks.length, failures: report.failures }));
   assert.equal(report.failures.length, 0);

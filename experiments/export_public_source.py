@@ -16,6 +16,11 @@ PREFIXES=('backend/','ml/','experiments/','vm/','rules/','frontend/','.agents/sk
 ROOT_FILES={'.gitignore','.gitattributes','pyproject.toml','requirements-win-py312.txt',
             'requirements-ml.txt','requirements-ml-lock.txt','requirements.txt','.env.example'}
 DOCS={'docs/ARCHITECTURE.md','docs/SKILLS.md','docs/PRODUCT_DESIGN.md',
+      'docs/FRONTEND_LINEN_CLEANUP_20261015.md',
+      'docs/benchmarks/frontend_linen_cleanup_20261015.json',
+      'docs/benchmarks/frontend_linen_check_20261015.json',
+      'docs/benchmarks/linen_natural_check_20261015.json',
+      'docs/benchmarks/linen_blur_selected_check_20261015.json',
       'docs/LINEN_SCROLL_REVIEW_20261014.md','docs/benchmarks/linen_scroll_check_20261014.json',
       'docs/benchmarks/linen_scroll_initial_20261014.json',
       'docs/benchmarks/linen_blur_check_20261014.json','docs/benchmarks/linen_blur_initial_20261014.json',

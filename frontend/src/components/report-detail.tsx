@@ -6,9 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { demoEngines, demoHash, demoFiles } from './demo-data';
 import { CostFigure } from './cost-figure';
-import type { Direction } from './prototype-shell';
 
-export function ReportDetail({ direction }: { direction: Direction }) {
+export function ReportDetail() {
   const parameters = useSearchParams();
   const requested = Number(parameters.get('file') ?? '0');
   const selected = Number.isInteger(requested) && requested >= 0 && requested < demoFiles.length ? requested : 0;
@@ -31,7 +30,7 @@ export function ReportDetail({ direction }: { direction: Direction }) {
     setTimeout(() => URL.revokeObjectURL(url), 0);
   }
   return <>
-    <a href={`/${direction}/`} className="back-link"><ArrowLeft aria-hidden="true"/>返回扫描工作台</a>
+    <a href="/linen/" className="back-link"><ArrowLeft aria-hidden="true"/>返回扫描工作台</a>
     <div className="page-heading report-heading"><div><p className="section-context">文件检测详情</p><h1><FileCode2 aria-hidden="true"/>{file.name}</h1><p>{file.architecture} · {file.size} <span className="heading-separator">/</span> 演示报告</p></div><Button variant="outline" onClick={exportReport}><Download data-icon="inline-start" aria-hidden="true"/>导出 JSON</Button></div>
     <div className="verdict-band"><ShieldAlert aria-hidden="true"/><div><h2>{file.status}</h2><p>{selected === 0 ? "2 个引擎提供可疑证据，1 个引擎未完成。结论不等于已确认恶意。" : file.evidence + "。这是合成 UI 演示，不提供安全保证。"}</p></div><Badge variant="outline">缓存命中 · 演示</Badge></div>
     <div className="file-fingerprint"><span>SHA-256</span><code translate="no">{hash}</code><Button variant="ghost" size="icon" aria-label="复制 SHA-256" onClick={copy}>{copied ? <Check aria-hidden="true"/> : <Copy aria-hidden="true"/>}</Button><span role="status" className={copyError ? "notice" : "sr-only"}>{copied ? 'SHA-256 已复制' : copyError}</span></div>
