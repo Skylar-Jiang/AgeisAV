@@ -3,12 +3,14 @@ import binascii
 from contextlib import asynccontextmanager
 from threading import BoundedSemaphore
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.concurrency import run_in_threadpool
 
 from .scanner import StaticScanner
 from .tasks import ScanTasks
+from .local_access import LocalAccess, COOKIE, SESSION_SECONDS
 
 
 class BatchRequest(BaseModel):
@@ -24,7 +26,8 @@ class TaskRequest(BaseModel):
     files: list[TaskFile] = Field(min_length=1,max_length=20)
 
 
-def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, release_id=None) -> FastAPI:
+def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, release_id=None,
+               access_token=None, frontend_dir=None) -> FastAPI:
     tasks=ScanTasks(scanner)
     uploads=BoundedSemaphore(2)
     @asynccontextmanager
@@ -32,6 +35,29 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
         yield
         await run_in_threadpool(tasks.close)
     app = FastAPI(title="AegisAV Static Scan API",lifespan=lifespan)
+    if access_token is not None:
+        access = LocalAccess(access_token)
+        app.middleware('http')(access.guard)
+
+        @app.post('/v1/session')
+        def session_start(request: Request, response: Response):
+            if not access.bearer(request):
+                raise HTTPException(401, 'Access key required to start a session')
+            response.set_cookie(COOKIE, access.session(), httponly=True, samesite='strict',
+                                secure=request.url.scheme == 'https', max_age=SESSION_SECONDS)
+            return {'authenticated': True, 'expires_in_seconds': SESSION_SECONDS}
+
+        @app.delete('/v1/session')
+        def session_end(response: Response):
+            response.delete_cookie(COOKIE)
+            return {'authenticated': False}
+
+    @app.post('/v1/tasks/{identity}/cancel')
+    def task_cancel(identity: str):
+        job = tasks.cancel(identity)
+        if job is None:
+            raise HTTPException(404, 'Task not found')
+        return job
 
     @app.get('/v1/tasks')
     def task_list():
@@ -123,4 +149,6 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
         except ValueError as exc:
             raise HTTPException(422, str(exc)) from exc
 
+    if frontend_dir is not None:
+        app.mount('/', StaticFiles(directory=frontend_dir, html=True), name='linen')
     return app

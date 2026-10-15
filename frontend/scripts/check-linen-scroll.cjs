@@ -28,7 +28,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
   try {
       for (const [width, height] of [[1440,900],[1366,768],[1920,1080],[2560,1440],[2984,1606],[1024,720],[768,1024],[375,812],[812,375]]) {
         await page.setViewportSize({ width, height });
-        await page.goto(`${base}/linen/`, { waitUntil: 'networkidle' });
+        await page.goto(`${base}/linen/demo/`, { waitUntil: 'networkidle' });
         const before = await geometry();
         assert(before.scrollWidth <= width + 1, 'horizontal overflow');
         const desktop = width >= 1024 && height >= 720;
@@ -60,13 +60,13 @@ const output = path.join(root, 'output/playwright/linen-scroll');
         report.checks.push({ mode: 'natural', width, height, desktop_full_states: desktop, snap: before.snap, first_state: before, passed: true });
       }
     await page.setViewportSize({ width:1440, height:900 });
-    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/demo/`, { waitUntil:'networkidle' });
     await page.mouse.move(700,450); await page.mouse.wheel(0,370);
     await page.waitForFunction(() => scrollY >= 350);
     assert.equal((await geometry()).snap, 'none');
     report.checks.push({ interaction:'natural wheel has no snap', passed:true });
 
-    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/demo/`, { waitUntil:'networkidle' });
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.textContent), '跳到主要内容');
     await page.keyboard.press('Enter');
@@ -79,14 +79,14 @@ const output = path.join(root, 'output/playwright/linen-scroll');
     report.checks.push({ interaction:'keyboard navigation and unobscured focus', passed:true });
 
     await page.emulateMedia({ reducedMotion:'reduce' });
-    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/demo/`, { waitUntil:'networkidle' });
     assert.equal((await geometry()).snap, 'none');
     assert.equal(await page.locator('.calm-history').evaluate(e => getComputedStyle(e).opacity), '1');
     report.checks.push({ interaction:'reduced motion exposes content and disables snap', passed:true });
     await page.emulateMedia({ reducedMotion:'no-preference' });
     const fallback = await browser.newContext({ javaScriptEnabled:false, viewport:{ width:1440, height:900 } });
     const fallbackPage = await fallback.newPage();
-    await fallbackPage.goto(`${base}/linen/`, { waitUntil:'networkidle' });
+    await fallbackPage.goto(`${base}/linen/demo/`, { waitUntil:'networkidle' });
     assert.equal(await fallbackPage.locator('.calm-history').evaluate(e => getComputedStyle(e).opacity), '1');
     await fallbackPage.getByRole('link', {name:'查看最近分析'}).click();
     // Poll from Node: requestAnimationFrame callbacks do not run with page JS disabled.
@@ -100,7 +100,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
     await fallback.close();
     report.checks.push({ interaction:'no-JavaScript records remain readable', passed:true });
 
-    await page.goto(`${base}/linen/`, { waitUntil:'networkidle' });
+    await page.goto(`${base}/linen/demo/`, { waitUntil:'networkidle' });
     await page.locator('input[type=file]').setInputFiles(Array.from({length:20}, (_,index) => ({ name:`${index}-${'long-filename-'.repeat(8)}.exe`, mimeType:'application/octet-stream', buffer:Buffer.from('UI only') })));
     assert((await geometry()).scrollWidth <= 1441, 'long filenames overflow');
     await page.getByRole('button', { name:'演示扫描', exact:true }).scrollIntoViewIfNeeded();
@@ -114,7 +114,7 @@ const output = path.join(root, 'output/playwright/linen-scroll');
   } catch (error) { report.failures.push(error.message); }
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root,'docs/benchmarks/linen_natural_check_20261015_r2.json'), JSON.stringify(report,null,2)+'\n');
+    await fs.writeFile(path.join(root,'docs/benchmarks/linen_natural_check_20261015_product_demo.json'), JSON.stringify(report,null,2)+'\n');
   }
   console.log(JSON.stringify({ checks:report.checks.length, failures:report.failures }));
   assert.equal(report.failures.length,0);

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "functional_only": true,
+  "accuracy_metrics_available": false,
+  "independent_final_test_files": 0,
+  "unique_vendor_pe": 1,
+  "script_file_slots": {
+    "total": 8,
+    "completed_report_rows": 3,
+    "error_rows": 3,
+    "cancelled_rows": 2
+  },
+  "additional_deployed_preview_vendor_replay": 1,
+  "engine_statuses": {
+    "sha256": "no_match",
+    "fuzzy": "no_match",
+    "yara_x": "no_match",
+    "clamav": "unavailable",
+    "lightgbm": "no_match"
+  },
+  "ml_score": 0.028866415086539154,
+  "ml_threshold": 0.5,
+  "ml_score_is_probability": false,
+  "file_wall_ms": 2408.08,
+  "engine_elapsed_ms": {
+    "sha256": 0.196,
+    "fuzzy": 131.5435,
+    "yara_x": 104.348,
+    "clamav": 2027.91,
+    "lightgbm": 1992
+  },
+  "local_pytest": {
+    "passed": 176,
+    "skipped": 6
+  },
+  "browser": {
+    "real_api": 21,
+    "explicit_demo": 31,
+    "failures": 0
+  },
+  "resource": {
+    "start_available_ram_bytes": 8046800896,
+    "end_available_ram_bytes": 6477029376,
+    "start_free_disk_d_bytes": 111548944384,
+    "end_free_disk_d_bytes": 111520075776,
+    "static_export_bytes": 1690534,
+    "build_cache_bytes": 196452857,
+    "peak_ram_measured": false,
+    "resource_change_attributed": false
+  },
+  "limitations": [
+    "ClamAV unavailable on Windows",
+    "in-memory tasks",
+    "cooperative cancellation",
+    "no task-wide deadline",
+    "no restart recovery",
+    "no independent truth/FPR denominator"
+  ]
+}

@@ -29,7 +29,8 @@ function contrast(a, b) {
   const requests = [];
   page.on('request', request => requests.push({ url: request.url(), method: request.method() }));
   try {
-    await page.goto(base + '/', { waitUntil: 'networkidle' });
+    assert.equal((await context.request.get(base + '/')).status(), 200);
+    await page.goto(base + '/linen/demo/', { waitUntil: 'networkidle' });
     assert(await page.getByRole('heading', { name: /从一个文件，\s*看清每一条证据。/ }).isVisible());
     assert.equal(await page.getByRole('link', { name: /切换方案/ }).count(), 0);
     assert.equal(await page.getByRole('group', { name: '页面滚动体验对比' }).count(), 0);
@@ -37,10 +38,10 @@ function contrast(a, b) {
       assert.equal((await context.request.get(`${base}/${route}/`)).status(), 404);
       assert.equal((await context.request.get(`${base}/${route}/detail/`)).status(), 404);
     }
-    report.checks.push({ interaction: 'root opens Linen; rejected routes return 404; no design/mode switchers', passed: true });
+    report.checks.push({ interaction: 'root exists; explicit Linen demo; rejected routes return 404; no design/mode switchers', passed: true });
     for (const direction of ['linen']) {
       for (const view of ['workspace', 'detail']) {
-        const route = `/${direction}/${view === 'detail' ? 'detail/' : ''}`;
+        const route = `/${direction}/demo/${view === 'detail' ? 'detail/' : ''}`;
         for (const [width, height] of [[1440, 1000], [768, 1024], [375, 812], [812, 375]]) {
           try {
             await page.setViewportSize({ width, height });
@@ -64,7 +65,7 @@ function contrast(a, b) {
         }
       }
       await page.setViewportSize({ width: 1440, height: 1000 });
-      await page.goto(`${base}/${direction}/`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}/${direction}/demo/`, { waitUntil: 'networkidle' });
       await page.getByRole('textbox', { name: '搜索文件名' }).fill('no-such-file');
       assert(await page.getByText('没有匹配的分析记录').isVisible());
       await page.getByRole('button', { name: '显示演示记录' }).click();
@@ -86,7 +87,7 @@ function contrast(a, b) {
       await page.getByRole('link', { name: '查看 Readme.txt 检测详情' }).click();
       await page.getByRole('heading', { name: 'Readme.txt', exact: true }).waitFor();
       assert(await page.getByRole('heading', { name: '解析失败', exact: true }).isVisible());
-      await page.goto(`${base}/${direction}/detail/`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}/${direction}/demo/detail/`, { waitUntil: 'networkidle' });
       await page.evaluate(() => { navigator.clipboard.writeText = async () => { throw new Error('synthetic clipboard denial'); }; });
       await page.getByRole('button', { name: '复制 SHA-256' }).click();
       const copyFailure = page.getByText('剪贴板不可用，请从下方选择并复制 SHA-256。', { exact: true });
@@ -100,7 +101,7 @@ function contrast(a, b) {
       const target = path.join(output, `${direction}-demo-report.json`);
       await download.saveAs(target);
       assert.equal(JSON.parse(await fs.readFile(target, 'utf8')).demo, true);
-      await page.goto(`${base}/${direction}/`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}/${direction}/demo/`, { waitUntil: 'networkidle' });
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => document.activeElement.textContent), '跳到主要内容');
       await page.keyboard.press('Enter');
@@ -108,7 +109,7 @@ function contrast(a, b) {
       report.checks.push({ direction, interactions: ['search-empty-reset', 'error-retry', 'loading', 'file-name-only-selection', 'demo-progress', 'unsupported-architecture', 'non-PE-detail', 'visible-clipboard-failure', 'evidence-expand', 'demo-JSON-export', 'keyboard-skip'], passed: true });
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await page.goto(`${base}/linen/`, { waitUntil: 'networkidle' });
+    await page.goto(`${base}/linen/demo/`, { waitUntil: 'networkidle' });
     assert.equal(await page.locator('.calm-intro-copy').evaluate(element => getComputedStyle(element).animationName), 'calm-enter');
     await page.getByRole('button', { name: '演示扫描', exact: true }).click();
     await page.locator('.calm-engine-steps li[data-phase=active]').first().waitFor();
@@ -125,7 +126,7 @@ function contrast(a, b) {
   } catch (error) { report.failures.push({ reason: error.message }); }
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root, 'docs/benchmarks/frontend_linen_check_20261015_r2.json'), JSON.stringify(report, null, 2) + '\n');
+    await fs.writeFile(path.join(root, 'docs/benchmarks/frontend_linen_check_20261015_product_demo.json'), JSON.stringify(report, null, 2) + '\n');
   }
   console.log(JSON.stringify({ checks: report.checks.length, failures: report.failures }));
   assert.equal(report.failures.length, 0);

@@ -3,6 +3,7 @@ from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import hashlib
+import time
 from threading import Lock
 from uuid import uuid4
 
@@ -27,7 +28,7 @@ class ScanTasks:
                 raise OverflowError('Scan queue is full; retry after current tasks finish')
             identity=uuid4().hex
             job=dict(id=identity,status='queued',created_at=datetime.now(timezone.utc).isoformat(),
-                     total=len(files),finished=0,persistent=False,
+                     total=len(files),finished=0,persistent=False,cancel_requested=False,
                      files=[dict(name=name,size_bytes=len(data),status='queued',report=None,error=None) for name,data in files])
             self.jobs[identity]=job
             self.pending+=1
@@ -35,7 +36,7 @@ class ScanTasks:
             for old in list(self.jobs):
                 if len(self.jobs)<=100:
                     break
-                if self.jobs[old]['status'] in ('completed','completed_with_errors'):
+                if self.jobs[old]['status'] in ('completed','completed_with_errors','cancelled'):
                     del self.jobs[old]
             self.executor.submit(self._run,identity,files,size)
             return copy.deepcopy(job)
@@ -47,7 +48,12 @@ class ScanTasks:
                 self.jobs[identity]['status']='running'
             for index,(name,data) in enumerate(files):
                 with self.lock:
+                    if self.jobs[identity]['cancel_requested']:
+                        for row in self.jobs[identity]['files'][index:]:
+                            row.update(status='cancelled', error='cancelled_before_scan')
+                        break
                     self.jobs[identity]['files'][index]['status']='running'
+                started = time.perf_counter()
                 result=dict(status='completed',report=None,error=None)
                 try:
                     digest=hashlib.sha256(data).hexdigest()
@@ -61,13 +67,15 @@ class ScanTasks:
                 except Exception as error:
                     result.update(status='error',error=str(error)[:200] if isinstance(error,ValueError) else type(error).__name__)
                 with self.lock:
+                    result['elapsed_ms'] = round((time.perf_counter()-started)*1000, 3)
                     self.jobs[identity]['files'][index].update(result)
                     self.jobs[identity]['finished']+=1
         finally:
             # Update completion and release the reservation under the same lock.
             with self.lock:
                 job=self.jobs[identity]
-                job['status']='completed_with_errors' if any(r['status']=='error' for r in job['files']) else 'completed'
+                job['status']=('cancelled' if job['cancel_requested'] else
+                               'completed_with_errors' if any(r['status']=='error' for r in job['files']) else 'completed')
                 self.pending-=1
                 self.reserved_bytes-=size
 
@@ -75,9 +83,19 @@ class ScanTasks:
         with self.lock:
             return copy.deepcopy(self.jobs.get(identity))
 
+    def cancel(self, identity):
+        with self.lock:
+            job = self.jobs.get(identity)
+            if job is not None and job['status'] in ('queued', 'running', 'cancelling'):
+                job['cancel_requested'] = True
+                job['status'] = 'cancelling'
+            return copy.deepcopy(job)
+
     def list(self):
         with self.lock:
-            return [{key:job[key] for key in ('id','status','created_at','total','finished','persistent')}
+            return [dict(**{key:job[key] for key in ('id','status','created_at','total','finished','persistent')},
+                         files=[dict(name=row['name'],status=row['status'],size_bytes=row['size_bytes'],
+                                     verdict=(row['report'] or {}).get('verdict')) for row in job['files']])
                     for job in reversed(self.jobs.values())]
 
     def close(self):

@@ -19,7 +19,7 @@ const clear = value => value === 'none' || value === 'blur(0px)';
   page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   page.on('request',r=>requests.push({url:r.url(),method:r.method()}));
   try {
-    await page.goto(`${base}/linen/`,{waitUntil:'networkidle'});
+    await page.goto(`${base}/linen/demo/`,{waitUntil:'networkidle'});
     const content=page.locator('.linen-records-content');
     await content.waitFor({state:'attached'});
     await page.waitForFunction(()=>getComputedStyle(document.querySelector('.linen-records-content')).filter==='blur(3px)');
@@ -85,7 +85,7 @@ const clear = value => value === 'none' || value === 'blur(0px)';
   } catch(error){report.failures.push(error.message);}
   finally {
     await browser.close();
-    await fs.writeFile(path.join(root,'docs/benchmarks/linen_blur_selected_check_20261015_r2.json'),JSON.stringify(report,null,2)+'\n');
+    await fs.writeFile(path.join(root,'docs/benchmarks/linen_blur_selected_check_20261015_product_demo.json'),JSON.stringify(report,null,2)+'\n');
   }
   console.log(JSON.stringify({checks:report.checks.length,failures:report.failures}));
   assert.equal(report.failures.length,0);

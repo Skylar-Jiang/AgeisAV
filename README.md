@@ -10,17 +10,22 @@ API Key、模型权重及 VM 文件没有上传。公开摘要不是独立准确
 ## 本地无害开发
 
 需要Python3.12。安装`requirements-win-py312.txt`和`pip install -e . --no-deps`，
-运行`python -m pytest -q`，再以`uvicorn aegisav.main:app --host 127.0.0.1 --port 8000`启动。
-API没有身份认证，不应直接暴露到公网；`/v1/engines`显示真实可用性，缺失工具/模型会弃权。
+运行`python -m pytest -q`，构建前端后以`python -m experiments.serve_local`启动。
+生产入口默认开启仓库外本地访问密钥、HttpOnly会话及同源/回环校验，不应直接暴露到公网；
+`/v1/engines`显示真实可用性，缺失工具/模型会弃权。
 ClamAV与模型权重需另按部署说明配置。源码测试中的私有归档证据回归在公开分发中明确跳过。
 
-## 前端视觉原型
+## Linen真实工作台
 
 `frontend`使用Next.js/TypeScript/Tailwind/shadcn；`npm ci`后运行`npm run build`。
-仓库根执行`python -m http.server 3417 --bind 127.0.0.1 --directory frontend/out`，
+仓库根执行`python -m experiments.serve_local`，
 访问<http://127.0.0.1:3417/>或<http://127.0.0.1:3417/linen/>。仅保留Linen自然滚动与记录区短时虚化。
 已删除其他视觉方案、方案选择器、吸附模式与比较控件。
-原型仅使用明确标记的合成演示数据，不读取或上传文件，后续扩展业务页面与真实API联调。
+默认工作台实际读取良性开发文件、提交任务并显示服务返回的报告。首次连接需要启动器打印路径
+中的本地访问密钥，不要写入前端构建、URL或Git。显式`/linen/demo/`才使用合成数据且不上传内容。
+任务当前仅在内存中，取消为文件间协作取消，不承诺跨重启恢复或任务总截止。
+失败、404或连接中断不会回退为演示或阴性。契约、安全边界、测试与限制见
+[产品A/B报告](docs/research/ROUND_REPORT_20261015_PRODUCT_AB.md)。
 实际Skill应用、浏览器验收及复验见[前端记录](docs/FRONTEND_PROTOTYPES_20261014.md)。
 
 ## 安全与复现

@@ -116,3 +116,37 @@ def test_concurrent_upload_budget_rejects_third_body_before_reading_it():
                     responses=await asyncio.gather(*requests)
                 assert all(r.status_code==202 for r in responses)
     asyncio.run(run())
+
+
+def test_cancel_preserves_running_result_and_skips_remaining_files():
+    started, release = threading.Event(), threading.Event()
+    calls = []
+    class Scanner:
+        def scan(self, data):
+            calls.append(data)
+            started.set()
+            assert release.wait(3)
+            return {'verdict': 'undetermined', 'engines': {'clamav': {'status': 'unavailable'}}}
+    with TestClient(create_app(Scanner())) as client:
+        job = client.post('/v1/tasks', json={'files': [
+            {'name': str(i)+'.exe', 'content_base64': base64.b64encode(bytes([i])).decode()}
+            for i in range(3)]}).json()
+        try:
+            assert started.wait(1)
+            response = client.post('/v1/tasks/'+job['id']+'/cancel')
+            assert response.status_code == 200
+            assert response.json()['status'] == 'cancelling'
+            assert client.post('/v1/tasks/'+job['id']+'/cancel').status_code == 200
+        finally:
+            release.set()
+        for _ in range(100):
+            result = client.get('/v1/tasks/'+job['id']).json()
+            if result['status'] == 'cancelled':
+                break
+            time.sleep(.01)
+        assert result['status'] == 'cancelled' and result['finished'] == 1
+        assert result['files'][0]['report']['engines']['clamav']['status'] == 'unavailable'
+        assert result['files'][0]['elapsed_ms'] >= 0
+        assert all(row['status'] == 'cancelled' and row['report'] is None for row in result['files'][1:])
+        assert len(calls) == 1
+        assert client.post('/v1/tasks/not-found/cancel').status_code == 404

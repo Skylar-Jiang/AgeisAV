@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -16,6 +17,12 @@ PREFIXES=('backend/','ml/','experiments/','vm/','rules/','frontend/','.agents/sk
 ROOT_FILES={'.gitignore','.gitattributes','pyproject.toml','requirements-win-py312.txt',
             'requirements-ml.txt','requirements-ml-lock.txt','requirements.txt','.env.example'}
 DOCS={'docs/ARCHITECTURE.md','docs/SKILLS.md','docs/PRODUCT_DESIGN.md',
+      'docs/research/ROUND_REPORT_20261015_PRODUCT_AB.md',
+      'docs/benchmarks/live_api_check_20261015.json',
+      'docs/benchmarks/live_api_product_summary_20261015.json',
+      'docs/benchmarks/frontend_linen_check_20261015_product_demo.json',
+      'docs/benchmarks/linen_natural_check_20261015_product_demo.json',
+      'docs/benchmarks/linen_blur_selected_check_20261015_product_demo.json',
       'docs/FRONTEND_LINEN_CLEANUP_20261015.md',
       'docs/benchmarks/frontend_linen_cleanup_20261015.json',
       'docs/benchmarks/frontend_linen_check_20261015.json',
@@ -54,6 +61,14 @@ def main():
     secret=sys.stdin.buffer.read().strip()
     if len(secret)<16:
         raise ValueError('exact_secret_check_required_via_stdin')
+    secrets = [secret]
+    key_root = Path(os.environ.get('LOCALAPPDATA', str(Path.home()/'.local/share'))) / 'AegisAV'
+    local_key = Path(os.environ.get('AEGISAV_ACCESS_TOKEN_FILE', str(key_root/'local-access.key')))
+    if local_key.exists():
+        value = local_key.read_bytes().strip()
+        if not 32 <= len(value) <= 4096:
+            raise ValueError('invalid_local_access_key_for_export_audit')
+        secrets.append(value)
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     tracked=subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().split('\0')
     private_hashes=set()
@@ -77,7 +92,7 @@ def main():
             raise ValueError('committed_blob_required:'+name)
         data=objects.read(int(header[2]))
         assert objects.read(1)==b'\n'
-        if len(data)>2*1024**2 or secret in data or any(sha in data for sha in private_hashes):
+        if len(data)>2*1024**2 or any(value in data for value in secrets) or any(sha in data for sha in private_hashes):
             raise ValueError('export_content_gate:'+destination)
         selected.append((destination,data))
     output.mkdir(parents=True)
@@ -89,6 +104,7 @@ def main():
         manifest.append(dict(path=name,sha256=hashlib.sha256(data).hexdigest(),bytes=len(data)))
     evidence=dict(schema=1,source_revision=revision,files=manifest,
                   exact_secret_absent=True,private_candidate_hashes_absent=True,
+                  secrets_checked=len(secrets),
                   private_history_included=False)
     (output/'PUBLIC_SOURCE_MANIFEST.json').write_bytes((json.dumps(evidence,indent=2)+'\n').encode('utf-8'))
     print(json.dumps(dict(files=len(manifest),bytes=sum(row['bytes'] for row in manifest),
