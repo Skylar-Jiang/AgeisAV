@@ -1,0 +1,2356 @@
+{
+  "schema": 1,
+  "method": "frozen_saved_expansion_stratification",
+  "strict_final_test": false,
+  "thresholds_changed": false,
+  "policy_selection_performed": false,
+  "labels_changed": false,
+  "release": "c699902f19640593",
+  "accuracy_metrics": null,
+  "fixed_low_fpr_recall": null,
+  "counts": {
+    "candidates": 91,
+    "scanned_pe": 80,
+    "unscanned": 11,
+    "independently_trusted_labels": 0,
+    "independent_final_eligible": 0
+  },
+  "file_status_counts": {
+    "scanned": 80,
+    "error": 11
+  },
+  "failure_reasons": {
+    "download_incomplete": 11
+  },
+  "paired": {
+    "files": 91,
+    "engines": {
+      "sha256": {
+        "positive": 0,
+        "negative": 80,
+        "abstained": 11
+      },
+      "fuzzy": {
+        "positive": 0,
+        "negative": 80,
+        "abstained": 11
+      },
+      "yara_x": {
+        "positive": 0,
+        "negative": 80,
+        "abstained": 11
+      },
+      "clamav": {
+        "positive": 20,
+        "negative": 60,
+        "abstained": 11
+      },
+      "lightgbm": {
+        "positive": 76,
+        "negative": 4,
+        "abstained": 11
+      }
+    },
+    "policies": {
+      "signature_or": {
+        "positive": 20,
+        "negative": 60,
+        "abstained": 11
+      },
+      "ml_only": {
+        "positive": 76,
+        "negative": 4,
+        "abstained": 11
+      },
+      "evidence_or": {
+        "positive": 76,
+        "negative": 4,
+        "abstained": 11
+      },
+      "corroborated": {
+        "positive": 20,
+        "negative": 60,
+        "abstained": 11
+      }
+    },
+    "exclusive_positive": {
+      "lightgbm": 56
+    },
+    "signatures_positive_ml_negative": 0,
+    "latency_ms": {
+      "sample_count": 80,
+      "mean": 4039.247930449983,
+      "p50": 3126.2331655000253,
+      "p95_nearest_rank": 7375.280664000002,
+      "max": 13179.165804999911
+    }
+  },
+  "strata": {
+    "pe_scope": {
+      "dot_net": {
+        "files": 22,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 22,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 22,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 22,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 7,
+            "negative": 15,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 22,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 7,
+            "negative": 15,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 22,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 22,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 7,
+            "negative": 15,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 15
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 22,
+          "mean": 3424.250175818181,
+          "p50": 3197.637445000055,
+          "p95_nearest_rank": 4961.181491999923,
+          "max": 6831.159299999854
+        }
+      },
+      "win32": {
+        "files": 22,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 22,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 22,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 22,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 5,
+            "negative": 17,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 21,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 5,
+            "negative": 17,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 21,
+            "negative": 1,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 21,
+            "negative": 1,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 5,
+            "negative": 17,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 16
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 22,
+          "mean": 3215.315520727214,
+          "p50": 2805.1693284996873,
+          "p95_nearest_rank": 6799.3363379998755,
+          "max": 7375.280664000002
+        }
+      },
+      "win64": {
+        "files": 36,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 36,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 36,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 36,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 8,
+            "negative": 28,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 33,
+            "negative": 3,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 8,
+            "negative": 28,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 33,
+            "negative": 3,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 33,
+            "negative": 3,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 8,
+            "negative": 28,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 25
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 36,
+          "mean": 4918.594141999999,
+          "p50": 4098.487265999893,
+          "p95_nearest_rank": 10999.974122999902,
+          "max": 13179.165804999911
+        }
+      }
+    },
+    "reported_family": {
+      "AokigaharaStealer": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 3026.941706999878,
+          "p50": 3026.941706999878,
+          "p95_nearest_rank": 3026.941706999878,
+          "max": 3026.941706999878
+        }
+      },
+      "AsyncRAT": {
+        "files": 3,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 2,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 2,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 2,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 3,
+          "mean": 3026.868469666624,
+          "p50": 3018.4008229998653,
+          "p95_nearest_rank": 3105.7153870001457,
+          "max": 3105.7153870001457
+        }
+      },
+      "BlackMatter": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 2756.354050000027,
+          "p50": 2756.354050000027,
+          "p95_nearest_rank": 2756.354050000027,
+          "max": 2756.354050000027
+        }
+      },
+      "Blackmoon": {
+        "files": 3,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 2,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 2,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 2,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 3,
+          "mean": 2881.606457333343,
+          "p50": 2969.9451999999837,
+          "p95_nearest_rank": 3065.397910999991,
+          "max": 3065.397910999991
+        }
+      },
+      "CoinMiner": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 5262.081832999911,
+          "p50": 5262.081832999911,
+          "p95_nearest_rank": 5262.081832999911,
+          "max": 5262.081832999911
+        }
+      },
+      "DCRat": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 3463.768482999967,
+          "p50": 3463.768482999967,
+          "p95_nearest_rank": 3463.768482999967,
+          "max": 3463.768482999967
+        }
+      },
+      "DonutLoader": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 3602.6870989999225,
+          "p50": 3602.6870989999225,
+          "p95_nearest_rank": 3602.6870989999225,
+          "max": 3602.6870989999225
+        }
+      },
+      "Formbook": {
+        "files": 7,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 7,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 7,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 7,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 7,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 7,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 7,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 7,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 7,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 7,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 7
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 7,
+          "mean": 3374.487384142932,
+          "p50": 3423.713047000092,
+          "p95_nearest_rank": 3690.751823000028,
+          "max": 3690.751823000028
+        }
+      },
+      "GCleaner": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 3297.3306530002446,
+          "p50": 3297.3306530002446,
+          "p95_nearest_rank": 3297.3306530002446,
+          "max": 3297.3306530002446
+        }
+      },
+      "Gh0stRAT": {
+        "files": 4,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 3,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 3,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 3,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 4,
+          "mean": 2777.9848127499918,
+          "p50": 2745.6889510000337,
+          "p95_nearest_rank": 2915.8122750000075,
+          "max": 2915.8122750000075
+        }
+      },
+      "GomoRAT": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 3398.0950359998587,
+          "p50": 3398.0950359998587,
+          "p95_nearest_rank": 3398.0950359998587,
+          "max": 3398.0950359998587
+        }
+      },
+      "GuLoader": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 3076.1483950000184,
+          "p50": 3076.1483950000184,
+          "p95_nearest_rank": 3076.1483950000184,
+          "max": 3076.1483950000184
+        }
+      },
+      "NanoCore": {
+        "files": 4,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 4,
+          "mean": 2947.4229225000954,
+          "p50": 2938.587892500095,
+          "p95_nearest_rank": 3060.7903810000607,
+          "max": 3060.7903810000607
+        }
+      },
+      "NetSupport": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 5315.92658500017,
+          "p50": 5315.92658500017,
+          "p95_nearest_rank": 5315.92658500017,
+          "max": 5315.92658500017
+        }
+      },
+      "Phorphiex": {
+        "files": 2,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 2
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 2,
+          "mean": 2787.1776024999235,
+          "p50": 2787.1776024999235,
+          "p95_nearest_rank": 2817.639926999618,
+          "max": 2817.639926999618
+        }
+      },
+      "Phorpiex": {
+        "files": 8,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 8,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 8,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 8,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 8
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 8,
+          "mean": 2708.019320999881,
+          "p50": 2710.558802499918,
+          "p95_nearest_rank": 2888.0945649998466,
+          "max": 2888.0945649998466
+        }
+      },
+      "PrintSpoofer": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 2708.2295800000793,
+          "p50": 2708.2295800000793,
+          "p95_nearest_rank": 2708.2295800000793,
+          "max": 2708.2295800000793
+        }
+      },
+      "PureRAT": {
+        "files": 2,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 2
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 2,
+          "mean": 4973.04364099989,
+          "p50": 4973.04364099989,
+          "p95_nearest_rank": 6799.3363379998755,
+          "max": 6799.3363379998755
+        }
+      },
+      "RemcosRAT": {
+        "files": 2,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 2,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 1,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 1,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 2,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 1,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 2,
+          "mean": 3256.953333499837,
+          "p50": 3256.953333499837,
+          "p95_nearest_rank": 3507.108904999768,
+          "max": 3507.108904999768
+        }
+      },
+      "RemusStealer": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 5844.304756999918,
+          "p50": 5844.304756999918,
+          "p95_nearest_rank": 5844.304756999918,
+          "max": 5844.304756999918
+        }
+      },
+      "RustyStealer": {
+        "files": 1,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 1,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 1
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 1,
+          "mean": 2562.82978299987,
+          "p50": 2562.82978299987,
+          "p95_nearest_rank": 2562.82978299987,
+          "max": 2562.82978299987
+        }
+      },
+      "ValleyRAT": {
+        "files": 3,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 3,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 3,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 3
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 3,
+          "mean": 4710.275317333223,
+          "p50": 4476.057141999945,
+          "p95_nearest_rank": 5517.85366099989,
+          "max": 5517.85366099989
+        }
+      },
+      "Vidar": {
+        "files": 8,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 8,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 2,
+            "negative": 6,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 8,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 2,
+            "negative": 6,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 8,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 8,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 2,
+            "negative": 6,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 6
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 8,
+          "mean": 5998.238867625077,
+          "p50": 4320.639818500013,
+          "p95_nearest_rank": 13179.165804999911,
+          "max": 13179.165804999911
+        }
+      },
+      "WannaCry": {
+        "files": 4,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 4,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 4,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {},
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 4,
+          "mean": 6509.008883750028,
+          "p50": 6657.326539500104,
+          "p95_nearest_rank": 7076.995248999992,
+          "max": 7076.995248999992
+        }
+      },
+      "unreported": {
+        "files": 18,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 18,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 18,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 18,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 0,
+            "negative": 18,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 17,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 0,
+            "negative": 18,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 17,
+            "negative": 1,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 17,
+            "negative": 1,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 0,
+            "negative": 18,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 17
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 18,
+          "mean": 4595.855161888848,
+          "p50": 3202.400562500088,
+          "p95_nearest_rank": 10767.21732100009,
+          "max": 10767.21732100009
+        }
+      }
+    },
+    "source_first_seen_day": {
+      "2026-10-12": {
+        "files": 61,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 61,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 61,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 61,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 14,
+            "negative": 47,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 57,
+            "negative": 4,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 14,
+            "negative": 47,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 57,
+            "negative": 4,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 57,
+            "negative": 4,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 14,
+            "negative": 47,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 43
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 61,
+          "mean": 3725.3867930983383,
+          "p50": 3026.941706999878,
+          "p95_nearest_rank": 7076.995248999992,
+          "max": 10999.974122999902
+        }
+      },
+      "2026-10-13": {
+        "files": 19,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 19,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 19,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 19,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 6,
+            "negative": 13,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 19,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 6,
+            "negative": 13,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 19,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 19,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 6,
+            "negative": 13,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 13
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 19,
+          "mean": 5046.907371421053,
+          "p50": 4476.057141999945,
+          "p95_nearest_rank": 13179.165804999911,
+          "max": 13179.165804999911
+        }
+      }
+    },
+    "size_band": {
+      "1-4MiB": {
+        "files": 13,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 13,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 13,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 13,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 3,
+            "negative": 10,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 12,
+            "negative": 1,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 3,
+            "negative": 10,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 12,
+            "negative": 1,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 12,
+            "negative": 1,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 3,
+            "negative": 10,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 9
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 13,
+          "mean": 4799.566083846107,
+          "p50": 4476.057141999945,
+          "p95_nearest_rank": 6966.73728199994,
+          "max": 6966.73728199994
+        }
+      },
+      "<1MiB": {
+        "files": 54,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 54,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 54,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 54,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 13,
+            "negative": 41,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 51,
+            "negative": 3,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 13,
+            "negative": 41,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 51,
+            "negative": 3,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 51,
+            "negative": 3,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 13,
+            "negative": 41,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 38
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 54,
+          "mean": 2992.176969185169,
+          "p50": 2918.7198504998833,
+          "p95_nearest_rank": 3491.635364999638,
+          "max": 4961.181491999923
+        }
+      },
+      ">=4MiB": {
+        "files": 13,
+        "engines": {
+          "sha256": {
+            "positive": 0,
+            "negative": 13,
+            "abstained": 0
+          },
+          "fuzzy": {
+            "positive": 0,
+            "negative": 13,
+            "abstained": 0
+          },
+          "yara_x": {
+            "positive": 0,
+            "negative": 13,
+            "abstained": 0
+          },
+          "clamav": {
+            "positive": 4,
+            "negative": 9,
+            "abstained": 0
+          },
+          "lightgbm": {
+            "positive": 13,
+            "negative": 0,
+            "abstained": 0
+          }
+        },
+        "policies": {
+          "signature_or": {
+            "positive": 4,
+            "negative": 9,
+            "abstained": 0
+          },
+          "ml_only": {
+            "positive": 13,
+            "negative": 0,
+            "abstained": 0
+          },
+          "evidence_or": {
+            "positive": 13,
+            "negative": 0,
+            "abstained": 0
+          },
+          "corroborated": {
+            "positive": 4,
+            "negative": 9,
+            "abstained": 0
+          }
+        },
+        "exclusive_positive": {
+          "lightgbm": 9
+        },
+        "signatures_positive_ml_negative": 0,
+        "latency_ms": {
+          "sample_count": 13,
+          "mean": 7628.301462307701,
+          "p50": 6874.887914000055,
+          "p95_nearest_rank": 13179.165804999911,
+          "max": 13179.165804999911
+        }
+      }
+    }
+  },
+  "near_duplicates": {
+    "screening_components": 61,
+    "scanned_files": 80,
+    "component_size_counts": {
+      "1": 51,
+      "4": 1,
+      "2": 8,
+      "9": 1
+    },
+    "previously_observed_linked_components": 6,
+    "previously_observed_linked_files": 11,
+    "evidence_or_component_patterns": {
+      "all_positive": 57,
+      "all_negative": 4
+    },
+    "tlsh_max_distance": 40,
+    "ssdeep_min_similarity": 80
+  },
+  "without_previous_links": {
+    "files": 80,
+    "engines": {
+      "sha256": {
+        "positive": 0,
+        "negative": 69,
+        "abstained": 11
+      },
+      "fuzzy": {
+        "positive": 0,
+        "negative": 69,
+        "abstained": 11
+      },
+      "yara_x": {
+        "positive": 0,
+        "negative": 69,
+        "abstained": 11
+      },
+      "clamav": {
+        "positive": 12,
+        "negative": 57,
+        "abstained": 11
+      },
+      "lightgbm": {
+        "positive": 65,
+        "negative": 4,
+        "abstained": 11
+      }
+    },
+    "policies": {
+      "signature_or": {
+        "positive": 12,
+        "negative": 57,
+        "abstained": 11
+      },
+      "ml_only": {
+        "positive": 65,
+        "negative": 4,
+        "abstained": 11
+      },
+      "evidence_or": {
+        "positive": 65,
+        "negative": 4,
+        "abstained": 11
+      },
+      "corroborated": {
+        "positive": 12,
+        "negative": 57,
+        "abstained": 11
+      }
+    },
+    "exclusive_positive": {
+      "lightgbm": 53
+    },
+    "signatures_positive_ml_negative": 0,
+    "latency_ms": {
+      "sample_count": 69,
+      "mean": 3900.307460579693,
+      "p50": 3181.3621659998716,
+      "p95_nearest_rank": 7076.995248999992,
+      "max": 10767.21732100009
+    }
+  },
+  "engine_versions": {
+    "sha256": [
+      [
+        "sha256",
+        "279d0104511d2850"
+      ]
+    ],
+    "fuzzy": [
+      [
+        "tlsh-python/0.1.0 ppdeep/20260221",
+        "279d0104511d2850"
+      ]
+    ],
+    "yara_x": [
+      [
+        "1.20.0",
+        "55ccec8463af1166"
+      ]
+    ],
+    "clamav": [
+      [
+        "ClamAV 1.5.4",
+        "28148"
+      ]
+    ],
+    "lightgbm": [
+      [
+        "LightGBM/4.6.0 EMBER2024/v3",
+        "13f35d8cd69b71e1f07f205b4ec633aafacce80423a10ebf4052293aa100b6f5:general"
+      ]
+    ]
+  },
+  "engine_latency_ms": {
+    "sha256": {
+      "sample_count": 80,
+      "mean": 3.4730971875,
+      "p50": 1.182226,
+      "p95_nearest_rank": 13.920466,
+      "max": 21.869303
+    },
+    "fuzzy": {
+      "sample_count": 80,
+      "mean": 708.621099875,
+      "p50": 177.24644949999998,
+      "p95_nearest_rank": 2798.26548,
+      "max": 7226.162117
+    },
+    "yara_x": {
+      "sample_count": 80,
+      "mean": 16.65575,
+      "p50": 12.4665,
+      "p95_nearest_rank": 43.792,
+      "max": 77.351
+    },
+    "clamav": {
+      "sample_count": 80,
+      "mean": 915.6451,
+      "p50": 544.4435000000001,
+      "p95_nearest_rank": 2810.574,
+      "max": 3835.613
+    },
+    "lightgbm": {
+      "sample_count": 80,
+      "mean": 1778.2891,
+      "p50": 1407.643,
+      "p95_nearest_rank": 3575.709,
+      "max": 5295.391
+    }
+  },
+  "model_timing_ms": {
+    "inclusive": {
+      "sample_count": 80,
+      "mean": 1778.2891,
+      "p50": 1407.643,
+      "p95_nearest_rank": 3575.709,
+      "max": 5295.391
+    },
+    "feature": {
+      "sample_count": 80,
+      "mean": 537.7425875,
+      "p50": 159.27100000000002,
+      "p95_nearest_rank": 2333.826,
+      "max": 4005.986
+    },
+    "inference": {
+      "sample_count": 80,
+      "mean": 0.63385,
+      "p50": 0.534,
+      "p95_nearest_rank": 0.989,
+      "max": 3.056
+    },
+    "unattributed": {
+      "sample_count": 80,
+      "mean": 1239.9126625,
+      "p50": 1222.2395,
+      "p95_nearest_rank": 1348.1390000000001,
+      "max": 2472.4749999999995
+    }
+  },
+  "limitations": [
+    "All labels unknown: positive signals are not Recall; no FPR, Precision, F1 or low-FPR Recall.",
+    "Source-reported family/date are not verified family/global first-seen.",
+    "Components are a fixed single-link screen, not certified independent observations or confidence-interval units.",
+    "Excluding prior links is post hoc sensitivity analysis, not creation of a final test set.",
+    "Cold-cache historical per-file workers; overlapping engine timers cannot be summed or compared to new task guards.",
+    "ML unattributed time includes integrity checks, scope parsing, imports, model loading, transport and shutdown; not a measured reusable-worker speedup."
+  ],
+  "input_sha256": {
+    "scan": "0aedaac874b5756c3cd60cbce446d89c089473200f1473d1d8ee042fc98fb22d",
+    "manifest": "76816a606721f48e00f696a5f265409aa72b9d5182672f24f46952075dc4b221",
+    "acquisition": "d726765199d637bc77c1193283a6432bbc11e85544260d3d2cfa133a0b3f001b"
+  }
+}
