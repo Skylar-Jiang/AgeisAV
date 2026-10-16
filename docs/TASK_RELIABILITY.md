@@ -35,7 +35,7 @@ SQLite 不保存文件内容、Base64、访问密钥。文件名、哈希与检�
 
 正常状态：queued → running → completed / completed_with_errors；取消：cancelling → cancelled。
 任务截止：timed_out；存储/进程清理故障：failed 或 interrupted。逐文件失败、超时、取消均保留且没有阴性结论。
-file.finished 计数仅表示已尝试处理数量，未开始的中断/取消文件不伪造进度。
+任务 finished 计数仅表示已尝试处理数量，未开始的中断/取消文件不伪造进度。
 
 重启后已完成报告、错误、超时和取消状态可查询导出；旧 queued/running/cancelling 改为 interrupted。
 已完成文件报告保留，未完成文件标记 resubmit_required。**没有自动续扫**：上传字节仅在内存，
@@ -67,7 +67,7 @@ Linux 需要非 root、支持 pidfd 的内核。单独的无解析器监护进�
 与解析器/子进程同处私有 session/process group；服务死亡或取消时清理整个进程组，
 不依赖被阻塞解析器执行 Python 信号处理函数。解析器 RLIMIT_AS 为每进程 2 GiB，
 CPU 120 秒，禁止 core，文件描述符 128，文件输出上限 2 MiB。
-Linux RLIMIT_AS **不是总进程树内存上限**，ML 子进程也继承每进程限制；部署时需预留合计内存，
+Linux RLIMIT_AS **不是总进程树内存上限**，ML 子进程还会按既有策略收紧至 1536 MiB；部署时需预留合计内存，
 若需严格总内存上限，应在 VM 中通过受审 systemd/cgroup 配额追加约束。
 本轮只在 Windows/WSL 用良性/无害夹具验证，没有启动 VM 或执行恶意文件。
 

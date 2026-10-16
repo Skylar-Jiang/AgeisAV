@@ -30,7 +30,9 @@ elif mode == 'allocate':
     print(json.dumps({'report':{'limited':limited}}))
 elif mode == 'real':
     from aegisav.runtime import build_scanner
+    from aegisav.pe import validate_pe
     try:
+        validate_pe(data)
         print(json.dumps({'report':build_scanner().scan(data)}))
     except ValueError as error:
         print(json.dumps({'invalid':str(error)[:200]}))

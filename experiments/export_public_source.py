@@ -18,6 +18,8 @@ ROOT_FILES={'.gitignore','.gitattributes','pyproject.toml','requirements-win-py3
             'requirements-ml.txt','requirements-ml-lock.txt','requirements.txt','.env.example'}
 DOCS={'docs/ARCHITECTURE.md','docs/SKILLS.md','docs/PRODUCT_DESIGN.md',
       'docs/TASK_RELIABILITY.md','docs/research/ROUND_REPORT_20261016_TASK_C.md',
+      'docs/research/ROUND_REPORT_20261016_PRODUCT_D.md',
+      'docs/benchmarks/product_pages_check_20261016.json','docs/benchmarks/live_api_check_20261016_product_d.json',
       'docs/benchmarks/task_reliability_check_20261016.json','docs/benchmarks/live_api_check_20261016.json',
       'docs/research/ROUND_REPORT_20261015_PRODUCT_AB.md',
       'docs/benchmarks/live_api_check_20261015.json',

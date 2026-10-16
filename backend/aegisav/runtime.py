@@ -27,4 +27,3 @@ def build_scanner() -> StaticScanner:
                            python_executable=os.environ.get('AEGISAV_ML_PYTHON') or
                            (str(local_ml_python) if local_ml_python.exists() else None)),
     )
-

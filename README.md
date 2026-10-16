@@ -23,7 +23,10 @@ ClamAV与模型权重需另按部署说明配置。源码测试中的私有归�
 已删除其他视觉方案、方案选择器、吸附模式与比较控件。
 默认工作台实际读取良性开发文件、提交任务并显示服务返回的报告。首次连接需要启动器打印路径
 中的本地访问密钥，不要写入前端构建、URL或Git。显式`/linen/demo/`才使用合成数据且不上传内容。
-任务当前仅在内存中，取消为文件间协作取消，不承诺跨重启恢复或任务总截止。
+任务报告和状态已由SQLite持久化，上传字节仍只在内存；重启中的任务标记interrupted，需重新提交，
+没有自动续扫。生产取消/截止会终止独立扫描进程树。Schema、额度与备份见[TASK_RELIABILITY](docs/TASK_RELIABILITY.md)。
+真实业务页面：`/linen/tasks/`批量任务、`/linen/history/`历史、`/linen/assets/`规则/模型只读状态、
+`/linen/statistics/`实际状态/弃权/成本窗口。没有独立标签时不提供正式准确率。
 失败、404或连接中断不会回退为演示或阴性。契约、安全边界、测试与限制见
 [产品A/B报告](docs/research/ROUND_REPORT_20261015_PRODUCT_AB.md)。
 实际Skill应用、浏览器验收及复验见[前端记录](docs/FRONTEND_PROTOTYPES_20261014.md)。

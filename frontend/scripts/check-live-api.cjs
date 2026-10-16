@@ -185,7 +185,7 @@ const python = path.join(root, '.venv/Scripts/python.exe');
   finally {
     if (browser) await browser.close();
     if (server.exitCode === null) execFileSync('taskkill.exe', ['/PID', String(server.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });
-    await fs.writeFile(path.join(root, 'docs/benchmarks/live_api_check_20261016.json'), JSON.stringify(report, null, 2) + '\n');
+    await fs.writeFile(path.join(root, 'docs/benchmarks/live_api_check_20261016_product_d.json'), JSON.stringify(report, null, 2) + '\n');
   }
   console.log(JSON.stringify({ checks: report.checks.length, failures: report.failures, engines: report.engine_statuses }));
   assert.equal(report.failures.length, 0);

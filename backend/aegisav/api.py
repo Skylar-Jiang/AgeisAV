@@ -2,6 +2,7 @@ import base64
 import binascii
 import asyncio
 import sqlite3
+from typing import Literal
 from contextlib import asynccontextmanager
 from threading import BoundedSemaphore
 
@@ -84,8 +85,12 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
         return job
 
     @app.get('/v1/tasks')
-    def task_list(limit: int=Query(100,ge=1,le=100), offset: int=Query(0,ge=0)):
-        return {'tasks':tasks.list(limit,offset),'persistent':tasks.persistent,'limit':limit,'offset':offset}
+    def task_list(limit: int=Query(100,ge=1,le=100), offset: int=Query(0,ge=0,le=1000000), state: Literal['all','active','terminal']='all'):
+        return {'tasks':tasks.list(limit,offset,state),'persistent':tasks.persistent,'limit':limit,'offset':offset}
+
+    @app.get('/v1/statistics')
+    def task_statistics():
+        return tasks.statistics()
 
     @app.get('/v1/tasks/{identity}')
     def task_detail(identity: str):
@@ -139,7 +144,12 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
             engines.append({'id':name,'status':'ready' if ready else 'unavailable',
                             'artifact_version':getattr(scanner,'database_version',None) if name in ('sha256','fuzzy') else getattr(engine,'artifact_version',None),
                             'engine_version':getattr(engine,'engine_version',None)})
+        manifest=getattr(model,'manifest',None) or {}
+        profile=manifest.get('models',{}).get('general' if getattr(model,'profile',None)=='general' else 'win64',{})
+        metadata=getattr(getattr(scanner,'yara_engine',None),'metadata',{})
         return {'service_release': release_id, 'fusion_policy': 'evidence-or-v1','engines':engines,
+                'rules':{'count':len(metadata),'entries':[{key:row.get(key) for key in ('rule_id','version','source','scope','confidence')} for row in metadata.values()]},
+                'hash_reference_count':len(getattr(getattr(scanner,'database',None),'records',[])),
                 'task_limits':{'max_file_bytes':max_file_bytes,'max_files':20,'max_task_bytes':32*1024**2,
                                'max_pending':tasks.max_pending,'max_reserved_bytes':tasks.max_bytes,'workers':1,'persistent':tasks.persistent,
                                'file_timeout_seconds':file_timeout,'task_deadline_seconds':task_timeout,
@@ -147,6 +157,13 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
                                'memory_bytes':getattr(runner,'memory_bytes',None),'automatic_resume':False},
                 'ml': None if model is None else {
             'artifact_version': model.artifact_version, 'profile': getattr(model, 'profile', 'unknown'),
+            'model_version':profile.get('version'),'scope':profile.get('scope'), 'threshold':profile.get('threshold'),
+            'models':{name:{key:entry.get(key) for key in ('version','scope','threshold','threshold_source')}
+                      for name,entry in manifest.get('models',{}).items()},
+            'routing':{'win32':'general','dot_net':'general',
+                       'win64':'win64' if getattr(model,'profile',None)=='win64_low_fpr' else 'general',
+                       'unsupported':'abstain'},
+            'feature_dim':manifest.get('feature_dim'),'feature_implementation':manifest.get('feature_implementation'),
             'assets_valid': model.probe() if hasattr(model, 'probe') else None,
             'runtime_check': 'performed_in_bounded_inference_worker', 'deployment_fpr_guaranteed': False}}
 

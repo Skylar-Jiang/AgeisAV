@@ -122,14 +122,27 @@ class TaskStore:
             return [r[0] for r in self.connection.execute("SELECT id FROM tasks WHERE status IN ('queued','running','cancelling')")]
         return [r[0] for r in self.connection.execute('SELECT id FROM tasks ORDER BY created_at DESC,id LIMIT ? OFFSET ?', (limit,offset))]
 
-    def summaries(self, limit, offset):
+    def summaries(self, limit, offset, state='all'):
         jobs = []
-        for row in self.connection.execute('SELECT id,status,created_at,total,finished FROM tasks ORDER BY created_at DESC,id LIMIT ? OFFSET ?', (limit,offset)):
+        where = " WHERE status IN ('queued','running','cancelling')" if state=='active' else " WHERE status NOT IN ('queued','running','cancelling')" if state=='terminal' else ''
+        for row in self.connection.execute('SELECT id,status,created_at,total,finished FROM tasks'+where+' ORDER BY created_at DESC,id LIMIT ? OFFSET ?', (limit,offset)):
             job = dict(row,persistent=True,files=[])
             for item in self.connection.execute("SELECT name,status,size_bytes,json_extract(report_json,'$.verdict') AS verdict FROM task_files WHERE task_id=? ORDER BY ordinal", (row['id'],)):
                 job['files'].append(dict(item))
             jobs.append(job)
         return jobs
+
+    def statistics(self):
+        fields = ['status','elapsed_ms','report_json IS NOT NULL AS has_report',
+                  "json_extract(report_json,'$.sha256') AS sha256","json_extract(report_json,'$.cached') AS cached"]
+        for engine in ('sha256','fuzzy','yara_x','clamav','lightgbm'):
+            fields.extend([f"json_extract(report_json,'$.engines.{engine}.status') AS {engine}_status",
+                           f"json_extract(report_json,'$.engines.{engine}.elapsed_ms') AS {engine}_ms"])
+        return dict(task_count=self.connection.execute('SELECT count(*) FROM tasks').fetchone()[0],
+                    file_count=self.connection.execute('SELECT count(*) FROM task_files').fetchone()[0],
+                    task_statuses=dict(self.connection.execute('SELECT status,count(*) FROM tasks GROUP BY status')),
+                    file_statuses=dict(self.connection.execute('SELECT status,count(*) FROM task_files GROUP BY status')),
+                    rows=[dict(row) for row in self.connection.execute('SELECT '+','.join(fields)+' FROM task_files ORDER BY rowid DESC LIMIT 500')])
 
     def close(self):
         if self.connection is not None:

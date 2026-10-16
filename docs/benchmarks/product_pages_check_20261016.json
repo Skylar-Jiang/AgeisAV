@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "benign_and_inert_only": true,
+  "accuracy_evaluation": false,
+  "checks": [
+    {
+      "name": "actual empty SQLite tasks/statistics and authentication",
+      "passed": true
+    },
+    {
+      "name": "real persisted pagination with 22 tasks, URL state and return navigation",
+      "passed": true
+    },
+    {
+      "name": "actual business-page cancellation and active-filter recovery",
+      "passed": true
+    },
+    {
+      "name": "tasks rendered at 1920x1080, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "history rendered at 1920x1080, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "assets rendered at 1920x1080, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "statistics rendered at 1920x1080, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "tasks rendered at 1440x900, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "history rendered at 1440x900, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "assets rendered at 1440x900, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "statistics rendered at 1440x900, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "tasks rendered at 768x1024, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "history rendered at 768x1024, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "assets rendered at 768x1024, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "statistics rendered at 768x1024, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "tasks rendered at 375x812, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "history rendered at 375x812, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "assets rendered at 375x812, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "statistics rendered at 375x812, no viewport overflow",
+      "passed": true
+    },
+    {
+      "name": "statistics match SQLite counts; no fabricated accuracy, errors and abstentions preserved",
+      "passed": true
+    },
+    {
+      "name": "actual installed model threshold/version and rule provenance, read-only controls",
+      "passed": true
+    },
+    {
+      "name": "statistics API failure cannot turn into demo data; explicit retry restores real state",
+      "passed": true
+    },
+    {
+      "name": "keyboard skip, no JavaScript errors and same-origin requests",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "original_restored_tasks": 9,
+  "statistics": {
+    "task_count": 23,
+    "file_count": 25,
+    "task_statuses": {
+      "cancelled": 6,
+      "completed_with_errors": 15,
+      "interrupted": 1,
+      "timed_out": 1
+    },
+    "file_statuses": {
+      "cancelled": 6,
+      "completed": 2,
+      "error": 14,
+      "interrupted": 1,
+      "timed_out": 2
+    },
+    "persistent": true,
+    "generated_at": "2026-10-16T09:39:14.782418+00:00",
+    "pending": 0,
+    "reserved_bytes": 0,
+    "accuracy": {
+      "available": false,
+      "reason": "No independently labelled frozen evaluation set in task storage"
+    },
+    "recent": {
+      "limit": 500,
+      "files": 25,
+      "reports": 2,
+      "distinct_report_sha256": 1,
+      "cached_reports": 0,
+      "file_wall": {
+        "n": 21,
+        "p50_ms": 364.962,
+        "p95_ms": 4261.191
+      },
+      "engines": {
+        "sha256": {
+          "statuses": {
+            "no_match": 2
+          },
+          "abstentions": 0,
+          "cost": {
+            "n": 2,
+            "p50_ms": 0.4285,
+            "p95_ms": 0.4599
+          }
+        },
+        "fuzzy": {
+          "statuses": {
+            "no_match": 2
+          },
+          "abstentions": 0,
+          "cost": {
+            "n": 2,
+            "p50_ms": 103.7625,
+            "p95_ms": 109.4291
+          }
+        },
+        "yara_x": {
+          "statuses": {
+            "no_match": 2
+          },
+          "abstentions": 0,
+          "cost": {
+            "n": 2,
+            "p50_ms": 16.727,
+            "p95_ms": 17.664
+          }
+        },
+        "clamav": {
+          "statuses": {
+            "unavailable": 2
+          },
+          "abstentions": 2,
+          "cost": {
+            "n": 2,
+            "p50_ms": 2029.093,
+            "p95_ms": 2031.975
+          }
+        },
+        "lightgbm": {
+          "statuses": {
+            "no_match": 2
+          },
+          "abstentions": 0,
+          "cost": {
+            "n": 2,
+            "p50_ms": 2010.872,
+            "p95_ms": 2109.634
+          }
+        }
+      }
+    }
+  },
+  "assets": {
+    "model_profile": "general",
+    "model_version": "official-PE-e5b945dd-42520278",
+    "threshold": 0.5,
+    "rules": 246,
+    "hash_references": 4
+  },
+  "resources_after": {
+    "pid": 13924,
+    "worker_pid": null,
+    "pending": 0,
+    "reserved_bytes": 0,
+    "rss_bytes": 84639744,
+    "peak_rss_bytes": 283574272
+  },
+  "formal_private_evidence_preserved": true
+}

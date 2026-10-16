@@ -1,5 +1,6 @@
 import copy
 from collections import OrderedDict
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 import hashlib
@@ -195,14 +196,55 @@ class ScanTasks:
                 self.signals[identity].set()
             return copy.deepcopy(job)
 
-    def list(self, limit=100, offset=0):
+    def list(self, limit=100, offset=0, state='all'):
         with self.lock:
             if self.store:
-                return self.store.summaries(limit,offset)
-            jobs = list(reversed(self.jobs.values()))[offset:offset+limit]
+                return self.store.summaries(limit,offset,state)
+            jobs = [job for job in reversed(self.jobs.values()) if state=='all' or
+                    (job['status'] in ACTIVE if state=='active' else job['status'] not in ACTIVE)][offset:offset+limit]
             return [dict(**{key:job[key] for key in ('id','status','created_at','total','finished','persistent')},
                          files=[dict(name=row['name'],status=row['status'],size_bytes=row['size_bytes'],
                                      verdict=(row['report'] or {}).get('verdict')) for row in job['files']]) for job in jobs]
+
+    def statistics(self):
+        names = ('sha256','fuzzy','yara_x','clamav','lightgbm')
+        with self.lock:
+            if self.store:
+                stats = self.store.statistics()
+            else:
+                files = [row for job in self.jobs.values() for row in job['files']]
+                rows = []
+                for row in files[-500:]:
+                    report = row['report'] or {}
+                    item = dict(status=row['status'],elapsed_ms=row.get('elapsed_ms'),has_report=bool(report),
+                                sha256=report.get('sha256'),cached=report.get('cached'))
+                    for name in names:
+                        engine = report.get('engines',{}).get(name,{})
+                        item[name+'_status'], item[name+'_ms'] = engine.get('status'),engine.get('elapsed_ms')
+                    rows.append(item)
+                stats = dict(task_count=len(self.jobs),file_count=len(files),
+                             task_statuses=dict(Counter(job['status'] for job in self.jobs.values())),
+                             file_statuses=dict(Counter(row['status'] for row in files)),rows=rows)
+            pending, reserved = self.pending,self.reserved_bytes
+        rows = stats.pop('rows')
+        reports = [row for row in rows if row['has_report']]
+        def costs(values):
+            values = sorted(value for value in values if isinstance(value,(float,int)) and value>=0)
+            return {'n':len(values),'p50_ms':values[(len(values)-1)//2] if values else None,
+                    'p95_ms':values[max(0,(95*len(values)+99)//100-1)] if values else None}
+        stats.update(persistent=self.persistent,generated_at=now(),pending=pending,reserved_bytes=reserved,
+                     accuracy={'available':False,'reason':'No independently labelled frozen evaluation set in task storage'},
+                     recent={'limit':500,'files':len(rows),'reports':len(reports),
+                             'distinct_report_sha256':len({row['sha256'] for row in reports if row['sha256']}),
+                             'cached_reports':sum(bool(row['cached']) for row in reports),
+                             'file_wall':costs(row['elapsed_ms'] for row in rows),
+                             'engines':{}})
+        for name in names:
+            statuses = Counter(row[name+'_status'] or 'missing' for row in reports)
+            stats['recent']['engines'][name] = {'statuses':dict(statuses),
+                'abstentions':sum(count for status,count in statuses.items() if status not in ('matched','no_match')),
+                'cost':costs(row[name+'_ms'] for row in reports)}
+        return stats
 
     def close(self):
         with self.lock:
