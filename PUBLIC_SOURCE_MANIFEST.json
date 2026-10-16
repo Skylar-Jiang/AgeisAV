@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_revision": "21849f154fd88e444d03c7f5451a732bf5a53f24",
+  "source_revision": "ac6f8ea83953c4cd7eb4a4c8068abcebd1458430",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -979,13 +979,13 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "d70414e31f3f7b3b272ec016229fed1f886d07e8d0f9654901f569311fe2e465",
-      "bytes": 6289
+      "sha256": "d0ddd1fbaa976fa59ded41a4adcfe32955fbe4f67a0f634b33dbfd4618b443fe",
+      "bytes": 6625
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "4e0d0569ade6d47e0c93a856a009b39e26e78979715c6bbaa5187e2c8d2740a8",
-      "bytes": 6209
+      "sha256": "0f0f50114e0b57d3e1f3c75c36392572be87fe88f507739d76d022c007dbc4bc",
+      "bytes": 6545
     },
     {
       "path": "README.md",
@@ -1174,8 +1174,8 @@
     },
     {
       "path": "docs/research/ROUND_REPORT_20261016_STAGE_E.md",
-      "sha256": "db195abad6dd2e486cd77a22b3661f95a234f9bf930dff48f85ce6f6d19ea847",
-      "bytes": 11961
+      "sha256": "af121906146a1a01d685b12ccd7a79316cfba8e8d8f5028a47d545b5617857bf",
+      "bytes": 11967
     },
     {
       "path": "docs/research/ROUND_REPORT_20261016_TASK_C.md",

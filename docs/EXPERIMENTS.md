@@ -85,3 +85,7 @@ D公开 fedcc943402d622678c188ac695e7dccbdc3d07e 已安全Push并核对；公开
 新增聚合诊断CLI与20项无害测试，全套212passed/6skipped；ML未归因开销P50约1.222s，仅定位，未改Worker。
 未改后端、模型、规则、阈值或Linen；E1客户机验收及新独立配对评测尚未完成。
 报告：research/ROUND_REPORT_20261016_STAGE_E.md。
+
+E首轮公开 f1c602be675bcb5b8107d4829ce4ffbd1037638d 已正常快进Push，远端核对一致。
+公开副本211passed/7skipped，642文件逐字节核验、2类密钥及私有候选SHA排除通过；
+后端运行层/ML/规则/依赖与d434f49字节一致，仅新增诊断测试。客户机验证与新独立原PE实验未执行。
