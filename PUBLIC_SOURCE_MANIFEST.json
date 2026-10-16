@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_revision": "ac6f8ea83953c4cd7eb4a4c8068abcebd1458430",
+  "source_revision": "665fa8de4c68d0328f34297804cf3002a98492bd",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -858,6 +858,11 @@
       "bytes": 1826
     },
     {
+      "path": "backend/tests/test_label_admission.py",
+      "sha256": "caed1dcef742f4b951fb112e6448dc21498de2efbb7b72f4a52abf44ca3dbb5d",
+      "bytes": 3805
+    },
+    {
       "path": "backend/tests/test_linear_baseline.py",
       "sha256": "9f03ad5df0efd8a67b99fc4d61082d59505fc624d24b98cc93faccee972aa21b",
       "bytes": 2099
@@ -916,6 +921,11 @@
       "path": "backend/tests/test_service_startup.py",
       "sha256": "7ada261fb8af79d2b8f31bc342980042d9bd2bf6a73970509ca74689c112876a",
       "bytes": 473
+    },
+    {
+      "path": "backend/tests/test_stage_e_checkpoint.py",
+      "sha256": "d535e782807cef309b9e8b974b17e4b6ce8eb3f2f6bbef77a9b413a5a316edc4",
+      "bytes": 5478
     },
     {
       "path": "backend/tests/test_static_benign.py",
@@ -979,13 +989,13 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "d0ddd1fbaa976fa59ded41a4adcfe32955fbe4f67a0f634b33dbfd4618b443fe",
-      "bytes": 6625
+      "sha256": "6b8c4ea320db654756df80569376d838c4a5ffd267a36fcfefdbd8fd47ee0aac",
+      "bytes": 7915
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "0f0f50114e0b57d3e1f3c75c36392572be87fe88f507739d76d022c007dbc4bc",
-      "bytes": 6545
+      "sha256": "c30cab9bdad8c6eda54a5fe632b8a664d68955ad3f3a0ad1bbddb43ee2879cc5",
+      "bytes": 7835
     },
     {
       "path": "README.md",
@@ -1133,6 +1143,11 @@
       "bytes": 5078
     },
     {
+      "path": "docs/benchmarks/stage_e2_summary_20261017.json",
+      "sha256": "f3ebf23246e9be6aa2def3946fb1209a5fe9c4c0f0ea4055e86e137e76ea2e0c",
+      "bytes": 8059
+    },
+    {
       "path": "docs/benchmarks/stage_e_evidence_audit_20261016.json",
       "sha256": "a2a0cea7753eeee83058adcb9e1f64854e9e4214db1763da217bae008956584f",
       "bytes": 2836
@@ -1151,6 +1166,11 @@
       "path": "docs/research/INDEPENDENT_PE_PROTOCOL_20261012.md",
       "sha256": "4ff008a38c19773ab42b9704b957f6003a8807e518077acab279cffa2c2c622d",
       "bytes": 7094
+    },
+    {
+      "path": "docs/research/LABEL_ADMISSION_V1.md",
+      "sha256": "b22cb386243f2e608c07f12238fa525e2cb1c60ab4c0d7fec2c1335dceb4598e",
+      "bytes": 3778
     },
     {
       "path": "docs/research/ML_PRODUCT_INTEGRATION_20261011.md",
@@ -1181,6 +1201,11 @@
       "path": "docs/research/ROUND_REPORT_20261016_TASK_C.md",
       "sha256": "0a8a9b8602862cc0519465833b6b9255b145b738130fe0fce7ddb167d52199d2",
       "bytes": 4928
+    },
+    {
+      "path": "docs/research/ROUND_REPORT_20261017_STAGE_E_R2.md",
+      "sha256": "f5e21c3969781ee346d8718005e93b6ca37e020e4b36133dc2f5d6f9c764204b",
+      "bytes": 14334
     },
     {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
@@ -1221,6 +1246,11 @@
       "path": "experiments/audit_malwarebazaar_metadata.py",
       "sha256": "0e199e03fc8570c26dbb99958e18dcbcc8e7fd221ae22f4309f98aa434d275b6",
       "bytes": 5977
+    },
+    {
+      "path": "experiments/audit_runtime_candidates.py",
+      "sha256": "4f28946f8bda12e2101cf39f1c066c5b0364216d0d0a05ce8ac0e3cd95928594",
+      "bytes": 4346
     },
     {
       "path": "experiments/backup_task_database.py",
@@ -1266,6 +1296,11 @@
       "path": "experiments/collect_official_benign_candidates.py",
       "sha256": "41dd7c52805f9881b2a12981f459c91da67d907d32bd7ec401b749090a332afb",
       "bytes": 5657
+    },
+    {
+      "path": "experiments/collect_official_runtime_pe.py",
+      "sha256": "edf1331bffd692277da42c312afe4b10eb8a83aebc5ff78b4bbeccaffcb51989",
+      "bytes": 5105
     },
     {
       "path": "experiments/compare_ablations.py",
@@ -1319,8 +1354,8 @@
     },
     {
       "path": "experiments/export_public_source.py",
-      "sha256": "f137b4736ae8b9aa4f5325f7708e1f36db08d25e27e50c63e79bcb7ef19221c2",
-      "bytes": 6738
+      "sha256": "1e3f7d165959bf29983563fa7b7f070078f85a6645923bfb4f0d403ed1ea49ec",
+      "bytes": 6898
     },
     {
       "path": "experiments/fusion_replay.py",
@@ -1336,6 +1371,11 @@
       "path": "experiments/independent_cohort.py",
       "sha256": "39ce7969a03af4a557c67d3ec0ae1feff465f6e36c9b5a657dfcddbbb6346682",
       "bytes": 3886
+    },
+    {
+      "path": "experiments/label_admission.py",
+      "sha256": "84bc7e21ddfe444d92f94f9921933f08e14e54cf2c8a00d7c17349f1b1e4b5b4",
+      "bytes": 3036
     },
     {
       "path": "experiments/linear_baseline.py",
@@ -3028,6 +3068,11 @@
       "bytes": 254
     },
     {
+      "path": "vm/benchmark_ml_guard_reuse.py",
+      "sha256": "6b21a99be097bccafaab104b29f8299eb08f281c400a97f593fddec52f1f8b35",
+      "bytes": 7268
+    },
+    {
       "path": "vm/benchmark_native_fuzzy.py",
       "sha256": "d78fdb882eceea0b7001ce6aad4c12a49fb381bcc8adf4a9c2a33a180479b57e",
       "bytes": 3718
@@ -3046,6 +3091,11 @@
       "path": "vm/build_static_bundle.py",
       "sha256": "d4cdcd79aa5d5a5669b1e7c511f8f8f3d5154ac45d92c66e2b983b9f08421f7a",
       "bytes": 2099
+    },
+    {
+      "path": "vm/collect_analyst_cases.py",
+      "sha256": "61b0c7da1d2f2c41f689afde3da2a9f03d0d5da3c05b3b17951b7b70b2d2e399",
+      "bytes": 9820
     },
     {
       "path": "vm/collect_malwarebazaar.py",
@@ -3103,6 +3153,11 @@
       "bytes": 1544
     },
     {
+      "path": "vm/inert_tree_oom.py",
+      "sha256": "1e234b41e465ea1daeb0a7e3b2a4a64352c52962a39363d78d815e72075b4b4a",
+      "bytes": 771
+    },
+    {
       "path": "vm/install_product_release.py",
       "sha256": "194cab0fef2f719e46b8bacdd8d712df33035235c102bd95fb5cd894a455c695",
       "bytes": 5405
@@ -3128,6 +3183,11 @@
       "bytes": 5545
     },
     {
+      "path": "vm/scan_official_runtime_pe.py",
+      "sha256": "d1286d9b1467e1b6958fa2f3bb145f0c2655d200f34dfcea76ce7c388a1097fc",
+      "bytes": 2750
+    },
+    {
       "path": "vm/setup-collection.sh",
       "sha256": "1f45cd7ca0a87ae793981c4a699d652547a79d77e7dc632efec19459942ae83b",
       "bytes": 6691
@@ -3146,6 +3206,11 @@
       "path": "vm/setup-guest.sh",
       "sha256": "c2183ebcb4c81d9ed6d8fc50b166d56975865b0fc37d4198df0bd53a57012de2",
       "bytes": 1631
+    },
+    {
+      "path": "vm/stage_e_checkpoint.py",
+      "sha256": "07027b69316b825f7a42f4e4674e10cb81ba7d2075957614c7c61afec8cae8fd",
+      "bytes": 1095
     },
     {
       "path": "vm/static_archive.py",
@@ -3188,6 +3253,11 @@
       "bytes": 1836
     },
     {
+      "path": "vm/validate_stage_e_guard.py",
+      "sha256": "bed9020d2d0388e4fa289f46e7fcbe260b3f27da85622f84c4a675e2b7878103",
+      "bytes": 6868
+    },
+    {
       "path": "vm/verify-engines.py",
       "sha256": "d859b0605a5bc833556322cf24cc2ffb4f86c8ec08c543f355621b87455f95de",
       "bytes": 1458
@@ -3206,6 +3276,11 @@
       "path": "vm/verify_product_service.py",
       "sha256": "8c97d70c98cde845e3ea5724c11dec1f08cc128e1296f91e0686f9faf30709da",
       "bytes": 6736
+    },
+    {
+      "path": "vm/verify_stage_e_assets.py",
+      "sha256": "27b4d048f4aff28bba520bfef29551e21737746f6b15be245b25c2c529ade572",
+      "bytes": 1310
     }
   ],
   "exact_secret_absent": true,

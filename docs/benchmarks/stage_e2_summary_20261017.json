@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "round": "20261017_STAGE_E_R2",
+  "formal_accuracy_claim": false,
+  "label_review": {
+    "policy": "analyst-case-admission-v1",
+    "primary_cases_reviewed": 6,
+    "probable": 5,
+    "unknown_dual_use_quarantined": 1,
+    "additional_probable_this_round": 3,
+    "high_confidence_raw_cases": 0,
+    "formal_final_eligible": 0,
+    "raw_malware_downloads": 0,
+    "malwarebazaar_requests": 0,
+    "blocker": "automatic approval rejected credential transfer; unspecified reason; manual guest provisioning requested"
+  },
+  "benign": {
+    "packages": 3,
+    "source_products": [
+      "Python 3.13.9 amd64/win32",
+      "PuTTY 0.83 x64"
+    ],
+    "raw_unique_pe": 65,
+    "sha_new_relative_to_prior": 64,
+    "win64": 36,
+    "win32": 29,
+    "valid_signatures": 65,
+    "expected_primary_publisher": 62,
+    "bundled_microsoft_runtime": 3,
+    "label": "presumed_benign proxy",
+    "screening_components": 58,
+    "prior_linked_files": 13,
+    "screening_unlinked_files": 52,
+    "local_win64_training_sha_matches": {
+      "fit": [],
+      "validation": [],
+      "test": []
+    },
+    "full_author_training_verified": false,
+    "formal_final_eligible": 0,
+    "files_completed": 65,
+    "file_errors": 0,
+    "file_timeouts": 0,
+    "engine_abstentions": 0,
+    "positive_signals": {
+      "sha256": 0,
+      "fuzzy": 0,
+      "yara_x": 0,
+      "clamav": 0,
+      "lightgbm": 0
+    },
+    "or_positive_signals": 0,
+    "independent_fpr_claim": false
+  },
+  "vm": {
+    "original_ram_mib": 8192,
+    "configuration_changed": false,
+    "readiness_available_ram_bytes": 12473942016,
+    "required_ram_bytes": 10737418240,
+    "guest_guard_acceptance_groups": 6,
+    "cgroup_oom_experiment": "128MiB group, two 90MiB inert children; oom-kill, all processes gone; full acceptance passed afterward",
+    "offline_guest_operations": "passed twice",
+    "frozen_model_asset_integrity": "pass",
+    "clamav_eicar": "detected Eicar-Test-Signature",
+    "real_malware_used": false,
+    "shutdown": "soft; running VMs zero",
+    "snapshots_preserved": 6,
+    "snapshots_deleted": 0,
+    "approved_obsolete_plan_count": 0
+  },
+  "scan_cost": {
+    "files": 65,
+    "wall_seconds": 168.82555,
+    "files_per_second": 0.38501281352259775,
+    "cpu_seconds": 160.515554,
+    "scan_cgroup_memory_peak_bytes": 501841920,
+    "clamav_separate_memory_peak_bytes": 1367556096,
+    "clamav_memory_max_bytes": 2684354560,
+    "wrapper_p50_ms": 2208.6408339999934,
+    "wrapper_p95_ms": 5106.65994700002,
+    "engine_timings": {
+      "sha256": {
+        "p50_ms": 0.20526,
+        "p95_ms": 5.841797599999991
+      },
+      "fuzzy": {
+        "p50_ms": 27.058353,
+        "p95_ms": 940.332738599998
+      },
+      "yara_x": {
+        "p50_ms": 12.736,
+        "p95_ms": 53.570199999999915
+      },
+      "clamav": {
+        "p50_ms": 305.62,
+        "p95_ms": 1446.9625999999998
+      },
+      "lightgbm": {
+        "p50_ms": 1012.289,
+        "p95_ms": 2533.801199999997
+      }
+    },
+    "engine_versions": {
+      "sha256": [
+        {
+          "engine_version": "sha256",
+          "artifact_version": "279d0104511d2850"
+        }
+      ],
+      "fuzzy": [
+        {
+          "engine_version": "tlsh-python/0.1.0 ppdeep/20260221",
+          "artifact_version": "279d0104511d2850"
+        }
+      ],
+      "yara_x": [
+        {
+          "engine_version": "1.20.0",
+          "artifact_version": "55ccec8463af1166"
+        }
+      ],
+      "clamav": [
+        {
+          "engine_version": "ClamAV 1.5.4",
+          "artifact_version": "28148"
+        }
+      ],
+      "lightgbm": [
+        {
+          "engine_version": "LightGBM/4.6.0 EMBER2024/v3",
+          "artifact_version": "13f35d8cd69b71e1f07f205b4ec633aafacce80423a10ebf4052293aa100b6f5:general"
+        }
+      ]
+    },
+    "cache": "application result cold; OS/clam cache not flushed; engine timings overlap"
+  },
+  "worker_experiment": {
+    "ml_only": true,
+    "production_activated": false,
+    "unique_files": 2,
+    "pilots": [
+      {
+        "version": "v1",
+        "unique_files": 2,
+        "order": "ABBA",
+        "fresh_four_file_wall_ms": [
+          4903.293428999973,
+          4803.955302000077
+        ],
+        "batch_four_file_wall_ms": [
+          1826.2739169999804,
+          1827.728449999995
+        ],
+        "wall_reduction_fraction": 0.6235800206364408,
+        "feature_and_score_parity": true,
+        "cgroup_kernel_peak_bytes": null,
+        "per_batch_sampled_peak_bytes": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "version": "v2",
+        "unique_files": 2,
+        "order": "ABBA",
+        "fresh_four_file_wall_ms": [
+          5055.271516000062,
+          5106.139630999905
+        ],
+        "batch_four_file_wall_ms": [
+          1927.913072000024,
+          1877.856888999986
+        ],
+        "wall_reduction_fraction": 0.6254683620272941,
+        "feature_and_score_parity": true,
+        "cgroup_kernel_peak_bytes": 138940416,
+        "per_batch_sampled_peak_bytes": [
+          122789888,
+          138940416,
+          138592256,
+          122925056
+        ]
+      }
+    ],
+    "memory_scope": "Whole benchmark cgroup including parent, supervisors, workers and charged page cache; separate clamd excluded. Per-batch 10ms samples may miss peaks.",
+    "limitations": "Small previously observed benign files; model reloaded each file; batch-level deadline, not production per-file queue.",
+    "post_descendant_ready_guard_checks": [
+      "timeout_after_descendant_ready_group_empty",
+      "cancel_after_descendant_ready_group_empty"
+    ]
+  },
+  "tests": {
+    "local_passed": 226,
+    "local_skipped": 6,
+    "local_warning": 1,
+    "new_label_tests": 9,
+    "new_checkpoint_tests": 5,
+    "production_backend_models_rules_unchanged": true
+  },
+  "evidence": [
+    {
+      "path": "artifacts/stage-e2-guard-acceptance.json",
+      "sha256": "509c5162bfd3a5415e42dffc69ddf92a653df93cb5737c7cc02058ea8b0d9df6"
+    },
+    {
+      "path": "artifacts/ml-reuse-v1-20261017.json",
+      "sha256": "2c4eba4baba19a99462ba0464ce61d502bffb2098da9008ecfe0a29555c10957"
+    },
+    {
+      "path": "artifacts/ml-reuse-v2-20261017.json",
+      "sha256": "3e18fb9d7d0cb77afef91ea5cc836233a111b02fc67874f6ee0e1e64535cc2f5"
+    },
+    {
+      "path": "artifacts/ml-reuse-guard-20261017.json",
+      "sha256": "3461838211d4822056c3c08127945f952de498423171f6e006f4ee419b56e41a"
+    },
+    {
+      "path": "artifacts/official-runtime-pe-20261017/scan.json",
+      "sha256": "e8cc812402aa58548a62639d5e41e6052c377d9024e1a7925260c9a47e1df244"
+    },
+    {
+      "path": "artifacts/stage-e2-ad4347a03c4f43329c4e17ac9e630a7a.log",
+      "sha256": "bb9ae2bbcdf14f07234d1d2e05edc58121e5b4394a3364173120c3da52c495ae"
+    },
+    {
+      "path": "artifacts/stage-e2-06e2969fc0134851875cb827bdbe09f1.log",
+      "sha256": "6940ca2db6fd716712396aaad1d655b68f88d7e3f72e9a79d8ecbc2c091a7a9e"
+    },
+    {
+      "path": "artifacts/stage-e2-b66deaec07594b309c4a740310e8c428.log",
+      "sha256": "7cd24091d844702f740b0437bbd99a834c058445afa409e39f09cde59e4bdf01"
+    }
+  ],
+  "tested_code_versions": {
+    "guard_acceptance_v3": "bed9020d2d0388e4fa289f46e7fcbe260b3f27da85622f84c4a675e2b7878103",
+    "official_benign_scan_v1": "8b02a3911ef2d45da8cab0ed6d3480fac51f6e0327fbd5c1821b63de7965fae0",
+    "note": "Source digests bind actual guest executions; host checkpoint fixes were made afterward. Performance v1/v2 and guard-only v3 evidence are separate."
+  },
+  "final_source_sha256": {
+    "vm/validate_stage_e_guard.py": "bed9020d2d0388e4fa289f46e7fcbe260b3f27da85622f84c4a675e2b7878103",
+    "vm/benchmark_ml_guard_reuse.py": "6b21a99be097bccafaab104b29f8299eb08f281c400a97f593fddec52f1f8b35",
+    "vm/stage_e_checkpoint.py": "07027b69316b825f7a42f4e4674e10cb81ba7d2075957614c7c61afec8cae8fd",
+    "vm/scan_official_runtime_pe.py": "d1286d9b1467e1b6958fa2f3bb145f0c2655d200f34dfcea76ce7c388a1097fc",
+    "vm/collect_analyst_cases.py": "398813a54c9d0a54d71c725806e7332563fe5297d8609f9752d74f326f59ab69"
+  }
+}

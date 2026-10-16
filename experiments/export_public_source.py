@@ -16,7 +16,10 @@ ROOT=Path(__file__).resolve().parents[1]
 PREFIXES=('backend/','ml/','experiments/','vm/','rules/','frontend/','.agents/skills/')
 ROOT_FILES={'.gitignore','.gitattributes','pyproject.toml','requirements-win-py312.txt',
             'requirements-ml.txt','requirements-ml-lock.txt','requirements.txt','.env.example'}
-DOCS={'docs/ARCHITECTURE.md','docs/SKILLS.md','docs/PRODUCT_DESIGN.md',
+DOCS={'docs/research/LABEL_ADMISSION_V1.md',
+      'docs/research/ROUND_REPORT_20261017_STAGE_E_R2.md',
+      'docs/benchmarks/stage_e2_summary_20261017.json',
+      'docs/ARCHITECTURE.md','docs/SKILLS.md','docs/PRODUCT_DESIGN.md',
       'docs/research/ROUND_REPORT_20261016_STAGE_E.md',
       'docs/benchmarks/expansion_diagnostics_20261016.json',
       'docs/benchmarks/stage_e_evidence_audit_20261016.json',

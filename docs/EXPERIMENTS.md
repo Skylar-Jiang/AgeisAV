@@ -89,3 +89,13 @@ D公开 fedcc943402d622678c188ac695e7dccbdc3d07e 已安全Push并核对；公开
 E首轮公开 f1c602be675bcb5b8107d4829ce4ffbd1037638d 已正常快进Push，远端核对一致。
 公开副本211passed/7skipped，642文件逐字节核验、2类密钥及私有候选SHA排除通过；
 后端运行层/ML/规则/依赖与d434f49字节一致，仅新增诊断测试。客户机验证与新独立原PE实验未执行。
+
+
+## 2026-10-17：Stage E 第二轮实测
+
+原 8GiB VM 满足10GiB主机门槛，完成真实 pidfd/取消/截止/owner SIGKILL/SQLite 六组无害验收及128MiB cgroup OOM后恢复；模型只读完整性/EICAR通过，最终正常关机。
+固定 analyst-case-admission-v1；五例 probable（原两例+新增三例）、一例双用途 unknown隔离；新恶意原文件/high-confidence/正式最终样本均0。凭据传入被自动审批拒绝（原因未提供），未绕过，本轮MalwareBazaar请求0；待手动客户机配置。
+三个官方Python/PuTTY包65PE（64SHA新增/58筛查簇/13件先前关联），签名65有效但仍为presumed_benign。五引擎65/65完成、全部no_match、无失败/弃权；不能宣称正式FPR或Recall。
+扫描wall168.83s/进程树峰值478.6MiB，独立clamd峰值1.27GiB；两次无害ML ABBA约62%批次wall降低、完整特征/分数一致、内存约+15MiB，生产未启用。
+226passed/6skipped/1既有warning；实验检查点增加终态不明熔断/原子写/恢复计时，生产层/规则/模型/UI不变。六快照保留、已确认待删0。
+详见 research/ROUND_REPORT_20261017_STAGE_E_R2.md 与 benchmarks/stage_e2_summary_20261017.json。下一步取原PE并做人审/独立性清除，扩大无害Worker文件集。
