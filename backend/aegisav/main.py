@@ -3,34 +3,12 @@ import hashlib
 import os
 
 from .api import create_app
-from .clamav_engine import ClamAVEngine
-from .hashes import HashDatabase
-from .scanner import StaticScanner
-from .yara_engine import load_yara_engine
-from .ml_engine import MLEngine
+from .runtime import build_scanner
 from .local_access import load_access_token
+from .scan_process import ProcessScanner
 
 
 ROOT = Path(__file__).resolve().parents[2]
-
-
-def build_scanner() -> StaticScanner:
-    rule_dir = ROOT / "rules" / "yara"
-    yara_engine = None
-    if any(rule_dir.glob("*.yar")):
-        yara_engine = load_yara_engine(rule_dir, rule_dir / "metadata.json")
-    clamav = ClamAVEngine()
-    clamav.probe()
-    local_ml_python = ROOT / '.venv-ml' / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
-    return StaticScanner(
-        HashDatabase.from_file(ROOT / "rules" / "hashes.json"),
-        yara_engine=yara_engine,
-        clamav_engine=clamav,
-        ml_engine=MLEngine(os.environ.get('AEGISAV_MODEL_DIR', str(ROOT / 'models/ember2024')),
-                           profile=os.environ.get('AEGISAV_ML_PROFILE', 'general'),
-                           python_executable=os.environ.get('AEGISAV_ML_PYTHON') or
-                           (str(local_ml_python) if local_ml_python.exists() else None)),
-    )
 
 
 release_manifest = ROOT / 'release.json'
@@ -40,5 +18,9 @@ key_path = Path(os.environ.get('AEGISAV_ACCESS_TOKEN_FILE', str(key_root / 'loca
 if key_path.is_relative_to(ROOT):
     raise ValueError('Access key must be stored outside the repository')
 frontend = ROOT / 'frontend/out'
+database_path = Path(os.environ.get('AEGISAV_TASK_DB', str(key_root / 'tasks.sqlite3'))).resolve()
+if database_path.is_relative_to(ROOT):
+    raise ValueError('Private task database must be stored outside the repository')
 app = create_app(build_scanner(), release_id=release_id, access_token=load_access_token(key_path),
-                 frontend_dir=frontend if (frontend/'index.html').exists() else None)
+                 frontend_dir=frontend if (frontend/'index.html').exists() else None,
+                 db_path=database_path, runner=ProcessScanner())

@@ -17,6 +17,8 @@ PREFIXES=('backend/','ml/','experiments/','vm/','rules/','frontend/','.agents/sk
 ROOT_FILES={'.gitignore','.gitattributes','pyproject.toml','requirements-win-py312.txt',
             'requirements-ml.txt','requirements-ml-lock.txt','requirements.txt','.env.example'}
 DOCS={'docs/ARCHITECTURE.md','docs/SKILLS.md','docs/PRODUCT_DESIGN.md',
+      'docs/TASK_RELIABILITY.md','docs/research/ROUND_REPORT_20261016_TASK_C.md',
+      'docs/benchmarks/task_reliability_check_20261016.json','docs/benchmarks/live_api_check_20261016.json',
       'docs/research/ROUND_REPORT_20261015_PRODUCT_AB.md',
       'docs/benchmarks/live_api_check_20261015.json',
       'docs/benchmarks/live_api_product_summary_20261015.json',

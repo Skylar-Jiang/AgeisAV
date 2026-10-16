@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "functional_benign_only": true,
+  "accuracy_evaluation": false,
+  "checks": [
+    {
+      "flow": "authentication, incorrect key, no automatic demo fallback",
+      "passed": true
+    },
+    {
+      "flow": "actual batch, SHA independently checked, parser failure, duplicate reuse, five engine results",
+      "passed": true
+    },
+    {
+      "flow": "real details, versions/evidence, JSON export, reload",
+      "passed": true
+    },
+    {
+      "view": "workspace",
+      "width": 1920,
+      "height": 1080,
+      "passed": true
+    },
+    {
+      "view": "detail",
+      "width": 1920,
+      "height": 1080,
+      "passed": true
+    },
+    {
+      "view": "workspace",
+      "width": 1440,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "view": "detail",
+      "width": 1440,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "view": "workspace",
+      "width": 1024,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "view": "detail",
+      "width": 1024,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "view": "workspace",
+      "width": 768,
+      "height": 1024,
+      "passed": true
+    },
+    {
+      "view": "detail",
+      "width": 768,
+      "height": 1024,
+      "passed": true
+    },
+    {
+      "view": "workspace",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "view": "detail",
+      "width": 375,
+      "height": 812,
+      "passed": true
+    },
+    {
+      "view": "workspace",
+      "width": 812,
+      "height": 375,
+      "passed": true
+    },
+    {
+      "view": "detail",
+      "width": 812,
+      "height": 375,
+      "passed": true
+    },
+    {
+      "flow": "failed and missing reports never become negative or demo reports",
+      "passed": true
+    },
+    {
+      "flow": "injected connection failure and explicit recovery",
+      "passed": true,
+      "injected": true
+    },
+    {
+      "flow": "actual UI cancellation preserves partial results and skips unstarted files",
+      "passed": true
+    },
+    {
+      "flow": "injected active-task 404 clears stale lock and permits new submission",
+      "passed": true,
+      "injected": true
+    },
+    {
+      "flow": "reauthentication resumes previously unauthorized active-task polling",
+      "passed": true,
+      "injected": true
+    },
+    {
+      "flow": "keyboard skip and logout",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "engine_statuses": {
+    "sha256": "no_match",
+    "fuzzy": "no_match",
+    "yara_x": "no_match",
+    "clamav": "unavailable",
+    "lightgbm": "no_match"
+  },
+  "file_wall_ms": 5265.132,
+  "functional_files": {
+    "submitted": 3,
+    "unique_benign": 1,
+    "inert_invalid": 1,
+    "duplicate": 1
+  },
+  "cancellation_files": [
+    "cancelled",
+    "cancelled",
+    "cancelled"
+  ],
+  "additional_inert_recovery_files": 2,
+  "file_accounting": {
+    "total": 8,
+    "completed_report_rows": 2,
+    "error_rows": 3,
+    "cancelled_rows": 3
+  },
+  "javascript_errors": []
+}

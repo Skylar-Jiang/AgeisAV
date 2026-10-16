@@ -51,3 +51,12 @@ SHA/fuzzy/YARA-X/ML均no_match，Windows ClamAV unavailable明确弃权；不是
 活动任务404与401恢复问题经审查修复且通过故障注入复验，未改模型/规则/特征/阈值。
 任务仍内存型、无总截止与重启恢复；C阶段优先轻量持久化、幂等与进程截止，D再扩展完整业务页。
 详细契约、运行命令与资源边界见[产品A/B报告](research/ROUND_REPORT_20261015_PRODUCT_AB.md)。
+
+## 2026-10-16：Stage C 任务可靠性
+
+SQLite Schema 1、原子报告/状态、持久化幂等、重启 interrupted 语义、任务/文件截止和独立扫描进程已实现。
+原始上传字节不持久化，不宣称自动续扫。Windows Job / Linux pidfd 监护清理，仅使用良性及无害夹具。
+后端190passed/6skipped，实际服务重启/故障10组、真实API浏览器21组、Linux无害隔离5项通过。
+独立良性PE仍1个，四引擎no_match、ClamAV不可用；没有新增准确率证据。
+详见 docs/TASK_RELIABILITY.md 与 docs/research/ROUND_REPORT_20261016_TASK_C.md。
+C完成后继续D实际任务/历史、资产状态与运行统计，不编辑冻结阈值。

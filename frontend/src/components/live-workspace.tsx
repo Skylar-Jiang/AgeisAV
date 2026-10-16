@@ -20,6 +20,7 @@ export function LiveWorkspace() {
   const [notice, setNotice] = useState('');
   const [failure, setFailure] = useState('');
   const picker = useRef<HTMLInputElement>(null);
+  const submissionKey = useRef<string | null>(null);
   const connected = history.status === 'ready';
   const job = active.data;
   const working = Boolean(activeId && active.errorStatus !== 404 && (!job || !terminal(job.status)));
@@ -29,8 +30,10 @@ export function LiveWorkspace() {
   async function submit() {
     setSubmitting(true); setFailure(''); setNotice('正在读取所选良性文件并提交到本机服务…');
     try {
-      const created = await api<ScanTask>('/v1/tasks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(await encodeFiles(selected)) });
+      submissionKey.current ??= crypto.randomUUID();
+      const created = await api<ScanTask>('/v1/tasks', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': submissionKey.current }, body: JSON.stringify(await encodeFiles(selected)) });
       setActiveId(created.id); setSelected([]); if (picker.current) picker.current.value = '';
+      submissionKey.current = null;
       setNotice('任务已提交。进度以服务返回的文件状态为准。'); history.reload();
     } catch (error) { setFailure(error instanceof Error ? error.message : '提交失败'); setNotice(''); }
     finally { setSubmitting(false); }
@@ -38,7 +41,7 @@ export function LiveWorkspace() {
   async function cancel() {
     if (!activeId) return;
     setCancelling(true); setFailure('');
-    try { await api(`/v1/tasks/${activeId}/cancel`, { method: 'POST' }); active.reload(); setNotice('已请求取消：当前文件结束后停止，已完成的报告保留。'); }
+    try { await api(`/v1/tasks/${activeId}/cancel`, { method: 'POST' }); active.reload(); setNotice(inventory.data?.task_limits.cancellation === 'process_tree' ? '取消请求已记录，将终止当前扫描进程并保留已完成报告。' : '已请求协作取消：当前文件结束后停止，已完成的报告保留。'); }
     catch (error) { setFailure(error instanceof Error ? error.message : '取消失败'); }
     finally { setCancelling(false); }
   }
@@ -49,6 +52,7 @@ export function LiveWorkspace() {
           <div className="composer-content"><div className="file-emblem" aria-hidden="true"><FileIcon/><span/><span/><span/></div><h2>{selected.length ? `${selected.length} 个文件已就绪` : '你的下一个文件，放在这里。'}</h2><p>{selected.length ? selected.map(file => file.name).join('、') : '选择良性 EXE、DLL 或 SYS，展开真实检测证据。'}</p></div>
           <input ref={picker} type="file" hidden multiple accept=".exe,.dll,.sys" aria-label="选择待扫描文件" onChange={event => {
             const files = Array.from(event.target.files ?? []);
+            submissionKey.current = null;
             if (files.length > (limits?.max_files ?? 20) || files.some(file => file.size > (limits?.max_file_bytes ?? 16 * 1024 ** 2)) || files.reduce((sum, file) => sum + file.size, 0) > (limits?.max_task_bytes ?? 32 * 1024 ** 2)) {
               setSelected([]); event.target.value = ''; setFailure('文件超出预算：最多20个、单文件16 MiB、总计32 MiB。');
             } else { setSelected(files); setFailure(''); }
@@ -64,7 +68,9 @@ export function LiveWorkspace() {
     <section className="calm-history" id="linen-records"><div className="calm-history-heading"><div><h2>最近的分析</h2><p>来自本机服务的真实任务，显示最近30个文件。</p></div><label className="live-search"><span className="sr-only">搜索文件名</span><Search aria-hidden="true"/><Input name="file-search" placeholder="搜索文件名…" autoComplete="off" value={search} onChange={event => setSearch(event.target.value)}/></label></div>
       {activeId && <section className="task-progress" aria-label="当前扫描任务"><div><strong>{job ? statusText[job.status] ?? job.status : '正在读取任务…'}</strong><span>{job ? `已处理 ${job.finished} / ${job.total} 个文件` : '等待服务返回进度'}</span></div><progress aria-label="文件处理进度" max={job?.total ?? 1} value={job?.finished ?? 0}/>
         {working && <Button variant="outline" onClick={cancel} disabled={cancelling || job?.cancel_requested}>{cancelling || job?.cancel_requested ? '正在取消…' : '取消任务'}</Button>}
-        {job?.status === 'cancelling' && <p>当前文件完成后停止后续扫描；不会把取消项记为阴性。</p>}
+        {job?.status === 'cancelling' && <p>{inventory.data?.task_limits.cancellation === 'process_tree' ? '正在终止当前扫描进程及其子进程。' : '当前文件完成后停止后续扫描。'}取消项没有检测结论。</p>}
+        {job?.status === 'interrupted' && <p role="status">服务已重启。已完成报告保留，上传文件未暂存；请重新选择未完成文件，作为新任务提交。</p>}
+        {job?.status === 'timed_out' && <p role="status">任务已超过截止时间。未完成项没有检测结论，可重新选择文件提交。</p>}
         {active.status === 'unauthorized' && <p role="alert">会话已过期，请重新认证后读取任务。<Button variant="outline" onClick={reconnect}>重新认证</Button></p>}
         {active.status === 'error' && <p role="alert">{active.errorStatus === 404 ? '任务已不存在，可能服务已重启。未完成文件不能计为阴性。' : active.error}{active.errorStatus === 404 ? <Button variant="outline" onClick={() => { setActiveId(null); setNotice('已清除失效的活动任务，可重新选择文件提交。'); }}>清除失效任务</Button> : <Button variant="outline" onClick={active.reload}>刷新任务</Button>}</p>}
         {job?.files.map((file, index) => <a key={index} href={`/linen/detail/?task=${job.id}&file=${index}`}><span>{file.name}</span><span>{statusText[file.status] ?? file.status}</span></a>)}

@@ -13,6 +13,7 @@ const python = path.join(root, '.venv/Scripts/python.exe');
 
 (async () => {
   await fs.mkdir(output, { recursive: true });
+  const privateState = await fs.mkdtemp(path.join(require('node:os').tmpdir(), 'aegisav-live-api-'));
   await new Promise((resolve, reject) => {
     const probe = require('node:net').createServer();
     probe.once('error', reject);
@@ -20,7 +21,7 @@ const python = path.join(root, '.venv/Scripts/python.exe');
   });
   const report = { schema: 1, functional_benign_only: true, accuracy_evaluation: false, checks: [], failures: [] };
   const server = spawn(python, ['-m', 'uvicorn', 'aegisav.main:app', '--host', '127.0.0.1', '--port', '3418', '--no-proxy-headers', '--no-access-log'], {
-    cwd: root, windowsHide: true, stdio: 'ignore', env: { ...process.env, AEGISAV_ACCESS_TOKEN_FILE: keyPath, AEGISAV_ML_PYTHON: path.join(root, '.venv-ml/Scripts/python.exe') },
+    cwd: root, windowsHide: true, stdio: 'ignore', env: { ...process.env, AEGISAV_ACCESS_TOKEN_FILE: keyPath, AEGISAV_TASK_DB: path.join(privateState, 'tasks.sqlite3'), AEGISAV_ML_PYTHON: path.join(root, '.venv-ml/Scripts/python.exe') },
   });
   let browser;
   let accessKey = '';
@@ -184,7 +185,7 @@ const python = path.join(root, '.venv/Scripts/python.exe');
   finally {
     if (browser) await browser.close();
     if (server.exitCode === null) execFileSync('taskkill.exe', ['/PID', String(server.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });
-    await fs.writeFile(path.join(root, 'docs/benchmarks/live_api_check_20261015.json'), JSON.stringify(report, null, 2) + '\n');
+    await fs.writeFile(path.join(root, 'docs/benchmarks/live_api_check_20261016.json'), JSON.stringify(report, null, 2) + '\n');
   }
   console.log(JSON.stringify({ checks: report.checks.length, failures: report.failures, engines: report.engine_statuses }));
   assert.equal(report.failures.length, 0);

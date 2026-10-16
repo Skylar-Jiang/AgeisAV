@@ -1,15 +1,18 @@
 import base64
 import binascii
+import asyncio
+import sqlite3
 from contextlib import asynccontextmanager
 from threading import BoundedSemaphore
 
-from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response, Query
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from starlette.concurrency import run_in_threadpool
 
 from .scanner import StaticScanner
-from .tasks import ScanTasks
+from .tasks import ScanTasks, IdempotencyConflict, ACTIVE
 from .local_access import LocalAccess, COOKIE, SESSION_SECONDS
 
 
@@ -23,18 +26,39 @@ class TaskFile(BaseModel):
 
 
 class TaskRequest(BaseModel):
+    model_config = ConfigDict(extra='forbid')
     files: list[TaskFile] = Field(min_length=1,max_length=20)
 
 
 def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, release_id=None,
-               access_token=None, frontend_dir=None) -> FastAPI:
-    tasks=ScanTasks(scanner)
+               access_token=None, frontend_dir=None, db_path=None, runner=None,
+               file_timeout=120, task_timeout=600) -> FastAPI:
+    def manager(path=None):
+        return ScanTasks(scanner, db_path=path, runner=runner, file_timeout=file_timeout,
+                         task_timeout=task_timeout, service_release=release_id)
+    tasks=manager()
     uploads=BoundedSemaphore(2)
     @asynccontextmanager
     async def lifespan(app):
-        yield
-        await run_in_threadpool(tasks.close)
+        nonlocal tasks
+        if db_path is not None:
+            tasks.close()
+            tasks=manager(db_path)
+        app.state.tasks=tasks
+        try:
+            yield
+        finally:
+            await run_in_threadpool(tasks.close)
     app = FastAPI(title="AegisAV Static Scan API",lifespan=lifespan)
+    app.state.tasks=tasks
+
+    @app.exception_handler(sqlite3.Error)
+    async def database_failure(request, error):
+        return JSONResponse(status_code=503,content={'detail':'Task storage unavailable; preserve the database and retry after repair'})
+
+    @app.exception_handler(IdempotencyConflict)
+    async def idempotency_conflict(request, error):
+        return JSONResponse(status_code=409,content={'detail':str(error)})
     if access_token is not None:
         access = LocalAccess(access_token)
         app.middleware('http')(access.guard)
@@ -60,8 +84,8 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
         return job
 
     @app.get('/v1/tasks')
-    def task_list():
-        return {'tasks':tasks.list(),'persistent':False}
+    def task_list(limit: int=Query(100,ge=1,le=100), offset: int=Query(0,ge=0)):
+        return {'tasks':tasks.list(limit,offset),'persistent':tasks.persistent,'limit':limit,'offset':offset}
 
     @app.get('/v1/tasks/{identity}')
     def task_detail(identity: str):
@@ -92,7 +116,7 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
                     if len(data)>max_file_bytes or total>32*1024**2:
                         raise HTTPException(413,'File or task byte budget exceeded')
                     files.append((item.name,data))
-                return tasks.submit(files)
+                return tasks.submit(files,idempotency_key=request.headers.get('Idempotency-Key'))
             except (ValueError,binascii.Error) as error:
                 raise HTTPException(422,'Invalid task files or base64') from error
             except OverflowError as error:
@@ -117,33 +141,76 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
                             'engine_version':getattr(engine,'engine_version',None)})
         return {'service_release': release_id, 'fusion_policy': 'evidence-or-v1','engines':engines,
                 'task_limits':{'max_file_bytes':max_file_bytes,'max_files':20,'max_task_bytes':32*1024**2,
-                               'max_pending':tasks.max_pending,'max_reserved_bytes':tasks.max_bytes,'workers':1,'persistent':False},
+                               'max_pending':tasks.max_pending,'max_reserved_bytes':tasks.max_bytes,'workers':1,'persistent':tasks.persistent,
+                               'file_timeout_seconds':file_timeout,'task_deadline_seconds':task_timeout,
+                               'cancellation':'process_tree' if runner else 'cooperative',
+                               'memory_bytes':getattr(runner,'memory_bytes',None),'automatic_resume':False},
                 'ml': None if model is None else {
             'artifact_version': model.artifact_version, 'profile': getattr(model, 'profile', 'unknown'),
             'assets_valid': model.probe() if hasattr(model, 'probe') else None,
             'runtime_check': 'performed_in_bounded_inference_worker', 'deployment_fpr_guaranteed': False}}
 
+    async def queued_reports(files):
+        try:
+            job=tasks.submit(files)
+        except OverflowError as error:
+            raise HTTPException(429,str(error),headers={'Retry-After':'5'}) from error
+        while job['status'] in ACTIVE:
+            await asyncio.sleep(.05)
+            job=tasks.get(job['id'])
+        if any(row['status']=='timed_out' for row in job['files']):
+            raise HTTPException(504,'Scan process deadline exceeded; no negative result')
+        if job['status'] in ('failed','interrupted'):
+            raise HTTPException(503,'Scan interrupted; no negative result')
+        if any(row['status']!='completed' for row in job['files']):
+            raise HTTPException(422,'One or more files could not be scanned; inspect task history')
+        return [dict(row['report'],**({'duplicate_of':row['duplicate_of']} if 'duplicate_of' in row else {})) for row in job['files']]
+
     @app.post("/v1/scan")
     async def scan(request: Request):
+        if not uploads.acquire(blocking=False):
+            raise HTTPException(429,'Upload capacity reached',headers={'Retry-After':'5'})
         data = bytearray()
-        async for chunk in request.stream():
-            data.extend(chunk)
-            if len(data) > max_file_bytes:
-                raise HTTPException(413, "File too large")
         try:
+            async for chunk in request.stream():
+                if len(data)+len(chunk)>max_file_bytes:
+                    raise HTTPException(413,'File too large')
+                data.extend(chunk)
+        finally:
+            uploads.release()
+        try:
+            if runner:
+                return (await queued_reports([('upload.pe',bytes(data))]))[0]
             return await run_in_threadpool(scanner.scan, bytes(data))
         except ValueError as exc:
             raise HTTPException(422, str(exc)) from exc
 
     @app.post("/v1/scan/batch")
-    def scan_batch(body: BatchRequest):
+    async def scan_batch(request: Request):
+        if not uploads.acquire(blocking=False):
+            raise HTTPException(429,'Upload capacity reached',headers={'Retry-After':'5'})
+        try:
+            raw=bytearray()
+            async for chunk in request.stream():
+                if len(raw)+len(chunk)>45*1024**2:
+                    raise HTTPException(413,'Task request too large')
+                raw.extend(chunk)
+            try:
+                body=BatchRequest.model_validate_json(raw)
+            except ValueError as error:
+                raise HTTPException(422,'Invalid batch request') from error
+        finally:
+            uploads.release()
         if not 1 <= len(body.files) <= 20:
             raise HTTPException(422, "Batch must contain 1-20 files")
         try:
-            files = [base64.b64decode(item, validate=True) for item in body.files]
-            if any(len(item) > max_file_bytes for item in files):
+            if any(len(item)>4*((max_file_bytes+2)//3) for item in body.files):
                 raise HTTPException(413, "File too large")
-            return {"results": scanner.scan_many(files)}
+            files = [base64.b64decode(item, validate=True) for item in body.files]
+            if any(len(item)>max_file_bytes for item in files) or sum(map(len,files))>32*1024**2:
+                raise HTTPException(413,'File or task byte budget exceeded')
+            return {"results":await queued_reports([(str(i)+'.pe',data) for i,data in enumerate(files)]) if runner else
+                    await run_in_threadpool(scanner.scan_many,files)}
         except binascii.Error as exc:
             raise HTTPException(422, "Invalid base64") from exc
         except ValueError as exc:
