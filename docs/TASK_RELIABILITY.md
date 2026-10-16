@@ -102,3 +102,11 @@ node frontend/scripts/check-live-api.cjs
 
 Linux 无害进程探针：`PYTHONPATH=backend python3 -m experiments.check_linux_process_guard`。
 验收服务 `experiments.task_reliability_fixture` 需要显式开关，只供本机故障注入；不部署为正式服务。
+
+## 现有 VM 验收前置检查
+
+`vm/Get-TaskGuardReadiness.ps1` 仅查询既有专用 VM 的离线 VMX、关机状态和宿主机资源，
+不会启动/停止 VM、读取凭据、修改配置或恢复快照。输出 `guest_validation_performed=false`。
+8 GiB VM 需至少 10 GiB 可用宿主机内存（保留 2 GiB）；不足返回 deferred_memory，
+这不是客户机隔离或分析通过。资源充足后仍需 VMware Tools 客户机隔离、空闲任务核验和无害进程测试。
+不得因为前置检查 ready 就直接处理真实恶意样本；既有 VM 的新进程层尚未部署验证。

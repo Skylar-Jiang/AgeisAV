@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_revision": "0d5a2bc1ec38705ff6d1fc31658268aedbcadcf6",
+  "source_revision": "7d97334506d59b845e691ae94a9ba50b7f50d1d0",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -974,13 +974,13 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "1989cd03c871e3a0900d78c5951ec35e2a67f2df00475782c56d03d4d19f2ac4",
-      "bytes": 4996
+      "sha256": "1e848ec741c5e288fda83172b2548187f491ec06c37f6a262497624ffe8b30b8",
+      "bytes": 5443
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "a40a0bd187d6e1024fff0c62dbeb3b900bf950b604126aab031bec74060c1a75",
-      "bytes": 4916
+      "sha256": "fbfb0108c446ad271a3433c49e06b578fe9fda6c4cc9c43dc4cd48905ed56f6b",
+      "bytes": 5363
     },
     {
       "path": "README.md",
@@ -999,8 +999,8 @@
     },
     {
       "path": "docs/TASK_RELIABILITY.md",
-      "sha256": "08c8fded42ec9f8a5c8986ab4db7f2f6ccaadc360bd3e3ec14da24d82aa1037c",
-      "bytes": 7795
+      "sha256": "68f8beefb80a5b1fd2214c1cc0f5770d5062c9782e9555b4ef87a46630ab0010",
+      "bytes": 8403
     },
     {
       "path": "docs/benchmarks/collection_expansion_summary_20261014.json",
@@ -1154,8 +1154,8 @@
     },
     {
       "path": "docs/research/ROUND_REPORT_20261016_PRODUCT_D.md",
-      "sha256": "912b700c51fbf1d96a16d42858d832e6c671692f76da5e7a4bae04b9874ffaf0",
-      "bytes": 5825
+      "sha256": "059e762120269f0b9065aa0d7df9fa5c060389b98137fb33ba8698efac7f381d",
+      "bytes": 6937
     },
     {
       "path": "docs/research/ROUND_REPORT_20261016_TASK_C.md",
@@ -2896,6 +2896,11 @@
       "path": "vm/Export-ToolProvenance.ps1",
       "sha256": "a89237017b31d8f3f6053ab28c3e7caf7e2044878fb31a88913d2bd03086e14e",
       "bytes": 2347
+    },
+    {
+      "path": "vm/Get-TaskGuardReadiness.ps1",
+      "sha256": "19842a350e6a88c70d513d53b4d479b54d4c4b4da38d6742c9cda4b8c2148b3b",
+      "bytes": 1163
     },
     {
       "path": "vm/Install-MLTools.sh",
