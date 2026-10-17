@@ -93,3 +93,10 @@ E首轮公开 f1c602be675bcb5b8107d4829ce4ffbd1037638d 已正常快进Push，远
 同原PE五引擎均no_match、零引擎失败/弃权，融合undetermined；没有回填哈希或改冻结阈值。已有Win64 profile在同66PE上完整特征一致，仍全部no_match，新增检出0，生产未启用。
 单文件任务3.937s、编排3.968s、总wrapper4.061s；扫描树峰值365.18MiB，独立Clam1.255GiB。ML-only66文件84.154s/226.28MiB，不作为性能优化结论。正式Recall/FPR仍无充分条件。
 原VM离线分析启动满足10GiB门槛，最终正常关机、六快照保留；凭据保存在客户机root0600，仅客户端LoadCredential读取。详见research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md；私有标签与原始结果不公开。
+
+
+## 2026-10-17：Stage E R4（部分交付，原VM等待资源）
+
+新增15精确技术证据候选，4机构/6报告家族；尚未API查询或取得新恶意原始PE，probable15/high-confidence新增0/正式最终0。新增四来源官方良性13PE（11Win64/2Win32），8签名Valid/2NotSigned/3UnknownError；没有执行PE。精确重复0；当前内部12簇、计入已记录历史中介11组件，排除既有关联后10文件/9组件。28候选本地Win64 fit/validation/test SHA交集均0；完整训练/近重复/人审仍未清除。
+旧漏检案例元数据诊断：参考库4条/恶意模糊2条，TLSH最近454>40、SSDeep最高0<80，支持覆盖不足；没有回填SHA或调低阈值。YARA246条中212来自ransomware；跨OS规则指纹差异被证实来自Path排序而非规则丢失。7条独立研究规则在13新良性上0阳性/0超时，仅YARA63ms，未验证恶意增益或正式FPR。
+259passed/6skipped/1既有warning，18重点与独立审查通过。新诊断工具绑定原模型/特征/阈值并保留incompatible状态，但尚未客户机执行；本轮五引擎配对新增0，ML漏检根因和Clam具体覆盖仍未证实。主机可用约6.9–7.3GiB，未达到原10GiB门槛，原VM未启动、账号/凭据/快照/配置/生产资产未变。详见research/ROUND_REPORT_20261017_STAGE_E_R4_PUBLIC.md；私有明细另行保留。

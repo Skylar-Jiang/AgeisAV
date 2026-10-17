@@ -120,3 +120,50 @@ def test_stale_collection_dependency_rejected_before_credential_read(tmp_path,mo
     monkeypatch.setattr(Path,'read_text',lambda *a,**k:pytest.fail('Credential must not be read before dependency validation'))
     with pytest.raises(RuntimeError,match='collection_dependency_mismatch'):
         module.online([], {})
+
+def test_r4_selection_preserves_explicit_size_and_type_exclusions(monkeypatch):
+    import importlib,sys,types
+    root=Path(__file__).resolve().parents[2]
+    monkeypatch.syspath_prepend(str(root/'vm'));monkeypatch.syspath_prepend(str(root/'experiments'))
+    monkeypatch.setitem(sys.modules,'fcntl',types.SimpleNamespace())
+    monkeypatch.setitem(sys.modules,'collect_malwarebazaar',types.SimpleNamespace())
+    module=importlib.import_module('vm.collect_analyst_cases')
+    rows=[dict(sha256='a'*64,status='available',metadata=dict(file_type='exe',file_size=1024)),
+          dict(sha256='b'*64,status='available',metadata=dict(file_type='exe',file_size=2*1024**2+1)),
+          dict(sha256='c'*64,status='available',metadata=dict(file_type='ps1',file_size=100)),
+          dict(sha256='d'*64,status='error',reason='metadata_not_available')]
+    selected=module.select_downloads(rows)
+    assert [r['sha256'] for r in selected]==['a'*64]
+    assert rows[0]['download_eligibility']=='eligible'
+    assert rows[1]['download_eligibility']=='excluded_worker_fsize_2mib'
+    assert rows[2]['download_eligibility']=='excluded_non_pe_metadata_type'
+    assert rows[3]['download_eligibility']=='metadata_unavailable'
+    assert rows[3]['status']=='error'
+
+def test_completed_r4_scan_marks_observation_and_development_role(tmp_path,monkeypatch):
+    import hashlib,importlib,sys,types
+    root=Path(__file__).resolve().parents[2]
+    monkeypatch.syspath_prepend(str(root/'vm'));monkeypatch.syspath_prepend(str(root/'experiments'))
+    monkeypatch.setitem(sys.modules,'fcntl',types.SimpleNamespace())
+    monkeypatch.setitem(sys.modules,'collect_malwarebazaar',types.SimpleNamespace(network=lambda _:'inert',save=persist))
+    module=importlib.import_module('vm.collect_analyst_cases')
+    monkeypatch.setattr(module,'SCOPE',tmp_path);monkeypatch.setattr(module.os,'getuid',lambda:1001,raising=False)
+    monkeypatch.setattr(module.collection,'network',lambda _:'inert');monkeypatch.setattr(module,'assess',lambda _:dict(exploratory_eligible=True))
+    for name in ('incoming','results','raw'):(tmp_path/name).mkdir()
+    data=b'inert-control-flow-fixture';sha=hashlib.sha256(data).hexdigest()
+    row=dict(sha256=sha,detector_results_observed=False,dataset_role='development_candidate')
+    (tmp_path/'raw'/(sha+'.bin')).write_bytes(data)
+    (tmp_path/'incoming/metadata.json').write_text('{"identity":{},"files":[]}')
+    (tmp_path/'incoming/download.json').write_text(json.dumps(dict(identity={},files=[dict(sha256=sha,status='downloaded')])))
+    (tmp_path/'results/acquire.json').write_text(json.dumps(dict(identity={},files=[row])))
+    class Manager:
+        runner=types.SimpleNamespace(healthy=True)
+        def __init__(self,*a,**k):pass
+        def submit(self,*a,**k):return dict(id='inert-task')
+        def close(self):pass
+    monkeypatch.setattr('aegisav.tasks.ScanTasks',Manager)
+    monkeypatch.setattr(module,'wait_terminal',lambda *a,**k:dict(status='completed',files=[dict(status='completed',error=None,report={'verdict':'undetermined'},elapsed_ms=1)]))
+    module.offline([row],{},'scan')
+    actual=json.loads((tmp_path/'results/scan.json').read_text())['files'][0]
+    assert actual['detector_results_observed'] is True
+    assert actual['dataset_role']=='development_error_analysis'

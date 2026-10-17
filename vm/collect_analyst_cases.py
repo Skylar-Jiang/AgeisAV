@@ -13,7 +13,7 @@ import urllib.request
 from email.utils import parsedate_to_datetime
 
 CODE=Path(__file__).resolve().parent
-SCOPE=Path('/srv/aegisav-corpus/cohorts/analyst-case-20261017-v2')
+SCOPE=Path('/srv/aegisav-corpus/cohorts/analyst-case-20261017-r4')
 sys.path.insert(0,'/opt/aegisav-collection-v2')
 import collect_malwarebazaar as collection
 from collection_boundary import unpack_verified,validate_manifest
@@ -45,12 +45,28 @@ def seed():
     dependency=collection_dependency()
     raw=(CODE/'seed.json').read_bytes()
     rows=json.loads(raw)
-    assert 1<=len(rows)<=3 and len({r['sha256'] for r in rows})==len(rows)
+    assert 1<=len(rows)<=30 and len({r['sha256'] for r in rows})==len(rows)
     assert all(assess(r)['grade']=='probable' for r in rows)
     return rows,dict(seed_sha256=hashlib.sha256(raw).hexdigest(),policy_id=POLICY_ID,
                      collector_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),dependency=dependency,
                      checkpoint_sha256=hashlib.sha256((CODE/'stage_e_checkpoint.py').read_bytes()).hexdigest(),
                      policy_sha256=hashlib.sha256((CODE/'label_admission.py').read_bytes()).hexdigest())
+
+
+def select_downloads(rows):
+    downloads=[]
+    for item in rows:
+        metadata=item.get('metadata',{})
+        size=metadata.get('file_size',0)
+        if item['status']!='available': reason='metadata_unavailable'
+        elif metadata.get('file_type') not in {'exe','dll'}: reason='excluded_non_pe_metadata_type'
+        elif not isinstance(size,int) or not 0<size<=2*1024**2: reason='excluded_worker_fsize_2mib'
+        else:
+            reason='eligible'
+            downloads.append(dict(sha256=item['sha256'],file_size=size,
+                                  source_url='https://bazaar.abuse.ch/sample/'+item['sha256']+'/'))
+        item['download_eligibility']=reason
+    return downloads
 
 
 def online(rows,bound):
@@ -99,12 +115,8 @@ def online(rows,bound):
             state['files'].append(result);collection.save(path,state)
             if result.get('http_status')==429: return
     secret=None
-    downloads=[]
-    for item in state['files']:
-        metadata=item.get('metadata',{})
-        if item['status']=='available' and metadata.get('file_type') in {'exe','dll'} and 0<metadata.get('file_size',0)<=16*1024**2:
-            downloads.append(dict(sha256=item['sha256'],file_size=metadata['file_size'],
-                                  source_url='https://bazaar.abuse.ch/sample/'+item['sha256']+'/'))
+    downloads=select_downloads(state['files'])
+    collection.save(path,state)
     if downloads:
         validate_manifest(downloads)
         collection.ROOT=SCOPE
@@ -156,7 +168,9 @@ def offline(rows,bound,action):
             sha=item['sha256'];started=time.monotonic()
             try:
                 if not any(r['sha256']==sha and r['status']=='downloaded' for r in downloads['files']):
-                    raise ValueError('download_not_available')
+                    item_metadata=next((r for r in metadata['files'] if r['sha256']==sha),{})
+                    reason=item_metadata.get('download_eligibility')
+                    raise ValueError(reason if reason and reason!='eligible' else 'download_not_available')
                 if action=='acquire':
                     acquirer=ProcessScanner([sys.executable,__file__,'acquire-worker',sha],memory_bytes=512*1024**2)
                     row['raw']=acquirer.scan(b'inert-control',threading.Event(),time.monotonic()+40)
@@ -170,6 +184,8 @@ def offline(rows,bound,action):
                     job=wait_terminal(manager,job['id'])
                     row.update(status=job['files'][0]['status'],reason=job['files'][0]['error'],report=job['files'][0]['report'])
                     row['scan_elapsed_ms']=job['files'][0].get('elapsed_ms')
+                    if row['report'] is not None:
+                        row.update(detector_results_observed=True,dataset_role='development_error_analysis')
             except TimeoutError:
                 row['reason']='terminal_state_unconfirmed';abort=True
             except Exception as error: row['reason']=str(error)[:120] if isinstance(error,ValueError) else type(error).__name__
