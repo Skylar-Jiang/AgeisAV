@@ -13,13 +13,24 @@ import urllib.request
 from email.utils import parsedate_to_datetime
 
 CODE=Path(__file__).resolve().parent
-SCOPE=Path('/srv/aegisav-corpus/cohorts/analyst-case-20261017-v1')
-sys.path.insert(0,'/opt/aegisav-collection')
+SCOPE=Path('/srv/aegisav-corpus/cohorts/analyst-case-20261017-v2')
+sys.path.insert(0,'/opt/aegisav-collection-v2')
 import collect_malwarebazaar as collection
 from collection_boundary import unpack_verified,validate_manifest
 sys.path.insert(0,str(CODE))
 from label_admission import assess,POLICY_ID
 from stage_e_checkpoint import wait_terminal
+
+
+def collection_dependency():
+    expected={'collect_malwarebazaar.py':'d68d3377bb4803e9933dbf27f3377d27ae02da702454ce467876ecbb7052e106',
+              'collection_boundary.py':'4e4f968a16cd8132e06b08bfcb8c522697e7e0377c3130768705103aa560a5e7'}
+    if getattr(collection,'BASE',None)!=Path('/srv/aegisav-corpus'):
+        raise RuntimeError('collection_dependency_mismatch')
+    directory=Path(collection.__file__).parent
+    actual={name:hashlib.sha256((directory/name).read_bytes()).hexdigest() for name in expected}
+    if actual!=expected: raise RuntimeError('collection_dependency_mismatch')
+    return actual
 
 
 def retry_deadline(value,now):
@@ -31,16 +42,20 @@ def retry_deadline(value,now):
 
 
 def seed():
+    dependency=collection_dependency()
     raw=(CODE/'seed.json').read_bytes()
     rows=json.loads(raw)
-    assert len(rows)==2 and len({r['sha256'] for r in rows})==2
+    assert 1<=len(rows)<=3 and len({r['sha256'] for r in rows})==len(rows)
     assert all(assess(r)['grade']=='probable' for r in rows)
     return rows,dict(seed_sha256=hashlib.sha256(raw).hexdigest(),policy_id=POLICY_ID,
+                     collector_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),dependency=dependency,
+                     checkpoint_sha256=hashlib.sha256((CODE/'stage_e_checkpoint.py').read_bytes()).hexdigest(),
                      policy_sha256=hashlib.sha256((CODE/'label_admission.py').read_bytes()).hexdigest())
 
 
 def online(rows,bound):
     assert os.getuid()==1002
+    collection_dependency()
     collection.network('online')
     path=SCOPE/'incoming/metadata.json'
     if path.exists():
@@ -173,6 +188,7 @@ def offline(rows,bound,action):
 
 if __name__=='__main__':
     assert sys.platform=='linux'
+    sys.excepthook=sys.__excepthook__
     action=sys.argv[1]
     if action=='acquire-worker': acquire_worker(sys.argv[2])
     elif action=='online': online(*seed())

@@ -99,3 +99,11 @@ E首轮公开 f1c602be675bcb5b8107d4829ce4ffbd1037638d 已正常快进Push，远
 扫描wall168.83s/进程树峰值478.6MiB，独立clamd峰值1.27GiB；两次无害ML ABBA约62%批次wall降低、完整特征/分数一致、内存约+15MiB，生产未启用。
 226passed/6skipped/1既有warning；实验检查点增加终态不明熔断/原子写/恢复计时，生产层/规则/模型/UI不变。六快照保留、已确认待删0。
 详见 research/ROUND_REPORT_20261017_STAGE_E_R2.md 与 benchmarks/stage_e2_summary_20261017.json。下一步取原PE并做人审/独立性清除，扩大无害Worker文件集。
+
+
+## 2026-10-17：Stage E R3 真实原始 PE 与冻结模型复查
+
+用户完成人工凭据配置，客户机 LoadCredential 真实认证通过；未读取 Windows API-Key DPAPI。5候选/6请求/4不可获取/1原始PE完整性通过；操作性high-confidence1、人审完成0、正式独立最终样本0。
+同原PE五引擎均no_match、零引擎失败/弃权，融合undetermined；没有回填哈希或改冻结阈值。已有Win64 profile在同66PE上完整特征一致，仍全部no_match，新增检出0，生产未启用。
+单文件任务3.937s、编排3.968s、总wrapper4.061s；扫描树峰值365.18MiB，独立Clam1.255GiB。ML-only66文件84.154s/226.28MiB，不作为性能优化结论。正式Recall/FPR仍无充分条件。
+原VM离线分析启动满足10GiB门槛，最终正常关机、六快照保留；凭据保存在客户机root0600，仅客户端LoadCredential读取。详见research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md；私有标签与原始结果不公开。

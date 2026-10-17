@@ -104,3 +104,19 @@ def test_scan_unconfirmed_terminal_stops_following_sample(tmp_path,monkeypatch):
     assert Manager.calls==1 and result['completed'] is False
     assert result['files'][0]['reason']=='terminal_state_unconfirmed'
     assert result['files'][1]['status']=='not_attempted'
+
+
+def test_stale_collection_dependency_rejected_before_credential_read(tmp_path,monkeypatch):
+    import importlib,sys,types
+    root=Path(__file__).resolve().parents[2]
+    monkeypatch.syspath_prepend(str(root/'vm'));monkeypatch.syspath_prepend(str(root/'experiments'))
+    monkeypatch.setitem(sys.modules,'fcntl',types.SimpleNamespace())
+    monkeypatch.setitem(sys.modules,'collect_malwarebazaar',types.SimpleNamespace())
+    module=importlib.import_module('vm.collect_analyst_cases')
+    monkeypatch.setattr(module,'collection',types.SimpleNamespace(network=lambda _:'online'))
+    monkeypatch.setattr(module,'SCOPE',tmp_path)
+    monkeypatch.setattr(module.os,'getuid',lambda:1002,raising=False)
+    monkeypatch.setenv('CREDENTIALS_DIRECTORY',str(tmp_path))
+    monkeypatch.setattr(Path,'read_text',lambda *a,**k:pytest.fail('Credential must not be read before dependency validation'))
+    with pytest.raises(RuntimeError,match='collection_dependency_mismatch'):
+        module.online([], {})

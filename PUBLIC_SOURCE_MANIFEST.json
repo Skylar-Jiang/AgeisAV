@@ -1,6 +1,6 @@
 {
-  "schema": 1,
-  "source_revision": "665fa8de4c68d0328f34297804cf3002a98492bd",
+  "schema": 2,
+  "source_revision": "df2049b5f7cc5aee0d88f4fa839d1d6b0ded460c",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -614,8 +614,8 @@
     },
     {
       "path": ".gitattributes",
-      "sha256": "0cc54b9fe6f5e1fb62a3da1443ab279c0199c3d392a075c06b2ad29a8475f861",
-      "bytes": 231
+      "sha256": "1bcd85632fc90ff6c211d4ff4817c0fe7c65a5ee7cca2598b07d9784f66ea4a7",
+      "bytes": 401
     },
     {
       "path": ".gitignore",
@@ -878,6 +878,11 @@
       "bytes": 1033
     },
     {
+      "path": "backend/tests/test_manual_guest_key.py",
+      "sha256": "d683b3cec7c38dd2e639e5ace116ad7ee6ff240723c5ab851f0aaf52579f90ce",
+      "bytes": 2585
+    },
+    {
       "path": "backend/tests/test_ml_product.py",
       "sha256": "70bc00348fa88f84f1c4266d91954d358cb1058c4d463f3d90e710844cec1cc6",
       "bytes": 8725
@@ -891,6 +896,11 @@
       "path": "backend/tests/test_product_statistics.py",
       "sha256": "c1e96ea6891050814e5b61ea954db9e4e05fb4de76b21191324f07422bf54809",
       "bytes": 2702
+    },
+    {
+      "path": "backend/tests/test_public_delta_export.py",
+      "sha256": "d9339e93c0ebe26e4c449f3fbe097cfaf3eb2606574dc6abb2e23af1eb29c28b",
+      "bytes": 1541
     },
     {
       "path": "backend/tests/test_reviewed_yara.py",
@@ -924,8 +934,8 @@
     },
     {
       "path": "backend/tests/test_stage_e_checkpoint.py",
-      "sha256": "d535e782807cef309b9e8b974b17e4b6ce8eb3f2f6bbef77a9b413a5a316edc4",
-      "bytes": 5478
+      "sha256": "b5bc252c8e8d69eafae3724e7356799cd5875a50f3463bc5936ce34acd1c0c3b",
+      "bytes": 6476
     },
     {
       "path": "backend/tests/test_static_benign.py",
@@ -989,13 +999,13 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "6b8c4ea320db654756df80569376d838c4a5ffd267a36fcfefdbd8fd47ee0aac",
-      "bytes": 7915
+      "sha256": "43cb3c3d822cb231c25c195b5677503fce9b0c43e292cdd4cc6014c9be35c4ca",
+      "bytes": 8911
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "c30cab9bdad8c6eda54a5fe632b8a664d68955ad3f3a0ad1bbddb43ee2879cc5",
-      "bytes": 7835
+      "sha256": "ed85b47bd2df3715c51e7a1bdf7ac45d9c1d0fcced8f29509911aad606e793b2",
+      "bytes": 8831
     },
     {
       "path": "README.md",
@@ -1148,6 +1158,11 @@
       "bytes": 8059
     },
     {
+      "path": "docs/benchmarks/stage_e3_summary_20261017.json",
+      "sha256": "5bfbbb76aa1f4911c6b11d09a792357bdec64a2bf726412b407293d05da8068b",
+      "bytes": 6582
+    },
+    {
       "path": "docs/benchmarks/stage_e_evidence_audit_20261016.json",
       "sha256": "a2a0cea7753eeee83058adcb9e1f64854e9e4214db1763da217bae008956584f",
       "bytes": 2836
@@ -1206,6 +1221,11 @@
       "path": "docs/research/ROUND_REPORT_20261017_STAGE_E_R2.md",
       "sha256": "f5e21c3969781ee346d8718005e93b6ca37e020e4b36133dc2f5d6f9c764204b",
       "bytes": 14334
+    },
+    {
+      "path": "docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md",
+      "sha256": "2d6e5f5dd80d2983ecbe8af0fce374c1b29eb9bcbbffabdcd86d01bf02cedae3",
+      "bytes": 5356
     },
     {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
@@ -1351,6 +1371,11 @@
       "path": "experiments/expansion_diagnostics.py",
       "sha256": "5c8761e861f440bd65f12d506295f38951e8c985bf8e8da3bb4718d679635241",
       "bytes": 10677
+    },
+    {
+      "path": "experiments/export_public_delta.py",
+      "sha256": "ec4d443590d1a523f317484810b3348a2993290d7ee0b8703eb641d28a863d39",
+      "bytes": 4609
     },
     {
       "path": "experiments/export_public_source.py",
@@ -3043,9 +3068,24 @@
       "bytes": 7749
     },
     {
+      "path": "vm/Set-GuestKeyByHuman.ps1",
+      "sha256": "2778f4e121d3aa478f66ab9d88e0be2790505338aaddfc80d61a12bf23ef3dd9",
+      "bytes": 5016
+    },
+    {
       "path": "vm/Start-CollectionDownload.ps1",
       "sha256": "963eddc94dff20d7285d7bd743c20aec38b7492fec14c49b48cceccd4b725cab",
       "bytes": 1834
+    },
+    {
+      "path": "vm/Start-ManualGuestKey.ps1",
+      "sha256": "492feab3878f02209c1c9d44787b83f9006972f2ca6e02eff55430c7fe127fae",
+      "bytes": 3613
+    },
+    {
+      "path": "vm/Test-HumanKeyTransport.ps1",
+      "sha256": "64affb9be73b463157280010126ff22274c47077e0b9d04d3349fabec930b650",
+      "bytes": 2779
     },
     {
       "path": "vm/Test-OfflineGuestOps.ps1",
@@ -3094,8 +3134,8 @@
     },
     {
       "path": "vm/collect_analyst_cases.py",
-      "sha256": "61b0c7da1d2f2c41f689afde3da2a9f03d0d5da3c05b3b17951b7b70b2d2e399",
-      "bytes": 9820
+      "sha256": "580ef82129f1fa268a30b23c655fb4abf9ce1879a390b41bf3515e5fd85573f8",
+      "bytes": 10981
     },
     {
       "path": "vm/collect_malwarebazaar.py",
@@ -3133,6 +3173,11 @@
       "bytes": 930
     },
     {
+      "path": "vm/evaluate_frozen_profiles.py",
+      "sha256": "a4a9cdbe32752963461b64215c8f659dab1004589020336af437536b9c817cf6",
+      "bytes": 4491
+    },
+    {
       "path": "vm/expansion_clam_ready.py",
       "sha256": "ee0fa5065092bc944db652c53165d3e3eb8ca88556dadbdb41df8ceabae29ef4",
       "bytes": 664
@@ -3161,6 +3206,16 @@
       "path": "vm/install_product_release.py",
       "sha256": "194cab0fef2f719e46b8bacdd8d712df33035235c102bd95fb5cd894a455c695",
       "bytes": 5405
+    },
+    {
+      "path": "vm/manual_guest_key.py",
+      "sha256": "50e79e8228bf7616974525912798e384f8cd710e6651fea21a2c574ac17eeeb1",
+      "bytes": 2059
+    },
+    {
+      "path": "vm/measure_analyst_case.py",
+      "sha256": "94590fc3fcd6abb4bec7d68d92868c0e7652786cd277a3cddda9b4bb7d2ec2dc",
+      "bytes": 1191
     },
     {
       "path": "vm/native_fuzzy.py",
@@ -3283,8 +3338,30 @@
       "bytes": 1310
     }
   ],
-  "exact_secret_absent": true,
+  "inherited_public_gate_revision": "9537742bbf1467a143fecafb017ca05247418141",
+  "changed_paths": [
+    ".gitattributes",
+    "backend/tests/test_manual_guest_key.py",
+    "backend/tests/test_public_delta_export.py",
+    "backend/tests/test_stage_e_checkpoint.py",
+    "docs/EXPERIMENTS.md",
+    "docs/PROGRESS.md",
+    "docs/benchmarks/stage_e3_summary_20261017.json",
+    "docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md",
+    "experiments/export_public_delta.py",
+    "vm/Set-GuestKeyByHuman.ps1",
+    "vm/Start-ManualGuestKey.ps1",
+    "vm/Test-HumanKeyTransport.ps1",
+    "vm/collect_analyst_cases.py",
+    "vm/evaluate_frozen_profiles.py",
+    "vm/manual_guest_key.py",
+    "vm/measure_analyst_case.py"
+  ],
+  "secret_values_read": false,
+  "secrets_checked": 0,
+  "exact_secret_comparison_run": false,
+  "generic_secret_patterns_absent": true,
   "private_candidate_hashes_absent": true,
-  "secrets_checked": 2,
-  "private_history_included": false
+  "private_history_included": false,
+  "limitation": "Generic checks plus review; no assertion of exact secret-value exclusion for changed blobs."
 }
