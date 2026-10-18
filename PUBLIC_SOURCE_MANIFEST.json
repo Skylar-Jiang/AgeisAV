@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "b194364e6ad7cd8ebd56d6ddc3d9c24f756e31f6",
+  "source_revision": "38b016681a9d517ba04e2fa09d5968719032aac7",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -614,8 +614,8 @@
     },
     {
       "path": ".gitattributes",
-      "sha256": "c47e4eb14f4bf5b614acd5490a41cef078a6da108c293a57f126826b856190ce",
-      "bytes": 456
+      "sha256": "15c6fd76cb3836b8d9441319a8dca302f56671bdc292025cdd702791bfe37c4a",
+      "bytes": 515
     },
     {
       "path": ".gitignore",
@@ -893,6 +893,11 @@
       "bytes": 1733
     },
     {
+      "path": "backend/tests/test_official_runner_paths.py",
+      "sha256": "dcc52599bf5ad6632382b9125d9543ef3bf94e1572caefdbfb0028d4b1557859",
+      "bytes": 2763
+    },
+    {
       "path": "backend/tests/test_product_release.py",
       "sha256": "52b3e7b6dad6de7335985a748e465da592097e818bf57e389b84e837b8404454",
       "bytes": 1328
@@ -1009,13 +1014,13 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "ad122aa7212d74bfa88cdf06321d3d4ef675cfc9936f4c314302e469d3920976",
-      "bytes": 10286
+      "sha256": "0c0e33fbaa217bffa7832ef5b657293b2a2611d05edc99f1ba63098a1b11b823",
+      "bytes": 11593
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "a914f002babba781aedd5f4c3ab062930edd2affe2bae7f7aa595bbb65b5cf78",
-      "bytes": 10206
+      "sha256": "cfcd4d2b9597821a502cc484f0f5dfaa6df71655e26524ae1e68aa62ee92232a",
+      "bytes": 11513
     },
     {
       "path": "README.md",
@@ -1034,8 +1039,8 @@
     },
     {
       "path": "docs/TASK_RELIABILITY.md",
-      "sha256": "68f8beefb80a5b1fd2214c1cc0f5770d5062c9782e9555b4ef87a46630ab0010",
-      "bytes": 8403
+      "sha256": "a6a7905f26dbe82067bebcb4f620e11fd50162f9fcf6bb5e2cd4fbd2e9b5c293",
+      "bytes": 9284
     },
     {
       "path": "docs/benchmarks/collection_expansion_summary_20261014.json",
@@ -1178,6 +1183,11 @@
       "bytes": 6026
     },
     {
+      "path": "docs/benchmarks/stage_e4_vm_summary_20261017.json",
+      "sha256": "dd09a85d24a9e383a2f1a247a0709e78de4be31b325c90001d525bc587427628",
+      "bytes": 7851
+    },
+    {
       "path": "docs/benchmarks/stage_e_evidence_audit_20261016.json",
       "sha256": "a2a0cea7753eeee83058adcb9e1f64854e9e4214db1763da217bae008956584f",
       "bytes": 2836
@@ -1246,6 +1256,11 @@
       "path": "docs/research/ROUND_REPORT_20261017_STAGE_E_R4_PUBLIC.md",
       "sha256": "40ac1e19717b56cddcc1fdcc76bbd6eb001434102194bc2ccf199f5a7973819b",
       "bytes": 5687
+    },
+    {
+      "path": "docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md",
+      "sha256": "9a76f0f6b948b8dfb43c2baa1a461a0bfcaf92efab60f79fe3b7ee19eee26c2f",
+      "bytes": 10443
     },
     {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
@@ -1399,8 +1414,8 @@
     },
     {
       "path": "experiments/export_public_delta.py",
-      "sha256": "5056fa2829633ce62a2fb08a98b2268c016b535696f017c4d34979dfb6a727a5",
-      "bytes": 4753
+      "sha256": "85de1a3ce8e02cdfc7b53481579f502f4555e77cafdded74fd18da68e833a314",
+      "bytes": 4903
     },
     {
       "path": "experiments/export_public_source.py",
@@ -3269,8 +3284,8 @@
     },
     {
       "path": "vm/scan_official_runtime_pe.py",
-      "sha256": "d1286d9b1467e1b6958fa2f3bb145f0c2655d200f34dfcea76ce7c388a1097fc",
-      "bytes": 2750
+      "sha256": "9631486ce57adba34ec4e93247dac70466e804e1892219a3e650d7502c11d2a1",
+      "bytes": 3531
     },
     {
       "path": "vm/setup-collection.sh",
@@ -3368,20 +3383,17 @@
       "bytes": 1310
     }
   ],
-  "inherited_public_gate_revision": "e68ecbed0a3b8a3bc7b67f2389f0e63b403233a4",
+  "inherited_public_gate_revision": "47344d2f4a766ceba996662de68d9f53c15e3c07",
   "changed_paths": [
     ".gitattributes",
-    "backend/tests/test_official_multivendor_collection.py",
-    "backend/tests/test_stage_e_checkpoint.py",
-    "backend/tests/test_static_case_diagnostics.py",
+    "backend/tests/test_official_runner_paths.py",
     "docs/EXPERIMENTS.md",
     "docs/PROGRESS.md",
-    "docs/benchmarks/stage_e4_summary_20261017.json",
-    "docs/research/ROUND_REPORT_20261017_STAGE_E_R4_PUBLIC.md",
-    "experiments/collect_official_multivendor_pe.py",
+    "docs/TASK_RELIABILITY.md",
+    "docs/benchmarks/stage_e4_vm_summary_20261017.json",
+    "docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md",
     "experiments/export_public_delta.py",
-    "vm/collect_analyst_cases.py",
-    "vm/diagnose_static_case.py"
+    "vm/scan_official_runtime_pe.py"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,

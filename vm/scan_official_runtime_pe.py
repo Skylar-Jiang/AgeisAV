@@ -11,20 +11,33 @@ from aegisav.tasks import ScanTasks
 from stage_e_checkpoint import ACTIVE,persist,wait_terminal
 
 
+def cohort_paths(arguments):
+    if len(arguments) not in {1,3}: raise ValueError('cohort_path_arguments')
+    source=Path(arguments[1]) if len(arguments)==3 else Path('/opt/aegisav-benign/official-runtime-20261017')
+    work=Path(arguments[2]) if len(arguments)==3 else Path('/var/lib/aegisav-stagee2/official-runtime-v1')
+    if (not source.resolve().is_relative_to(Path('/opt/aegisav-benign').resolve()) or
+        not work.resolve().is_relative_to(Path('/var/lib/aegisav-stagee2').resolve())):
+        raise ValueError('cohort_path_boundary')
+    return source.resolve(),work.resolve()
+
+
 def main():
     assert os.getuid()==1001
     import subprocess
     isolation=subprocess.check_output(['/usr/local/bin/aegisav-isolation-check'],text=True).strip()
-    source=Path('/opt/aegisav-benign/official-runtime-20261017')
+    source,work=cohort_paths(sys.argv)
     raw=(source/'manifest.jsonl').read_bytes()
     rows=[json.loads(line) for line in raw.splitlines()]
-    work=Path('/var/lib/aegisav-stagee2/official-runtime-v1')
     work.mkdir(mode=0o700,exist_ok=True)
     output=work/'scan.json'
+    if not output.exists() and any(work.glob('tasks.sqlite3*')):
+        raise ValueError('orphan_task_store_without_checkpoint')
     identity=hashlib.sha256(raw).hexdigest()
+    code=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     state=json.loads(output.read_bytes()) if output.exists() else dict(schema=1,manifest_sha256=identity,
-        isolation=isolation,strict_final_test=False,dataset_role='exploratory_official_benign',files=[],completed=False)
-    assert state['manifest_sha256']==identity
+        script_sha256=code,isolation=isolation,strict_final_test=False,dataset_role='exploratory_official_benign',files=[],completed=False)
+    assert state['manifest_sha256']==identity and state.get('script_sha256')==code
+    persist(output,state)
     manager=ScanTasks(None,db_path=work/'tasks.sqlite3',runner=ProcessScanner(),service_release='stage-e2-guard-frozen-engines')
     try:
         for row in rows:

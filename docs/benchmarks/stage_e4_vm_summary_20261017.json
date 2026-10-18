@@ -1,0 +1,238 @@
+{
+  "schema": 1,
+  "date": "2026-10-17",
+  "status": "approved6GiB VM experiments complete; formal independent assessment remains pending",
+  "production_changed": false,
+  "vm": {
+    "guest_mib": 6144,
+    "human_approved": true,
+    "host_reserve_gib": 2,
+    "start_gate_gib": 8,
+    "offline_check_passed": true,
+    "final_power": "off",
+    "snapshots_retained": 6,
+    "assets_verified": 267,
+    "scan_cap_bytes": 2147483648,
+    "clamd_cap_bytes": 2684354560,
+    "guest_memtotal_bytes": 6213029888,
+    "guest_initial_available_bytes": 5766307840,
+    "guest_final_available_bytes": 5584945152,
+    "swap_bytes": 0,
+    "serial": true,
+    "global_oom_log_entries_in_checked_analysis_boot": 0,
+    "oom_audit_scope": "Kernel journal checked in initial offline-analysis boot; confirmation scan memory.events also0OOM/kill; no claim of repeated kernel audit in every boot"
+  },
+  "intake": {
+    "frozen_candidates": 15,
+    "requests": 18,
+    "minimum_request_gap_seconds": 5,
+    "metadata_available": 5,
+    "hash_not_found": 10,
+    "excluded_over_2mib": 2,
+    "encrypted_downloads": 3,
+    "eligible_download_failures": 0,
+    "new_verified_raw_pe": 3,
+    "win64": 2,
+    "win32": 1,
+    "source_organizations_in_obtained_raw": 1,
+    "families": 2,
+    "operational_high_confidence": 3,
+    "human_reviewed": 0,
+    "formal_final_eligible": 0,
+    "current_screening_components": 2,
+    "prior_fingerprints": 1941,
+    "prior_exact_matches": 0,
+    "prior_near_linked": 0,
+    "near_edges": 1,
+    "near_errors": 0,
+    "full_training_overlap_cleared": false,
+    "near_training_overlap_cleared": false,
+    "role": "development_error_analysis"
+  },
+  "paired": {
+    "malicious_development": {
+      "files": 3,
+      "signals": {
+        "sha256": {
+          "positive": 0,
+          "states": {
+            "no_match": 3
+          }
+        },
+        "fuzzy": {
+          "positive": 0,
+          "states": {
+            "no_match": 3
+          }
+        },
+        "yara_x": {
+          "positive": 0,
+          "states": {
+            "no_match": 3
+          }
+        },
+        "clamav": {
+          "positive": 2,
+          "states": {
+            "matched": 2,
+            "no_match": 1
+          }
+        },
+        "lightgbm": {
+          "positive": 3,
+          "states": {
+            "matched": 3
+          }
+        }
+      },
+      "only_ml_positive": 1,
+      "clamav_additional_beyond_ml": 0,
+      "abstentions": 0,
+      "scan_failures": 0,
+      "cost": {
+        "files": 3,
+        "total_file_ms": 8817.874,
+        "p50_ms": 2530.934,
+        "p95_ms": 3677.5987999999998,
+        "quantile": "linear interpolation; observed workload only, no controlled pre/post claim"
+      }
+    },
+    "presumed_benign": {
+      "files": 13,
+      "projects": 4,
+      "signals": {
+        "sha256": {
+          "positive": 0,
+          "states": {
+            "no_match": 13
+          }
+        },
+        "fuzzy": {
+          "positive": 0,
+          "states": {
+            "no_match": 13
+          }
+        },
+        "yara_x": {
+          "positive": 0,
+          "states": {
+            "no_match": 13
+          }
+        },
+        "clamav": {
+          "positive": 0,
+          "states": {
+            "no_match": 13
+          }
+        },
+        "lightgbm": {
+          "positive": 2,
+          "states": {
+            "matched": 2,
+            "no_match": 11
+          }
+        }
+      },
+      "abstentions": 0,
+      "scan_failures": 0,
+      "cost": {
+        "files": 13,
+        "total_file_ms": 67628.527,
+        "p50_ms": 4945.26,
+        "p95_ms": 9709.283999999998,
+        "quantile": "linear interpolation; observed workload only, no controlled pre/post claim"
+      }
+    },
+    "formal_metrics": null,
+    "limitation": "Positive-signal counts, not formal Recall/FPR/Precision/F1; labels/proxy correlation and independence remain incomplete"
+  },
+  "missed_case": {
+    "raw_bytes": 657408,
+    "scope": "win64",
+    "sections": 12,
+    "resource_section_bytes": 636416,
+    "imported_functions": 46,
+    "exports": 11,
+    "warnings": 1,
+    "upstream_full_vector_equal": true,
+    "baseline_mismatches": [],
+    "general_score": 0.4142651616989789,
+    "general_threshold": 0.5,
+    "win64_score": 0.7071527234832317,
+    "win64_threshold": 0.9831222501035356,
+    "general_header_raw_margin": -2.472794894847378,
+    "win64_header_raw_margin": -1.845449976069619,
+    "reference": {
+      "records": 4,
+      "fuzzy_records": 2,
+      "exact_present": false,
+      "minimum_tlsh_distance": 454,
+      "maximum_ssdeep_similarity": 0,
+      "tlsh_threshold": 40,
+      "ssdeep_threshold": 80,
+      "tlsh_self_distance": 0,
+      "ssdeep_self_similarity": 100
+    },
+    "deployed_emotet_patterns": 14,
+    "matched_patterns": 0,
+    "elastic_research_rules": 7,
+    "elastic_research_matches": 0,
+    "interpretation": "Correct full-vector and version parity; measured rule-pattern absence and sparse references; model associations not causal explanation; ClamAV signature-level cause unresolved"
+  },
+  "shadow": {
+    "profile": "win64_low_fpr",
+    "files": 16,
+    "feature_digest_parity": 16,
+    "general_fallback_score_parity": 3,
+    "failures": 0,
+    "malicious_positive_before": 3,
+    "malicious_positive_after": 3,
+    "benign_positive_before": 2,
+    "benign_positive_after": 1,
+    "production_activated": false,
+    "wall_ms": 35864.83088700001,
+    "memory_peak_bytes": 243126272,
+    "limitation": "Frozen prior profile; descriptive development comparison only, no new threshold chosen and no population low-FPR claim"
+  },
+  "resources": {
+    "malicious_scan": {
+      "wall_ms": 8927.476182999995,
+      "memory_peak_bytes": 389677056,
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "cpu_stat": "usage_usec 8653073\nuser_usec 6718892\nsystem_usec 1934181\ncore_sched.force_idle_usec 0\nnr_periods 110\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "scope": "whole bounded confirmation cgroup; separate clamd excluded"
+    },
+    "clamd": "MemoryCurrent=1195032576\nMemoryPeak=1356447744\nCPUUsageNSec=13575023000\nMemoryMax=2684354560\nTasksMax=128\n",
+    "benign_scan_peak_bytes": 366149632,
+    "benign_unit_wall_ms": 68278.032,
+    "regenerable_transport_bytes_removed": 31015973,
+    "guest_corpus_available_bytes": 11580399616,
+    "guest_root_available_bytes": 51703574528,
+    "host_c_available_bytes": 28716716032,
+    "host_d_available_bytes": 108570931200,
+    "worker_replaced": false
+  },
+  "failures": {
+    "initial_benign_unit": "IPAddressDeny=any also denied local ClamAV; interrupted and preserved, then new cohort with loopback-only allow passed",
+    "initial_clamav_version": "First initial malicious row unknown during startup; superseded for version-comparable pairing by preserved scan-confirmed-v2.json after readiness gate; all three decisions, ML scores and feature/version values equal",
+    "not_scanned": 12,
+    "reasons": {
+      "metadata_unavailable": 10,
+      "worker_size_exclusion": 2
+    },
+    "other": "Transient wrapper quoting/CRLF and unsupported MemoryOOMGroup property corrected before scans; OOMPolicy=kill verified memory.oom.group=1. No-entries journal grep exit1 is a check wrapper outcome, not a scan failure"
+  },
+  "tests": {
+    "local_passed": 265,
+    "local_skipped": 6,
+    "existing_warnings": 1,
+    "review_focused_passed": 6
+  },
+  "next": [
+    "Independently review operational labels; retain observed development role",
+    "Expand technical sources whose raw PE are obtainable; retain explicit size exclusions",
+    "Reproduce frozen profile tradeoff on separate validation data before policy activation",
+    "Preserve new final set unseen; formal low-FPR claims not supported"
+  ],
+  "versions_paired_known_identical_files": 16
+}

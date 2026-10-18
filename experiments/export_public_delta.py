@@ -16,7 +16,9 @@ from experiments.export_public_source import ROOT, PREFIXES, ROOT_FILES, DOCS, O
 ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
                  'docs/benchmarks/stage_e3_summary_20261017.json',
                  'docs/research/ROUND_REPORT_20261017_STAGE_E_R4_PUBLIC.md',
-                 'docs/benchmarks/stage_e4_summary_20261017.json'}
+                 'docs/benchmarks/stage_e4_summary_20261017.json',
+                 'docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md',
+                 'docs/benchmarks/stage_e4_vm_summary_20261017.json'}
 
 
 def check_blob(name,data,private_hashes):

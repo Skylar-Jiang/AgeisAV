@@ -110,3 +110,8 @@ Linux 无害进程探针：`PYTHONPATH=backend python3 -m experiments.check_linu
 8 GiB VM 需至少 10 GiB 可用宿主机内存（保留 2 GiB）；不足返回 deferred_memory，
 这不是客户机隔离或分析通过。资源充足后仍需 VMware Tools 客户机隔离、空闲任务核验和无害进程测试。
 不得因为前置检查 ready 就直接处理真实恶意样本；既有 VM 的新进程层尚未部署验证。
+
+
+## 2026-10-17 approved VM capacity experiment
+
+The original guest is now6144MiB by explicit user approval (only memsize changed). Keep2GiB host reserve:8GiB available for cold start, no forced resource reclamation or extra VM. Actual serial harmless-then-offline-static workloads passed at scan cgroup2GiB and separate clamd2.5GiB; this is workload evidence, not a worst-case capacity guarantee. No swap/concurrency/Worker changes. Guest memtotal is about5.79GiB; normal shutdown remains required. Offline units needing TCP ClamAV must allow only localhost while denying other addresses; the physical guest must independently have no non-loopback interface/routes. Wait for exact frozen clamd version readiness before starting comparable measurements, and retain failed/interrupted/version-unknown attempts separately. See research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md.
