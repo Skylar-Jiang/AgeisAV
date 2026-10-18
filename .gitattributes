@@ -6,5 +6,8 @@
 /vm/evaluate_frozen_profiles.py -text whitespace=cr-at-eol
 /vm/diagnose_static_case.py -text whitespace=cr-at-eol
 /vm/scan_official_runtime_pe.py -text whitespace=cr-at-eol
+/vm/acquisition_limits.py -text whitespace=cr-at-eol
+/vm/collect_primary_cases_v2.py -text whitespace=cr-at-eol
+/vm/verify_acquisition_v2.py -text whitespace=cr-at-eol
 # Reviewed rule provenance hashes bind exact source bytes too.
 /rules/yara/** -text

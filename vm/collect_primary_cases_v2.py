@@ -1,0 +1,234 @@
+"""Small primary-evidence PE intake. Encrypted online; bounded acquisition/scanning offline."""
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+import threading
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from email.utils import parsedate_to_datetime
+
+CODE=Path(__file__).resolve().parent
+SCOPE=Path('/srv/aegisav-corpus/cohorts/analyst-case-20261018-r5')
+sys.path.insert(0,'/opt/aegisav-collection-v2')
+import collect_malwarebazaar as collection
+from collection_boundary import unpack_verified,validate_manifest
+sys.path.insert(0,str(CODE))
+from label_admission import assess,POLICY_ID
+from stage_e_checkpoint import wait_terminal
+from acquisition_limits import MAX_ACQUIRED_PE,POLICY_ID as ACQUISITION_POLICY
+
+
+def collection_dependency():
+    expected={'collect_malwarebazaar.py':'d68d3377bb4803e9933dbf27f3377d27ae02da702454ce467876ecbb7052e106',
+              'collection_boundary.py':'4e4f968a16cd8132e06b08bfcb8c522697e7e0377c3130768705103aa560a5e7'}
+    if getattr(collection,'BASE',None)!=Path('/srv/aegisav-corpus'):
+        raise RuntimeError('collection_dependency_mismatch')
+    directory=Path(collection.__file__).parent
+    actual={name:hashlib.sha256((directory/name).read_bytes()).hexdigest() for name in expected}
+    if actual!=expected: raise RuntimeError('collection_dependency_mismatch')
+    return actual
+
+
+def retry_deadline(value,now):
+    try:
+        requested=now+int(value) if str(value).isdigit() else parsedate_to_datetime(value).timestamp()
+    except (ValueError,TypeError,OverflowError):
+        requested=now+3600
+    return max(now+3600,requested)
+
+
+def seed():
+    dependency=collection_dependency()
+    raw=(CODE/'seed.json').read_bytes()
+    rows=json.loads(raw)
+    assert 1<=len(rows)<=30 and len({r['sha256'] for r in rows})==len(rows)
+    assert all(assess(r)['grade']=='probable' for r in rows)
+    return rows,dict(seed_sha256=hashlib.sha256(raw).hexdigest(),policy_id=POLICY_ID,
+                     collector_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),dependency=dependency,
+                     checkpoint_sha256=hashlib.sha256((CODE/'stage_e_checkpoint.py').read_bytes()).hexdigest(),
+                     policy_sha256=hashlib.sha256((CODE/'label_admission.py').read_bytes()).hexdigest(),
+                     acquisition_policy=ACQUISITION_POLICY,acquisition_sha256=hashlib.sha256((CODE/'acquisition_limits.py').read_bytes()).hexdigest())
+
+
+def select_downloads(rows):
+    downloads=[]
+    for item in rows:
+        metadata=item.get('metadata',{})
+        size=metadata.get('file_size',0)
+        if item['status']!='available': reason='metadata_unavailable'
+        elif metadata.get('file_type') not in {'exe','dll'}: reason='excluded_non_pe_metadata_type'
+        elif not isinstance(size,int) or not 0<size<=MAX_ACQUIRED_PE: reason='excluded_acquisition_16mib'
+        else:
+            reason='eligible'
+            downloads.append(dict(sha256=item['sha256'],file_size=size,
+                                  source_url='https://bazaar.abuse.ch/sample/'+item['sha256']+'/'))
+        item['download_eligibility']=reason
+    return downloads
+
+
+def online(rows,bound):
+    assert os.getuid()==1002
+    collection_dependency()
+    collection.network('online')
+    path=SCOPE/'incoming/metadata.json'
+    if path.exists():
+        state=json.loads(path.read_bytes());assert state['identity']==bound
+    else: state=dict(identity=bound,files=[])
+    secret=(Path(os.environ['CREDENTIALS_DIRECTORY'])/'auth.key').read_text().strip()
+    opener=urllib.request.build_opener(urllib.request.ProxyHandler({}),collection.NoRedirect())
+    for row in rows:
+        sha=row['sha256']
+        if any(item['sha256']==sha for item in state['files']): continue
+        with (collection.BASE/'budget/budget.lock').open('a') as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX)
+            budget_path=collection.BASE/'budget/request-budget.json'
+            budget=json.loads(budget_path.read_bytes())
+            day=time.strftime('%Y-%m-%d',time.gmtime())
+            if budget['day']!=day: budget.update(day=day,count=0)
+            if budget['count']>=400: raise RuntimeError('local_request_budget_exhausted')
+            remaining=budget.get('not_before',0)-time.time()
+            if remaining>60: raise RuntimeError('request_backoff_active')
+            if remaining>0: time.sleep(remaining)
+            budget.update(count=budget['count']+1,not_before=time.time()+5)
+            collection.save(budget_path,budget)
+            result=dict(sha256=sha,status='error',reason=None)
+            try:
+                request=urllib.request.Request('https://mb-api.abuse.ch/api/v1/',
+                    data=urllib.parse.urlencode(dict(query='get_info',hash=sha)).encode(),headers={'Auth-Key':secret})
+                with opener.open(request,timeout=30) as response: raw=response.read(2*1024**2+1)
+                if len(raw)>2*1024**2: raise ValueError('metadata_size_limit')
+                metadata=json.loads(raw)
+                result['query_status']=metadata.get('query_status')
+                if metadata.get('query_status')=='ok':
+                    values=metadata['data'];assert len(values)==1 and values[0]['sha256_hash']==sha
+                    result.update(status='available',metadata=values[0],response_sha256=hashlib.sha256(raw).hexdigest())
+                else: result['reason']='metadata_not_available'
+            except urllib.error.HTTPError as error:
+                result.update(reason='http_error',http_status=error.code)
+                if error.code==429:
+                    budget['not_before']=max(retry_deadline(error.headers.get('Retry-After'),time.time()),budget['not_before'])
+                    collection.save(budget_path,budget)
+            except Exception as error: result['reason']=type(error).__name__
+            state['files'].append(result);collection.save(path,state)
+            if result.get('http_status')==429: return
+    secret=None
+    downloads=select_downloads(state['files'])
+    collection.save(path,state)
+    if downloads:
+        validate_manifest(downloads)
+        collection.ROOT=SCOPE
+        collection.download(downloads,bound)
+    print(json.dumps(dict(metadata_candidates=len(state['files']),available=sum(r['status']=='available' for r in state['files']),download_candidates=len(downloads))))
+
+
+def acquire_worker(sha):
+    from acquisition_limits import contain_acquisition_worker
+    contain_acquisition_worker()
+    collection.network('offline')
+    rows,bound=seed();assert sha in {r['sha256'] for r in rows}
+    sys.path.insert(0,'/opt/aegisav-collection/deps')
+    downloads=json.loads((SCOPE/'incoming/download.json').read_bytes());assert downloads['identity']==bound
+    record=next(r for r in reversed(downloads['files']) if r['sha256']==sha and r['status']=='downloaded')
+    archive=(SCOPE/'incoming'/(sha+'.zip')).read_bytes()
+    assert hashlib.sha256(archive).hexdigest()==record['archive_sha256']
+    raw=SCOPE/'raw'/(sha+'.bin')
+    # Dedicated acquisition-v2 writer has a fixed16MiB kernel and archive cap.
+    size=unpack_verified(archive,sha,raw,MAX_ACQUIRED_PE)
+    from aegisav.pe import validate_pe
+    from aegisav.ml_engine import pe_scope
+    from aegisav.hashes import compute_fuzzy
+    data=raw.read_bytes();validate_pe(data)
+    print(json.dumps(dict(report=dict(sha256=sha,integrity_verified=True,strict_pe_valid=True,
+        size_bytes=size,pe_scope=pe_scope(data),fingerprints=compute_fuzzy(data)))))
+
+
+def offline(rows,bound,action):
+    assert os.getuid()==1001
+    isolation=collection.network('offline')
+    from aegisav.scan_process import ProcessScanner
+    from aegisav.tasks import ScanTasks
+    path=SCOPE/'results'/(action+'.json')
+    assert not path.exists(), 'Preserve prior evidence; use a new version for retry'
+    metadata=json.loads((SCOPE/'incoming/metadata.json').read_bytes())
+    assert metadata['identity']==bound
+    downloads=json.loads((SCOPE/'incoming/download.json').read_bytes()) if (SCOPE/'incoming/download.json').exists() else dict(files=[])
+    if (SCOPE/'incoming/download.json').exists(): assert downloads['identity']==bound
+    result=dict(identity=bound,isolation=isolation,dataset_role='exploratory_primary_case',strict_final_test=False,files=[])
+    acquired=json.loads((SCOPE/'results/acquire.json').read_bytes()) if action=='scan' else None
+    if acquired: assert acquired['identity']==bound
+    manager=None;freeze=None;freeze_sha=None
+    if action=='scan':
+        freeze_path=SCOPE/'freeze/split.json'
+        for controlled in (freeze_path,freeze_path.parent):
+            if controlled.is_symlink() or controlled.stat().st_uid!=0 or controlled.stat().st_mode&0o022:
+                raise RuntimeError('split_freeze_not_root_controlled')
+        frozen=freeze_path.read_bytes();freeze=json.loads(frozen);freeze_sha=hashlib.sha256(frozen).hexdigest()
+        assert freeze['identity']==bound and freeze['frozen_before_scoring'] is True
+        assert set(freeze['scan_eligible'])<={r['sha256'] for r in rows}
+        result['split_freeze_sha256']=freeze_sha
+        from aegisav.clamav_engine import ClamAVEngine
+        clam=ClamAVEngine()
+        for _ in range(60):
+            if clam.probe() and (clam.engine_version,clam.artifact_version)==('ClamAV 1.5.4','28148'):break
+            time.sleep(.5)
+        else: raise RuntimeError('frozen_clamd_readiness_failed')
+        manager=ScanTasks(None,db_path=SCOPE/'results/tasks.sqlite3',runner=ProcessScanner())
+    abort=False;acquirer=None
+    try:
+        for item in rows:
+            row=dict(item,status='error',reason=None,report=None)
+            sha=item['sha256'];started=time.monotonic()
+            if action=='scan' and item.get('dataset_role')=='unscored_final_quarantine':
+                row.update(status='withheld',reason='unobserved_quarantine_not_final_admitted')
+                result['files'].append(row);collection.save(path,result)
+                continue
+            try:
+                if not any(r['sha256']==sha and r['status']=='downloaded' for r in downloads['files']):
+                    item_metadata=next((r for r in metadata['files'] if r['sha256']==sha),{})
+                    reason=item_metadata.get('download_eligibility')
+                    raise ValueError(reason if reason and reason!='eligible' else 'download_not_available')
+                if action=='acquire':
+                    acquirer=ProcessScanner([sys.executable,__file__,'acquire-worker',sha],memory_bytes=512*1024**2)
+                    row['raw']=acquirer.scan(b'inert-control',threading.Event(),time.monotonic()+40)
+                    row.update(status='acquired',admission=assess(row))
+                else:
+                    if sha not in freeze['scan_eligible']:raise ValueError('not_admitted_by_prescore_split_audit')
+                    previous=next(r for r in acquired['files'] if r['sha256']==sha)
+                    row['raw']=previous.get('raw');row['admission']=assess(row)
+                    if not row['admission']['exploratory_eligible']: raise ValueError('label_not_admitted')
+                    data=(SCOPE/'raw'/(sha+'.bin')).read_bytes();assert hashlib.sha256(data).hexdigest()==sha
+                    job=manager.submit([('case-'+sha[:8]+'.pe',data)],idempotency_key='primary-case-v1:'+sha)
+                    job=wait_terminal(manager,job['id'])
+                    row.update(status=job['files'][0]['status'],reason=job['files'][0]['error'],report=job['files'][0]['report'])
+                    row['scan_elapsed_ms']=job['files'][0].get('elapsed_ms')
+                    if row['report'] is not None:
+                        row.update(detector_results_observed=True,dataset_role='development_error_analysis')
+            except TimeoutError:
+                row['reason']='terminal_state_unconfirmed';abort=True
+            except Exception as error: row['reason']=str(error)[:120] if isinstance(error,ValueError) else type(error).__name__
+            row['elapsed_ms']=(time.monotonic()-started)*1000
+            result['files'].append(row);collection.save(path,result)
+            if abort or (acquirer and not acquirer.healthy) or (manager and not manager.runner.healthy):
+                abort=True
+                for remaining in rows[len(result['files']):]:
+                    result['files'].append(dict(remaining,status='not_attempted',reason='terminal_or_cleanup_unconfirmed',report=None))
+                break
+    finally:
+        if manager: manager.close()
+    result['completed']=not abort;collection.save(path,result)
+    print(json.dumps(dict(action=action,files=len(result['files']),statuses=[r['status'] for r in result['files']])))
+
+
+if __name__=='__main__':
+    assert sys.platform=='linux'
+    sys.excepthook=sys.__excepthook__
+    action=sys.argv[1]
+    if action=='acquire-worker': acquire_worker(sys.argv[2])
+    elif action=='online': online(*seed())
+    elif action in {'acquire','scan'}: offline(*seed(),action)
+    else: raise ValueError('Unknown intake mode')

@@ -40,7 +40,13 @@ def bind_baseline(result,baseline):
                   baseline_score_equal=result['models']['general']['score']==baseline.get('score'))
 
 
-def worker(data,release,shadow_rules):
+def models_for_scope(models,scope):
+    if scope not in {'win32','win64'} or 'general' not in models:
+        raise ValueError('unsupported_diagnostic_scope')
+    return {name:entry for name,entry in models.items() if name=='general' or scope=='win64'}
+
+
+def worker(data,release,shadow_rules,expected_scope='win64'):
     import importlib.util
     import numpy as np
     import lightgbm as lgb
@@ -64,7 +70,8 @@ def worker(data,release,shadow_rules):
         imported_modules=[e.dll.decode('ascii',errors='replace') for e in getattr(pe,'DIRECTORY_ENTRY_IMPORT',[])][:128],
         imported_function_count=sum(len(e.imports) for e in getattr(pe,'DIRECTORY_ENTRY_IMPORT',[])),
         export_count=len(exports),export_names=[s.name.decode('ascii',errors='replace') for s in exports[:32] if s.name],models={})
-    assert result['scope']=='win64', 'This frozen case study expects the R3 Win64 input'
+    assert result['scope']==expected_scope, 'Diagnostic architecture does not match baseline'
+
     registry=MLEngine(release/'models/ember2024');assert registry.probe()
     root=registry.root if hasattr(registry,'root') else release/'models/ember2024'
     spec=importlib.util.spec_from_file_location('pinned_features',root/'features.py')
@@ -78,7 +85,7 @@ def worker(data,release,shadow_rules):
     result['feature_schema']=registry.manifest['files']['features.py']
     result['feature_implementation']=registry.manifest['feature_implementation']
     result['artifact_version']=registry.artifact_version
-    for name,entry in registry.manifest['models'].items():
+    for name,entry in models_for_scope(registry.manifest['models'],result['scope']).items():
         model=lgb.Booster(model_file=str(root/entry['file']));assert model.num_feature()==len(vector)
         score=float(model.predict(vector.reshape(1,-1),num_threads=1)[0])
         margin=float(model.predict(vector.reshape(1,-1),raw_score=True,num_threads=1)[0])
@@ -130,14 +137,14 @@ def main():
     if sys.argv[1]=='worker':
         contain_worker()
         data=sys.stdin.buffer.read(2*1024**2+1);assert len(data)<=2*1024**2
-        print(json.dumps(dict(report=worker(data,Path('/opt/aegisav-product/current'),Path(sys.argv[2]))),allow_nan=False));return
+        print(json.dumps(dict(report=worker(data,Path('/opt/aegisav-product/current'),Path(sys.argv[2]),sys.argv[3] if len(sys.argv)>3 else 'win64')),allow_nan=False));return
     isolation=subprocess.check_output(['/usr/local/bin/aegisav-isolation-check'],text=True).strip()
     baseline=Path(sys.argv[1]);shadow=Path(sys.argv[2]);output=Path(sys.argv[3]);assert not output.exists()
     record=next(r for r in json.loads(baseline.read_bytes())['files'] if r['status']=='completed')
     raw=baseline.parent.parent/'raw'/(record['sha256']+'.bin')
     assert raw.resolve().is_relative_to(Path('/srv/aegisav-corpus'))
     data=raw.read_bytes();assert hashlib.sha256(data).hexdigest()==record['sha256']
-    runner=ProcessScanner([sys.executable,__file__,'worker',str(shadow)],memory_bytes=1536*1024**2)
+    runner=ProcessScanner([sys.executable,__file__,'worker',str(shadow),record['report']['engines']['lightgbm']['pe_scope']],memory_bytes=1536*1024**2)
     result=runner.scan(data,threading.Event(),time.monotonic()+120)
     old=record['report']['engines']['lightgbm']
     bind_baseline(result,old)

@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "38b016681a9d517ba04e2fa09d5968719032aac7",
+  "source_revision": "44d7eb2aa301a215c6723cde52f9a0da71e5e91e",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -614,8 +614,8 @@
     },
     {
       "path": ".gitattributes",
-      "sha256": "15c6fd76cb3836b8d9441319a8dca302f56671bdc292025cdd702791bfe37c4a",
-      "bytes": 515
+      "sha256": "62171a1d094fbfceef4e8a4364acbabf5e94f07b18c0d1a1e7e2cc070de10632",
+      "bytes": 683
     },
     {
       "path": ".gitignore",
@@ -748,6 +748,21 @@
       "bytes": 1306
     },
     {
+      "path": "backend/tests/test_acquisition_fixture_regressions.py",
+      "sha256": "1008a7ab7fcdd5e278b64f3fb064ce48cdca0ec8ca7fa3687d72b77b73616c79",
+      "bytes": 1701
+    },
+    {
+      "path": "backend/tests/test_acquisition_limits.py",
+      "sha256": "b1f2bdba2dd65d1745318d5db660add6aba6da844feb3007fe8ab4d6eee4a7ed",
+      "bytes": 2530
+    },
+    {
+      "path": "backend/tests/test_acquisition_v2.py",
+      "sha256": "598c6ca8c9507d7bfc638109723e75d44bc3cef80bb4128f373f5b2de8e7904c",
+      "bytes": 1472
+    },
+    {
       "path": "backend/tests/test_api.py",
       "sha256": "66599335edae5ddb183af4b599df225865a59cb6d983a1d3d1c7bde1d7427a3b",
       "bytes": 2679
@@ -796,6 +811,11 @@
       "path": "backend/tests/test_collection_summary.py",
       "sha256": "ffd6fd8b5de9e0f4656848011d6557eb6e8baaec343f556570b90eedb3bbbe64",
       "bytes": 2275
+    },
+    {
+      "path": "backend/tests/test_diagnostic_scope.py",
+      "sha256": "4f9fc5d46a47cb151c8cf4f0dbd4efe3613c0b950f99afb16672025b884c18cf",
+      "bytes": 533
     },
     {
       "path": "backend/tests/test_ember_features_memory.py",
@@ -1014,13 +1034,13 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "0c0e33fbaa217bffa7832ef5b657293b2a2611d05edc99f1ba63098a1b11b823",
-      "bytes": 11593
+      "sha256": "891bee74f72136d09830c6357ed84bde81dc69f2a5e71a721da2354375ae321b",
+      "bytes": 13872
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "cfcd4d2b9597821a502cc484f0f5dfaa6df71655e26524ae1e68aa62ee92232a",
-      "bytes": 11513
+      "sha256": "fe58b2e75de864e11350ffaf8d8bbf97a06677beab12ef524b3624da6a85c4bf",
+      "bytes": 13792
     },
     {
       "path": "README.md",
@@ -1188,6 +1208,11 @@
       "bytes": 7851
     },
     {
+      "path": "docs/benchmarks/stage_e5_summary_20261018.json",
+      "sha256": "a8e292569c63a25be92c18d032581107f9e35d0b7e97d57c03c75b8e8f875825",
+      "bytes": 9225
+    },
+    {
       "path": "docs/benchmarks/stage_e_evidence_audit_20261016.json",
       "sha256": "a2a0cea7753eeee83058adcb9e1f64854e9e4214db1763da217bae008956584f",
       "bytes": 2836
@@ -1261,6 +1286,11 @@
       "path": "docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md",
       "sha256": "9a76f0f6b948b8dfb43c2baa1a461a0bfcaf92efab60f79fe3b7ee19eee26c2f",
       "bytes": 10443
+    },
+    {
+      "path": "docs/research/ROUND_REPORT_20261018_STAGE_E_R5_PUBLIC.md",
+      "sha256": "00d3a2cfc94f91454484462d801e29763c339478091ea8a788367b67d5ae2c1e",
+      "bytes": 12649
     },
     {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
@@ -1414,8 +1444,8 @@
     },
     {
       "path": "experiments/export_public_delta.py",
-      "sha256": "85de1a3ce8e02cdfc7b53481579f502f4555e77cafdded74fd18da68e833a314",
-      "bytes": 4903
+      "sha256": "91cb403121b7f747a0372725fe0537a2a52b1a1f6cc466246fcda3b6d3a896c3",
+      "bytes": 5047
     },
     {
       "path": "experiments/export_public_source.py",
@@ -3143,6 +3173,11 @@
       "bytes": 1160
     },
     {
+      "path": "vm/acquisition_limits.py",
+      "sha256": "03a45a5353f6c382d8edd7270ea13471f186d1585538d0c9daa53ca55fa230ef",
+      "bytes": 1001
+    },
+    {
       "path": "vm/aegisav-isolation-report.service",
       "sha256": "a43de788244106538a75fcf838c9e79a620c8cf97d329afb19481f0f5c646132",
       "bytes": 254
@@ -3183,6 +3218,11 @@
       "bytes": 16026
     },
     {
+      "path": "vm/collect_primary_cases_v2.py",
+      "sha256": "390f80836280826185a8c6d0d2340f55bef765b0a15cfa23a56d992a3e500e48",
+      "bytes": 13068
+    },
+    {
       "path": "vm/collection_boundary.py",
       "sha256": "4e4f968a16cd8132e06b08bfcb8c522697e7e0377c3130768705103aa560a5e7",
       "bytes": 4557
@@ -3214,8 +3254,8 @@
     },
     {
       "path": "vm/diagnose_static_case.py",
-      "sha256": "f72eec746ccf10667729ec9a2ea40a1fb26c3bdcbbe9a21ecc939846c0fb0e8d",
-      "bytes": 9924
+      "sha256": "7edabdbc112d8af736777d568fadbd7ce6dd3964c114faaee22eb7ea72062991",
+      "bytes": 10338
     },
     {
       "path": "vm/evaluate_frozen_profiles.py",
@@ -3363,6 +3403,11 @@
       "bytes": 1458
     },
     {
+      "path": "vm/verify_acquisition_v2.py",
+      "sha256": "db18fa66dcfc7175b900194768e9677b8374213b3dc53aa281e74a17b1149fa5",
+      "bytes": 5099
+    },
+    {
       "path": "vm/verify_collection_api.py",
       "sha256": "96ed7145dc1ab75e26b8bcb85c08023d6d66a1e422dea7e2e18703491a844b25",
       "bytes": 2628
@@ -3383,17 +3428,22 @@
       "bytes": 1310
     }
   ],
-  "inherited_public_gate_revision": "47344d2f4a766ceba996662de68d9f53c15e3c07",
+  "inherited_public_gate_revision": "15cf7c5448185004ab3550a7fa63362b76023ae0",
   "changed_paths": [
     ".gitattributes",
-    "backend/tests/test_official_runner_paths.py",
+    "backend/tests/test_acquisition_fixture_regressions.py",
+    "backend/tests/test_acquisition_limits.py",
+    "backend/tests/test_acquisition_v2.py",
+    "backend/tests/test_diagnostic_scope.py",
     "docs/EXPERIMENTS.md",
     "docs/PROGRESS.md",
-    "docs/TASK_RELIABILITY.md",
-    "docs/benchmarks/stage_e4_vm_summary_20261017.json",
-    "docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md",
+    "docs/benchmarks/stage_e5_summary_20261018.json",
+    "docs/research/ROUND_REPORT_20261018_STAGE_E_R5_PUBLIC.md",
     "experiments/export_public_delta.py",
-    "vm/scan_official_runtime_pe.py"
+    "vm/acquisition_limits.py",
+    "vm/collect_primary_cases_v2.py",
+    "vm/diagnose_static_case.py",
+    "vm/verify_acquisition_v2.py"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,
