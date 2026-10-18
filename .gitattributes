@@ -9,5 +9,7 @@
 /vm/acquisition_limits.py -text whitespace=cr-at-eol
 /vm/collect_primary_cases_v2.py -text whitespace=cr-at-eol
 /vm/verify_acquisition_v2.py -text whitespace=cr-at-eol
+/vm/collect_available_cases.py -text whitespace=cr-at-eol
+/experiments/availability_sampling.py -text whitespace=cr-at-eol
 # Reviewed rule provenance hashes bind exact source bytes too.
 /rules/yara/** -text

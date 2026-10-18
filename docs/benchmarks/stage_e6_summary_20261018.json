@@ -1,0 +1,372 @@
+{
+  "schema": 1,
+  "date": "2026-10-18",
+  "status": "R6 scale+operational exploration delivered; no strict human admission or new raw malware intake",
+  "production_changed": false,
+  "benign": {
+    "actual_raw_pe": 368,
+    "unique_sha256": 368,
+    "projects": 8,
+    "project_counts": {
+      "Notepad++": 7,
+      "WinMerge": 96,
+      "CMake": 8,
+      "ripgrep": 2,
+      "fd": 2,
+      "jq": 2,
+      "7-Zip": 1,
+      ".NET SDK": 250
+    },
+    "architecture": {
+      "x86": 77,
+      "x64": 69,
+      "managed_anycpu": 222
+    },
+    "categories": {
+      "installer_sfx": 2,
+      "desktop_gui": 5,
+      "native_dll": 95,
+      "command_line": 47,
+      "managed_dll": 219
+    },
+    "signatures": {
+      "Valid": 346,
+      "NotSigned": 22
+    },
+    "packages": 17,
+    "package_checksum_verified": 17,
+    "package_failures": 0,
+    "bytes_downloaded": 519778798,
+    "retained_raw_bytes": 277062580,
+    "candidate_integrity_verified": 368,
+    "current_fuzzy_components": 316,
+    "prior_fingerprints": 1966,
+    "prior_exact_matches": 0,
+    "prior_near_linked": 0,
+    "global_prior_prior_edges": 691,
+    "source_parent_groups": 8,
+    "qualified_validation_parent_groups": 5,
+    "sdk_and_winmerge_files": 346,
+    "exclusions": {
+      "exact_prior_duplicate": 6,
+      "exact_current_duplicate": 15,
+      "size_over_16MiB": 6,
+      "PE_parse_or_scope_rejected": 8,
+      "prescore_project_cap": 3460
+    },
+    "exclusion_arm64_count": 8,
+    "exclusion_arm64_is_not_parser_corruption": true,
+    "scored": 260,
+    "individual_human_reviewed": 0,
+    "source_group_human_authorization": false,
+    "remaining_unscored": 108,
+    "exploration_projects": 3,
+    "operational_label_only": true
+  },
+  "malicious": {
+    "new_raw_pe": 0,
+    "new_raw_families": 0,
+    "new_raw_organizations": 0,
+    "malwarebazaar_requests": 0,
+    "primary_metadata_repositories": 4,
+    "primary_text_unique_sha": 8651,
+    "primary_text_or_license_verified": 626,
+    "evidence_status": "Broad matches unreviewed; curated payload roles agent-reviewed but not human/raw admitted",
+    "curated_exact_payload_candidates": 17,
+    "curated_case_texts": 7,
+    "curated_publishers": 2,
+    "curated_family_or_stage_labels": [
+      "AgtaBackup RAT",
+      "C-based ransomware, likely The Gentlemen",
+      "DarkCloud",
+      "Ghost Crypt / PureRAT delivery",
+      "KoiLoader",
+      "KoiStealer",
+      "PureRAT",
+      "PureRAT loader",
+      "StrelaStealer",
+      "ZionSiphon"
+    ],
+    "source_availability_rate": null,
+    "raw_validity_rate": null,
+    "measured_acquisition_efficiency_gain": null,
+    "historical_metadata_intersection": 0,
+    "historical_metadata_identities": 191,
+    "limitation": "No current API discovery/download performed; historical zero intersection does not establish current availability. No new true-label count."
+  },
+  "source_strategies": {
+    "official_packages": "17/17 checksum-verified;368 new PE; two project groups dominate; successful scalable control acquisition",
+    "primary_ioc_catalog": "626 text/license blobs integrity verified;8,651 unique unreviewed identities; raw availability unknown",
+    "availability_first": "Outcome-blind family-balanced discovery at most96,8/family,16MiB; selector tested; guest collector not deployed/accepted",
+    "supplementary_installer_metadata": "PeaZip GitHub metadata request got HTTP403 public rate limit; no repeated API attempt or installer downloaded"
+  },
+  "admission": {
+    "protocol": "qualified-known-evidence-r6-proposal-v1",
+    "freeze_sha256": "0d703012d8fbf347dfcc14cbcb570d89b4c28925e897e0bf619b40af6a4fac18",
+    "raw_candidates": 368,
+    "pending_validation_files": 98,
+    "pending_validation_groups": 2,
+    "sealed_final_candidates": 2,
+    "development_source_release_files": 8,
+    "protected_r5_quarantine_unchanged": 6,
+    "review_packet_cases": 10,
+    "old_malicious_label_only_cases": 4,
+    "new_benign_representatives": 6,
+    "individual_reviewed": 0,
+    "source_group_authorized_files": 0,
+    "qualified_validation_admitted": 0,
+    "formal_final_admitted": 0,
+    "local_training_exact_overlap": 0,
+    "local_fit_rows": 480000,
+    "local_validation_rows": 40000,
+    "local_test_rows": 119993,
+    "complete_generic_training_membership": "unavailable_residual_not_cleared",
+    "near_training": "unavailable_residual_not_cleared",
+    "temporal_novelty_established": false,
+    "source_groups_not_independent_file_draws": true,
+    "initially_proposed_358_not_approved": true,
+    "operational_exploration_files": 260,
+    "operational_experiments_user_authorized": true,
+    "human_independent_signoff_declined": true,
+    "ordinary_automatic_audits_or_experiments_require_no_per_file_signoff": true,
+    "unscored_to_exploration_component_links": 0,
+    "sealed_to_exploration_component_links": 0,
+    "current_authority": "Trusted user steering permits operational/proxy exploration, explicitly not strict358admission. Frozen historical pending roles superseded by observation ledger.",
+    "observation_ledger_sha256": "23b8a6de1ca9d8a370ab20cb58e7d47d538d4a6c8e357b72808a3bf1e037b927"
+  },
+  "research": {
+    "new_independent_validation_scores": 0,
+    "new_development_scores": 260,
+    "formal_recall": null,
+    "formal_fpr": null,
+    "fixed_low_fpr_recall": null,
+    "independent_supported_7zip_improvement": false,
+    "independent_supported_sqlite_improvement": false,
+    "independent_supported_emotet_improvement": false,
+    "thresholds_models_or_whitelists_tried": 0,
+    "reason": "Operational source-verified evidence only. Three parent software groups and no new malicious raw cohort; strict admission/final remains0.",
+    "operational_study": {
+      "policy_id": "source-verified-operational-exploration-r6-v1",
+      "label": "automatically_source_verified_presumed_benign_operational",
+      "strict_validation": false,
+      "human_label_review": false,
+      "source_audited": 358,
+      "explored": 260,
+      "remaining_unscored_validation_candidates": 98,
+      "overall": {
+        "files": 260,
+        "completed": 260,
+        "general_positive": 1,
+        "routed_positive": 0,
+        "dedicated_win64_applied": 19
+      },
+      "scan_errors": 0,
+      "engine_counts": {
+        "sha256": {
+          "no_match": 260
+        },
+        "fuzzy": {
+          "no_match": 260
+        },
+        "yara_x": {
+          "no_match": 260
+        }
+      },
+      "engine_versions": {
+        "sha256": [
+          [
+            "sha256",
+            "279d0104511d2850"
+          ]
+        ],
+        "fuzzy": [
+          [
+            "tlsh-python/0.1.0 ppdeep/20260221",
+            "279d0104511d2850"
+          ]
+        ],
+        "yara_x": [
+          [
+            "1.20.0",
+            "c86b0a888539baf5"
+          ]
+        ]
+      },
+      "clamav": {
+        "status": "not_executed",
+        "files": 260,
+        "reason": "Original version-confirmed guest stopped by8GiBhoststartgate; not negative"
+      },
+      "feature_digest_equal": 260,
+      "fallback_score_threshold_equal": 241,
+      "by_project": {
+        ".NET SDK": {
+          "files": 250,
+          "completed": 250,
+          "general_positive": 1,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 14
+        },
+        "CMake": {
+          "files": 8,
+          "completed": 8,
+          "general_positive": 0,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 4
+        },
+        "fd": {
+          "files": 2,
+          "completed": 2,
+          "general_positive": 0,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 1
+        }
+      },
+      "by_architecture": {
+        "managed_anycpu": {
+          "files": 222,
+          "completed": 222,
+          "general_positive": 0,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 0
+        },
+        "x64": {
+          "files": 25,
+          "completed": 25,
+          "general_positive": 1,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 19
+        },
+        "x86": {
+          "files": 13,
+          "completed": 13,
+          "general_positive": 0,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 0
+        }
+      },
+      "by_category": {
+        "command_line": {
+          "files": 37,
+          "completed": 37,
+          "general_positive": 1,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 15
+        },
+        "managed_dll": {
+          "files": 219,
+          "completed": 219,
+          "general_positive": 0,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 0
+        },
+        "native_dll": {
+          "files": 4,
+          "completed": 4,
+          "general_positive": 0,
+          "routed_positive": 0,
+          "dedicated_win64_applied": 4
+        }
+      },
+      "registry_equals_frozen_r5": true,
+      "model_version_changes": false,
+      "threshold_choices": 0,
+      "production_changes": false,
+      "partial_four_engine_or_only": {
+        "general_positive": 1,
+        "routed_positive": 0,
+        "five_engine_or_complete": false
+      },
+      "cost": {
+        "wall_ms": 404266.00000000326,
+        "model_two_profile_per_file": {
+          "sum_ms": 246005.00000006286,
+          "p50_ms": 250.0,
+          "p95_ms": 1393.3000000019085
+        },
+        "three_nonml_per_file": {
+          "sum_ms": 61217.999999877065,
+          "p50_ms": 16.00000000325963,
+          "p95_ms": 204.55000003566911
+        },
+        "caveat": "Serial bounded research batches4, modeltwo-profilecost includes duplicate extraction; not serviceP95,cachebenchmark,orproductionworkerimprovement",
+        "job_tree_memory_caps_bytes": {
+          "ml": 1610612736,
+          "other": 536870912
+        },
+        "full_peak_measured": false
+      },
+      "formal_metrics": {
+        "recall": null,
+        "fpr": null,
+        "fixed_low_fpr_recall": null
+      },
+      "conclusion": "Observed operational control-positive differences only; no new malicious cohort or independent gain.3softwareparentgroups and SDKdominance preclude deployment lowFPR inference.",
+      "sealed_source_candidates": 2
+    },
+    "local_yara_vs_old_guest_asset_equivalent": false,
+    "local_yara_artifact": "c86b0a888539baf5",
+    "old_guest_yara_artifact": "55ccec8463af1166"
+  },
+  "resources": {
+    "vm_power": "off",
+    "vm_ram_mib": 6144,
+    "start_gate_bytes": 8589934592,
+    "readiness": {
+      "schema": 1,
+      "status": "deferred_memory",
+      "read_only": true,
+      "guest_validation_performed": false,
+      "captured_at_utc": "2026-10-18T14:44:09.8309393Z",
+      "guest_memory_bytes": 6442450944,
+      "host_available_bytes": 5863493632,
+      "required_available_bytes": 8589934592,
+      "host_vmx_offline_passed": true,
+      "vm_modified": false
+    },
+    "wsl": "Other compiler-project Codex session observed; not terminated; about300MiB RSS would not close final RAM gap",
+    "vm_configuration_or_snapshots_changed": false,
+    "collection_full_peak_memory_measured": false,
+    "global_fuzzy_audit_seconds": 491.48399999999674,
+    "host_c_free_bytes": 29077467136,
+    "host_d_free_bytes": 104095240192,
+    "original_data_packages_models_evidence_retained": true,
+    "no_raw_malware_or_encrypted_malware_archives_on_host": true,
+    "no_api_secret_read": true,
+    "worker_change": false,
+    "host_exploratory_jobs": {
+      "wall_ms": 404266.00000000326,
+      "model_two_profile_per_file": {
+        "sum_ms": 246005.00000006286,
+        "p50_ms": 250.0,
+        "p95_ms": 1393.3000000019085
+      },
+      "three_nonml_per_file": {
+        "sum_ms": 61217.999999877065,
+        "p50_ms": 16.00000000325963,
+        "p95_ms": 204.55000003566911
+      },
+      "caveat": "Serial bounded research batches4, modeltwo-profilecost includes duplicate extraction; not serviceP95,cachebenchmark,orproductionworkerimprovement",
+      "job_tree_memory_caps_bytes": {
+        "ml": 1610612736,
+        "other": 536870912
+      },
+      "full_peak_measured": false
+    }
+  },
+  "tests": {
+    "local_passed": 285,
+    "local_skipped": 6,
+    "existing_warning": 1,
+    "selector_tests": 3,
+    "guest_intake_validation_performed": false,
+    "review_tool_result": "Requested read-only review could not run due reviewer usage limit; no review pass claimed; intake stays unactivated"
+  },
+  "next": [
+    "Whenhostmemory>=8GiB useoriginalVMforcurrentavailability-firstmetadata+primarycatalogintersection; preserveproxy/unknown/evidence tiers.",
+    "Continueordinaryoperational/proxyexperimentsautomatically; no repeated human mechanics signoff.",
+    "Keep98unobservedcontrols,two sealed candidatesandR5quarantine6 sealed; independent human admission only at strict evaluation stage.",
+    "Investigateofficialsinglefilehost,7Zip,SQLite strata usingdevelopment data; no newproduction policy without qualifying evidence.",
+    "Version-confirmguestYARAandClamAVonfuturepairedcohort; do notmergehostdifferentYARAassetinto5enginebaseline."
+  ]
+}
