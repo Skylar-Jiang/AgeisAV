@@ -1,11 +1,12 @@
-"""Availability-first R6 research intake. Never evaluates a detection engine."""
+"""Reviewed-payload R7 research intake. Never evaluates a detection engine."""
 import fcntl,hashlib,json,os,sys,threading,time,urllib.error,urllib.parse,urllib.request
 from pathlib import Path
 
 CODE=Path(__file__).resolve().parent
-SCOPE=Path('/srv/aegisav-corpus/cohorts/available-20261018-r6')
+SCOPE=Path('/srv/aegisav-corpus/cohorts/available-20261019-r7-v3')
 sys.path.insert(0,str(CODE))
-from availability_sampling import select_available,POLICY_ID
+from availability_sampling import select_reviewed_available
+POLICY_ID='availability-first-reviewed-payload-v2'
 from collect_primary_cases_v2 import collection_dependency,retry_deadline
 import collect_malwarebazaar as collection
 
@@ -14,7 +15,7 @@ def identity():
     return dict(policy_id=POLICY_ID,dependency=collection_dependency(),
         sources={name:hashlib.sha256((CODE/name).read_bytes()).hexdigest() for name in
                  ['collect_available_cases.py','availability_sampling.py','acquisition_limits.py',
-                  'collect_primary_cases_v2.py','label_admission.py','exclude.json']})
+                  'collect_primary_cases_v2.py','label_admission.py','primary.json','exclude.json']})
 
 
 def request_metadata(query):
@@ -37,7 +38,7 @@ def request_metadata(query):
         except urllib.error.HTTPError as error:
             if error.code==429:
                 budget['not_before']=retry_deadline(error.headers.get('Retry-After'),time.time());collection.save(path,budget)
-            raise RuntimeError('metadata_http_'+str(error.code)) from None
+            return dict(query=query,query_status='http_error',http_status=error.code,rows=[])
         finally:secret=None
         if len(raw)>8*1024**2:raise ValueError('metadata_response_boundary')
         value=json.loads(raw)
@@ -50,15 +51,35 @@ def discover():
     collection.network('online');bound=identity();path=SCOPE/'incoming/discovery.json'
     state=json.loads(path.read_bytes()) if path.exists() else dict(identity=bound,queries=[])
     assert state['identity']==bound
-    queries=[dict(query='get_file_type',file_type='exe',limit=1000),dict(query='get_file_type',file_type='dll',limit=500)]
-    for query in queries:
-        if not any(r['query']==query for r in state['queries']):
-            state['queries'].append(request_metadata(query));collection.save(path,state)
-    rows=[r for q in state['queries'] for r in q['rows']]
-    selection=select_available(rows,set(json.loads((CODE/'exclude.json').read_bytes())))
-    if not selection['selected']:raise RuntimeError('no_eligible_candidates')
-    selected=dict(identity=bound,discovery_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),**selection)
     selection_path=SCOPE/'incoming/selection.json'
+    if selection_path.exists():
+        selected=json.loads(selection_path.read_bytes())
+        assert selected['identity']==bound and selected['discovery_sha256']==hashlib.sha256(path.read_bytes()).hexdigest()
+        return
+    primary=json.loads((CODE/'primary.json').read_bytes())
+    assert 1<=len(primary)<=120
+    # Validate the allowlist before any network request, independently of availability.
+    select_reviewed_available([],primary,set())
+    queries=[dict(query='get_info',hash=r['sha256']) for r in primary if r.get('payload_role_reviewed') is True]
+    queries += [dict(query='get_file_type',file_type='exe',limit=1000),dict(query='get_file_type',file_type='dll',limit=500)]
+    latest=[]
+    for query in queries:
+        attempts=[r for r in state['queries'] if r['query']==query]
+        if attempts and attempts[-1]['query_status']=='http_error':
+            if attempts[-1].get('http_status') in (401,403):
+                raise RuntimeError('metadata_authorization_stop')
+            if len(attempts)>=2:raise RuntimeError('metadata_queries_unresolved')
+        if not attempts or attempts[-1]['query_status']=='http_error':
+            # An explicit restart permits one retry; request_metadata enforces the
+            # persistent shared budget and Retry-After before making a request.
+            state['queries'].append(request_metadata(query));collection.save(path,state)
+        last=next(r for r in reversed(state['queries']) if r['query']==query)
+        if last['query_status'] not in {'ok','hash_not_found','no_results','file_type_not_found'}:
+            raise RuntimeError('metadata_queries_unresolved')
+        latest.append(last)
+    rows=[r for q in latest for r in q['rows']]
+    selection=select_reviewed_available(rows,primary,set(json.loads((CODE/'exclude.json').read_bytes())))
+    selected=dict(identity=bound,discovery_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),**selection)
     if selection_path.exists():assert json.loads(selection_path.read_bytes())==selected
     else:collection.save(selection_path,selected)
     print(json.dumps(dict(queries=len(state['queries']),metadata_rows=len(rows),selected=len(selected['selected']),
@@ -68,6 +89,10 @@ def discover():
 def download():
     assert os.getuid()==1002 and os.geteuid()==1002
     state=json.loads((SCOPE/'incoming/selection.json').read_bytes());assert state['identity']==identity()
+    primary=json.loads((CODE/'primary.json').read_bytes())
+    allowed={r['sha256'] for r in primary if r.get('payload_role_reviewed') is True}
+    assert {r['sha256'] for r in state['selected']}<=allowed
+    if not state['selected']:raise RuntimeError('no_eligible_candidates')
     from collection_boundary import validate_manifest
     validate_manifest(state['selected']);collection.ROOT=SCOPE
     collection.download(state['selected'],dict(**identity(),selection_sha256=hashlib.sha256((SCOPE/'incoming/selection.json').read_bytes()).hexdigest()))

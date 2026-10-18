@@ -1,5 +1,14 @@
 # 公开实验摘要：2026-10-14
 
+## Stage E R7 — 2026-10-19, actual guest intake and full pairing
+
+See [R7 report](research/ROUND_REPORT_20261019_STAGE_E_R7_PUBLIC.md). Original6GiBVM actually acquired5new strictPE(three technical-family tags/two sources;3automated operational high-confidence,2family-disputed unknown).24API requests,5/5encrypted downloads;Offline-only raw analysis. Fullsame-version five-engine+frozen-routing study298/298(286official controls+12technical/proxy cases),0missing engines/abstention. Control signals general5/routed1; technical/proxy signals10/12both; new4/5both. **Not formal Recall/FPR**. Emotet and a disputed newWin64case still miss; Win327-Zip alert remains.
+
+New37official rawPE/seven projects;12package digests/37strictPEverified,17Valid/20NotSigned. All37unscored:23source candidates/six groups,14development-component source files. No protected candidate scored; strict validation/final0. General/routed feature hashes equal298/298; R6-to-guest260hashes identical. YARA digest discrepancy reproduced as OS file ordering,248assets unchanged. Release267assets intact. Local295passed/6skipped;post-review4/4harmless guest guard checks;VM off/Offline,6snapshots retained;no production model/rule/threshold/Worker/UI change. Paired researchP50/P95=3.157/7.877s,treepeak567MiB/separateclamd1.29GiB;no controlled performance gain claim.
+
+Earlier entries below are historical; current product retains authenticated API, SQLite recovery and accepted Linen integration.
+
+
 旧冻结开发归档和新MalwareBazaar批次均不能重新包装为独立最终测试。
 已完成新批次同80原始PE配对、缓存关闭、串行新Worker、固定发布和原阈值：
 

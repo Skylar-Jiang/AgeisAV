@@ -1,0 +1,453 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "stage": "E R7",
+  "production_changed": false,
+  "acquisition": {
+    "real_guest_executed": true,
+    "metadata_requests": 19,
+    "encrypted_archive_requests": 5,
+    "total_requests": 24,
+    "primary_candidates": 17,
+    "known_prior_candidate_identities": 3,
+    "fresh_candidates": 14,
+    "metadata_hash_not_found": 11,
+    "metadata_http_502": 1,
+    "encrypted_archives_downloaded": 5,
+    "archive_bytes": 2704078,
+    "strict_raw_pe_acquired": 5,
+    "raw_bytes": 3906048,
+    "download_successes": 5,
+    "download_failures": 0,
+    "observed_technical_families": 3,
+    "technical_source_organizations": 2,
+    "technical_case_texts": 3,
+    "automated_label_grades": {
+      "unknown": 2,
+      "high-confidence": 3
+    },
+    "independent_human_reviewed": 0,
+    "recent_metadata_rows": 200,
+    "recent_broad_catalog_exact_intersection": 0,
+    "exact_prior_raw_overlap": 0,
+    "near_prior_edges": 0,
+    "new_new_near_edges": 0,
+    "screening_components": 5,
+    "formal_independent_test_samples": 0,
+    "caveat": "Five raw candidates are development data. Three technical-family tags are not three verified independent families; two family disputes remain unknown."
+  },
+  "benign_growth": {
+    "new_raw_pe": 37,
+    "projects_with_new_pe": 7,
+    "attempted_projects": 8,
+    "packages_verified": 12,
+    "sample_bytes": 106507598,
+    "download_bytes": 215321504,
+    "project_counts": {
+      "KeePassXC": 6,
+      "bat": 2,
+      "delta": 1,
+      "PeaZip": 14,
+      "CopyQ": 6,
+      "WinDirStat": 2,
+      "VLC": 6
+    },
+    "categories": {
+      "command_line": 12,
+      "desktop_gui": 11,
+      "native_dll": 12,
+      "installer_sfx": 2
+    },
+    "architectures": {
+      "x64": 25,
+      "x86": 12
+    },
+    "signature_statuses": {
+      "Valid": 17,
+      "NotSigned": 20
+    },
+    "near_prior": 2,
+    "screening_components": 36,
+    "protected_component_bridges": 0,
+    "scored": 0,
+    "unscored_source_candidates": 23,
+    "unscored_candidate_source_groups": 6,
+    "development_source_component_files_unscored": 14,
+    "human_reviewed": 0,
+    "formal_admitted": 0
+  },
+  "paired": {
+    "files": 298,
+    "benign": {
+      "files": 286,
+      "file_statuses": {
+        "completed": 286
+      },
+      "engines": {
+        "sha256": {
+          "statuses": {
+            "no_match": 286
+          },
+          "positive_signals": 0
+        },
+        "fuzzy": {
+          "statuses": {
+            "no_match": 286
+          },
+          "positive_signals": 0
+        },
+        "yara_x": {
+          "statuses": {
+            "no_match": 286
+          },
+          "positive_signals": 0
+        },
+        "clamav": {
+          "statuses": {
+            "no_match": 286
+          },
+          "positive_signals": 0
+        },
+        "lightgbm": {
+          "statuses": {
+            "no_match": 281,
+            "matched": 5
+          },
+          "positive_signals": 5
+        }
+      },
+      "routing_statuses": {
+        "no_match": 285,
+        "matched": 1
+      },
+      "routing_ml_positive_signals": 1,
+      "general_or_positive_signals": 5,
+      "routed_or_positive_signals": 1,
+      "per_engine_unique_positive_signals": {
+        "sha256": 0,
+        "fuzzy": 0,
+        "yara_x": 0,
+        "clamav": 0,
+        "lightgbm": 5
+      }
+    },
+    "technical_proxy_cases": {
+      "files": 12,
+      "file_statuses": {
+        "completed": 12
+      },
+      "engines": {
+        "sha256": {
+          "statuses": {
+            "no_match": 12
+          },
+          "positive_signals": 0
+        },
+        "fuzzy": {
+          "statuses": {
+            "no_match": 12
+          },
+          "positive_signals": 0
+        },
+        "yara_x": {
+          "statuses": {
+            "no_match": 12
+          },
+          "positive_signals": 0
+        },
+        "clamav": {
+          "statuses": {
+            "no_match": 8,
+            "matched": 4
+          },
+          "positive_signals": 4
+        },
+        "lightgbm": {
+          "statuses": {
+            "no_match": 2,
+            "matched": 10
+          },
+          "positive_signals": 10
+        }
+      },
+      "routing_statuses": {
+        "no_match": 2,
+        "matched": 10
+      },
+      "routing_ml_positive_signals": 10,
+      "general_or_positive_signals": 10,
+      "routed_or_positive_signals": 10,
+      "per_engine_unique_positive_signals": {
+        "sha256": 0,
+        "fuzzy": 0,
+        "yara_x": 0,
+        "clamav": 0,
+        "lightgbm": 6
+      }
+    },
+    "new_payload_candidates": {
+      "files": 5,
+      "file_statuses": {
+        "completed": 5
+      },
+      "engines": {
+        "sha256": {
+          "statuses": {
+            "no_match": 5
+          },
+          "positive_signals": 0
+        },
+        "fuzzy": {
+          "statuses": {
+            "no_match": 5
+          },
+          "positive_signals": 0
+        },
+        "yara_x": {
+          "statuses": {
+            "no_match": 5
+          },
+          "positive_signals": 0
+        },
+        "clamav": {
+          "statuses": {
+            "no_match": 5
+          },
+          "positive_signals": 0
+        },
+        "lightgbm": {
+          "statuses": {
+            "no_match": 1,
+            "matched": 4
+          },
+          "positive_signals": 4
+        }
+      },
+      "routing_statuses": {
+        "no_match": 1,
+        "matched": 4
+      },
+      "routing_ml_positive_signals": 4,
+      "general_or_positive_signals": 4,
+      "routed_or_positive_signals": 4,
+      "per_engine_unique_positive_signals": {
+        "sha256": 0,
+        "fuzzy": 0,
+        "yara_x": 0,
+        "clamav": 0,
+        "lightgbm": 4
+      }
+    },
+    "full_five_engine_completed": 298,
+    "paired_feature_hash_equal": 298,
+    "engine_versions": {
+      "sha256": [
+        "sha256 / 279d0104511d2850"
+      ],
+      "fuzzy": [
+        "tlsh-python/0.1.0 ppdeep/20260221 / 279d0104511d2850"
+      ],
+      "yara_x": [
+        "1.20.0 / 55ccec8463af1166"
+      ],
+      "clamav": [
+        "ClamAV 1.5.4 / 28148"
+      ],
+      "lightgbm": [
+        "LightGBM/4.6.0 EMBER2024/v3 / 13f35d8cd69b71e1f07f205b4ec633aafacce80423a10ebf4052293aa100b6f5:general"
+      ]
+    },
+    "r6_cross_platform": {
+      "files": 260,
+      "feature_hash_equal": 260,
+      "max_general_score_abs_difference": 2.710505431213761e-20
+    },
+    "performance": {
+      "paired_per_file": {
+        "n": 298,
+        "p50_ms": 3156.606937499987,
+        "p95_ms": 7877.139743150015
+      },
+      "engines": {
+        "sha256": {
+          "n": 298,
+          "p50_ms": 0.0715285,
+          "p95_ms": 6.692412749999982
+        },
+        "fuzzy": {
+          "n": 298,
+          "p50_ms": 10.7764885,
+          "p95_ms": 1565.7696407499975
+        },
+        "yara_x": {
+          "n": 298,
+          "p50_ms": 9.815999999999999,
+          "p95_ms": 32.073399999999964
+        },
+        "clamav": {
+          "n": 298,
+          "p50_ms": 10.9055,
+          "p95_ms": 1443.197149999999
+        },
+        "lightgbm": {
+          "n": 298,
+          "p50_ms": 989.059,
+          "p95_ms": 2286.7576999999987
+        }
+      },
+      "main_wall_ms": 1087676.770058,
+      "supplement_wall_ms": 97298.4088149999,
+      "paired_throughput_files_per_second": 0.2514820608170209,
+      "main_resources": {
+        "memory_peak_bytes": 594153472,
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+        "cpu_stat": "usage_usec 1050867061\nuser_usec 920306331\nsystem_usec 130560730\ncore_sched.force_idle_usec 0\nnr_periods 10825\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+      },
+      "supplement_resources": {
+        "memory_peak_bytes": 410243072,
+        "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+        "cpu_stat": "usage_usec 87211256\nuser_usec 80730334\nsystem_usec 6480922\ncore_sched.force_idle_usec 0\nnr_periods 946\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+      },
+      "caveat": "Two ML profiles/features per file; serial cold scanner processes and no result-cache hits. Not production service latency or a before/after improvement."
+    },
+    "official_control_positive_categories": {
+      "archive_installer": {
+        "files": 2,
+        "general": 2,
+        "routed": 1
+      },
+      "command_line": {
+        "files": 39,
+        "general": 1,
+        "routed": 0
+      },
+      "database_command_line": {
+        "files": 3,
+        "general": 2,
+        "routed": 0
+      },
+      "installer": {
+        "files": 1,
+        "general": 0,
+        "routed": 0
+      },
+      "managed_dll": {
+        "files": 219,
+        "general": 0,
+        "routed": 0
+      },
+      "native_dll": {
+        "files": 4,
+        "general": 0,
+        "routed": 0
+      },
+      "network_transfer_utility": {
+        "files": 3,
+        "general": 0,
+        "routed": 0
+      },
+      "pdf_reader_installer": {
+        "files": 2,
+        "general": 0,
+        "routed": 0
+      },
+      "portable_gui": {
+        "files": 2,
+        "general": 0,
+        "routed": 0
+      },
+      "runtime_dll": {
+        "files": 5,
+        "general": 0,
+        "routed": 0
+      },
+      "text_editor": {
+        "files": 6,
+        "general": 0,
+        "routed": 0
+      }
+    },
+    "strict_validation_admitted": 0,
+    "formal_final_admitted": 0,
+    "formal_metrics": {
+      "Recall": null,
+      "FPR": null,
+      "Precision": null,
+      "F1": null,
+      "ROC_AUC": null,
+      "PR_AUC": null,
+      "fixed_low_FPR_Recall": null,
+      "confidence_intervals": null
+    },
+    "caveat": "All predictions are observed development/operational proxy evidence, not qualified independent metrics; labels, correlation, full generic membership and population coverage unresolved."
+  },
+  "assets": {
+    "release": "c699902f19640593",
+    "release_assets_verified": 267,
+    "registry_sha256": "13f35d8cd69b71e1f07f205b4ec633aafacce80423a10ebf4052293aa100b6f5",
+    "clam_database_files": {
+      "bytecode.cvd": {
+        "bytes": 281702,
+        "sha256": "6d4aa01f219e988060fc419f495d07f27e0cdf1a2cccc065971da922c76f7ffb"
+      },
+      "daily.cld": {
+        "bytes": 86330368,
+        "sha256": "638ae8836e59d2be1607292506e4563ffe6637f8277c35ace9adfd5e6fd7644a"
+      },
+      "main.cvd": {
+        "bytes": 89072577,
+        "sha256": "0b2182d229f46981ec8f535382222f7c9dfdd656b250ad47988b910a8d302365"
+      }
+    },
+    "yara_source_artifacts_equal_local_and_release": 248,
+    "yara_digest_order_cause_confirmed": true
+  },
+  "independence": {
+    "local_fit_rows": 480000,
+    "local_validation_rows": 40000,
+    "local_test_rows": 119993,
+    "new42_exact_matches": 0,
+    "generic_full_membership": "unavailable_residual",
+    "near_training": "unavailable_residual",
+    "global_first_appearance": "not_established",
+    "protected_candidate_predictions": 0,
+    "independent_human_labels": 0,
+    "strict_validation_admitted": 0,
+    "formal_final_admitted": 0,
+    "candidate_screening_clusters_are_not_independent_draws": true
+  },
+  "verification": {
+    "local_pytest_passed": 295,
+    "skipped": 6,
+    "existing_warning": 1,
+    "guest_new_entry_fixtures_passed": 3,
+    "guest_initial_fixture_rejected": "operator-owned ancestor; corrected root-owned fixture v2 passed without guard relaxation",
+    "scanner_worker_replaced": false,
+    "production_thresholds_changed": false,
+    "post_review_guest_harmless_checks_passed": 4,
+    "post_review_real_api_requests": 0,
+    "post_review_malicious_files_used": 0,
+    "focused_code_review": "two findings fixed and re-reviewed; no important remaining findings",
+    "actual_intake_version": "v2; original source retained with502failure",
+    "published_research_entry_version": "v3; fail-closed incomplete discovery, bounded explicit retries and child SHA allowlist"
+  },
+  "closeout": {
+    "vm": "off",
+    "network": "Offline",
+    "ram_mib": 6144,
+    "start_required_host_available_gib": 8,
+    "snapshots_retained": 6,
+    "scan_tree_peak_bytes": 594153472,
+    "clamd_peak_bytes": 1387982848,
+    "guest_oom_events": 0,
+    "regenerable_guest_transport_bytes_removed": 48123085,
+    "host": {
+      "host_available_bytes": 9976463360,
+      "drive_c_free": 29040279552,
+      "drive_d_free": 103421026304
+    },
+    "malicious_raw_or_archive_on_host": false,
+    "malicious_code_executed": false,
+    "production_assets_modified": false
+  }
+}

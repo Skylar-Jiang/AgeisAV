@@ -1,5 +1,14 @@
 # 公开进度摘要：2026-10-15
 
+## Stage E R7 — 2026-10-19, actual guest intake and full pairing
+
+See [R7 report](research/ROUND_REPORT_20261019_STAGE_E_R7_PUBLIC.md). Original6GiBVM actually acquired5new strictPE(three technical-family tags/two sources;3automated operational high-confidence,2family-disputed unknown).24API requests,5/5encrypted downloads;Offline-only raw analysis. Fullsame-version five-engine+frozen-routing study298/298(286official controls+12technical/proxy cases),0missing engines/abstention. Control signals general5/routed1; technical/proxy signals10/12both; new4/5both. **Not formal Recall/FPR**. Emotet and a disputed newWin64case still miss; Win327-Zip alert remains.
+
+New37official rawPE/seven projects;12package digests/37strictPEverified,17Valid/20NotSigned. All37unscored:23source candidates/six groups,14development-component source files. No protected candidate scored; strict validation/final0. General/routed feature hashes equal298/298; R6-to-guest260hashes identical. YARA digest discrepancy reproduced as OS file ordering,248assets unchanged. Release267assets intact. Local295passed/6skipped;post-review4/4harmless guest guard checks;VM off/Offline,6snapshots retained;no production model/rule/threshold/Worker/UI change. Paired researchP50/P95=3.157/7.877s,treepeak567MiB/separateclamd1.29GiB;no controlled performance gain claim.
+
+Earlier entries below are historical; current product retains authenticated API, SQLite recovery and accepted Linen integration.
+
+
 已实现五引擎、真实ML调用、不可写模型发布、低内存特征提取、版本缓存、受限任务API、
 Ubuntu VMware NAT/离线切换与持续检查点。冻结模型和阈值未改变。
 

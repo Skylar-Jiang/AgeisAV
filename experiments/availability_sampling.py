@@ -2,6 +2,7 @@
 from collections import Counter,defaultdict
 import hashlib
 import re
+from urllib.parse import urlsplit
 
 POLICY_ID='availability-first-family-balanced-v1'
 
@@ -36,3 +37,23 @@ def select_available(rows,excluded,limit=96,per_family=8):
         eligible=sum(map(len,groups.values())),eligible_family_proxies=len(groups),
         selected_family_proxies=len({r['family_proxy'] for r in selected}),
         selection_uses_detector_results=False)
+
+
+def select_reviewed_available(rows,primary,excluded,limit=96,per_family=8):
+    """Role review authorizes intake, not a truth label or human admission."""
+    reviewed={}
+    for item in primary:
+        if item.get('payload_role_reviewed') is not True:continue
+        sha=item.get('sha256','');url=urlsplit(item.get('source_url',''))
+        if (not re.fullmatch('[0-9a-f]{64}',sha) or sha in reviewed
+                or url.scheme!='https' or not url.hostname or url.username is not None
+                or not re.fullmatch('[0-9a-f]{64}',item.get('source_text_sha256',''))
+                or not isinstance(item.get('locator'),str) or not item['locator'].strip()):
+            raise ValueError('primary_evidence')
+        reviewed[sha]={k:item.get(k) for k in ('source_url','source_text_sha256','locator','reported_family')}
+    allowed=[r for r in rows if r.get('sha256_hash') in reviewed]
+    result=select_available(allowed,excluded,limit,per_family)
+    result['policy_id']='availability-first-reviewed-payload-v2'
+    result['exclusions']['role_not_reviewed']=len(rows)-len(allowed)
+    for row in result['selected']:row['technical_evidence']=reviewed[row['sha256']]
+    return result
