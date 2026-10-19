@@ -7,6 +7,7 @@ import { Badge } from './ui/badge';
 import { Skeleton } from './ui/skeleton';
 import { LocalAccess } from './local-access';
 import { CostFigure } from './cost-figure';
+import { BehaviorLinks } from './behavior-links';
 import { bytesText, engines, ScanTask, statusText } from '@/lib/api';
 import { useApi } from '@/lib/use-api';
 
@@ -41,5 +42,6 @@ export function ReportDetail() {
             <div className="engine-evidence"><dl><div><dt>引擎版本</dt><dd translate="no">{result?.engine_version ?? '未返回'}</dd></div><div><dt>资产版本</dt><dd translate="no">{result?.artifact_version ?? '未配置'}</dd></div></dl>{result?.evidence.length ? <pre tabIndex={0} aria-label={`${engine.name} 原始证据`}>{JSON.stringify(result.evidence, null, 2)}</pre> : <p>无返回证据；请结合引擎状态阅读，不能据此认定安全。</p>}
               {result?.score != null && <div className="score-track" aria-label={`模型分数 ${result.score}，非恶意概率`}><span>模型分数</span><strong>{result.score.toFixed(6)}</strong><div><i style={{ width: `${Math.max(0, Math.min(100, result.score * 100))}%` }}/></div><small>冻结阈值：{result.threshold ?? '未返回'} · 非恶意概率</small></div>}</div></details>;
         })}</div></section><aside className="detail-context"><CostFigure engines={costs}/><section className="file-metadata"><h2>文件与策略</h2><dl><div><dt>文件类型</dt><dd>PE · 服务已解析</dd></div><div><dt>数字签名</dt><dd>未独立验证</dd></div><div><dt>本次文件墙钟</dt><dd>{file.elapsed_ms?.toLocaleString('zh-CN', { maximumFractionDigits: 1 }) ?? '未记录'} ms</dd></div><div><dt>融合策略</dt><dd>{report.fusion?.policy_id ?? '未返回'}</dd></div><div><dt>模型配置</dt><dd>{report.engines.lightgbm?.profile ?? '未配置'}</dd></div><div><dt>独立标签</dt><dd>Unknown</dd></div>{file.duplicate_of != null && <div><dt>任务内去重</dt><dd>复用第 {file.duplicate_of + 1} 个文件</dd></div>}</dl></section><p className="report-limits">{report.cached ? '缓存复用时，各引擎耗时来自原始计算。本次文件墙钟单独记录。' : '引擎可并行执行，耗时不能相加为总时延。'}本报告没有独立真值分母，不提供正式 Recall 或 FPR。</p></aside></div>
+      <BehaviorLinks sha256={report.sha256} task={id} fileIndex={index}/>
     </>}</>;
 }

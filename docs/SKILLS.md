@@ -42,3 +42,8 @@ Web指南重新获取并用于粘性导航偏移、无JS回退、可见焦点、
 五个目录均有合法的 `SKILL.md`。已阅读五份使用说明，审查 UI/UX 检索脚本的导入与文件写入路径。项目级 UI/UX 检索在 Python 3.12 上实际运行，`malware analyst evidence table --domain ux` 返回 1 条可核对的表格响应式建议；无外部依赖安装、无项目文件写入。Codex [官方文档](https://learn.chatgpt.com/docs/build-skills)说明会自动发现 `.agents/skills` 变更；若界面未出现新 Skill，重启 Codex 后再进行需要它的前端阶段。
 
 阶段 1 实际使用本机 `test-driven-development` 指导 PE/哈希、规则、ClamAV、API 和缓存功能按失败用例再实现；使用 `verification-before-completion` 对完整 pytest、真实 HTTP 调用和基准结果作实测核对；FastAPI Skill 用于 API 路由与请求边界设计。`requesting-code-review` 用于阶段 1 原型独立审查，结论记入进度记录。
+
+
+## 2026-10-19 Stage F 实际应用
+
+没有重新安装 Skills。重读仓库内 frontend-design、ui-ux-pro-max、Vercel react-best-practices 和 web-design-guidelines；保持已选 Linen Token 和自然滚动。运行 UI/UX 搜索 `error upload evidence keyboard --domain ux`，采用可聚焦且关联文件输入的错误摘要/原生键盘按钮。React 采用显式请求状态、派生筛选和事件触发导入，事件/进程分页，不引入重型图表依赖；刷新官方 Web Interface Guidelines 检查 label、focus、aria 状态和溢出。实际 Playwright 五尺寸截图，复核修复375px文件输入的 intrinsic width。系统性调试定位 Next.js 遥测 EXDEV，禁用本次遥测构建解决，没有改其他项目配置。TDD 和代码审查发现并修复重复终止、PID复用/开放竞争生命周期、已结束父边关联问题。浏览器插件未提供，记录后使用现有 Playwright；非只编译验收。

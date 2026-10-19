@@ -4,7 +4,7 @@ Windows PE 五引擎静态检测平台：SHA-256、TLSH/SSDeep、YARA-X、ClamAV
 统一 FastAPI、版本缓存、有界批量任务、模型发布及现有 VMware 离线静态分析自动化。
 
 这是经筛选的公开源代码快照。完整本地研究历史、私有候选清单、标签证据、原始数据、
-API Key、模型权重及 VM 文件没有上传。公开摘要不是独立准确率证明；阶段1尚未正式验收。
+API Key、模型权重及 VM 文件没有上传。公开摘要不是独立准确率证明。Stage E 为 Engineering complete / Research open；Stage F 离线行为分析已交付。
 来源和当前限制见[进度](docs/PROGRESS.md)、[实验摘要](docs/EXPERIMENTS.md)。
 
 ## 本地无害开发
@@ -41,3 +41,11 @@ VM脚本目前绑定本项目已有客户机、磁盘标识与冻结研究配置
 五引擎未命中不等于安全；未完成/失败/不适用不计阴性；未知标签不计正式准确率。
 原始证据和候选清单需合法授权本地访问，因此公开摘要无法单独复现私有文件上的检测结果。
 `PUBLIC_SOURCE_MANIFEST.json`提供本次公开文件字节哈希，不含私有历史。
+
+## 离线行为证据与本地交付
+
+`/linen/behavior/` 支持受限 Sysmon XML / 标准化 JSON 导入、固定 SigmaHQ 规则、进程链、原始事件字段与精确哈希声明关联。无日志不是行为安全，不改变静态裁决。
+原生 EVTX 和真实恶意动态执行未启用。示例：`backend/tests/fixtures/sysmon_harmless.json`（纯合成）。
+见 [行为功能与边界](docs/BEHAVIOR_ANALYSIS.md)、[Stage E 工程收尾](docs/STAGE_E_CLOSEOUT.md)、[本地部署与 CLI](docs/LOCAL_DEPLOYMENT.md)。
+
+仓库外报告 CLI：`python -m aegisav.behavior_cli input.json --output <private-new-report.json>`。

@@ -376,6 +376,45 @@ html:has(.linen-workspace) { color-scheme:light; background:#eeefe9; scroll-beha
 
 /* Product ledgers share Linen typography and tokens; evidence stays readable. */
 .product-section { padding-top:36px; padding-bottom:32px; }
+.behavior-workspace { max-width:1360px; margin-inline:auto; }
+.behavior-import { display:grid; grid-template-columns:minmax(0,1fr) minmax(240px,380px); column-gap:48px; }
+.behavior-import h2 { display:flex; align-items:center; gap:12px; }
+.behavior-import h2 svg { width:20px; height:20px; }
+.behavior-import p { max-width:72ch; }
+.behavior-import>p { grid-column:1 / -1; }
+.behavior-upload-controls { display:grid; grid-template-columns:minmax(0,1fr); min-width:0; align-content:start; gap:16px; font-size:14px; }
+.behavior-upload-controls input { width:100%; min-width:0; min-height:44px; padding-block:8px; }
+.behavior-upload-controls button { justify-self:start; }
+.behavior-empty { padding:40px 0; }
+.behavior-empty>svg { width:28px; height:28px; color:var(--primary); margin-bottom:16px; }
+.behavior-empty p,.behavior-evidence p { line-height:1.9; font-size:14px; }
+.behavior-evidence { margin-top:32px; }
+.behavior-evidence .region-heading { flex-wrap:wrap; gap:16px; }
+.behavior-evidence .region-heading h2 { margin-bottom:8px; }
+.behavior-metadata { margin-top:24px; }
+.behavior-history { list-style:none; padding:0; }
+.behavior-history a { display:flex; gap:24px; flex-wrap:wrap; padding:20px 0; border-bottom:1px solid var(--border); font-size:14px; }
+.behavior-history a[aria-current] { color:var(--primary); }
+.behavior-history code { flex:1; }
+.behavior-process { display:flex; align-items:center; flex-wrap:wrap; gap:16px; padding:20px 0; border-bottom:1px solid var(--border); font-size:14px; }
+.behavior-process>div { flex:1; min-width:200px; display:grid; gap:8px; overflow-wrap:anywhere; }
+.behavior-process strong { font-weight:500; }
+.behavior-process small,.behavior-process code { color:var(--muted-foreground); }
+.behavior-event-list details { border-bottom:1px solid var(--border); padding:16px 0; }
+.behavior-event-list summary { min-height:44px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; cursor:pointer; font-size:14px; }
+.behavior-event-list time { color:var(--muted-foreground); }
+.behavior-event-list pre { margin:16px 0; padding:20px; background:var(--muted); overflow:auto; max-height:480px; font-size:12px; line-height:1.8; border-radius:8px; }
+.behavior-evidence .rule-list summary { flex-wrap:wrap; }
+.behavior-evidence .rule-list summary strong { flex:1; min-width:200px; }
+.behavior-evidence .product-metadata dd { max-width:76%; }
+.behavior-evidence code { overflow-wrap:anywhere; }
+@media(max-width:700px) {
+  .behavior-import { grid-template-columns:minmax(0,1fr); gap:24px; }
+  .behavior-evidence .product-metadata>div { display:block; }
+  .behavior-evidence .product-metadata dd { max-width:100%; text-align:left; margin-top:8px; }
+  .behavior-process>div { min-width:0; flex-basis:75%; }
+  .behavior-event-list pre { padding:12px; }
+}
 .product-section h1 { font-family:Georgia,'Songti SC','STSong','SimSun',serif; font-size:clamp(30px,3vw,44px); font-weight:400; letter-spacing:-.04em; }
 .product-section h2 { font-size:20px; font-weight:500; margin-bottom:16px; }
 .product-actions,.product-tabs,.product-pagination { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }

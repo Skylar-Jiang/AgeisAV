@@ -9,6 +9,7 @@ dependencies = [
   "tlsh-python==0.1.0",
   "uvicorn==0.54.0",
   "yara-x==1.20.0",
+  "PyYAML==6.0.3",
 ]
 
 [project.optional-dependencies]

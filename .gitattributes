@@ -14,3 +14,4 @@
 /experiments/availability_sampling.py -text whitespace=cr-at-eol
 # Reviewed rule provenance hashes bind exact source bytes too.
 /rules/yara/** -text
+rules/sigma/*.yml -text

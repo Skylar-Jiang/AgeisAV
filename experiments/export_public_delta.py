@@ -25,7 +25,10 @@ ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
                  'docs/research/ROUND_REPORT_20261018_STAGE_E_R6_PUBLIC.md',
                  'docs/benchmarks/stage_e6_summary_20261018.json',
                  'docs/research/ROUND_REPORT_20261019_STAGE_E_R7_PUBLIC.md',
-                 'docs/benchmarks/stage_e7_summary_20261019.json'}
+                 'docs/benchmarks/stage_e7_summary_20261019.json',
+                 'docs/STAGE_E_CLOSEOUT.md','docs/BEHAVIOR_ANALYSIS.md','docs/LOCAL_DEPLOYMENT.md',
+                 'docs/research/ROUND_REPORT_20261019_STAGE_F_PUBLIC.md',
+                 'docs/benchmarks/stage_f_summary_20261019.json'}
 
 
 def check_blob(name,data,private_hashes):

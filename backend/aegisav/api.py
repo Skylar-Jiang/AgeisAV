@@ -15,6 +15,7 @@ from starlette.concurrency import run_in_threadpool
 from .scanner import StaticScanner
 from .tasks import ScanTasks, IdempotencyConflict, ACTIVE
 from .local_access import LocalAccess, COOKIE, SESSION_SECONDS
+from .behavior_api import BehaviorAPI
 
 
 class BatchRequest(BaseModel):
@@ -33,11 +34,12 @@ class TaskRequest(BaseModel):
 
 def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, release_id=None,
                access_token=None, frontend_dir=None, db_path=None, runner=None,
-               file_timeout=120, task_timeout=600) -> FastAPI:
+               file_timeout=120, task_timeout=600, behavior_runner=None) -> FastAPI:
     def manager(path=None):
         return ScanTasks(scanner, db_path=path, runner=runner, file_timeout=file_timeout,
                          task_timeout=task_timeout, service_release=release_id)
     tasks=manager()
+    behavior=BehaviorAPI(lambda:tasks,runner=behavior_runner)
     uploads=BoundedSemaphore(2)
     @asynccontextmanager
     async def lifespan(app):
@@ -45,13 +47,20 @@ def create_app(scanner: StaticScanner, max_file_bytes: int = 16 * 1024 * 1024, r
         if db_path is not None:
             tasks.close()
             tasks=manager(db_path)
+            try:
+                behavior.open(db_path)
+            except BaseException:
+                tasks.close()
+                raise
         app.state.tasks=tasks
         try:
             yield
         finally:
             await run_in_threadpool(tasks.close)
+            await run_in_threadpool(behavior.store.close)
     app = FastAPI(title="AegisAV Static Scan API",lifespan=lifespan)
     app.state.tasks=tasks
+    app.include_router(behavior.router)
 
     @app.exception_handler(sqlite3.Error)
     async def database_failure(request, error):

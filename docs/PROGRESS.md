@@ -1,5 +1,14 @@
 # 公开进度摘要：2026-10-15
 
+## 2026-10-19：Stage E 工程收尾 → Stage F 实际交付 → Stage G 启动
+
+Stage E **Engineering complete / Research open**，不开展 R8/R9 作为前置；冻结五引擎、模型/阈值、静态规则/参考库/融合和 VM 不变。独立验证/最终集准入仍 0，正式 Recall/FPR 不可报告。历史证据完整保留，研究 backlog 见 STAGE_E_CLOSEOUT.md。
+
+Stage F 已实现受限子进程 Sysmon XML/规范 JSON、两条固定 SigmaHQ/DRL 规则（明确子集/弃权）、主机/GUID/闭合 PID 生命周期关联、独立 SQLite 报告、认证 API、Linen 导入/证据/导出/静态精确哈希声明关联。无日志 not_observed，行为不加入静态裁决。纯合成 6 事件/2 进程/1 命中；公开 MIT 日志 59 Sysmon 事件全部解析、两规则未命中，含不支持事件故总体 incomplete，非阴性/非准确率。真实浏览器 11 检查含 5 尺寸、无横溢、实体拒绝、XSS 文本、实际服务强制重启/持久报告恢复；ClamAV 在宿主 unavailable 如实显示，不重复 VM 评测。
+
+1,000 事件 5 次受限解析 P50/P95=0.813/0.875秒，采样进程树约38.2MiB（非严格峰值），输出一致、0失败；不宣称生产 Worker 加速。Windows 首版采样仅看 venv launcher 的错误低值保留为无效证据，修正后按后代进程树测量。全套本地321通过/6跳过，公开筛选分发320通过/7跳过（含1项额外私有证据排除），均仅1既有anyio警告。Stage G 首项已交付仓库外、不覆盖的受限回放 CLI 及本地部署指南；下一步交付包/操作手册/最终演示，科学研究开放。详见 research/ROUND_REPORT_20261019_STAGE_F_PUBLIC.md。
+
+
 ## Stage E R7 — 2026-10-19, actual guest intake and full pairing
 
 See [R7 report](research/ROUND_REPORT_20261019_STAGE_E_R7_PUBLIC.md). Original6GiBVM actually acquired5new strictPE(three technical-family tags/two sources;3automated operational high-confidence,2family-disputed unknown).24API requests,5/5encrypted downloads;Offline-only raw analysis. Fullsame-version five-engine+frozen-routing study298/298(286official controls+12technical/proxy cases),0missing engines/abstention. Control signals general5/routed1; technical/proxy signals10/12both; new4/5both. **Not formal Recall/FPR**. Emotet and a disputed newWin64case still miss; Win327-Zip alert remains.
