@@ -1,0 +1,17 @@
+flowchart TD
+  A[Local authenticated request] --> B{Input kind}
+  B -->|Benign PE on Windows| C[Byte limits and task admission]
+  C --> D[Disposable supervised scan process]
+  D --> E[SHA / TLSH-SSDeep / YARA-X / ClamAV / LightGBM]
+  E --> F[Preserve errors, abstentions, versions and evidence]
+  F --> G[Frozen static evidence OR]
+  G --> H[(Private task SQLite)]
+  B -->|Offline Sysmon JSON or XML| I[Bounded parser process]
+  I --> J[Supported Sigma subset and process lifecycle association]
+  J --> K[(Private behavior SQLite)]
+  H --> L{Exact SHA claim in process-create event?}
+  K --> L
+  L -->|Yes| M[Traceable claim link; authenticity unverified]
+  L -->|No| N[Explicit not linked / not observed]
+  M --> O[Linen evidence and JSON export]
+  N --> O

@@ -23,7 +23,7 @@ def main():
     try:
         with args.input.open('rb') as stream: data=stream.read(MAX_BYTES+1)
         if len(data)>MAX_BYTES: raise ValueError('Behavior log exceeds 4 MiB')
-        runner=ProcessScanner([sys.executable,'-m','aegisav.behavior_worker'],memory_bytes=256*1024**2)
+        runner=ProcessScanner([sys.executable,'-B','-m','aegisav.behavior_worker'],memory_bytes=256*1024**2)
         report=runner.scan(data,Event(),time.monotonic()+20)
         report['static_link']=dict(status='not_linked',reason='CLI did not select a static API report',authenticity_verified=False)
         output.parent.mkdir(parents=True,exist_ok=True,mode=0o700)

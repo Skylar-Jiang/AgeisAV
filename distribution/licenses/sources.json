@@ -1,0 +1,17 @@
+[
+  {
+    "file": "YARA-X-BSD-3-Clause.txt",
+    "source": "https://raw.githubusercontent.com/VirusTotal/yara-x/v1.20.0/LICENSE",
+    "sha256": "fdf05444c9178e662fa28810d94a1fa6ec32d7be798241c98094213317265880"
+  },
+  {
+    "file": "nanobind-BSD.txt",
+    "source": "https://raw.githubusercontent.com/wjakob/nanobind/v3.1.0/LICENSE",
+    "sha256": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836"
+  },
+  {
+    "file": "Apache-2.0.txt",
+    "source": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  }
+]

@@ -13,7 +13,7 @@ import subprocess
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
-PREFIXES=('backend/','ml/','experiments/','vm/','rules/','frontend/','.agents/skills/')
+PREFIXES=('backend/','ml/','experiments/','vm/','rules/','frontend/','distribution/','.agents/skills/')
 ROOT_FILES={'.gitignore','.gitattributes','pyproject.toml','requirements-win-py312.txt',
             'requirements-ml.txt','requirements-ml-lock.txt','requirements.txt','.env.example'}
 DOCS={'docs/research/LABEL_ADMISSION_V1.md',

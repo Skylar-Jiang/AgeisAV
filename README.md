@@ -1,5 +1,12 @@
 # AegisAV
 
+## Windows 11便携版（0.2.0）
+
+整个ZIP解压后双击`Start-AegisAV.cmd`，首次通过`Access-Key.cmd`复制本地私有密钥登录；结束用`Stop-AegisAV.cmd`。内置隔离Python和编译前端，不需用户装Python/Node。模型权重、ML环境及ClamAV/病毒库为外部可选组件；缺失会明确弃权。
+
+[用户手册](docs/USER_GUIDE.md) · [部署/故障排除](docs/DELIVERY_RUNBOOK.md) · [课程演示](docs/DEMO_GUIDE.md) · [架构](docs/SYSTEM_DESIGN.md) · [限制](docs/KNOWN_LIMITATIONS.md) · [真实验收](docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md)。仅回环使用；真实恶意PE不能进入Windows/WSL。发行ZIP和SHA作为本地交付物，不把二进制、私有资产和数据库提交到Git。
+
+
 Windows PE 五引擎静态检测平台：SHA-256、TLSH/SSDeep、YARA-X、ClamAV、LightGBM，
 统一 FastAPI、版本缓存、有界批量任务、模型发布及现有 VMware 离线静态分析自动化。
 

@@ -1,5 +1,19 @@
 # 公开进度摘要：2026-10-15
 
+## 2026-10-19：Stage G最终交付复核
+
+确切ZIP 31,507,698B / 展开97,532,602B / 3920文件；SHA256 `caba52afdbcfb9bc597447b7cb8ac75eb025972b400639a389d3565cf15c6e43`。实际浏览器28通过0失败、14截图；最终包无害故障5通过0失败。含外置冻结ML实际调用，宿主ClamAV仍unavailable。单次启动10.55s/停止9.28s，不作公平性能结论。完整手册/可编辑图及包外acceptance.json已核验；同文件集ZIP重压摘要一致。首次故障夹具15秒就绪超时如实保留，受控复测通过，生产限制未改。清理自有测试进程/临时配置；冗余构建目录自动删除被审批阻止，未绕过。原Ubuntu VM及六快照未动，其他项目VM未动。研究open/正式准确率未验收。详见Stage G公开报告最后一节。
+
+
+## 2026-10-19：Stage G Windows 11便携交付
+
+0.2.0采用内置CPython3.12.15的便携ZIP，包含编译Linen、22个固定Python依赖、SHA/模糊指纹/YARA-X及固定Sigma规则；不分发私有权重、ClamAV库、凭据、DB、样本或VM。Start/Stop/Access-Key/Verify脚本、包外私有ACL目录、实例租约、启动失败清理、回环认证和外置ML路径配置已实现。
+
+实际ZIP临时中文/空格目录验收27项通过，七页桌面/手机14截图、真实批量静态扫描/错误/弃权、行为导入/Sigma/进程链/哈希声明关联、JSON导出、实际服务重启与报告一致、外置ML实调用、篡改和卸载保留报告。5项实际包内运行时无害故障验收通过，取消/截止/服务死亡/Job清理/SQLite中断恢复/背压后资源归零。本地338通过6跳过，公开337通过7跳过，1既有依赖警告。最终包复核及摘要另见交付记录，不能将软件功能验收当正式检测准确率。
+
+首轮发现并修复宿主PYTHONHOME污染外置ML；审查修复401误报停机、监听关闭早于数据库清理、启动遗留/身份竞态和显式Everyone ACL残留。静态生产模型/阈值/规则/融合/Worker及Linen实现不变。主机ClamAV仍unavailable；核心ML缺失时弃权，配置已有外置模型后4引擎实际完成。原6GiB VM关机、六快照保留。Stage E Engineering complete / Research open，严格独立验证/最终集0，无正式Recall/FPR；F离线两规则/不支持原生EVTX/非动态沙箱。见research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md及用户/部署/演示手册。
+
+
 ## 2026-10-19：Stage E 工程收尾 → Stage F 实际交付 → Stage G 启动
 
 Stage E **Engineering complete / Research open**，不开展 R8/R9 作为前置；冻结五引擎、模型/阈值、静态规则/参考库/融合和 VM 不变。独立验证/最终集准入仍 0，正式 Recall/FPR 不可报告。历史证据完整保留，研究 backlog 见 STAGE_E_CLOSEOUT.md。
