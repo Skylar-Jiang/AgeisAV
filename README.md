@@ -56,3 +56,9 @@ VM脚本目前绑定本项目已有客户机、磁盘标识与冻结研究配置
 见 [行为功能与边界](docs/BEHAVIOR_ANALYSIS.md)、[Stage E 工程收尾](docs/STAGE_E_CLOSEOUT.md)、[本地部署与 CLI](docs/LOCAL_DEPLOYMENT.md)。
 
 仓库外报告 CLI：`python -m aegisav.behavior_cli input.json --output <private-new-report.json>`。
+
+## 准确率与效率优化（2026-10-22）
+
+默认扫描源码对 ≥1 MiB 文件重叠执行哈希和独立引擎；检测模型、阈值与交付 ZIP 保持稳定。
+粗化模型因低误报预算下少检出 399 个开发样本被淘汰；原生 SSDeep 仍仅为研究候选。
+真实 HTTP 配对、资源、失败记录及证据边界见 [本轮结果](docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md)。

@@ -1,0 +1,339 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "clamav": "unavailable, explicit abstention",
+  "raw_malware_on_host": false,
+  "test_vectors_read": false,
+  "production_assets_changed": false,
+  "default_source_change": "Overlap hashing and independent engines only for input >=1MiB; existing disposable workers and report order preserved",
+  "http_final": {
+    "pairs": 9,
+    "rounds": 3,
+    "summary": {
+      "small": {
+        "baseline": {
+          "p50_ms": 3218.1646999670193,
+          "p95_ms": 3224.6066998923197,
+          "throughput_inputs_per_second": 0.3134506337371007
+        },
+        "candidate": {
+          "p50_ms": 3204.725299961865,
+          "p95_ms": 3242.1225999714807,
+          "throughput_inputs_per_second": 0.3120963748617076
+        }
+      },
+      "large": {
+        "baseline": {
+          "p50_ms": 16021.471900050528,
+          "p95_ms": 17188.012600061484,
+          "throughput_inputs_per_second": 0.062160988344064076
+        },
+        "candidate": {
+          "p50_ms": 9244.166400050744,
+          "p95_ms": 11524.486399954185,
+          "throughput_inputs_per_second": 0.10079000854912486
+        }
+      },
+      "batch": {
+        "baseline": {
+          "p50_ms": 10453.811899991706,
+          "p95_ms": 10495.309800026007,
+          "throughput_inputs_per_second": 0.3826062663785648
+        },
+        "candidate": {
+          "p50_ms": 9984.786199987866,
+          "p95_ms": 10353.05400006473,
+          "throughput_inputs_per_second": 0.39629087199037816
+        }
+      }
+    },
+    "all_non_timing_reports_equal": true,
+    "running_worker_cancel_and_recovery": true,
+    "sqlite_reopen_equal": true,
+    "workers_services_closed": true,
+    "scanner_sha256": {
+      "baseline": "0a481ce677237ecf87d2ae5826862c48ea46420820fac43694fa6cd52684bcb8",
+      "candidate": "eb447b5f69259605a12a871699eb53c3baa95bd2df36691f11a1fc65d1712dc1"
+    }
+  },
+  "model_development": {
+    "independent_validation": false,
+    "fit_rows": 480000,
+    "validation_rows": 40000,
+    "candidate_promoted": false,
+    "decision": "reject",
+    "comparison_baseline": "Frozen local Win64 research model; default production still general@0.5",
+    "baseline": {
+      "FP20": {
+        "threshold": 0.9831222501035356,
+        "tp": 18231,
+        "fp": 20,
+        "tn": 19980,
+        "fn": 1769
+      },
+      "FP100": {
+        "threshold": 0.8950223050542272,
+        "tp": 19162,
+        "fp": 100,
+        "tn": 19900,
+        "fn": 838
+      },
+      "FP200": {
+        "threshold": 0.7223988037276226,
+        "tp": 19552,
+        "fp": 200,
+        "tn": 19800,
+        "fn": 448
+      },
+      "default_0.5": {
+        "threshold": 0.5,
+        "tp": 19699,
+        "fp": 293,
+        "tn": 19707,
+        "fn": 301
+      }
+    },
+    "candidate": {
+      "FP20": {
+        "threshold": 0.9770835509786718,
+        "tp": 17832,
+        "fp": 20,
+        "tn": 19980,
+        "fn": 2168
+      },
+      "FP100": {
+        "threshold": 0.8652861429793316,
+        "tp": 19058,
+        "fp": 100,
+        "tn": 19900,
+        "fn": 942
+      },
+      "FP200": {
+        "threshold": 0.7182921459096604,
+        "tp": 19459,
+        "fp": 200,
+        "tn": 19800,
+        "fn": 541
+      },
+      "default_0.5": {
+        "threshold": 0.5,
+        "tp": 19675,
+        "fp": 314,
+        "tn": 19686,
+        "fn": 325
+      }
+    },
+    "paired": {
+      "FP20": {
+        "recall": {
+          "candidate_only_positive": 114,
+          "baseline_only_positive": 513,
+          "delta": -0.01995,
+          "sample_iid_bootstrap_ci95": [
+            -0.0224,
+            -0.0175
+          ]
+        },
+        "fpr": {
+          "candidate_only_positive": 8,
+          "baseline_only_positive": 8,
+          "delta": 0.0,
+          "sample_iid_bootstrap_ci95": [
+            -0.0004,
+            0.0004
+          ]
+        },
+        "weeks": [
+          {
+            "week": 48,
+            "tp_delta": -112,
+            "fp_delta": 0
+          },
+          {
+            "week": 49,
+            "tp_delta": -116,
+            "fp_delta": -2
+          },
+          {
+            "week": 50,
+            "tp_delta": -67,
+            "fp_delta": 3
+          },
+          {
+            "week": 51,
+            "tp_delta": -104,
+            "fp_delta": -1
+          }
+        ]
+      },
+      "FP100": {
+        "recall": {
+          "candidate_only_positive": 85,
+          "baseline_only_positive": 189,
+          "delta": -0.0052,
+          "sample_iid_bootstrap_ci95": [
+            -0.00685,
+            -0.0036
+          ]
+        },
+        "fpr": {
+          "candidate_only_positive": 31,
+          "baseline_only_positive": 31,
+          "delta": 0.0,
+          "sample_iid_bootstrap_ci95": [
+            -0.0008,
+            0.00075
+          ]
+        },
+        "weeks": [
+          {
+            "week": 48,
+            "tp_delta": -26,
+            "fp_delta": 3
+          },
+          {
+            "week": 49,
+            "tp_delta": -34,
+            "fp_delta": 7
+          },
+          {
+            "week": 50,
+            "tp_delta": -23,
+            "fp_delta": -3
+          },
+          {
+            "week": 51,
+            "tp_delta": -21,
+            "fp_delta": -7
+          }
+        ]
+      },
+      "FP200": {
+        "recall": {
+          "candidate_only_positive": 54,
+          "baseline_only_positive": 147,
+          "delta": -0.00465,
+          "sample_iid_bootstrap_ci95": [
+            -0.0061,
+            -0.0032987500000000182
+          ]
+        },
+        "fpr": {
+          "candidate_only_positive": 38,
+          "baseline_only_positive": 38,
+          "delta": 0.0,
+          "sample_iid_bootstrap_ci95": [
+            -0.00085,
+            0.00085
+          ]
+        },
+        "weeks": [
+          {
+            "week": 48,
+            "tp_delta": -24,
+            "fp_delta": 4
+          },
+          {
+            "week": 49,
+            "tp_delta": -29,
+            "fp_delta": 3
+          },
+          {
+            "week": 50,
+            "tp_delta": -26,
+            "fp_delta": -4
+          },
+          {
+            "week": 51,
+            "tp_delta": -14,
+            "fp_delta": -3
+          }
+        ]
+      }
+    },
+    "inference": {
+      "baseline": {
+        "p50_ms": 2695.007500005886,
+        "p95_ms": 2863.085600081831,
+        "raw_ms": [
+          2720.064799999818,
+          2684.437300078571,
+          2863.085600081831,
+          2674.2224000627175,
+          2695.007500005886
+        ],
+        "model_bytes": 3735395,
+        "single_warm_load_ms": 22.208399954251945
+      },
+      "candidate": {
+        "p50_ms": 2121.924699982628,
+        "p95_ms": 2198.8058000570163,
+        "raw_ms": [
+          1986.2585999071598,
+          2121.924699982628,
+          2198.8058000570163,
+          2177.9156000120565,
+          2101.524000056088
+        ],
+        "model_bytes": 1952189,
+        "single_warm_load_ms": 11.759900022298098
+      }
+    },
+    "resource_usage": {
+      "peak_rss_bytes": 2039418880,
+      "peak_private_bytes": 3448856576,
+      "minimum_available_bytes": 7987597312,
+      "sampling_seconds": 0.1
+    },
+    "dataset_construction_seconds": 56.51599999994505,
+    "fit_seconds": 400.39000000001397,
+    "constructor_limitation": "Completed candidate used native default constructor threads and minleaf20; training4threads/minleaf200. Corrected full-param Sequence wrapper only checked on synthetic exact prediction parity, not rerun at full scale.",
+    "old_memmap_resource_aborts": 2,
+    "historical_false_positive_controls": {
+      "count": 5,
+      "general_alerts": 5,
+      "existing_routed_alerts": 1,
+      "candidate_routed_alerts": 1,
+      "scope": "Previously observed operational presumed-benign controls; selected on historical positives"
+    }
+  },
+  "native_research": {
+    "production_enabled": false,
+    "parity_cases": 65,
+    "pairs": 12,
+    "summary": {
+      "reference": {
+        "p50_ms": 9678.80889994558,
+        "p95_ms": 20224.061500048265,
+        "throughput_files_per_second": 0.09125135510921704,
+        "max_sampled_tree_rss_bytes": 419659776
+      },
+      "native": {
+        "p50_ms": 8375.425299978815,
+        "p95_ms": 11615.100800059736,
+        "throughput_files_per_second": 0.12802270542401395,
+        "max_sampled_tree_rss_bytes": 422592512
+      }
+    },
+    "sampled_cpu_seconds": {
+      "reference": 142.640625,
+      "native": 80.375
+    },
+    "all_other_non_timing_fields_equal": true,
+    "all_worker_cleanup_confirmed": true,
+    "scope": "ProcessScanner only; excludes HTTP. Expected research backend-version suffix explicitly compared."
+  },
+  "verification": {
+    "core_passed": 350,
+    "core_skipped": 8,
+    "ml_experiment_checks_passed": 4,
+    "independent_readonly_review": "no blockers after corrections"
+  },
+  "limitations": [
+    "No independent generalization or deployment FPR evidence",
+    "Only Win64 feature study; no family labels or PE subtype metadata used",
+    "Three-round installed-benign timing estimates; nearest-rank tail unstable",
+    "Sampled process-tree resources can miss short-lived children and peaks; shared RSS can double count",
+    "Prior prototypes and failed harness launches retained; their aggregate speed gains are not final-source measurements"
+  ]
+}

@@ -32,7 +32,9 @@ ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
                  'docs/USER_GUIDE.md','docs/SYSTEM_DESIGN.md','docs/DELIVERY_RUNBOOK.md',
                  'docs/DEMO_GUIDE.md','docs/KNOWN_LIMITATIONS.md',
                  'docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md',
-                 'docs/benchmarks/stage_g_summary_20261019.json'}
+                 'docs/benchmarks/stage_g_summary_20261019.json',
+                 'docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md',
+                 'docs/benchmarks/optimization_20261022.json'}
 
 
 def check_blob(name,data,private_hashes):

@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "1ecaa6f8ab21ef86d1877404ec6b3a6273fa7eb8",
+  "source_revision": "77d00f2bb945570dec8f3dac4076331a4ed46c5e",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -714,8 +714,8 @@
     },
     {
       "path": "backend/aegisav/runtime.py",
-      "sha256": "481bbbc53a55d378b203409acf4eb3f7ae464d22dc78836b7d688c546d976173",
-      "bytes": 1139
+      "sha256": "8e7a08a9dc550b49b67adc37f9a5b72f967b5bde3170f765d6ac724b2e976836",
+      "bytes": 1120
     },
     {
       "path": "backend/aegisav/scan_process.py",
@@ -734,8 +734,8 @@
     },
     {
       "path": "backend/aegisav/scanner.py",
-      "sha256": "29207f5b7b809aca0fa8f9098411d012de20e3a7c3270a7a73d9c04794f9dc52",
-      "bytes": 6550
+      "sha256": "eb447b5f69259605a12a871699eb53c3baa95bd2df36691f11a1fc65d1712dc1",
+      "bytes": 7551
     },
     {
       "path": "backend/aegisav/task_store.py",
@@ -849,8 +849,8 @@
     },
     {
       "path": "backend/tests/test_clamav.py",
-      "sha256": "97f61cc926f332947bfd7d2212b4eaa5ed733be4fa056ab744d8d67e15742039",
-      "bytes": 4018
+      "sha256": "acb15b1e5f33097b3b1b238831f2fef2aeae3ddff1bc70ac89dd63497aa5ef82",
+      "bytes": 7537
     },
     {
       "path": "backend/tests/test_collection_boundary.py",
@@ -881,6 +881,11 @@
       "path": "backend/tests/test_ember_protocol.py",
       "sha256": "cad0a56fe41d3f2bd9f914721a59ee575dfa8069d3e92a4f60f92f54c173acf7",
       "bytes": 5300
+    },
+    {
+      "path": "backend/tests/test_engine_overlap.py",
+      "sha256": "8850ef41a5c79cca1a53097bfc2b72137f6d224cbea93234a4c27bd5dfa8d46b",
+      "bytes": 2423
     },
     {
       "path": "backend/tests/test_entrypoints.py",
@@ -963,6 +968,11 @@
       "bytes": 8725
     },
     {
+      "path": "backend/tests/test_model_search_round2.py",
+      "sha256": "0708166afe5d572dfb87b1a28bc4cd25185d4d68c8ddfb70de8e346059b95cf8",
+      "bytes": 2998
+    },
+    {
       "path": "backend/tests/test_official_multivendor_collection.py",
       "sha256": "ece05dbbc663ed5a70d0c82eaeed47f82741950edbd4b6eff5ce7ca682b261b7",
       "bytes": 1733
@@ -971,6 +981,11 @@
       "path": "backend/tests/test_official_runner_paths.py",
       "sha256": "dcc52599bf5ad6632382b9125d9543ef3bf94e1572caefdbfb0028d4b1557859",
       "bytes": 2763
+    },
+    {
+      "path": "backend/tests/test_optimization_comparison.py",
+      "sha256": "17051d70976f278000b3e97afd4cd74b7663e34ac84e9575286929bafd802c5c",
+      "bytes": 1001
     },
     {
       "path": "backend/tests/test_product_release.py",
@@ -1009,13 +1024,13 @@
     },
     {
       "path": "backend/tests/test_scanner.py",
-      "sha256": "e42a1747ac90e3ec25f5a37d515e1d1b3c115485fdd6157298198363a33d8d0e",
-      "bytes": 5842
+      "sha256": "d2504edfd0f56717e716f724f91403908fe35e3694281ad98a54fcfca249aaef",
+      "bytes": 7259
     },
     {
       "path": "backend/tests/test_service_startup.py",
-      "sha256": "7ada261fb8af79d2b8f31bc342980042d9bd2bf6a73970509ca74689c112876a",
-      "bytes": 473
+      "sha256": "d89a819683f038cc4e8a0c44e21afb8047e9f6cd31efc73e17ecbca3247f6563",
+      "bytes": 551
     },
     {
       "path": "backend/tests/test_stage_e_checkpoint.py",
@@ -1096,6 +1111,11 @@
       "path": "distribution/diagrams/architecture.mmd",
       "sha256": "a0e62738dc05305593ed8a03f3e66d7c0b9f0aea3d341e854c4457e55ebee296",
       "bytes": 543
+    },
+    {
+      "path": "distribution/diagrams/static-behavior-flow.mmd",
+      "sha256": "a629b2afe0aaccfc860b890e33b717c793d35aea12de3a0bfab82e0371a6af68",
+      "bytes": 758
     },
     {
       "path": "distribution/licenses/Apache-2.0.txt",
@@ -1179,18 +1199,18 @@
     },
     {
       "path": "docs/EXPERIMENTS.md",
-      "sha256": "b9c83c2615e242de76c184c616ba032f1349a73f5198135c5c1d9905ca6a6096",
-      "bytes": 23393
+      "sha256": "3e4ca19f321621f0ffad41da0db1364c26c2600bf7837ab7814be74ed8f43fd9",
+      "bytes": 23952
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "7d920144f6f858a80177e4d47c2b7f31d96bfdf087e1bcea39e748ea9aaa2b7d",
-      "bytes": 23313
+      "sha256": "667af8f6ce5d49c54e95b7d3aadad34d95f3fd4ceed61298056ee24c40bdf5c1",
+      "bytes": 24085
     },
     {
       "path": "README.md",
-      "sha256": "1d69a1c8ce690afda9bfdd783f7c5514975ad184a1a923f472baac03de2e5afa",
-      "bytes": 4702
+      "sha256": "a614da8d4fa41d707f81e9c7da72c8880600817d368bb489821a8aca06fabd56",
+      "bytes": 5119
     },
     {
       "path": "docs/SKILLS.md",
@@ -1219,8 +1239,8 @@
     },
     {
       "path": "docs/USER_GUIDE.md",
-      "sha256": "fd8caf02b34c25696641e89f12490aef70b832c9f2150e80026eef99badb99a9",
-      "bytes": 5829
+      "sha256": "e4e4a9ff73ca840ffd028a6b6e5f31b5bc99abedbdc191f0eb912e14b69fd971",
+      "bytes": 6144
     },
     {
       "path": "docs/benchmarks/collection_expansion_summary_20261014.json",
@@ -1343,6 +1363,11 @@
       "bytes": 1443
     },
     {
+      "path": "docs/benchmarks/optimization_20261022.json",
+      "sha256": "1ed027d7c9f7034d029827dd1a9f09dbb8abf4c1ac32f029810a805466272e95",
+      "bytes": 9305
+    },
+    {
       "path": "docs/benchmarks/product_pages_check_20261016.json",
       "sha256": "8f41669c581e735fadde5ca5925ee838a6f559a181ef761998625b979a80f08c",
       "bytes": 5078
@@ -1393,6 +1418,11 @@
       "bytes": 4839
     },
     {
+      "path": "docs/benchmarks/stage_g_summary_20261019.json",
+      "sha256": "f2c1c8d511695b681eece46019f566f99805a8fafb8633b4df386aaf7c04b627",
+      "bytes": 2982
+    },
+    {
       "path": "docs/benchmarks/task_reliability_check_20261016.json",
       "sha256": "b21b79aa3fe94cbd8bbf881563cc5b60f5ffcd64b061f1b2d7efefd692b47d35",
       "bytes": 2408
@@ -1416,6 +1446,11 @@
       "path": "docs/research/ML_PRODUCT_INTEGRATION_20261011.md",
       "sha256": "4a4a3c3337a88f5b2f2a831e7b60ce4be941ec39198a40f28227ead8fee0150a",
       "bytes": 4703
+    },
+    {
+      "path": "docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md",
+      "sha256": "fa6003131d66e19a061bcd980c5a80ea9367d73396b0a8b09ce8cb7e9220d366",
+      "bytes": 7190
     },
     {
       "path": "docs/research/PRODUCT_RELEASE_RUNBOOK_20261012.md",
@@ -1483,9 +1518,24 @@
       "bytes": 7476
     },
     {
+      "path": "docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md",
+      "sha256": "2b0951faea76bbf776316d03c101e7bad683f57837ada786b9fa8a83690bf3b2",
+      "bytes": 9611
+    },
+    {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
       "sha256": "d7b1740c3876570259988bc8f7a7c256d6493c01c5111dc79343ad0fae5031b4",
       "bytes": 6110
+    },
+    {
+      "path": "experiments/NATIVE_SSDEEP_LICENSE.txt",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "experiments/NATIVE_SSDEEP_NOTICE.md",
+      "sha256": "fc4507e05547e3c31be46c59724800b982b80e1b833339d7536e4f34150aca85",
+      "bytes": 862
     },
     {
       "path": "experiments/__init__.py",
@@ -1548,6 +1598,11 @@
       "bytes": 5721
     },
     {
+      "path": "experiments/benchmark_native_ssdeep.py",
+      "sha256": "8b8c3e77956842bccdf877a81fae7885db03282d264fadd8df9d0c6ead4ea1d4",
+      "bytes": 8407
+    },
+    {
       "path": "experiments/build_ml_bundle.py",
       "sha256": "08a5d73add1c97f4c579f387537053d33f45f390229626bb17e063db55b01be9",
       "bytes": 2553
@@ -1576,6 +1631,11 @@
       "path": "experiments/check_linux_process_guard.py",
       "sha256": "6e1a6a6db6f45b05ccb431fc248a62904180057e4399d6382959fb8a06a7b356",
       "bytes": 3456
+    },
+    {
+      "path": "experiments/check_windows_delivery_faults.py",
+      "sha256": "9ffbc6cdb7255c92185af488d3d06d3902cec6404df3cc9522310e1631099efe",
+      "bytes": 7742
     },
     {
       "path": "experiments/collect_benign_expansion.py",
@@ -1608,9 +1668,34 @@
       "bytes": 2873
     },
     {
+      "path": "experiments/compare_candidate_inference.py",
+      "sha256": "83672c9435d9e78cb60f8b30b953c3a8d7e4d0af87cd61abee0a22946a41fff2",
+      "bytes": 3518
+    },
+    {
+      "path": "experiments/compare_model_prefixes.py",
+      "sha256": "5b6667bd1cc6d8ccd11a42498cd65e98f20d47893b3118300484970f76bea6cc",
+      "bytes": 7463
+    },
+    {
+      "path": "experiments/compare_observed_false_positives.py",
+      "sha256": "d99f5e02a60569c7e43ae9ae76887dd8c06af56a3aa08cbbdf2d3447083784a8",
+      "bytes": 5148
+    },
+    {
+      "path": "experiments/compare_scan_latency.py",
+      "sha256": "951bd366133e05401c53117737d4f9931b3aa88a46f770a8e670c0085e52df1d",
+      "bytes": 8081
+    },
+    {
       "path": "experiments/compare_static_rounds.py",
       "sha256": "7acc5470cf2405c520d56079849edcb41e5123e28ec973591ec4dd8ebf8feab5",
       "bytes": 14516
+    },
+    {
+      "path": "experiments/compare_task_latency.py",
+      "sha256": "708eca2e45f8881378e85521463422580680dc6f12f1c1cc3545ef12ad15cf8c",
+      "bytes": 10630
     },
     {
       "path": "experiments/ember_ablation.py",
@@ -1654,8 +1739,8 @@
     },
     {
       "path": "experiments/export_public_delta.py",
-      "sha256": "aaedb527c23cf0bffc212a1d0ca4727948ae782862c0194b77d6f973db0baa5e",
-      "bytes": 5921
+      "sha256": "ab4a4e477dbeb3aaa55ddb229979e2b4169cf75d598b85ba6222e74229fa1962",
+      "bytes": 6058
     },
     {
       "path": "experiments/export_public_source.py",
@@ -1691,6 +1776,21 @@
       "path": "experiments/ml_api_smoke.py",
       "sha256": "2778e695659758466982827862fc07c764513eee1e9d259cd1fa6a3bc784c807",
       "bytes": 3422
+    },
+    {
+      "path": "experiments/model_search_round2.py",
+      "sha256": "0bb3bfa8e848b400dd4f87ca661142248a03f3432a75f2aea058c430bc8fa8d6",
+      "bytes": 13464
+    },
+    {
+      "path": "experiments/native_ssdeep.c",
+      "sha256": "0d7a33969f454445e7665cad74b040a19fbd20b88d8b2a2dfac202597a74f056",
+      "bytes": 2491
+    },
+    {
+      "path": "experiments/profile_scan_pipeline.py",
+      "sha256": "db1df4382adfa0a24eb92cd26a603ec39a6eeff065d51c3e2522b68a6f8de7a4",
+      "bytes": 8131
     },
     {
       "path": "experiments/serve_local.py",
@@ -1756,6 +1856,11 @@
       "path": "frontend/scripts/check-behavior.cjs",
       "sha256": "5e9ba1b314f45519d95126964afa67d7ad62d534901b1fdeed3e4975649e4276",
       "bytes": 10806
+    },
+    {
+      "path": "frontend/scripts/check-delivery.cjs",
+      "sha256": "294c77ebcd15fb12301ae2f1ec0aaebe3c7d67d9ce1a65e99039832da77e83ef",
+      "bytes": 18869
     },
     {
       "path": "frontend/scripts/check-linen-blur.cjs",
@@ -3691,66 +3796,36 @@
       "path": "vm/verify_stage_e_assets.py",
       "sha256": "27b4d048f4aff28bba520bfef29551e21737746f6b15be245b25c2c529ade572",
       "bytes": 1310
-    },
-    {
-      "path": "experiments/check_windows_delivery_faults.py",
-      "sha256": "9ffbc6cdb7255c92185af488d3d06d3902cec6404df3cc9522310e1631099efe",
-      "bytes": 7742
-    },
-    {
-      "path": "frontend/scripts/check-delivery.cjs",
-      "sha256": "294c77ebcd15fb12301ae2f1ec0aaebe3c7d67d9ce1a65e99039832da77e83ef",
-      "bytes": 18869
-    },
-    {
-      "path": "distribution/diagrams/static-behavior-flow.mmd",
-      "sha256": "a629b2afe0aaccfc860b890e33b717c793d35aea12de3a0bfab82e0371a6af68",
-      "bytes": 758
-    },
-    {
-      "path": "docs/benchmarks/stage_g_summary_20261019.json",
-      "sha256": "f2c1c8d511695b681eece46019f566f99805a8fafb8633b4df386aaf7c04b627",
-      "bytes": 2982
-    },
-    {
-      "path": "docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md",
-      "sha256": "2b0951faea76bbf776316d03c101e7bad683f57837ada786b9fa8a83690bf3b2",
-      "bytes": 9611
     }
   ],
-  "inherited_public_gate_revision": "8fd293c65793aed8ce15a215bea8937cc35e028b",
+  "inherited_public_gate_revision": "d3bfbefd8c9ca0985eb102d7654fb3eb20fd2f2e",
   "changed_paths": [
-    "README.md",
-    "backend/aegisav/behavior_cli.py",
-    "backend/aegisav/desktop.py",
-    "backend/tests/test_windows_delivery.py",
-    "distribution/Access-Key.cmd",
-    "distribution/Read-Me-First.txt",
-    "distribution/Start-AegisAV.cmd",
-    "distribution/Stop-AegisAV.cmd",
-    "distribution/Verify-Package.cmd",
-    "distribution/diagrams/architecture.mmd",
-    "distribution/diagrams/static-behavior-flow.mmd",
-    "distribution/licenses/Apache-2.0.txt",
-    "distribution/licenses/YARA-X-BSD-3-Clause.txt",
-    "distribution/licenses/nanobind-BSD.txt",
-    "distribution/licenses/sources.json",
-    "distribution/runtime-lock.json",
-    "docs/DELIVERY_RUNBOOK.md",
-    "docs/DEMO_GUIDE.md",
+    "backend/aegisav/runtime.py",
+    "backend/aegisav/scanner.py",
+    "backend/tests/test_clamav.py",
+    "backend/tests/test_engine_overlap.py",
+    "backend/tests/test_model_search_round2.py",
+    "backend/tests/test_optimization_comparison.py",
+    "backend/tests/test_scanner.py",
+    "backend/tests/test_service_startup.py",
     "docs/EXPERIMENTS.md",
-    "docs/KNOWN_LIMITATIONS.md",
     "docs/PROGRESS.md",
-    "docs/SYSTEM_DESIGN.md",
+    "README.md",
     "docs/USER_GUIDE.md",
-    "docs/benchmarks/stage_g_summary_20261019.json",
-    "docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md",
-    "experiments/build_windows_delivery.py",
-    "experiments/check_windows_delivery_faults.py",
+    "docs/benchmarks/optimization_20261022.json",
+    "docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md",
+    "experiments/NATIVE_SSDEEP_LICENSE.txt",
+    "experiments/NATIVE_SSDEEP_NOTICE.md",
+    "experiments/benchmark_native_ssdeep.py",
+    "experiments/compare_candidate_inference.py",
+    "experiments/compare_model_prefixes.py",
+    "experiments/compare_observed_false_positives.py",
+    "experiments/compare_scan_latency.py",
+    "experiments/compare_task_latency.py",
     "experiments/export_public_delta.py",
-    "experiments/export_public_source.py",
-    "frontend/scripts/check-delivery.cjs",
-    "pyproject.toml"
+    "experiments/model_search_round2.py",
+    "experiments/native_ssdeep.c",
+    "experiments/profile_scan_pipeline.py"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,

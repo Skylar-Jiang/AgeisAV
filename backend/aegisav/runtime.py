@@ -16,7 +16,6 @@ def build_scanner() -> StaticScanner:
     if any(rule_dir.glob("*.yar")):
         yara_engine = load_yara_engine(rule_dir, rule_dir / "metadata.json")
     clamav = ClamAVEngine()
-    clamav.probe()
     local_ml_python = ROOT / '.venv-ml' / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
     return StaticScanner(
         HashDatabase.from_file(ROOT / "rules" / "hashes.json"),

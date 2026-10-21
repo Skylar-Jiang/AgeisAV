@@ -27,11 +27,13 @@ class StaticScanner:
     def scan(self, data: bytes) -> dict:
         validate_pe(data)
         clamav_ready = True
+        clamav_started = time.perf_counter()
         if self.clamav_engine is not None and hasattr(self.clamav_engine, "probe"):
             try:
                 clamav_ready = self.clamav_engine.probe()
             except Exception:
                 clamav_ready = False
+        clamav_probe_ms = (time.perf_counter() - clamav_started) * 1000
         hash_started = time.perf_counter()
         digest = hashlib.sha256(data).hexdigest()
         hash_ms = (time.perf_counter() - hash_started) * 1000
@@ -50,27 +52,37 @@ class StaticScanner:
             report = copy.deepcopy(cached)
             report["cached"] = True
             return report
-        hashes = hash_scan(data, self.database, digest)
-        engines = {
-            "sha256": {"engine_id": "sha256", "engine_version": "sha256", "artifact_version": self.database_version,
-                       "status": hashes["exact"]["status"], "elapsed_ms": round(hash_ms + hashes["exact"]["elapsed_ms"], 6),
-                       "evidence": hashes["exact"]["evidence"], "risk_signal": "malicious" if any(r.get("verdict") == "malicious" for r in hashes["exact"]["evidence"]) else None},
-            "fuzzy": {"engine_id": "fuzzy", "engine_version": f"tlsh-python/{version('tlsh-python')} ppdeep/{version('ppdeep')}",
-                      "artifact_version": self.database_version, "status": hashes["fuzzy"]["status"],
-                      "elapsed_ms": round(hashes["fuzzy"]["elapsed_ms"], 6), "evidence": hashes["fuzzy"]["evidence"],
-                      "hashes": hashes["fuzzy"]["hashes"], "risk_signal": "suspicious" if hashes["fuzzy"]["evidence"] else None},
-        }
-        with ThreadPoolExecutor(max_workers=3) as pool:
+        overlap_hashes = len(data) >= 1024**2
+        hashes = None if overlap_hashes else hash_scan(data, self.database, digest)
+        with ThreadPoolExecutor(max_workers=4 if overlap_hashes else 3) as pool:
+            hash_future = pool.submit(hash_scan, data, self.database, digest) if overlap_hashes else None
             futures = {}
             configured = [("yara_x", self.yara_engine), ("clamav", self.clamav_engine)]
             if self.ml_engine is not None:
                 configured.append(("lightgbm", self.ml_engine))
             for name, engine in configured:
+                if engine is not None and (name != "clamav" or clamav_ready):
+                    futures[name] = pool.submit(self._run_engine, name, engine, data)
+            if hash_future is not None:
+                hashes = hash_future.result()
+            engines = {
+                "sha256": {"engine_id": "sha256", "engine_version": "sha256", "artifact_version": self.database_version,
+                           "status": hashes["exact"]["status"], "elapsed_ms": round(hash_ms + hashes["exact"]["elapsed_ms"], 6),
+                           "evidence": hashes["exact"]["evidence"], "risk_signal": "malicious" if any(r.get("verdict") == "malicious" for r in hashes["exact"]["evidence"]) else None},
+                "fuzzy": {"engine_id": "fuzzy", "engine_version": f"tlsh-python/{version('tlsh-python')} ppdeep/{version('ppdeep')}",
+                          "artifact_version": self.database_version, "status": hashes["fuzzy"]["status"],
+                          "elapsed_ms": round(hashes["fuzzy"]["elapsed_ms"], 6), "evidence": hashes["fuzzy"]["evidence"],
+                          "hashes": hashes["fuzzy"]["hashes"], "risk_signal": "suspicious" if hashes["fuzzy"]["evidence"] else None},
+            }
+            for name, engine in configured:
                 if engine is None:
                     engines[name] = {"engine_id": name, "engine_version": "unavailable", "artifact_version": None,
                                      "status": "unavailable", "elapsed_ms": 0.0, "evidence": [], "risk_signal": None}
-                else:
-                    futures[name] = pool.submit(self._run_engine, name, engine, data)
+                elif name == "clamav" and not clamav_ready:
+                    engines[name] = {"engine_id": name, "engine_version": getattr(engine, "engine_version", "unknown"),
+                                     "artifact_version": getattr(engine, "artifact_version", None),
+                                     "status": "unavailable", "elapsed_ms": round(clamav_probe_ms, 3),
+                                     "evidence": [], "risk_signal": None}
             for name, future in futures.items():
                 engines[name] = future.result()
         statuses = {item["status"] for item in engines.values()}

@@ -140,3 +140,39 @@ def test_clamav_signature_update_invalidates_cached_result(pe_bytes):
     assert result["cached"] is False
     assert result["verdict"] == "suspicious"
     assert clam.calls == 2
+
+
+def test_failed_clamav_probe_abstains_without_streaming_and_retries_next_scan(pe_bytes):
+    class RecoveringClam:
+        engine_version = "fixture"
+        artifact_version = "sig-v1"
+        ready = False
+        calls = 0
+        probes = 0
+
+        def probe(self):
+            self.probes += 1
+            return self.ready
+
+        def scan(self, data):
+            self.calls += 1
+            return {"engine_id": "clamav", "engine_version": self.engine_version,
+                    "artifact_version": self.artifact_version, "status": "matched",
+                    "elapsed_ms": 0., "evidence": [{"signature": "harmless-fixture"}],
+                    "risk_signal": "suspicious"}
+
+    clam = RecoveringClam()
+    scanner = StaticScanner(HashDatabase.from_records([]), clamav_engine=clam)
+    offline = scanner.scan(pe_bytes)
+    assert clam.calls == 0
+    assert offline["engines"]["clamav"]["status"] == "unavailable"
+    assert offline["engines"]["clamav"]["risk_signal"] is None
+    assert "clamav" in offline["fusion"]["abstained_engines"]
+    assert offline["verdict"] == "undetermined"
+    assert not offline["cached"] and not scanner.cache
+    clam.ready = True
+    recovered = scanner.scan(pe_bytes)
+    assert recovered["engines"]["clamav"]["status"] == "matched"
+    assert recovered["verdict"] == "suspicious"
+    assert not recovered["cached"]
+    assert clam.probes == 2 and clam.calls == 1
