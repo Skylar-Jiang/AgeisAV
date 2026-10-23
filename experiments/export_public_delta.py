@@ -34,7 +34,16 @@ ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
                  'docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md',
                  'docs/benchmarks/stage_g_summary_20261019.json',
                  'docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md',
-                 'docs/benchmarks/optimization_20261022.json'}
+                 'docs/benchmarks/optimization_20261022.json',
+                 'docs/research/NATIVE_SSDEEP_RC_20261022.md',
+                 'docs/research/COURSE_EVALUATION_20261022.md',
+                 'docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md',
+                 'docs/benchmarks/course_evaluation_20261022.json',
+                 'docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md',
+                 'docs/research/WINDOWS_CONTROLS_20261022.md',
+                 'docs/benchmarks/windows_controls_20261022.json',
+                 'docs/benchmarks/native_rc_20261023.json',
+                 'docs/benchmarks/model_binning_20261022.json'}
 
 
 def check_blob(name,data,private_hashes):

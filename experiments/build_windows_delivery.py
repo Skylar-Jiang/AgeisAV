@@ -122,7 +122,20 @@ def copy_npm_licenses(package,frontend):
     return len(rows)
 
 
-def build(source,frontend,runtime_archive,runtime_lock,output):
+def native_component(bundle, source):
+    bundle, source = Path(bundle), Path(source)
+    manifest=json.loads((bundle/'manifest.json').read_bytes())
+    if manifest['schema']!=1 or manifest['abi']!=1 or manifest['file']!='aegisav_ssdeep.dll':
+        raise ValueError('Unsupported native component')
+    if hashlib.sha256((bundle/manifest['file']).read_bytes()).hexdigest()!=manifest['sha256']:
+        raise ValueError('Native DLL digest mismatch')
+    digest=hashlib.sha256((source/'experiments/native_ssdeep.c').read_bytes()).hexdigest()
+    if digest!=manifest['source_sha256'] or hashlib.sha256((bundle/'native_ssdeep.c').read_bytes()).hexdigest()!=digest:
+        raise ValueError('Native component source differs from reviewed source')
+    return {name:manifest[name] for name in ('schema','abi','file','sha256','source_sha256')}
+
+
+def build(source,frontend,runtime_archive,runtime_lock,output,native_bundle=None):
     source,frontend,output=source.resolve(),frontend.resolve(),output.resolve()
     if output.exists() or not output.is_relative_to(ROOT/'artifacts'): raise ValueError('Fresh output under artifacts required')
     reviewed=json.loads((source/'PUBLIC_SOURCE_MANIFEST.json').read_bytes())
@@ -137,7 +150,9 @@ def build(source,frontend,runtime_archive,runtime_lock,output):
     lock=json.loads(runtime_lock.read_bytes())
     if hashlib.sha256(runtime_archive.read_bytes()).hexdigest()!=lock['sha256'] or lock['version']!='3.12.15':
         raise ValueError('Pinned runtime digest/version mismatch')
-    output.mkdir();package=output/'AegisAV-0.2.0-Windows-x64';package.mkdir()
+    native=native_component(native_bundle,source) if native_bundle is not None else None
+    version='0.2.1rc1' if native else VERSION
+    output.mkdir();package=output/('AegisAV-'+version+'-Windows-x64');package.mkdir()
     with tarfile.open(runtime_archive,'r:gz') as archive:
         total=0
         for member in archive:
@@ -151,6 +166,10 @@ def build(source,frontend,runtime_archive,runtime_lock,output):
             if total>150*1024**2: raise ValueError('Expanded runtime limit')
             write(package/'runtime'/relative,archive.extractfile(member).read())
     for path in inputs: write(package/'app'/path.relative_to(source),path.read_bytes())
+    if native:
+        for name in ('aegisav_ssdeep.dll','native_ssdeep.c','NATIVE_SSDEEP_LICENSE.txt','NATIVE_SSDEEP_NOTICE.md'):
+            write(package/'app/native'/name,(native_bundle/name).read_bytes())
+        write(package/'app/native/manifest.json',(json.dumps(native,indent=2)+'\n').encode())
     # Explicit portable module paths: registry, PYTHONPATH and user-site are ignored.
     write(package/'runtime/python312._pth',b'Lib\nDLLs\n.\nLib/site-packages\n../app/backend\n')
     python_deps=copy_dependencies(package)
@@ -169,9 +188,23 @@ def build(source,frontend,runtime_archive,runtime_lock,output):
             data=path.read_bytes()
             if path.suffix=='.cmd': data=data.replace(b'\r\n',b'\n').replace(b'\n',b'\r\n')
             write(package/path.relative_to(source/'distribution'),data)
+    if native:
+        for name in ('NATIVE_SSDEEP_RC_20261022.md','COURSE_EVALUATION_20261022.md','WINDOWS_CLAMAV_SIDECAR_20261022.md'):
+            path=source/'docs/research'/name
+            write(package/'docs'/name,path.read_bytes())
+            write(package/'docs'/Path(name).with_suffix('.html'),render_guide(path.read_text(encoding='utf-8')))
+        for name,action in (('Start-AegisAV.cmd','start'),('Stop-AegisAV.cmd','stop'),('Access-Key.cmd','key')):
+            command=('@echo off\r\n"%~dp0runtime\\python.exe" -I -B -m aegisav.desktop '+action+
+                ' --data-dir "%LOCALAPPDATA%\\AegisAVDesktop-Candidate" --port 3420 %*\r\nif errorlevel 1 pause\r\n')
+            write(package/name,command.encode())
+        write(package/'Read-Me-First.txt',('AegisAV '+version+' native SSDeep release candidate\r\n'
+            'Independent candidate; stable 0.2.0 is unchanged. Default port3420, private profile AegisAVDesktop-Candidate.\r\n'
+            'Rollback: stop this candidate and start the original stable package. Models, rules and thresholds are unchanged.\r\n'
+            'Native DLL is integrity checked and loaded only in the unelevated disposable Job. Optional ML/ClamAV assets are external.\r\n'
+            'See docs and app/native notices. Do not run this application elevated.\r\n').encode())
     npm_count=copy_npm_licenses(package,frontend)
     write(package/'examples/sysmon_harmless.json',(source/'backend/tests/fixtures/sysmon_harmless.json').read_bytes())
-    write(package/'SBOM.json',(json.dumps(dict(schema=1,application_version=VERSION,runtime=lock,
+    write(package/'SBOM.json',(json.dumps(dict(schema=1,application_version=version,runtime=lock,native_ssdeep=native,
         python_dependencies=python_deps,optional_excluded=['private ML model assets and ML environment','ClamAV and its signature databases'],
         node_runtime_required=False,npm_license_records=npm_count,source_revision=reviewed['source_revision']),indent=2)+'\n').encode())
     # Explicit source/control files are copied, never the entire working tree.
@@ -181,13 +214,14 @@ def build(source,frontend,runtime_archive,runtime_lock,output):
     for name in files:
         if name.startswith(('models/','data/','artifacts/','.git/','app/models/','app/data/')): raise ValueError('Private package path gate')
         if name.endswith(('.sqlite3','.key','.vmx','.vmdk','.vmem','.jsonl')): raise ValueError('Private package asset gate')
-    manifest=dict(schema=1,version=VERSION,platform='Windows 11 x64',files=files,
+    manifest=dict(schema=1,version=version,platform='Windows 11 x64',files=files,
+                  ssdeep_backend='native' if native else 'python',
                   source_revision=reviewed['source_revision'],static_policy='evidence-or-v1',research='open')
     write(package/'PACKAGE_MANIFEST.json',(json.dumps(manifest,sort_keys=True,indent=2)+'\n').encode())
     bundle=output/(package.name+'.zip');deterministic_zip(package,bundle)
     digest=hashlib.sha256(bundle.read_bytes()).hexdigest()
     write(output/(bundle.name+'.sha256'),(digest+'  '+bundle.name+'\n').encode())
-    summary=dict(version=VERSION,bundle=str(bundle),sha256=digest,bytes=bundle.stat().st_size,
+    summary=dict(version=version,bundle=str(bundle),sha256=digest,bytes=bundle.stat().st_size,
         expanded_bytes=sum(p.stat().st_size for p in package.rglob('*') if p.is_file()),files=len(files)+1,
         runtime=lock['version'],python_dependencies=len(python_deps),private_assets_included=False)
     write(output/'build-summary.json',(json.dumps(summary,indent=2)+'\n').encode())
@@ -201,8 +235,9 @@ def main():
     parser.add_argument('--runtime',type=Path,required=True)
     parser.add_argument('--runtime-lock',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--native-bundle',type=Path,help='Explicit ABI1 candidate; leaves default stable packaging unchanged')
     args=parser.parse_args()
-    print(json.dumps(build(args.source,args.frontend,args.runtime,args.runtime_lock,args.output)))
+    print(json.dumps(build(args.source,args.frontend,args.runtime,args.runtime_lock,args.output,args.native_bundle)))
 
 
 if __name__=='__main__': main()

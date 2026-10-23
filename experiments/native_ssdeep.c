@@ -21,6 +21,8 @@ static const unsigned char fnv[64] = {
 };
 static const char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
+EXPORT uint32_t aegisav_ssdeep_abi(void) { return 1; }
+
 EXPORT int aegisav_ssdeep(const unsigned char *data, size_t length, char *out, size_t capacity) {
     if ((!data && length) || !out || capacity < 128 || length > 16u*1024u*1024u) return -1;
     uint32_t block = 3;

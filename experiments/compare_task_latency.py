@@ -48,12 +48,30 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--rounds', type=int, default=3)
     parser.add_argument('--scenario', action='append', choices=('small', 'large', 'batch'))
+    parser.add_argument('--candidate-root', type=Path, default=ROOT)
+    parser.add_argument('--baseline-python', type=Path, default=ROOT / '.venv/Scripts/python.exe')
+    parser.add_argument('--candidate-python', type=Path, default=ROOT / '.venv/Scripts/python.exe')
+    parser.add_argument('--native-candidate', action='store_true')
+    parser.add_argument('--clam-state', choices=('healthy', 'unavailable'))
     args = parser.parse_args()
     if args.output.exists() or not 1 <= args.rounds <= 5:
         raise ValueError('Requires new output and 1–5 rounds')
+    if args.clam_state:
+        from aegisav.clamav_engine import ClamAVEngine
+        if ClamAVEngine().probe() != (args.clam_state == 'healthy'):
+            raise ValueError('Declared ClamAV measurement stratum does not match actual service')
+    roots = {'baseline': args.baseline_root.resolve(), 'candidate': args.candidate_root.resolve()}
+    # HTTP controllers use the same API/store/task implementation; reject a
+    # portable comparison if either package contains different controller code.
+    for root in roots.values():
+        for name in ('api.py', 'tasks.py', 'task_store.py'):
+            if (root / 'backend/aegisav' / name).read_bytes() != (ROOT / 'backend/aegisav' / name).read_bytes():
+                raise ValueError('Controller source differs; use separate packaged services for this comparison')
     os.environ['AEGISAV_MODEL_DIR'] = str(ROOT / 'models/ember2024')
     os.environ['AEGISAV_ML_PYTHON'] = str(ROOT / '.venv-ml/Scripts/python.exe')
     os.environ['AEGISAV_ML_PROFILE'] = 'general'
+    # Match desktop. -B on the scan worker does not propagate to external ML.
+    os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
     system = Path('C:/Windows/System32')
     small, large = system / 'notepad.exe', Path(sys.base_prefix) / 'python312.dll'
     command, identity = system / 'cmd.exe', system / 'whoami.exe'
@@ -66,7 +84,10 @@ def main():
               'authenticated loopback, actual disposable workers and SQLite FULL/WAL, polling20ms',
               'runner_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'scanner_sha256': {name: hashlib.sha256((root / 'backend/aegisav/scanner.py').read_bytes()).hexdigest()
-                                 for name, root in {'baseline': args.baseline_root.resolve(), 'candidate': ROOT}.items()},
+                                 for name, root in roots.items()},
+              'clam_state': args.clam_state, 'native_candidate': args.native_candidate,
+              'comparison_excludes_expected_native_version_suffix': args.native_candidate,
+              'worker_interpreters': {'baseline': str(args.baseline_python), 'candidate': str(args.candidate_python)},
               'inputs': [{'name': str(p), 'size_bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
                          for p, raw in data.items()], 'observations': [], 'summary': {}, 'fault_checks': {}}
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -74,11 +95,14 @@ def main():
     with ExitStack() as stack:
         temporary = Path(stack.enter_context(tempfile.TemporaryDirectory(prefix='aegisav-task-study-')))
         try:
-            for name, root in {'baseline': args.baseline_root.resolve(), 'candidate': ROOT}.items():
+            for name, root in roots.items():
                 key = secrets.token_urlsafe(32)
-                code = (f'import sys; sys.path.insert(0, {str(root / "backend")!r}); '
+                mode = 'native' if name == 'candidate' and args.native_candidate else 'python'
+                code = (f'import sys,os; sys.path.insert(0, {str(root / "backend")!r}); '
+                        f'os.environ["AEGISAV_SSDEEP_BACKEND"]={mode!r}; '
                         'from aegisav.scan_worker import main; main()')
-                runner = ProcessScanner([str(ROOT / '.venv/Scripts/python.exe'), '-B', '-c', code])
+                python = args.baseline_python if name == 'baseline' else args.candidate_python
+                runner = ProcessScanner([str(python), '-B', '-c', code])
                 path = temporary / name / 'tasks.sqlite3'
                 app = create_app(build_scanner(), access_token=key, db_path=path, runner=runner)
                 listener = socket.socket()
@@ -120,9 +144,20 @@ def main():
                         args.output.write_text(json.dumps(result, indent=2), encoding='utf-8')
                         if job['status'] != 'completed':
                             raise RuntimeError('Task scan did not complete; partial record retained')
+                        if args.clam_state:
+                            expected_clam = {'no_match', 'matched'} if args.clam_state == 'healthy' else {'unavailable'}
+                            if any(row['report']['engines']['clamav']['status'] not in expected_clam for row in job['files']):
+                                raise AssertionError('Measured task did not retain its declared ClamAV stratum')
                         print(name, repeat, scenario, round(row['elapsed_ms'], 2), flush=True)
                     if pair['baseline'] != pair['candidate']:
-                        raise AssertionError('Non-timing report mismatch; partial records retained')
+                        if args.native_candidate:
+                            suffix = ' native-ssdeep/abi1+' + json.loads((roots['candidate'] / 'native/manifest.json').read_text())['sha256'][:16]
+                            for before, after in zip(pair['baseline'], pair['candidate']):
+                                expected_version = before['report']['engines']['fuzzy']['engine_version']
+                                assert after['report']['engines']['fuzzy']['engine_version'] == expected_version + suffix
+                                after['report']['engines']['fuzzy']['engine_version'] = expected_version
+                        if pair['baseline'] != pair['candidate']:
+                            raise AssertionError('Unexpected non-timing report mismatch; partial records retained')
             # An actual API cancellation of the large file must kill the owned tree;
             # a new request then confirms that no poisoned result/worker survives.
             for name, client in clients.items():

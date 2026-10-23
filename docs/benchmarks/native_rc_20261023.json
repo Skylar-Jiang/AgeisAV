@@ -1,0 +1,427 @@
+{
+  "schema": 1,
+  "measurement_date": "2026-10-23",
+  "production_replaced": false,
+  "independent_accuracy_evaluation": false,
+  "candidate_version": "0.2.1rc1",
+  "native": {
+    "abi": 1,
+    "sha256": "675e31d72a853ed1eefd95bf0103d34f7d253fee0a1e58c449bc951f3c2421aa",
+    "source_sha256": "a9c7da2676c343058bb08467de2ac039da26a78b87b5350a0d0a73aded712ca2",
+    "bytes": 15872,
+    "compiler": "gcc.exe (Rev3, Built by MSYS2 project) 14.1.0"
+  },
+  "complete_hash_parity_cases": 235,
+  "concurrent_hash_parity": true,
+  "input_output_budget_rejections": true,
+  "native_fault_checks": [
+    {
+      "scenario": "abi_mismatch",
+      "outcome": "error_without_negative_report",
+      "cleanup_confirmed": true,
+      "following_worker_recovered": true
+    },
+    {
+      "scenario": "native_crash",
+      "outcome": "error_without_negative_report",
+      "cleanup_confirmed": true,
+      "following_worker_recovered": true
+    },
+    {
+      "scenario": "native_timeout",
+      "outcome": "timed_out",
+      "cleanup_confirmed": true,
+      "following_worker_recovered": true
+    },
+    {
+      "scenario": "native_cancel",
+      "outcome": "cancelled",
+      "cleanup_confirmed": true,
+      "following_worker_recovered": true
+    },
+    {
+      "scenario": "native_memory_limit",
+      "outcome": "allocation_rejected_by_96MiB_Job",
+      "cleanup_confirmed": true,
+      "following_worker_recovered": true
+    }
+  ],
+  "report_parity": {
+    "pairs_equal": 11,
+    "summary": {
+      "python": {
+        "p50_ms": 6330.192799999963,
+        "p95_ms": 25056.331699999988,
+        "throughput_files_per_second": 0.10117698636362328,
+        "max_sampled_tree_rss_bytes": 420515840,
+        "sampled_cpu_seconds": 107.375
+      },
+      "native": {
+        "p50_ms": 3594.9532000000204,
+        "p95_ms": 19185.883999999987,
+        "throughput_files_per_second": 0.1437310716386828,
+        "max_sampled_tree_rss_bytes": 419414016,
+        "sampled_cpu_seconds": 66.921875
+      }
+    },
+    "engine_status_counts": {
+      "python": {
+        "sha256": {
+          "no_match": 11
+        },
+        "fuzzy": {
+          "no_match": 11
+        },
+        "yara_x": {
+          "no_match": 11
+        },
+        "clamav": {
+          "no_match": 11
+        },
+        "lightgbm": {
+          "no_match": 9,
+          "matched": 2
+        }
+      },
+      "native": {
+        "sha256": {
+          "no_match": 11
+        },
+        "fuzzy": {
+          "no_match": 11
+        },
+        "yara_x": {
+          "no_match": 11
+        },
+        "clamav": {
+          "no_match": 11
+        },
+        "lightgbm": {
+          "no_match": 9,
+          "matched": 2
+        }
+      }
+    },
+    "clam_version": "ClamAV 1.5.4",
+    "clam_signature": "28161",
+    "separate_clam_max_sampled_rss_bytes": 1007607808,
+    "separate_clam_peak_wset_bytes": 1258913792
+  },
+  "http_packaged_workers": {
+    "healthy": {
+      "scenarios": {
+        "small": {
+          "baseline": {
+            "p50_ms": 3380.22890000002,
+            "p95_ms": 12047.139000000016,
+            "throughput_inputs_per_second": 0.15987225311691305
+          },
+          "candidate": {
+            "p50_ms": 3405.9426999999687,
+            "p95_ms": 10415.660099999968,
+            "throughput_inputs_per_second": 0.1746646716312622
+          },
+          "p50_reduction_percent": -0.7607117967646682,
+          "throughput_increase_percent": 9.252649053198493,
+          "paired_elapsed_reduction_percent": [
+            13.542459334121116,
+            0.771042458101634,
+            -2.047219714774773
+          ]
+        },
+        "large": {
+          "baseline": {
+            "p50_ms": 25536.71069999996,
+            "p95_ms": 40324.07869999997,
+            "throughput_inputs_per_second": 0.03288131333436913
+          },
+          "candidate": {
+            "p50_ms": 12595.17369999992,
+            "p95_ms": 22459.833499999946,
+            "throughput_inputs_per_second": 0.06398606229996577
+          },
+          "p50_reduction_percent": 50.67816741174915,
+          "throughput_increase_percent": 94.59703950779988,
+          "paired_elapsed_reduction_percent": [
+            50.36666842131261,
+            44.301682210535006,
+            53.673738803016576
+          ]
+        },
+        "batch": {
+          "baseline": {
+            "p50_ms": 11270.889200000056,
+            "p95_ms": 18827.035999999905,
+            "throughput_inputs_per_second": 0.29139154984077226
+          },
+          "candidate": {
+            "p50_ms": 10666.092499999992,
+            "p95_ms": 10763.947699999902,
+            "throughput_inputs_per_second": 0.37785153453726456
+          },
+          "p50_reduction_percent": 5.366006969530512,
+          "throughput_increase_percent": 29.671411111179236,
+          "paired_elapsed_reduction_percent": [
+            5.366006969530512,
+            42.827178425749246,
+            6.814569679763083
+          ]
+        }
+      },
+      "observations": 18,
+      "report_pairs_equal": true,
+      "cancel_recovery": {
+        "baseline": {
+          "worker_pid_observed_before_cancel": 14804,
+          "real_api_cancel_tree_cleanup": true,
+          "following_task_completed": true
+        },
+        "candidate": {
+          "worker_pid_observed_before_cancel": 9076,
+          "real_api_cancel_tree_cleanup": true,
+          "following_task_completed": true
+        }
+      },
+      "sqlite_reload_equal": true
+    },
+    "unavailable": {
+      "scenarios": {
+        "small": {
+          "baseline": {
+            "p50_ms": 6863.908499999525,
+            "p95_ms": 10673.604800002067,
+            "throughput_inputs_per_second": 0.12537447265406515
+          },
+          "candidate": {
+            "p50_ms": 6353.747900000599,
+            "p95_ms": 14601.33979999955,
+            "throughput_inputs_per_second": 0.11024825882995125
+          },
+          "p50_reduction_percent": 7.432508752104738,
+          "throughput_increase_percent": -12.064827475566208,
+          "paired_elapsed_reduction_percent": [
+            -36.798579988615685,
+            0.5798144887053103,
+            8.853295465678556
+          ]
+        },
+        "large": {
+          "baseline": {
+            "p50_ms": 24234.64899999817,
+            "p95_ms": 30234.544999999343,
+            "throughput_inputs_per_second": 0.03870419610613267
+          },
+          "candidate": {
+            "p50_ms": 14136.344200000167,
+            "p95_ms": 14454.873700000462,
+            "throughput_inputs_per_second": 0.07173542414611718
+          },
+          "p50_reduction_percent": 41.668871705130805,
+          "throughput_increase_percent": 85.34275702150735,
+          "paired_elapsed_reduction_percent": [
+            42.58636450229607,
+            41.668871705130805,
+            52.190867433259626
+          ]
+        },
+        "batch": {
+          "baseline": {
+            "p50_ms": 22710.53269999902,
+            "p95_ms": 22778.032499998517,
+            "throughput_inputs_per_second": 0.17833664545848477
+          },
+          "candidate": {
+            "p50_ms": 19777.81379999942,
+            "p95_ms": 20366.580500001874,
+            "throughput_inputs_per_second": 0.201870299728682
+          },
+          "p50_reduction_percent": 12.913474724438,
+          "throughput_increase_percent": 13.196196558309525,
+          "paired_elapsed_reduction_percent": [
+            6.574910393985589,
+            13.171544557236414,
+            15.018663564844381
+          ]
+        }
+      },
+      "observations": 18,
+      "report_pairs_equal": true,
+      "cancel_recovery": {
+        "baseline": {
+          "worker_pid_observed_before_cancel": 27032,
+          "real_api_cancel_tree_cleanup": true,
+          "following_task_completed": true
+        },
+        "candidate": {
+          "worker_pid_observed_before_cancel": 33872,
+          "real_api_cancel_tree_cleanup": true,
+          "following_task_completed": true
+        }
+      },
+      "sqlite_reload_equal": true
+    }
+  },
+  "prospective_control_PE_categories": {
+    "win64_native_exe": 7,
+    "win64_native_dll": 21
+  },
+  "package": {
+    "version": "0.2.1rc1",
+    "sha256": "b4ae9d64f6fa27a2d4ff97a024771603f1e9d7d6022f71b6e99f0708036b9b04",
+    "bytes": 31547622,
+    "expanded_bytes": 97616916,
+    "files": 3932,
+    "runtime": "3.12.15",
+    "python_dependencies": 22,
+    "private_assets_included": false
+  },
+  "browser": {
+    "checks": 28,
+    "failures": [],
+    "checks_detail": [
+      {
+        "name": "actual ZIP extracted to Unicode/space path; bundled Python ignores host environment and PATH",
+        "passed": true
+      },
+      {
+        "name": "full extracted package integrity verified",
+        "passed": true
+      },
+      {
+        "name": "real Start script, single-instance reuse and unauthenticated denial",
+        "passed": true
+      },
+      {
+        "name": "real browser first login and wrong-key feedback",
+        "passed": true
+      },
+      {
+        "name": "real batch: benign PE, invalid parser input, duplicate reuse; five statuses with honest missing ML/ClamAV",
+        "passed": true
+      },
+      {
+        "name": "real evidence/detail and JSON export",
+        "passed": true
+      },
+      {
+        "name": "workspace actual browser and no overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "detail actual browser and no overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "tasks actual browser and no overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "history actual browser and no overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "assets actual browser and no overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "statistics actual browser and no overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "workspace actual browser and no overflow at 375",
+        "passed": true
+      },
+      {
+        "name": "detail actual browser and no overflow at 375",
+        "passed": true
+      },
+      {
+        "name": "tasks actual browser and no overflow at 375",
+        "passed": true
+      },
+      {
+        "name": "history actual browser and no overflow at 375",
+        "passed": true
+      },
+      {
+        "name": "assets actual browser and no overflow at 375",
+        "passed": true
+      },
+      {
+        "name": "statistics actual browser and no overflow at 375",
+        "passed": true
+      },
+      {
+        "name": "real bounded behavior child, Sigma match, process chain, explicit synthetic static hash claim and export",
+        "passed": true
+      },
+      {
+        "name": "actual malformed log/oversize input rejection and real benign-task cancellation with no negative report",
+        "passed": true
+      },
+      {
+        "name": "actual Stop/Start; persisted static/behavior reports identical, cross-link restored",
+        "passed": true
+      },
+      {
+        "name": "keyboard navigation, zero page errors and no external browser requests",
+        "passed": true
+      },
+      {
+        "name": "actual optional external frozen ML asset integration; ClamAV availability is reported separately",
+        "passed": true
+      },
+      {
+        "name": "changed private key causes explicit stop failure; live service untouched, original key restored",
+        "passed": true
+      },
+      {
+        "name": "occupied loopback port rejected; unrelated listener retained",
+        "passed": true
+      },
+      {
+        "name": "package tampering rejected and exact restoration passes",
+        "passed": true
+      },
+      {
+        "name": "scanning created no package cache/config/private files",
+        "passed": true
+      },
+      {
+        "name": "controlled portable uninstall removes only extracted application; private reports retained",
+        "passed": true
+      }
+    ],
+    "core_engine_statuses": {
+      "sha256": "no_match",
+      "fuzzy": "no_match",
+      "yara_x": "no_match",
+      "clamav": "no_match",
+      "lightgbm": "unavailable"
+    },
+    "external_model_engine_statuses": {
+      "sha256": "no_match",
+      "fuzzy": "no_match",
+      "yara_x": "no_match",
+      "clamav": "no_match",
+      "lightgbm": "no_match"
+    }
+  },
+  "delivery_faults": [
+    "actual cancellation, owned child exit and reserved resource release",
+    "parser exit without report remains error, not negative",
+    "actual forced service death, Job cleanup, SQLite interrupted recovery and cancelled report persistence",
+    "actual bounded queue 429 and full reservation release",
+    "actual 100ms injected file deadline, tree termination and no negative report"
+  ],
+  "limitations": [
+    "Only explicit native RC; stable source/default ZIP remain unchanged.",
+    "Hash equality covers generated bytes and benign PE; no new malicious PE experiment on Windows.",
+    "Report equality excludes three timing fields and the asserted native engine-version suffix.",
+    "HTTP uses identical authenticated controllers, actual packaged worker runtimes, and FULL/WAL SQLite; not two separately launched desktop services. Three alternating rounds/scenario, warmed daemon; small-sample P95 is the maximum, not a deployment percentile estimate.",
+    "Worker RAM is sampled process-tree sums, can double-count shared pages and miss short peaks; external clamd is separate. One broad report pass is not an independent speed confirmation.",
+    "Core portable ZIP excludes private ML/runtime and official ClamAV sidecar/databases; external components were actually integrated. Missing engines abstain.",
+    "Research-only Python reference CPU allowance was extended to360s for unfinished pathological hash fixtures; product worker limits unchanged. Earlier deadline/harness failures retained."
+  ],
+  "runner_sha256": "92f47083aac2490761c145ca94e67845997178c093f3cc5120a9e55775d1cfda"
+}

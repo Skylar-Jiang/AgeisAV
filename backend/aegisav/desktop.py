@@ -176,6 +176,7 @@ def run_server(profile,port,instance):
     from .runtime import build_scanner
     from .scan_process import ProcessScanner
     manifest=verify_package(PACKAGE)
+    os.environ['AEGISAV_SSDEEP_BACKEND']=manifest.get('ssdeep_backend','python')
     config=read_config(profile)
     # The bundled interpreter ignores these, but optional external ML Python
     # would otherwise inherit a host PYTHONHOME/PYTHONPATH and fail or import it.

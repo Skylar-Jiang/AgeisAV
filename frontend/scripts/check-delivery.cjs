@@ -9,7 +9,7 @@ const { chromium } = require(process.env.AEGISAV_PLAYWRIGHT_MODULE || 'playwrigh
 const root = path.resolve(__dirname, '../..');
 const bundle = process.env.AEGISAV_DELIVERY_ZIP;
 assert(bundle, 'Set AEGISAV_DELIVERY_ZIP to the reviewed portable ZIP');
-const output = path.join(root, 'output/playwright/delivery');
+const output = process.env.AEGISAV_DELIVERY_OUTPUT || path.join(root, 'output/playwright/delivery');
 const base = 'http://127.0.0.1:3426';
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const evidence = { schema: 1, real_service: true, harmless_only: true, accuracy_evaluation: false, checks: [], failures: [] };
@@ -27,7 +27,7 @@ async function command(exe, args, extra = {}) {
   });
 }
 function runtime(args) { return command(path.join(app, 'runtime/python.exe'), ['-I', '-B', ...args]); }
-function controller(action, args = []) { return runtime(['-m', 'aegisav.desktop', action, '--port', '3426', '--no-browser', ...args]); }
+function controller(action, args = []) { return runtime(['-m', 'aegisav.desktop', action, '--port', '3426', '--data-dir', profile, '--no-browser', ...args]); }
 async function wrapper(name, args = []) {
   // Fixed script name/arguments; no string-built filesystem commands.
   return command(process.env.ComSpec || 'C:/Windows/System32/cmd.exe', ['/d', '/c', name, ...args]);
@@ -83,6 +83,9 @@ async function serviceMemory() {
     const extract = `import os,zipfile,pathlib\nr=pathlib.Path(os.environ['AEGISAV_TEST_EXTRACT']).resolve()\nr.mkdir()\nwith zipfile.ZipFile(os.environ['AEGISAV_TEST_ZIP']) as z:\n assert sum(x.file_size for x in z.infolist())<300*1024**2\n for x in z.infolist():\n  p=(r/x.filename).resolve()\n  assert p.is_relative_to(r) and ':' not in x.filename and '\\\\' not in x.filename\n  p.parent.mkdir(parents=True,exist_ok=True)\n  p.write_bytes(z.read(x))\n`;
     const installed = await command(path.join(root, '.venv/Scripts/python.exe'), ['-c', extract], { cwd: root, env: { ...process.env, AEGISAV_TEST_ZIP: bundle, AEGISAV_TEST_EXTRACT: app } });
     assert.equal(installed.code, 0, installed.stderr); evidence.extraction_ms = installed.elapsed_ms;
+    const packageManifest = JSON.parse(await fs.readFile(path.join(app, 'PACKAGE_MANIFEST.json'), 'utf8'));
+    profile = path.join(temp, 'Private Settings', packageManifest.ssdeep_backend === 'native' ? 'AegisAVDesktop-Candidate' : 'AegisAVDesktop');
+    evidence.package_version = packageManifest.version;
     env = { ...process.env, LOCALAPPDATA: path.join(temp, 'Private Settings'), PATH: 'C:/Windows/System32', PYTHONHOME: path.join(temp, 'nonexistent'), PYTHONPATH: path.join(temp, 'nonexistent'), PYTHONNOUSERSITE: '1' };
     for (const name of Object.keys(env)) if (name.startsWith('AEGISAV_')) delete env[name];
     const isolated = await runtime(['-c', 'import sys,json,site;print(json.dumps(dict(version=sys.version,paths=sys.path,user_site=site.ENABLE_USER_SITE)))']);
@@ -118,7 +121,9 @@ async function serviceMemory() {
     assert.equal(task.status, 'completed_with_errors'); assert.equal(task.files[1].report, null);
     assert.equal(task.files[2].duplicate_of, 0); assert.equal(task.files[0].report.sha256, sha);
     evidence.core_engine_statuses = Object.fromEntries(Object.entries(task.files[0].report.engines).map(([id, e]) => [id, e.status]));
-    assert.equal(evidence.core_engine_statuses.clamav, 'unavailable'); assert.equal(evidence.core_engine_statuses.lightgbm, 'unavailable');
+    assert.equal(evidence.core_engine_statuses.clamav, process.env.AEGISAV_TEST_CLAM_STATE === 'healthy' ? 'no_match' : 'unavailable');
+    assert.equal(evidence.core_engine_statuses.lightgbm, 'unavailable');
+    if (packageManifest.ssdeep_backend === 'native') assert.match(task.files[0].report.engines.fuzzy.engine_version, /native-ssdeep\/abi1\+[a-f0-9]{16}$/);
     assert.equal(Object.keys(evidence.core_engine_statuses).length, 5); evidence.core_file_wall_ms = task.files[0].elapsed_ms;
     note('real batch: benign PE, invalid parser input, duplicate reuse; five statuses with honest missing ML/ClamAV');
     await page.goto(`${base}/linen/detail/?task=${task.id}&file=0`, { waitUntil: 'networkidle' });
@@ -185,7 +190,7 @@ async function serviceMemory() {
       assert.equal(evidence.external_model_engine_statuses.lightgbm, 'no_match');
       evidence.external_model_file_wall_ms = modelTask.files[0].elapsed_ms;
       evidence.external_model_service_memory = await serviceMemory();
-      note('actual optional external frozen ML asset integration; four engines execute, ClamAV explicitly unavailable');
+      note('actual optional external frozen ML asset integration; ClamAV availability is reported separately');
     }
     await stop();
     // Authentication failure must never claim that a live owned service stopped.

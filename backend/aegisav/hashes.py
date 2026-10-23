@@ -50,7 +50,7 @@ class HashDatabase:
         return cls.from_records(records)
 
 
-def compute_fuzzy(data: bytes) -> dict[str, str | None]:
+def compute_fuzzy(data: bytes, ssdeep_hash=None) -> dict[str, str | None]:
     try:
         # The binding converts an update buffer into a native integer sequence.
         # Bound conversion memory for large PEs in the restricted analysis worker.
@@ -61,16 +61,16 @@ def compute_fuzzy(data: bytes) -> dict[str, str | None]:
         tlsh_hash = hasher.hexdigest(ver=1)
     except AssertionError:
         tlsh_hash = None
-    return {"tlsh": tlsh_hash, "ssdeep": ppdeep.hash(data) or None}
+    return {"tlsh": tlsh_hash, "ssdeep": (ssdeep_hash or ppdeep.hash)(data) or None}
 
 
-def hash_scan(data: bytes, database: HashDatabase, digest: str | None = None) -> dict:
+def hash_scan(data: bytes, database: HashDatabase, digest: str | None = None, ssdeep_hash=None) -> dict:
     exact_started = time.perf_counter()
     digest = digest or hashlib.sha256(data).hexdigest()
     found = database.by_sha.get(digest)
     exact_ms = (time.perf_counter() - exact_started) * 1000
     fuzzy_started = time.perf_counter()
-    fuzzy = compute_fuzzy(data)
+    fuzzy = compute_fuzzy(data) if ssdeep_hash is None else compute_fuzzy(data, ssdeep_hash)
     candidates = []
     for record in database.fuzzy_records:
         if record["sha256"] == digest:

@@ -14,6 +14,38 @@ from experiments.build_windows_delivery import safe_member, app_sources, determi
 from aegisav.desktop import verify_package, preflight, private_root, read_config
 
 
+def test_native_candidate_component_requires_reviewed_source_and_exact_dll(tmp_path):
+    from experiments.build_windows_delivery import native_component
+    bundle = tmp_path / 'native'
+    bundle.mkdir()
+    source = tmp_path / 'source'
+    (source / 'experiments').mkdir(parents=True)
+    (source / 'experiments/native_ssdeep.c').write_bytes(b'inert reviewed source')
+    blob = b'inert DLL bytes only'
+    (bundle / 'aegisav_ssdeep.dll').write_bytes(blob)
+    manifest = dict(schema=1, abi=1, file='aegisav_ssdeep.dll', sha256='0' * 64,
+                    source_sha256=hashlib.sha256(b'inert reviewed source').hexdigest())
+    (bundle / 'manifest.json').write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match='digest'):
+        native_component(bundle, source)
+
+
+def test_package_backend_is_pinned_by_manifest_not_host_environment(monkeypatch, tmp_path):
+    from aegisav import desktop, local_access, runtime
+    monkeypatch.setenv('AEGISAV_SSDEEP_BACKEND', 'unrecognized-host-poison')
+    monkeypatch.setattr(desktop, 'verify_package', lambda *_: {'package_id': 'fixture', 'ssdeep_backend': 'native'})
+    monkeypatch.setattr(desktop, 'read_config', lambda *_: {})
+    monkeypatch.setattr(local_access, 'load_access_token', lambda *_: 'inert-test-key')
+    class Verified(Exception):
+        pass
+    def build():
+        assert os.environ['AEGISAV_SSDEEP_BACKEND'] == 'native'
+        raise Verified()
+    monkeypatch.setattr(runtime, 'build_scanner', build)
+    with pytest.raises(Verified):
+        desktop.run_server(tmp_path, 3420, 'fixture')
+
+
 def test_delivery_source_allowlist_excludes_private_material(tmp_path):
     for name in ['backend/aegisav/api.py','rules/sigma/manifest.json','rules/hashes.json',
                  'models/registry.json','docs/benchmarks/private.json','backend/tests/private.json',

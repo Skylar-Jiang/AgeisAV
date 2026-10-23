@@ -13,11 +13,12 @@ from .pe import validate_pe
 
 class StaticScanner:
     def __init__(self, database: HashDatabase, yara_engine=None, clamav_engine=None,
-                 max_workers: int = 4, cache_capacity: int = 512, ml_engine=None):
+                 max_workers: int = 4, cache_capacity: int = 512, ml_engine=None, ssdeep_backend=None):
         self.database = database
         self.yara_engine = yara_engine
         self.clamav_engine = clamav_engine
         self.ml_engine = ml_engine
+        self.ssdeep_backend = ssdeep_backend
         self.max_workers = max_workers
         self.cache = OrderedDict()
         self.cache_capacity = cache_capacity
@@ -39,7 +40,8 @@ class StaticScanner:
         hash_ms = (time.perf_counter() - hash_started) * 1000
         artifacts = (self.database_version, getattr(self.yara_engine, "artifact_version", None),
                      getattr(self.clamav_engine, "artifact_version", None),
-                     getattr(self.ml_engine, "artifact_version", None))
+                     getattr(self.ml_engine, "artifact_version", None),
+                     getattr(self.ssdeep_backend, "engine_version", None))
         key = (digest, artifacts)
         cached = None
         ml_ready = self.ml_engine is None or not hasattr(self.ml_engine, 'probe') or self.ml_engine.probe()
@@ -53,9 +55,12 @@ class StaticScanner:
             report["cached"] = True
             return report
         overlap_hashes = len(data) >= 1024**2
-        hashes = None if overlap_hashes else hash_scan(data, self.database, digest)
+        hash_args = (data, self.database, digest)
+        if self.ssdeep_backend is not None:
+            hash_args += (self.ssdeep_backend.hash,)
+        hashes = None if overlap_hashes else hash_scan(*hash_args)
         with ThreadPoolExecutor(max_workers=4 if overlap_hashes else 3) as pool:
-            hash_future = pool.submit(hash_scan, data, self.database, digest) if overlap_hashes else None
+            hash_future = pool.submit(hash_scan, *hash_args) if overlap_hashes else None
             futures = {}
             configured = [("yara_x", self.yara_engine), ("clamav", self.clamav_engine)]
             if self.ml_engine is not None:
@@ -69,7 +74,8 @@ class StaticScanner:
                 "sha256": {"engine_id": "sha256", "engine_version": "sha256", "artifact_version": self.database_version,
                            "status": hashes["exact"]["status"], "elapsed_ms": round(hash_ms + hashes["exact"]["elapsed_ms"], 6),
                            "evidence": hashes["exact"]["evidence"], "risk_signal": "malicious" if any(r.get("verdict") == "malicious" for r in hashes["exact"]["evidence"]) else None},
-                "fuzzy": {"engine_id": "fuzzy", "engine_version": f"tlsh-python/{version('tlsh-python')} ppdeep/{version('ppdeep')}",
+                "fuzzy": {"engine_id": "fuzzy", "engine_version": f"tlsh-python/{version('tlsh-python')} ppdeep/{version('ppdeep')}" +
+                          (' ' + self.ssdeep_backend.engine_version if self.ssdeep_backend is not None else ''),
                           "artifact_version": self.database_version, "status": hashes["fuzzy"]["status"],
                           "elapsed_ms": round(hashes["fuzzy"]["elapsed_ms"], 6), "evidence": hashes["fuzzy"]["evidence"],
                           "hashes": hashes["fuzzy"]["hashes"], "risk_signal": "suspicious" if hashes["fuzzy"]["evidence"] else None},

@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "77d00f2bb945570dec8f3dac4076331a4ed46c5e",
+  "source_revision": "c958a469b7346e15d109b575474593c6ec54ba6b",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -669,8 +669,8 @@
     },
     {
       "path": "backend/aegisav/desktop.py",
-      "sha256": "3920ba9e6c3cbd7033506614d8149d7aad2a613bbf216d6d395241b8ea4322b3",
-      "bytes": 16216
+      "sha256": "8f7290b470fb2499608d677e26b6adc03600f1ae8de39f48b145d0c3abbf910b",
+      "bytes": 16297
     },
     {
       "path": "backend/aegisav/ember_features.py",
@@ -679,8 +679,8 @@
     },
     {
       "path": "backend/aegisav/hashes.py",
-      "sha256": "b47045bd0953f256a6e67fb7cccb1ecbf43e46a012316f255cef679db2554cdd",
-      "bytes": 4002
+      "sha256": "8d841577c85e79726d5f9866d80a0a00302cb630972b7fe084f822d663d7237b",
+      "bytes": 4116
     },
     {
       "path": "backend/aegisav/local_access.py",
@@ -703,6 +703,11 @@
       "bytes": 3988
     },
     {
+      "path": "backend/aegisav/native_ssdeep.py",
+      "sha256": "73729d5d21e80330d1a6a11ce014cbd78f134c2cede7fc53f7a8fdd9c5a0e6a7",
+      "bytes": 4744
+    },
+    {
       "path": "backend/aegisav/pe.py",
       "sha256": "5bd91fa095f4677d77308dc8dfbe324fe83ff4d5ee1a1185a6c3f4ac4c104231",
       "bytes": 629
@@ -714,8 +719,8 @@
     },
     {
       "path": "backend/aegisav/runtime.py",
-      "sha256": "8e7a08a9dc550b49b67adc37f9a5b72f967b5bde3170f765d6ac724b2e976836",
-      "bytes": 1120
+      "sha256": "d9370981748f52b5ff7150ff236b3c98d399a656329eb356214015ae4a771682",
+      "bytes": 1207
     },
     {
       "path": "backend/aegisav/scan_process.py",
@@ -734,8 +739,8 @@
     },
     {
       "path": "backend/aegisav/scanner.py",
-      "sha256": "eb447b5f69259605a12a871699eb53c3baa95bd2df36691f11a1fc65d1712dc1",
-      "bytes": 7551
+      "sha256": "117f62cc45aaf9eea20969af4aea4b44fb9de1cd0eea08ad2d5dbab0fda819ed",
+      "bytes": 7919
     },
     {
       "path": "backend/aegisav/task_store.py",
@@ -973,6 +978,11 @@
       "bytes": 2998
     },
     {
+      "path": "backend/tests/test_native_ssdeep.py",
+      "sha256": "c67a31f83eae0677fbe0985af3bf45a4ffcd651744ed64585d672447876670f3",
+      "bytes": 3335
+    },
+    {
       "path": "backend/tests/test_official_multivendor_collection.py",
       "sha256": "ece05dbbc663ed5a70d0c82eaeed47f82741950edbd4b6eff5ce7ca682b261b7",
       "bytes": 1733
@@ -1074,8 +1084,8 @@
     },
     {
       "path": "backend/tests/test_windows_delivery.py",
-      "sha256": "88417b55982cee37554664783b664e8672e3622239572df020f9ae191d934698",
-      "bytes": 7815
+      "sha256": "35d841c2d1d4cb6c4f37f60e00b7518003c5e3922c7675a6a259a1b713ca2beb",
+      "bytes": 9392
     },
     {
       "path": "backend/tests/test_yara_rules.py",
@@ -1204,8 +1214,8 @@
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "667af8f6ce5d49c54e95b7d3aadad34d95f3fd4ceed61298056ee24c40bdf5c1",
-      "bytes": 24085
+      "sha256": "231dbcfcd33fdd6fbd3af7718ce1a76937a302374483cf174e4e103cc27c4dc7",
+      "bytes": 24946
     },
     {
       "path": "README.md",
@@ -1251,6 +1261,11 @@
       "path": "docs/benchmarks/collection_summary_20261013.json",
       "sha256": "22fe28652647e117ff569eafc4d8aa00abfced527f491d44446c63b7221c6f17",
       "bytes": 3707
+    },
+    {
+      "path": "docs/benchmarks/course_evaluation_20261022.json",
+      "sha256": "6305a79350787a8bbb5d876c1677301b8fcf896dcbe9debbaa3a4a682d0acf73",
+      "bytes": 343654
     },
     {
       "path": "docs/benchmarks/expansion_diagnostics_20261016.json",
@@ -1363,6 +1378,16 @@
       "bytes": 1443
     },
     {
+      "path": "docs/benchmarks/model_binning_20261022.json",
+      "sha256": "c9cbd077ae5d86a2a929a5dd1fa7dc34ef4fbaa00f424e513ea3552a9c189d29",
+      "bytes": 27891
+    },
+    {
+      "path": "docs/benchmarks/native_rc_20261023.json",
+      "sha256": "9997f46ad7c29d515561cda29ccd00a52fc82fc4194c5009faadd8d2c031db79",
+      "bytes": 13888
+    },
+    {
       "path": "docs/benchmarks/optimization_20261022.json",
       "sha256": "1ed027d7c9f7034d029827dd1a9f09dbb8abf4c1ac32f029810a805466272e95",
       "bytes": 9305
@@ -1433,6 +1458,16 @@
       "bytes": 57318
     },
     {
+      "path": "docs/benchmarks/windows_controls_20261022.json",
+      "sha256": "5afe207d0e584147e5d0acb560615bc9b97cf4319096e241c65b5b1bdb635eac",
+      "bytes": 3691
+    },
+    {
+      "path": "docs/research/COURSE_EVALUATION_20261022.md",
+      "sha256": "c6f237defcf93ddee355ce7f34cc6f6889f7a84b006e6438184bc355e1053db5",
+      "bytes": 10486
+    },
+    {
       "path": "docs/research/INDEPENDENT_PE_PROTOCOL_20261012.md",
       "sha256": "4ff008a38c19773ab42b9704b957f6003a8807e518077acab279cffa2c2c622d",
       "bytes": 7094
@@ -1446,6 +1481,16 @@
       "path": "docs/research/ML_PRODUCT_INTEGRATION_20261011.md",
       "sha256": "4a4a3c3337a88f5b2f2a831e7b60ce4be941ec39198a40f28227ead8fee0150a",
       "bytes": 4703
+    },
+    {
+      "path": "docs/research/NATIVE_SSDEEP_RC_20261022.md",
+      "sha256": "6f728d0c1c878d7a7a15f00a090a8b716f217cb08c64ad6a48ec3430cf58e58d",
+      "bytes": 3019
+    },
+    {
+      "path": "docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md",
+      "sha256": "a99c4b6f22e2da6f5e5a21f3359ed2db4b084fe268aee71dab14a1566ff6b241",
+      "bytes": 12595
     },
     {
       "path": "docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md",
@@ -1521,6 +1566,16 @@
       "path": "docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md",
       "sha256": "2b0951faea76bbf776316d03c101e7bad683f57837ada786b9fa8a83690bf3b2",
       "bytes": 9611
+    },
+    {
+      "path": "docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md",
+      "sha256": "31547e787a25c6beda87a74184804a025c24d7b742ec0bc92e775e2e06224a1b",
+      "bytes": 6119
+    },
+    {
+      "path": "docs/research/WINDOWS_CONTROLS_20261022.md",
+      "sha256": "bd6ba939ec5fc04b80719bdf4c0251211ac3198a00409576cc5a5c1e7dc8e9b5",
+      "bytes": 5804
     },
     {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
@@ -1608,6 +1663,11 @@
       "bytes": 2553
     },
     {
+      "path": "experiments/build_native_ssdeep.py",
+      "sha256": "452a1ed6b20275933c021ddca7124a824423d526e29e54976b8be265bffa3331",
+      "bytes": 1780
+    },
+    {
       "path": "experiments/build_product_release.py",
       "sha256": "c10286eed33b3f7f943d0628f03301c1d81bd411de36c73097d050d08f60b673",
       "bytes": 1818
@@ -1624,13 +1684,18 @@
     },
     {
       "path": "experiments/build_windows_delivery.py",
-      "sha256": "0bfd16480c106c66cf95785b1ece130a0936e1b900f750b04e9ce33eee14fbac",
-      "bytes": 12417
+      "sha256": "50b0b4e9da9c446ad3ad30423e2b9ee142c1ce20f609c92300bab425096faefe",
+      "bytes": 15286
     },
     {
       "path": "experiments/check_linux_process_guard.py",
       "sha256": "6e1a6a6db6f45b05ccb431fc248a62904180057e4399d6382959fb8a06a7b356",
       "bytes": 3456
+    },
+    {
+      "path": "experiments/check_native_faults.py",
+      "sha256": "1bfbeab6a71dda3780232678dd2b84961b687c06d431cea0a2e641f93ce9f72b",
+      "bytes": 5598
     },
     {
       "path": "experiments/check_windows_delivery_faults.py",
@@ -1678,6 +1743,11 @@
       "bytes": 7463
     },
     {
+      "path": "experiments/compare_native_reports.py",
+      "sha256": "443f88cd84f4bda0615666202dbb22629b2b6ad840c6b2357dc6bc073be1b235",
+      "bytes": 6730
+    },
+    {
       "path": "experiments/compare_observed_false_positives.py",
       "sha256": "d99f5e02a60569c7e43ae9ae76887dd8c06af56a3aa08cbbdf2d3447083784a8",
       "bytes": 5148
@@ -1694,8 +1764,13 @@
     },
     {
       "path": "experiments/compare_task_latency.py",
-      "sha256": "708eca2e45f8881378e85521463422580680dc6f12f1c1cc3545ef12ad15cf8c",
-      "bytes": 10630
+      "sha256": "91bab9fcb76f9d9d5f2312efa4fd4b506db0fc3e69eb2082e6a58ed0b1da79ce",
+      "bytes": 13522
+    },
+    {
+      "path": "experiments/course_evaluation_summary.py",
+      "sha256": "a78c0789ee9c78c83dbe460b994a0ee4ce48775e005a4b2dbe668f11bc6c7c89",
+      "bytes": 16575
     },
     {
       "path": "experiments/ember_ablation.py",
@@ -1733,14 +1808,19 @@
       "bytes": 7314
     },
     {
+      "path": "experiments/evaluate_windows_controls.py",
+      "sha256": "d153bd1707e22e84f70eef3bcc867c9394974ee5a92d9f41c443ea8f81845bd0",
+      "bytes": 15496
+    },
+    {
       "path": "experiments/expansion_diagnostics.py",
       "sha256": "5c8761e861f440bd65f12d506295f38951e8c985bf8e8da3bb4718d679635241",
       "bytes": 10677
     },
     {
       "path": "experiments/export_public_delta.py",
-      "sha256": "ab4a4e477dbeb3aaa55ddb229979e2b4169cf75d598b85ba6222e74229fa1962",
-      "bytes": 6058
+      "sha256": "c3e3b96367ea99a85da93f176a7f80df5670fab3aa3945aca9684e7d5109bed5",
+      "bytes": 6651
     },
     {
       "path": "experiments/export_public_source.py",
@@ -1778,14 +1858,19 @@
       "bytes": 3422
     },
     {
+      "path": "experiments/model_binning_study.py",
+      "sha256": "f35c2045be450145853a3559788610a605b5cc1135f975afd2f85104a1635351",
+      "bytes": 17028
+    },
+    {
       "path": "experiments/model_search_round2.py",
       "sha256": "0bb3bfa8e848b400dd4f87ca661142248a03f3432a75f2aea058c430bc8fa8d6",
       "bytes": 13464
     },
     {
       "path": "experiments/native_ssdeep.c",
-      "sha256": "0d7a33969f454445e7665cad74b040a19fbd20b88d8b2a2dfac202597a74f056",
-      "bytes": 2491
+      "sha256": "a9c7da2676c343058bb08467de2ac039da26a78b87b5350a0d0a73aded712ca2",
+      "bytes": 2547
     },
     {
       "path": "experiments/profile_scan_pipeline.py",
@@ -1808,6 +1893,11 @@
       "bytes": 4171
     },
     {
+      "path": "experiments/summarize_native_rc.py",
+      "sha256": "92f47083aac2490761c145ca94e67845997178c093f3cc5120a9e55775d1cfda",
+      "bytes": 7237
+    },
+    {
       "path": "experiments/summarize_static_archive.py",
       "sha256": "5a373197d8c5b2bd878c832e89f42b83ae30fd83c0a0b6700d7382c62accb82d",
       "bytes": 3712
@@ -1816,6 +1906,16 @@
       "path": "experiments/task_reliability_fixture.py",
       "sha256": "c95fd3197dede2b63503a74686d16ac383366de533f5992ec626e4a6461beb02",
       "bytes": 2133
+    },
+    {
+      "path": "experiments/validate_native_candidate.py",
+      "sha256": "e876c718636103c983bffbafddf35d1bd6925ef0587cca179ac7ba08eb8e997e",
+      "bytes": 8189
+    },
+    {
+      "path": "experiments/windows_clamav_sidecar.py",
+      "sha256": "3af48f43a2417654118575cda4159e9642441726cdb2e1998973ca7417dd22a2",
+      "bytes": 7712
     },
     {
       "path": "frontend/.gitignore",
@@ -1859,8 +1959,8 @@
     },
     {
       "path": "frontend/scripts/check-delivery.cjs",
-      "sha256": "294c77ebcd15fb12301ae2f1ec0aaebe3c7d67d9ce1a65e99039832da77e83ef",
-      "bytes": 18869
+      "sha256": "ca42fd615d9412af9c33c07d4924e9a9db20a3251d12e1de94892958989fdc96",
+      "bytes": 19455
     },
     {
       "path": "frontend/scripts/check-linen-blur.cjs",
@@ -3798,34 +3898,39 @@
       "bytes": 1310
     }
   ],
-  "inherited_public_gate_revision": "d3bfbefd8c9ca0985eb102d7654fb3eb20fd2f2e",
+  "inherited_public_gate_revision": "547f4571012122861bafb87869855956a9c637a2",
   "changed_paths": [
+    "backend/aegisav/desktop.py",
+    "backend/aegisav/hashes.py",
+    "backend/aegisav/native_ssdeep.py",
     "backend/aegisav/runtime.py",
     "backend/aegisav/scanner.py",
-    "backend/tests/test_clamav.py",
-    "backend/tests/test_engine_overlap.py",
-    "backend/tests/test_model_search_round2.py",
-    "backend/tests/test_optimization_comparison.py",
-    "backend/tests/test_scanner.py",
-    "backend/tests/test_service_startup.py",
-    "docs/EXPERIMENTS.md",
+    "backend/tests/test_native_ssdeep.py",
+    "backend/tests/test_windows_delivery.py",
     "docs/PROGRESS.md",
-    "README.md",
-    "docs/USER_GUIDE.md",
-    "docs/benchmarks/optimization_20261022.json",
-    "docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md",
-    "experiments/NATIVE_SSDEEP_LICENSE.txt",
-    "experiments/NATIVE_SSDEEP_NOTICE.md",
-    "experiments/benchmark_native_ssdeep.py",
-    "experiments/compare_candidate_inference.py",
-    "experiments/compare_model_prefixes.py",
-    "experiments/compare_observed_false_positives.py",
-    "experiments/compare_scan_latency.py",
+    "docs/benchmarks/course_evaluation_20261022.json",
+    "docs/benchmarks/model_binning_20261022.json",
+    "docs/benchmarks/native_rc_20261023.json",
+    "docs/benchmarks/windows_controls_20261022.json",
+    "docs/research/COURSE_EVALUATION_20261022.md",
+    "docs/research/NATIVE_SSDEEP_RC_20261022.md",
+    "docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md",
+    "docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md",
+    "docs/research/WINDOWS_CONTROLS_20261022.md",
+    "experiments/build_native_ssdeep.py",
+    "experiments/build_windows_delivery.py",
+    "experiments/check_native_faults.py",
+    "experiments/compare_native_reports.py",
     "experiments/compare_task_latency.py",
+    "experiments/course_evaluation_summary.py",
+    "experiments/evaluate_windows_controls.py",
     "experiments/export_public_delta.py",
-    "experiments/model_search_round2.py",
+    "experiments/model_binning_study.py",
     "experiments/native_ssdeep.c",
-    "experiments/profile_scan_pipeline.py"
+    "experiments/summarize_native_rc.py",
+    "experiments/validate_native_candidate.py",
+    "experiments/windows_clamav_sidecar.py",
+    "frontend/scripts/check-delivery.cjs"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,
