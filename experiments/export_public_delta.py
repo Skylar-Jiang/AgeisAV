@@ -43,7 +43,14 @@ ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
                  'docs/research/WINDOWS_CONTROLS_20261022.md',
                  'docs/benchmarks/windows_controls_20261022.json',
                  'docs/benchmarks/native_rc_20261023.json',
-                 'docs/benchmarks/model_binning_20261022.json'}
+                 'docs/benchmarks/model_binning_20261022.json',
+                 'docs/COURSE_ACCEPTANCE_20261023.md',
+                 'docs/COURSE_HASH_QUERY.md',
+                 'docs/COURSE_SIGMA_LAB.md',
+                 'docs/COURSE_STATIC_ANALYSIS.md',
+                 'docs/RELEASE_021_COURSE_READINESS.md',
+                 'docs/examples/course-query/README.md',
+                 'docs/examples/course-query/sha256.txt'}
 
 
 def check_blob(name,data,private_hashes):

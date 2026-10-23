@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "c958a469b7346e15d109b575474593c6ec54ba6b",
+  "source_revision": "7f856e3cbe8585af26b6bd0605764aef776ef73e",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -678,6 +678,11 @@
       "bytes": 1088
     },
     {
+      "path": "backend/aegisav/hash_query.py",
+      "sha256": "7d82afef0e08f7cfa253dfc5f440fa830b9d6008c6c75fd7c8969b9f8840744b",
+      "bytes": 16090
+    },
+    {
       "path": "backend/aegisav/hashes.py",
       "sha256": "8d841577c85e79726d5f9866d80a0a00302cb630972b7fe084f822d663d7237b",
       "bytes": 4116
@@ -751,6 +756,21 @@
       "path": "backend/aegisav/tasks.py",
       "sha256": "5f384884e3490dd709ecbeee935b0a7a1044f051ce5a69a72257bfa2368640f1",
       "bytes": 13863
+    },
+    {
+      "path": "backend/aegisav/teaching_cli.py",
+      "sha256": "32ed738585e53854bb98766a4fd30edfdb726c898ded758f4108c18bc1bf2edd",
+      "bytes": 4580
+    },
+    {
+      "path": "backend/aegisav/teaching_report.py",
+      "sha256": "88cc9f323cba79f6cbe5f04fa1209d81eb1158a93a0ede6780084758caf0722e",
+      "bytes": 9982
+    },
+    {
+      "path": "backend/aegisav/teaching_worker.py",
+      "sha256": "b8ad88827a078c8416e3f1db1fc20040df631f76cedfef6b4264af421b31cedc",
+      "bytes": 939
     },
     {
       "path": "backend/aegisav/yara_engine.py",
@@ -873,6 +893,11 @@
       "bytes": 2275
     },
     {
+      "path": "backend/tests/test_course_sigma_demo.py",
+      "sha256": "8f64d4ef9e83d1d0fdee77765dd699c54f6a94dc610b95108e949a9982ff9204",
+      "bytes": 2141
+    },
+    {
       "path": "backend/tests/test_diagnostic_scope.py",
       "sha256": "4f9fc5d46a47cb151c8cf4f0dbd4efe3613c0b950f99afb16672025b884c18cf",
       "bytes": 533
@@ -926,6 +951,11 @@
       "path": "backend/tests/test_hash_functional.py",
       "sha256": "207d7596e97bc9908d70a1893b7508ac93549a7abb33a81347a1f1dabc7fb6bd",
       "bytes": 6834
+    },
+    {
+      "path": "backend/tests/test_hash_query.py",
+      "sha256": "f839114abdd07c402456e451543fd151f7cbea3e6794ce436172bc7ccf484dad",
+      "bytes": 12495
     },
     {
       "path": "backend/tests/test_hash_replay.py",
@@ -1083,6 +1113,11 @@
       "bytes": 4698
     },
     {
+      "path": "backend/tests/test_teaching_report.py",
+      "sha256": "7423388aee218d6afdb8e75a39ef772d908a0585d7d75836890b5b3c872f0dd2",
+      "bytes": 2854
+    },
+    {
       "path": "backend/tests/test_windows_delivery.py",
       "sha256": "35d841c2d1d4cb6c4f37f60e00b7518003c5e3922c7675a6a259a1b713ca2beb",
       "bytes": 9392
@@ -1163,6 +1198,26 @@
       "bytes": 8496
     },
     {
+      "path": "docs/COURSE_ACCEPTANCE_20261023.md",
+      "sha256": "9afcc99d29561ba698b4e0fb2bf6f7effc554228bfc3bea656b855ee21ca480b",
+      "bytes": 12363
+    },
+    {
+      "path": "docs/COURSE_HASH_QUERY.md",
+      "sha256": "743c129650fe3839446bcfd1e14a801ae63a3af0695e4c1cdd5bc52932178523",
+      "bytes": 10318
+    },
+    {
+      "path": "docs/COURSE_SIGMA_LAB.md",
+      "sha256": "2bfeda54c50b5ee043249a8f4aca339adb5910016b113852a270b9b04a6ae220",
+      "bytes": 8018
+    },
+    {
+      "path": "docs/COURSE_STATIC_ANALYSIS.md",
+      "sha256": "7f6d622057a7e1353fa2ce3a6f07724a0aa96895a562fdc4e21903fe78a3da8c",
+      "bytes": 3560
+    },
+    {
       "path": "docs/DATASET_ADMISSION_R6.md",
       "sha256": "f33e741ed3298463aa3e0d0361b82ee068573f416cd76945990c096a631dfe0d",
       "bytes": 7982
@@ -1214,13 +1269,18 @@
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "231dbcfcd33fdd6fbd3af7718ce1a76937a302374483cf174e4e103cc27c4dc7",
-      "bytes": 24946
+      "sha256": "05d7dcb2fb623a040326fb4f8071d57d7869975cbdc1fcb3f37f0b748785b073",
+      "bytes": 25743
     },
     {
       "path": "README.md",
       "sha256": "a614da8d4fa41d707f81e9c7da72c8880600817d368bb489821a8aca06fabd56",
       "bytes": 5119
+    },
+    {
+      "path": "docs/RELEASE_021_COURSE_READINESS.md",
+      "sha256": "1b791cffbca3c97b454be85a506260816a6eef2e03cb710d30d99e8c2f531922",
+      "bytes": 9785
     },
     {
       "path": "docs/SKILLS.md",
@@ -1461,6 +1521,16 @@
       "path": "docs/benchmarks/windows_controls_20261022.json",
       "sha256": "5afe207d0e584147e5d0acb560615bc9b97cf4319096e241c65b5b1bdb635eac",
       "bytes": 3691
+    },
+    {
+      "path": "docs/examples/course-query/README.md",
+      "sha256": "ca60a15a6153be8f253a4847712cdc6e57539aeae10555119b285a09a9f2ab48",
+      "bytes": 688
+    },
+    {
+      "path": "docs/examples/course-query/sha256.txt",
+      "sha256": "6794eb79f509777f72a7087018bfadd7f3027f7b5235ed048e6313d8a1f8e26e",
+      "bytes": 141
     },
     {
       "path": "docs/research/COURSE_EVALUATION_20261022.md",
@@ -1773,6 +1843,11 @@
       "bytes": 16575
     },
     {
+      "path": "experiments/course_sigma_demo.py",
+      "sha256": "0ff07a1a0dc4c23c3922d34b8b9d992935ae4a81f0d08c57874433cb941d3831",
+      "bytes": 4799
+    },
+    {
       "path": "experiments/ember_ablation.py",
       "sha256": "e6e57c1e959702dc24ccd68ce8ddadd8487876ba3a970d406f122bd6cbb65193",
       "bytes": 6117
@@ -1819,8 +1894,8 @@
     },
     {
       "path": "experiments/export_public_delta.py",
-      "sha256": "c3e3b96367ea99a85da93f176a7f80df5670fab3aa3945aca9684e7d5109bed5",
-      "bytes": 6651
+      "sha256": "78a02e0f275e8dcad387dd0349eafba308160775f0839dbf1904da49e4d0967e",
+      "bytes": 7020
     },
     {
       "path": "experiments/export_public_source.py",
@@ -3898,39 +3973,25 @@
       "bytes": 1310
     }
   ],
-  "inherited_public_gate_revision": "547f4571012122861bafb87869855956a9c637a2",
+  "inherited_public_gate_revision": "1a4018b18241a361be511acee24cb197224a25f2",
   "changed_paths": [
-    "backend/aegisav/desktop.py",
-    "backend/aegisav/hashes.py",
-    "backend/aegisav/native_ssdeep.py",
-    "backend/aegisav/runtime.py",
-    "backend/aegisav/scanner.py",
-    "backend/tests/test_native_ssdeep.py",
-    "backend/tests/test_windows_delivery.py",
+    "backend/aegisav/hash_query.py",
+    "backend/aegisav/teaching_cli.py",
+    "backend/aegisav/teaching_report.py",
+    "backend/aegisav/teaching_worker.py",
+    "backend/tests/test_course_sigma_demo.py",
+    "backend/tests/test_hash_query.py",
+    "backend/tests/test_teaching_report.py",
+    "docs/COURSE_ACCEPTANCE_20261023.md",
+    "docs/COURSE_HASH_QUERY.md",
+    "docs/COURSE_SIGMA_LAB.md",
+    "docs/COURSE_STATIC_ANALYSIS.md",
     "docs/PROGRESS.md",
-    "docs/benchmarks/course_evaluation_20261022.json",
-    "docs/benchmarks/model_binning_20261022.json",
-    "docs/benchmarks/native_rc_20261023.json",
-    "docs/benchmarks/windows_controls_20261022.json",
-    "docs/research/COURSE_EVALUATION_20261022.md",
-    "docs/research/NATIVE_SSDEEP_RC_20261022.md",
-    "docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md",
-    "docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md",
-    "docs/research/WINDOWS_CONTROLS_20261022.md",
-    "experiments/build_native_ssdeep.py",
-    "experiments/build_windows_delivery.py",
-    "experiments/check_native_faults.py",
-    "experiments/compare_native_reports.py",
-    "experiments/compare_task_latency.py",
-    "experiments/course_evaluation_summary.py",
-    "experiments/evaluate_windows_controls.py",
-    "experiments/export_public_delta.py",
-    "experiments/model_binning_study.py",
-    "experiments/native_ssdeep.c",
-    "experiments/summarize_native_rc.py",
-    "experiments/validate_native_candidate.py",
-    "experiments/windows_clamav_sidecar.py",
-    "frontend/scripts/check-delivery.cjs"
+    "docs/RELEASE_021_COURSE_READINESS.md",
+    "docs/examples/course-query/README.md",
+    "docs/examples/course-query/sha256.txt",
+    "experiments/course_sigma_demo.py",
+    "experiments/export_public_delta.py"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,
