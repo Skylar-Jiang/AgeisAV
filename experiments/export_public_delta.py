@@ -50,7 +50,9 @@ ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
                  'docs/COURSE_STATIC_ANALYSIS.md',
                  'docs/RELEASE_021_COURSE_READINESS.md',
                  'docs/examples/course-query/README.md',
-                 'docs/examples/course-query/sha256.txt'}
+                 'docs/examples/course-query/sha256.txt',
+                 'docs/research/YARA_BUNDLE_RESULTS_20261101_PUBLIC.md',
+                 'docs/benchmarks/yara_bundle_20261101.json'}
 
 
 def check_blob(name,data,private_hashes):

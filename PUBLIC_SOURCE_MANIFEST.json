@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "7f856e3cbe8585af26b6bd0605764aef776ef73e",
+  "source_revision": "a97c1ab5258b54ab05503bde40d0c740aad8479e",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -774,8 +774,8 @@
     },
     {
       "path": "backend/aegisav/yara_engine.py",
-      "sha256": "0523e5e98c09ce7662af0c39f92649e811bf019469134048051d4be0a9761365",
-      "bytes": 3417
+      "sha256": "6dbc56493f3ea83fb33e37cf3f762310394f2a1ecd10f85736e02fe9b4a40321",
+      "bytes": 4865
     },
     {
       "path": "backend/tests/conftest.py",
@@ -1123,6 +1123,11 @@
       "bytes": 9392
     },
     {
+      "path": "backend/tests/test_yara_bundle.py",
+      "sha256": "b9ef0c9304f2028d88a1a25886721f9ece588af7342e4d323d404915e4b93980",
+      "bytes": 5252
+    },
+    {
       "path": "backend/tests/test_yara_rules.py",
       "sha256": "312a94b36d6d9471056d04ebfbe01ac684d41c672ce7d4a6f2a38d12e73827bf",
       "bytes": 2008
@@ -1269,8 +1274,8 @@
     },
     {
       "path": "docs/PROGRESS.md",
-      "sha256": "05d7dcb2fb623a040326fb4f8071d57d7869975cbdc1fcb3f37f0b748785b073",
-      "bytes": 25743
+      "sha256": "870d7567e83d5be5b59b96544f275e2f3e58754be154977a40e3a1f9179f58ca",
+      "bytes": 26707
     },
     {
       "path": "README.md",
@@ -1523,6 +1528,11 @@
       "bytes": 3691
     },
     {
+      "path": "docs/benchmarks/yara_bundle_20261101.json",
+      "sha256": "80c4fd531630bb31d55a76caadcf651db57e8b53e3fc6aae86981d1e9031b4a0",
+      "bytes": 11291
+    },
+    {
       "path": "docs/examples/course-query/README.md",
       "sha256": "ca60a15a6153be8f253a4847712cdc6e57539aeae10555119b285a09a9f2ab48",
       "bytes": 688
@@ -1646,6 +1656,11 @@
       "path": "docs/research/WINDOWS_CONTROLS_20261022.md",
       "sha256": "bd6ba939ec5fc04b80719bdf4c0251211ac3198a00409576cc5a5c1e7dc8e9b5",
       "bytes": 5804
+    },
+    {
+      "path": "docs/research/YARA_BUNDLE_RESULTS_20261101_PUBLIC.md",
+      "sha256": "fdef4dcf456830242b25c3cf549461467d5d409c36ad06df1f3d0759d46c2c1d",
+      "bytes": 8033
     },
     {
       "path": "experiments/Get-MalwareBazaarCandidates.ps1",
@@ -1834,8 +1849,8 @@
     },
     {
       "path": "experiments/compare_task_latency.py",
-      "sha256": "91bab9fcb76f9d9d5f2312efa4fd4b506db0fc3e69eb2082e6a58ed0b1da79ce",
-      "bytes": 13522
+      "sha256": "699f224ac3d7bf1a2ac58d22572fb5d7f57279625557fbd7031adb18a27e8fc5",
+      "bytes": 14924
     },
     {
       "path": "experiments/course_evaluation_summary.py",
@@ -1894,8 +1909,8 @@
     },
     {
       "path": "experiments/export_public_delta.py",
-      "sha256": "78a02e0f275e8dcad387dd0349eafba308160775f0839dbf1904da49e4d0967e",
-      "bytes": 7020
+      "sha256": "cb809642c185634c01439cfd7a3333431604a8a025ead82a71a2474131bd5496",
+      "bytes": 7155
     },
     {
       "path": "experiments/export_public_source.py",
@@ -1988,9 +2003,19 @@
       "bytes": 8189
     },
     {
+      "path": "experiments/validate_yara_bundle.py",
+      "sha256": "0c4930d387e36814bc34a648a3c86d5f4d1e8e72f99a99ee26147c193625e018",
+      "bytes": 8375
+    },
+    {
       "path": "experiments/windows_clamav_sidecar.py",
       "sha256": "3af48f43a2417654118575cda4159e9642441726cdb2e1998973ca7417dd22a2",
       "bytes": 7712
+    },
+    {
+      "path": "experiments/yara_bundle.py",
+      "sha256": "444584b60d838eb38de11af7d79fb0ff81f0e14e66011c65b7544cd831f0217c",
+      "bytes": 3515
     },
     {
       "path": "frontend/.gitignore",
@@ -3973,25 +3998,17 @@
       "bytes": 1310
     }
   ],
-  "inherited_public_gate_revision": "1a4018b18241a361be511acee24cb197224a25f2",
+  "inherited_public_gate_revision": "b055261dde00c35537f998c8dc9638dc9180c4b5",
   "changed_paths": [
-    "backend/aegisav/hash_query.py",
-    "backend/aegisav/teaching_cli.py",
-    "backend/aegisav/teaching_report.py",
-    "backend/aegisav/teaching_worker.py",
-    "backend/tests/test_course_sigma_demo.py",
-    "backend/tests/test_hash_query.py",
-    "backend/tests/test_teaching_report.py",
-    "docs/COURSE_ACCEPTANCE_20261023.md",
-    "docs/COURSE_HASH_QUERY.md",
-    "docs/COURSE_SIGMA_LAB.md",
-    "docs/COURSE_STATIC_ANALYSIS.md",
+    "backend/aegisav/yara_engine.py",
+    "backend/tests/test_yara_bundle.py",
     "docs/PROGRESS.md",
-    "docs/RELEASE_021_COURSE_READINESS.md",
-    "docs/examples/course-query/README.md",
-    "docs/examples/course-query/sha256.txt",
-    "experiments/course_sigma_demo.py",
-    "experiments/export_public_delta.py"
+    "docs/benchmarks/yara_bundle_20261101.json",
+    "docs/research/YARA_BUNDLE_RESULTS_20261101_PUBLIC.md",
+    "experiments/compare_task_latency.py",
+    "experiments/export_public_delta.py",
+    "experiments/validate_yara_bundle.py",
+    "experiments/yara_bundle.py"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,

@@ -52,10 +52,18 @@ def main():
     parser.add_argument('--baseline-python', type=Path, default=ROOT / '.venv/Scripts/python.exe')
     parser.add_argument('--candidate-python', type=Path, default=ROOT / '.venv/Scripts/python.exe')
     parser.add_argument('--native-candidate', action='store_true')
+    parser.add_argument('--candidate-yara-bundle', type=Path)
+    parser.add_argument('--candidate-yara-sha256')
+    parser.add_argument('--shared-native-root', type=Path,
+                        help='Use the same existing native backend in both arms')
     parser.add_argument('--clam-state', choices=('healthy', 'unavailable'))
     args = parser.parse_args()
     if args.output.exists() or not 1 <= args.rounds <= 5:
         raise ValueError('Requires new output and 1–5 rounds')
+    if (args.candidate_yara_bundle is None) != (args.candidate_yara_sha256 is None):
+        raise ValueError('YARA bundle and trusted SHA256 are required together')
+    if args.native_candidate and (args.shared_native_root or args.candidate_yara_bundle):
+        raise ValueError('Native-only and YARA/shared-native candidates are separate comparisons')
     if args.clam_state:
         from aegisav.clamav_engine import ClamAVEngine
         if ClamAVEngine().probe() != (args.clam_state == 'healthy'):
@@ -86,6 +94,8 @@ def main():
               'scanner_sha256': {name: hashlib.sha256((root / 'backend/aegisav/scanner.py').read_bytes()).hexdigest()
                                  for name, root in roots.items()},
               'clam_state': args.clam_state, 'native_candidate': args.native_candidate,
+              'candidate_yara_bundle_sha256': args.candidate_yara_sha256,
+              'shared_native_root': str(args.shared_native_root) if args.shared_native_root else None,
               'comparison_excludes_expected_native_version_suffix': args.native_candidate,
               'worker_interpreters': {'baseline': str(args.baseline_python), 'candidate': str(args.candidate_python)},
               'inputs': [{'name': str(p), 'size_bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
@@ -102,7 +112,14 @@ def main():
                         f'os.environ["AEGISAV_SSDEEP_BACKEND"]={mode!r}; '
                         'from aegisav.scan_worker import main; main()')
                 python = args.baseline_python if name == 'baseline' else args.candidate_python
-                runner = ProcessScanner([str(python), '-B', '-c', code])
+                worker_args = [str(python), '-B', '-c', code]
+                if args.shared_native_root or (name == 'candidate' and args.candidate_yara_bundle):
+                    from experiments.yara_bundle import worker_command
+                    bundle = str(args.candidate_yara_bundle.resolve()) if name == 'candidate' and args.candidate_yara_bundle else None
+                    digest = args.candidate_yara_sha256 if bundle else None
+                    native = str(args.shared_native_root.resolve()) if args.shared_native_root else None
+                    worker_args = worker_command(root, python, bundle, digest, native)
+                runner = ProcessScanner(worker_args)
                 path = temporary / name / 'tasks.sqlite3'
                 app = create_app(build_scanner(), access_token=key, db_path=path, runner=runner)
                 listener = socket.socket()

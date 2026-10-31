@@ -1,4 +1,5 @@
 import hashlib
+import io
 import json
 import re
 import time
@@ -20,6 +21,7 @@ class YaraEngine:
     metadata: dict[str, dict]
     artifact_version: str
     timeout_seconds: int
+    source_sha256: str
 
     def scan(self, data: bytes) -> dict:
         started = time.perf_counter()
@@ -50,7 +52,10 @@ class YaraEngine:
         }
 
 
-def load_yara_engine(rule_dir: Path, metadata_file: Path, timeout_seconds: int = 2) -> YaraEngine:
+def load_yara_engine(rule_dir: Path, metadata_file: Path, timeout_seconds: int = 2,
+                     *, compiled_file: Path | None = None, compiled_sha256: str | None = None) -> YaraEngine:
+    if (compiled_file is None) != (compiled_sha256 is None):
+        raise ValueError("Compiled file and trusted digest must be provided together")
     files = sorted(rule_dir.glob("*.yar"))
     metadata = json.loads(metadata_file.read_text(encoding="utf-8"))
     if not files or not isinstance(metadata, list):
@@ -71,9 +76,30 @@ def load_yara_engine(rule_dir: Path, metadata_file: Path, timeout_seconds: int =
         raise ValueError("Duplicate rule declaration")
     if set(names) != set(by_id):
         raise ValueError("Rule IDs and metadata do not match")
-    try:
-        compiled = yara_x.compile("\n".join(sources))
-    except yara_x.CompileError as exc:
-        raise ValueError(f"Invalid YARA-X syntax: {exc}") from exc
-    digest = hashlib.sha256(("\n".join(sources) + json.dumps(metadata, sort_keys=True)).encode()).hexdigest()[:16]
-    return YaraEngine(compiled, by_id, digest, timeout_seconds)
+    source = "\n".join(sources)
+    digest = hashlib.sha256((source + json.dumps(metadata, sort_keys=True)).encode()).hexdigest()
+    if compiled_file is None:
+        try:
+            compiled = yara_x.compile(source)
+        except yara_x.CompileError as exc:
+            raise ValueError(f"Invalid YARA-X syntax: {exc}") from exc
+    else:
+        # The digest comes from trusted deployment configuration, not the bundle.
+        # Deserialize the exact verified bytes; never reopen the path afterwards.
+        with Path(compiled_file).open('rb') as stream:
+            raw = stream.read(8 * 1024**2 + 1)
+        if len(raw) > 8 * 1024**2:
+            raise ValueError('Compiled YARA bundle size limit')
+        if hashlib.sha256(raw).hexdigest() != compiled_sha256:
+            raise ValueError('Compiled YARA bundle digest mismatch')
+        try:
+            header, payload = raw.split(b'\n', 1)
+            manifest = json.loads(header)
+            if manifest['schema'] != 1 or manifest['yara_version'] != version('yara-x'):
+                raise ValueError('Compiled YARA bundle version mismatch')
+            if manifest['source_sha256'] != digest:
+                raise ValueError('Compiled YARA bundle source mismatch')
+            compiled = yara_x.Rules.deserialize_from(io.BytesIO(payload))
+        except (KeyError, TypeError, yara_x.CompileError) as exc:
+            raise ValueError('Invalid compiled YARA bundle') from exc
+    return YaraEngine(compiled, by_id, digest[:16], timeout_seconds, digest)
