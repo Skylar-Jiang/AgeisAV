@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "source_revision": "a97c1ab5258b54ab05503bde40d0c740aad8479e",
+  "source_revision": "10bc3c2d50b5c92223fa497563c921a40257d23b",
   "files": [
     {
       "path": ".agents/skills/fastapi/LICENSE",
@@ -1279,8 +1279,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "a614da8d4fa41d707f81e9c7da72c8880600817d368bb489821a8aca06fabd56",
-      "bytes": 5119
+      "sha256": "f73a0a26abd5fe9eed4c72c34928997d548aa1d35a257cf1f1524e89168b45af",
+      "bytes": 13528
     },
     {
       "path": "docs/RELEASE_021_COURSE_READINESS.md",
@@ -3998,17 +3998,9 @@
       "bytes": 1310
     }
   ],
-  "inherited_public_gate_revision": "b055261dde00c35537f998c8dc9638dc9180c4b5",
+  "inherited_public_gate_revision": "a4a76fd9334eb7eb275512ada3a9c773b31175bb",
   "changed_paths": [
-    "backend/aegisav/yara_engine.py",
-    "backend/tests/test_yara_bundle.py",
-    "docs/PROGRESS.md",
-    "docs/benchmarks/yara_bundle_20261101.json",
-    "docs/research/YARA_BUNDLE_RESULTS_20261101_PUBLIC.md",
-    "experiments/compare_task_latency.py",
-    "experiments/export_public_delta.py",
-    "experiments/validate_yara_bundle.py",
-    "experiments/yara_bundle.py"
+    "README.md"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,
