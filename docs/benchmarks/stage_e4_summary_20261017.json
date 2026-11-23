@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "date": "2026-10-17",
+  "status": "partial; VM resource gate blocks raw malicious acquisition and diagnostic execution",
+  "malicious": {
+    "new_candidates": 15,
+    "source_organizations": 4,
+    "reported_families": 6,
+    "primary_source_pages": 4,
+    "probable": 15,
+    "raw_new": 0,
+    "high_confidence_new": 0,
+    "formal_final_eligible": 0,
+    "api_requests_this_round": 0,
+    "availability": "not queried; resource gate, not API unavailability",
+    "selection": "Exact primary technical evidence and PE role, frozen before any AegisAV score or metadata availability selection",
+    "human_review": "pending",
+    "report_period": "May\u2013December 2025; newer temporal coverage remains a gap"
+  },
+  "diagnosis": {
+    "reference_records": 4,
+    "fuzzy_reference_records": 2,
+    "exact_reference_present": false,
+    "minimum_tlsh_distance": 454,
+    "tlsh_maximum_threshold": 40,
+    "maximum_ssdeep_similarity": 0,
+    "ssdeep_minimum_threshold": 80,
+    "native_self_comparison": {
+      "tlsh": 0,
+      "ssdeep": 100
+    },
+    "finding": "Reference coverage inadequate for the saved case; no threshold change or sample-hash backfill",
+    "rules_total": 246,
+    "ransomware_rules": 212,
+    "emotet_rules": 1,
+    "emotet_hex_patterns": 14,
+    "pattern_presence": "not tested on raw case this round",
+    "windows_rules_artifact": "c86b0a888539baf5",
+    "linux_rules_artifact": "55ccec8463af1166",
+    "artifact_difference": "Path sorting only; no evidence of missing deployed rule set from this difference",
+    "raw_structure_features_and_contributions": "prepared, not VM-executed",
+    "model_root_cause": "unresolved",
+    "clamav_root_cause": "unresolved; no claim that family signatures are absent"
+  },
+  "benign": {
+    "raw_new": 13,
+    "official_sources": 4,
+    "downloaded_bytes": 41336652,
+    "sample_bytes": 42748725,
+    "win64": 11,
+    "win32": 2,
+    "valid_signatures": 8,
+    "not_signed": 2,
+    "signature_unknown_error": 3,
+    "prior_exact_overlap": 0,
+    "current_only_clusters": 12,
+    "prior_aware_components": 11,
+    "prior_linked_files": 3,
+    "remaining_unlinked_files": 10,
+    "remaining_unlinked_components": 9,
+    "label": "presumed_benign; human final admission pending",
+    "paired_five_engine_scanned_this_round": 0
+  },
+  "independence": {
+    "local_win64_sha_matches": {
+      "fit": 0,
+      "validation": 0,
+      "test": 0
+    },
+    "full_author_training_cleared": false,
+    "near_training_overlap_cleared": false,
+    "final_set_used": false,
+    "prior_fingerprints_checked": 1928,
+    "near_comparison_errors": 0,
+    "cluster_limit": "Union of observed current/current and current/prior screening edges; full prior/prior or training near-overlap not exhaustively cleared."
+  },
+  "rule_experiment": {
+    "production_activated": false,
+    "asset": "Elastic Emotet research-only shadow",
+    "revision": "955723319e62a7e4095d256355b095a7594ff48c",
+    "license": "Elastic License 2.0; retained privately for internal research, not public product distribution",
+    "rules": 7,
+    "presumed_benign_inputs": 13,
+    "positive_signals": 0,
+    "timeouts": 0,
+    "wall_ms": 62.999999994644895,
+    "malicious_case_tested": false,
+    "detection_gain": null,
+    "formal_fpr": null,
+    "illustrative_iid_zero_of_13_one_sided_95_upper": 0.20581666518655073,
+    "statistical_limit": "Illustrative Bernoulli bound only; proxy labels and correlation preclude formal deployment FPR interpretation"
+  },
+  "engineering": {
+    "diagnostic_baseline_binding": "Artifact, schema, implementation, feature digest, score, threshold and model version; mismatch is incompatible_baseline",
+    "new_collector_bound": "30 source candidates, max2MiB raw intake matches existing worker FSIZE cap; explicit metadata/type/size exclusions, never negatives",
+    "observed_cases": "Scan output records development_error_analysis and detector_results_observed",
+    "new_diagnostic_vm_acceptance": false,
+    "production_worker_changed": false
+  },
+  "tests": {
+    "local_passed": 259,
+    "local_skipped": 6,
+    "existing_warning": 1,
+    "focused": 18
+  },
+  "safety": {
+    "vm_started_this_round": false,
+    "vm_config_changed": false,
+    "credentials_read_or_reconfigured": false,
+    "raw_malware_on_host": false,
+    "malware_executed": false,
+    "snapshots_modified": false,
+    "production_backend_models_rules_ui_unchanged": true
+  },
+  "resource_gate": {
+    "schema": 1,
+    "status": "deferred_memory",
+    "read_only": true,
+    "guest_validation_performed": false,
+    "captured_at_utc": "2026-10-17T11:13:48.1888765Z",
+    "guest_memory_bytes": 8589934592,
+    "host_available_bytes": 7871410176,
+    "required_available_bytes": 10737418240,
+    "host_vmx_offline_passed": true,
+    "vm_modified": false
+  },
+  "evidence": [
+    {
+      "path": "artifacts/stage-e-r4-20261017/source-review.json",
+      "sha256": "8d1a5f50e016a915dad2c5c20ee7af292badcc8aeefe4ee5a64dce017875c486"
+    },
+    {
+      "path": "artifacts/stage-e-r4-20261017/dataset-audit.json",
+      "sha256": "50a416e684fb8a62302f672325b98aaa3d80ae51e5a9b03d081c68be932000a5"
+    },
+    {
+      "path": "artifacts/stage-e-r4-20261017/dataset-audit-v2.json",
+      "sha256": "3c8cd58ecfc6971c6b084c15d3afea599ae7fc52bc227c7de7e43e091a2d5c0e"
+    },
+    {
+      "path": "artifacts/stage-e-r4-20261017/reference-rule-diagnosis.json",
+      "sha256": "c6b220a7797ff9f622c59a74040a4ad9eaaeeccceaeb2a1b6b6932ef80e09eaa"
+    },
+    {
+      "path": "artifacts/stage-e-r4-20261017/elastic-shadow/result-benign.json",
+      "sha256": "2f4580449922d9f75a3f117792d92e5403b0ea37f3a68d4949d7cbc029386850"
+    },
+    {
+      "path": "artifacts/official-multivendor-pe-20261017-r4/acquisition.json",
+      "sha256": "b57c1531b2cf05c88ea50c40e017bf2fca288c0c1e5100a5aba10f003fa6a3f5"
+    },
+    {
+      "path": "artifacts/official-multivendor-pe-20261017-r4/source_review.json",
+      "sha256": "7638fbab769b1742d5715b881004e691b09b74ddcea392537348d4cd7b4375f5"
+    }
+  ]
+}

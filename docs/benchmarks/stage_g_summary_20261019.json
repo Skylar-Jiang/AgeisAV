@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "stage": "G",
+  "application_version": "0.2.0",
+  "delivery": "portable Windows x64 ZIP",
+  "local_tests": {
+    "passed": 338,
+    "skipped": 6,
+    "warnings": 1
+  },
+  "public_tests": {
+    "passed": 337,
+    "skipped": 7,
+    "warnings": 1
+  },
+  "verified_candidate_browser": {
+    "passed": 27,
+    "failed": 0,
+    "screenshots": 14,
+    "widths": [
+      1440,
+      375
+    ],
+    "real_backend": true
+  },
+  "actual_packaged_faults": {
+    "passed": 5,
+    "failed": 0,
+    "inert_injection": true
+  },
+  "core_engines": {
+    "sha256": "no_match",
+    "fuzzy": "no_match",
+    "yara_x": "no_match",
+    "clamav": "unavailable",
+    "lightgbm": "unavailable"
+  },
+  "external_ml": "actual no_match; private assets referenced outside package",
+  "private_assets_included": false,
+  "formal_detection_metrics": null,
+  "stage_e": {
+    "engineering": "complete",
+    "research": "open",
+    "independent_validation": 0,
+    "final_test": 0
+  },
+  "vm": {
+    "started": false,
+    "ram_mib": 6144,
+    "snapshots_retained": 6
+  },
+  "final_bundle": {
+    "bundle_name": "AegisAV-0.2.0-Windows-x64.zip",
+    "sha256": "caba52afdbcfb9bc597447b7cb8ac75eb025972b400639a389d3565cf15c6e43",
+    "bytes": 31507698,
+    "expanded_bytes": 97532602,
+    "files": 3920
+  },
+  "final_browser": {
+    "passed": 28,
+    "failed": 0,
+    "screenshots": 14,
+    "widths": [
+      1440,
+      375
+    ]
+  },
+  "final_faults": {
+    "passed": 5,
+    "failed": 0,
+    "fixture_startup_ms": [
+      3609.0,
+      3313.0,
+      2844.0
+    ]
+  },
+  "single_run_resource_observations": {
+    "extraction_ms": 5934.6487,
+    "startup_ms": 10546.8335,
+    "stop_ms": 9278.675999999992,
+    "restart_ms": 12681.402099999992,
+    "core_file_wall_ms": 4535.964,
+    "external_model_file_wall_ms": 6226.343,
+    "core_service_memory": {
+      "WorkingSet64": 89825280,
+      "PeakWorkingSet64": 294027264,
+      "CPU": 3.984375,
+      "scope": "service only; excludes scan/model children; not a total tree peak"
+    },
+    "external_model_service_memory": {
+      "WorkingSet64": 95240192,
+      "PeakWorkingSet64": 294088704,
+      "CPU": 4.28125,
+      "scope": "service only; excludes scan/model children; not a total tree peak"
+    },
+    "private_db_bytes": 49152
+  },
+  "resource_measurement_limit": "Service-only sampled/current and lifetime peak working set excludes children; no fair throughput/P50/P95 claim",
+  "cleanup": {
+    "test_services_and_profiles": "cleaned",
+    "redundant_build_directories": "retained; automatic approval review blocked deletion; no workaround attempted"
+  },
+  "release_source_revision": "e023ea39010ca44114ef452089276e0ec5bce1f3",
+  "failures_preserved": [
+    "initial external ML PYTHONHOME failure; fixed and retested",
+    "final fault harness first readiness exceeded15s; no fault executed; owned process cleaned; instrumented45s harness retry actual startups2.844-3.609s; underlying transient cause not independently established"
+  ]
+}

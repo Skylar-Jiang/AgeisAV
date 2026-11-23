@@ -1,0 +1,29 @@
+AegisAV 0.2.0 | Windows 11 x64 | Portable local analysis
+
+1. Extract the entire ZIP to a normal writable directory. Do not run inside ZIP.
+2. Double-click Start-AegisAV.cmd (normal user, not administrator).
+3. First login: double-click Access-Key.cmd. Copy the displayed local key
+   into the browser's local-access field, then close Notepad. Never send it.
+4. Open docs/USER_GUIDE.html for the full Chinese user guide.
+5. Quit with Stop-AegisAV.cmd. Closing a browser tab does not stop the service.
+
+No Python, Node.js, pip, registry change or administrator installation required.
+Offline after extraction. Default URL: http://127.0.0.1:3417/linen/
+Private keys, reports and optional model paths: %LOCALAPPDATA%\AegisAVDesktop
+Keep that private directory outside this portable directory.
+
+Included: SHA-256, TLSH/SSDeep, YARA-X, offline Sysmon/Sigma behavior analysis.
+Optional/excluded: ML weights + separate ML Python; ClamAV + signature database.
+Missing engines show unavailable/abstention, never a successful negative.
+
+Use only benign PE or provided harmless fixtures on Windows.
+Real malicious PE remains in the separately approved offline Ubuntu VM.
+No malicious execution or automatic Windows sandbox is provided.
+Sigma: 2 fixed test-state rules; UTF-8 XML/normalized JSON, no native EVTX.
+Formal independent Recall/FPR and generalization remain unverified.
+
+Integrity: compare ZIP SHA-256 with the supplied .sha256 before use;
+Verify-Package.cmd checks extracted files. These hashes are not code signing.
+Uninstall: stop, then remove only the extracted directory. Private reports remain.
+Rollback: stop current build, extract an older verified build elsewhere;
+do not downgrade or overwrite report schemas without a stopped-state backup.

@@ -1,0 +1,14 @@
+flowchart TB
+  UI[Linen browser] --> AUTH[Loopback / same origin / local session]
+  AUTH --> API[FastAPI]
+  API --> TASK[Bounded static task queue]
+  TASK --> CHILD[Owned scanner process tree]
+  CHILD --> ENGINE[SHA256 / TLSH-SSDeep / YARA-X / ClamAV / ML]
+  ENGINE --> OR[Frozen evidence-or-v1]
+  OR --> DB[(Private task SQLite)]
+  API --> LOG[Bounded Sysmon parser]
+  LOG --> SIGMA[Versioned Sigma subset and process graph]
+  SIGMA --> BDB[(Private behavior SQLite)]
+  DB --> LINK[Exact log-claimed SHA256 link]
+  BDB --> LINK
+  LINK --> UI

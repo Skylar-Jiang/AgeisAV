@@ -1,0 +1,10 @@
+[Unit]
+Description=Show AegisAV guest isolation status on VMware console
+Before=getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -o pipefail -c '/usr/local/bin/aegisav-isolation-check | tee /etc/issue'
+
+[Install]
+WantedBy=multi-user.target

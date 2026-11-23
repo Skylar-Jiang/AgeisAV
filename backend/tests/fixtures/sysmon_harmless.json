@@ -1,0 +1,79 @@
+{
+  "events": [
+    {
+      "event_id": 1,
+      "provider": "Microsoft-Windows-Sysmon",
+      "computer": "synthetic.example.invalid",
+      "timestamp": "2026-10-19T00:00:01Z",
+      "record_id": "1",
+      "fields": {
+        "ProcessGuid": "{00000000-0000-0000-0000-000000000001}",
+        "ProcessId": "40",
+        "Image": "C:\\Lab\\parent.exe",
+        "CommandLine": "synthetic parent, not executed",
+        "FixtureNotice": "Synthetic log descriptions only; no processes were executed"
+      }
+    },
+    {
+      "event_id": 1,
+      "provider": "Microsoft-Windows-Sysmon",
+      "computer": "synthetic.example.invalid",
+      "timestamp": "2026-10-19T00:00:02Z",
+      "record_id": "2",
+      "fields": {
+        "ProcessGuid": "{00000000-0000-0000-0000-000000000002}",
+        "ParentProcessGuid": "{00000000-0000-0000-0000-000000000001}",
+        "ProcessId": "41",
+        "Image": "C:\\Windows\\System32\\certutil.exe",
+        "CommandLine": "certutil -urlcache https://example.invalid/inert.txt"
+      }
+    },
+    {
+      "event_id": 3,
+      "provider": "Microsoft-Windows-Sysmon",
+      "computer": "synthetic.example.invalid",
+      "timestamp": "2026-10-19T00:00:03Z",
+      "record_id": "3",
+      "fields": {
+        "ProcessGuid": "{00000000-0000-0000-0000-000000000002}",
+        "ProcessId": "41",
+        "DestinationIp": "192.0.2.1",
+        "DestinationPort": "443"
+      }
+    },
+    {
+      "event_id": 11,
+      "provider": "Microsoft-Windows-Sysmon",
+      "computer": "synthetic.example.invalid",
+      "timestamp": "2026-10-19T00:00:04Z",
+      "record_id": "4",
+      "fields": {
+        "ProcessGuid": "{00000000-0000-0000-0000-000000000002}",
+        "TargetFilename": "C:\\Lab\\inert.txt"
+      }
+    },
+    {
+      "event_id": 13,
+      "provider": "Microsoft-Windows-Sysmon",
+      "computer": "synthetic.example.invalid",
+      "timestamp": "2026-10-19T00:00:05Z",
+      "record_id": "5",
+      "fields": {
+        "ProcessGuid": "{00000000-0000-0000-0000-000000000002}",
+        "TargetObject": "HKCU\\Software\\AegisAV\\Fixture",
+        "Details": "inert"
+      }
+    },
+    {
+      "event_id": 5,
+      "provider": "Microsoft-Windows-Sysmon",
+      "computer": "synthetic.example.invalid",
+      "timestamp": "2026-10-19T00:00:06Z",
+      "record_id": "6",
+      "fields": {
+        "ProcessGuid": "{00000000-0000-0000-0000-000000000002}",
+        "ProcessId": "41"
+      }
+    }
+  ]
+}

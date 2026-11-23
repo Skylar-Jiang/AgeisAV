@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "identity": {
+    "manifest": "73bc4495a9f96e3e607f18cbe0ae7716137157b505544a291c6197726b3191e2",
+    "scripts": {
+      "collect_malwarebazaar.py": "93076086ffe6c9beaf70f38339f556b3c848e3e135765b1edd04d20d06af6e33",
+      "collection_boundary.py": "b9f28716fd770f5ad0b0d0a566193d6c2de18caa4046ee693a56879a46b6f753"
+    },
+    "release": "c699902f19640593",
+    "release_manifest": "c699902f19640593b7939f48d7267859784bd429f416cde228d61ce96fb9e727"
+  },
+  "dataset_role": "development_pilot",
+  "strict_final_test": false,
+  "attempts": 29,
+  "files": 29,
+  "previous_failed_attempts": 0,
+  "status_counts": {
+    "scanned": 24,
+    "error": 5
+  },
+  "accuracy_metrics": null,
+  "fixed_low_fpr_recall": null,
+  "accuracy_unavailable_reason": "Source-reported unknown labels, no independently reviewed paired validation/final cohort",
+  "thresholds_changed": false,
+  "policy_selection_performed": false,
+  "engines": {
+    "sha256": {
+      "positive": 0,
+      "negative": 24,
+      "abstained": 5,
+      "status_counts": {
+        "no_match": 24,
+        "file_not_scanned": 5
+      }
+    },
+    "fuzzy": {
+      "positive": 0,
+      "negative": 24,
+      "abstained": 5,
+      "status_counts": {
+        "no_match": 24,
+        "file_not_scanned": 5
+      }
+    },
+    "yara_x": {
+      "positive": 0,
+      "negative": 24,
+      "abstained": 5,
+      "status_counts": {
+        "no_match": 24,
+        "file_not_scanned": 5
+      }
+    },
+    "clamav": {
+      "positive": 9,
+      "negative": 15,
+      "abstained": 5,
+      "status_counts": {
+        "no_match": 15,
+        "file_not_scanned": 5,
+        "matched": 9
+      }
+    },
+    "lightgbm": {
+      "positive": 23,
+      "negative": 0,
+      "abstained": 6,
+      "status_counts": {
+        "matched": 23,
+        "file_not_scanned": 5,
+        "not_applicable": 1
+      }
+    }
+  },
+  "policies": {
+    "signature_or": {
+      "positive": 9,
+      "negative": 15,
+      "abstained": 5
+    },
+    "ml_only": {
+      "positive": 23,
+      "negative": 0,
+      "abstained": 6
+    },
+    "evidence_or": {
+      "positive": 24,
+      "negative": 0,
+      "abstained": 5
+    },
+    "corroborated": {
+      "positive": 8,
+      "negative": 15,
+      "abstained": 6
+    }
+  },
+  "costs": {
+    "sha256_elapsed_ms": {
+      "n": 24,
+      "p50": 6.758900000000001,
+      "p95": 36.45996
+    },
+    "fuzzy_elapsed_ms": {
+      "n": 24,
+      "p50": 1032.882799,
+      "p95": 13363.231765
+    },
+    "yara_x_elapsed_ms": {
+      "n": 24,
+      "p50": 23.84,
+      "p95": 105.661
+    },
+    "clamav_elapsed_ms": {
+      "n": 24,
+      "p50": 1806.3435,
+      "p95": 5725.599
+    },
+    "lightgbm_elapsed_ms": {
+      "n": 24,
+      "p50": 2918.884,
+      "p95": 8638.729
+    },
+    "attempt_elapsed_ms": {
+      "n": 29,
+      "p50": 5530.983444999997,
+      "p95": 24516.87226699998
+    },
+    "scanned_file_elapsed_ms": {
+      "n": 24,
+      "p50": 7517.7271834999865,
+      "p95": 24516.87226699998
+    },
+    "worker_peak_rss_kib": {
+      "n": 24,
+      "p50": 269152.0,
+      "p95": 276380
+    },
+    "worker_cpu_seconds": {
+      "n": 24,
+      "p50": 3.710293,
+      "p95": 16.133264
+    }
+  },
+  "timing_limitations": "Cache disabled; sequential new workers; includes unpack and startup; RSS excludes descendants/clamd. Use cgroup evidence for aggregate memory. Engine timing intervals overlap.",
+  "complementarity": {
+    "ml_only_positive": 15,
+    "signatures_only_positive": 0
+  },
+  "input_sha256": "84cce36e0c58e012e0bc02b6780eae7e5226f52d51377776a8624249db23c84e"
+}

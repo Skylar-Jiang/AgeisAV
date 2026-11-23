@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "benign_functional_only": true,
+  "accuracy_evaluation": false,
+  "checks": [
+    {
+      "name": "authenticated persistent service, isolated acceptance database",
+      "passed": true
+    },
+    {
+      "name": "actual five-engine benign report and parser failure persisted",
+      "passed": true
+    },
+    {
+      "name": "eight concurrent network retries replay one task; different semantics conflict",
+      "passed": true
+    },
+    {
+      "name": "running scan process cancellation and reservation release",
+      "passed": true
+    },
+    {
+      "name": "service-only forced termination closes job and kills owned parser descendants",
+      "passed": true
+    },
+    {
+      "name": "restart preserves completed/cancelled reports, interrupts lost uploads, stable replay without execution",
+      "passed": true
+    },
+    {
+      "name": "real browser restored history, interrupted resubmit state, completed export and mobile layout",
+      "passed": true
+    },
+    {
+      "name": "per-file and queue-inclusive task deadlines, no false negative and process release",
+      "passed": true
+    },
+    {
+      "name": "timeout and failure records survive another actual service restart",
+      "passed": true
+    },
+    {
+      "name": "four-task backpressure, replay under full queue, cancellation of queued and running jobs",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "resources_before": {
+    "pid": 28732,
+    "worker_pid": null,
+    "pending": 0,
+    "reserved_bytes": 0,
+    "rss_bytes": 82616320,
+    "peak_rss_bytes": 283922432
+  },
+  "engine_statuses": {
+    "sha256": "no_match",
+    "fuzzy": "no_match",
+    "yara_x": "no_match",
+    "clamav": "unavailable",
+    "lightgbm": "no_match"
+  },
+  "benign_file_wall_ms": 4261.191,
+  "cancel_wall_ms": 267,
+  "owned_tree_peak_observed_rss_bytes": 47067136,
+  "crash_owned_process_count": 5,
+  "timeout_statuses": [
+    {
+      "task": "completed_with_errors",
+      "file": "timed_out",
+      "elapsed_ms": 743.58
+    },
+    {
+      "task": "timed_out",
+      "file": "timed_out",
+      "elapsed_ms": 366.394
+    }
+  ],
+  "resources_after": {
+    "pid": 41388,
+    "worker_pid": null,
+    "pending": 0,
+    "reserved_bytes": 0,
+    "rss_bytes": 84000768,
+    "peak_rss_bytes": 283652096
+  },
+  "unique_vendor_pe": 1,
+  "malicious_samples": 0,
+  "private_state_bytes": 1367700,
+  "private_evidence_retained": true
+}

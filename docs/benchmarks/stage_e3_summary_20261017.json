@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "date": "2026-10-17",
+  "scope": "Exploratory primary-evidence case and frozen-profile shadow study; not independent final accuracy",
+  "credential": {
+    "loaded_by": "systemd LoadCredential",
+    "api_authentication": "success",
+    "secret_content_exported": false,
+    "windows_api_dpapi_read": false,
+    "guest_store": "root:root 0600; parent 0700; operator cannot read"
+  },
+  "intake": {
+    "primary_candidates_queried": 5,
+    "metadata_requests": 5,
+    "download_requests": 1,
+    "api_requests": 6,
+    "unavailable": 4,
+    "encrypted_downloads": 1,
+    "raw_verified_pe": 1,
+    "operational_high_confidence": 1,
+    "human_review_complete": 0,
+    "formal_final_eligible": 0,
+    "local_daily_request_cap": 400,
+    "local_spacing_seconds": 5
+  },
+  "independence": {
+    "prior_fingerprints_checked": 1927,
+    "prior_exact_overlap": 0,
+    "prior_near_links": 0,
+    "tlsh_screen_max": 40,
+    "ssdeep_screen_min": 80,
+    "full_author_training_cleared": false,
+    "temporal_ood_eligible": false
+  },
+  "baseline": {
+    "raw_pe_scanned": 1,
+    "engine_completed": 5,
+    "engine_matched": 0,
+    "engine_abstained": 0,
+    "engine_failed": 0,
+    "fusion": "undetermined",
+    "cache": false,
+    "engine_versions": {
+      "sha256": {
+        "engine": "sha256",
+        "artifact": "279d0104511d2850"
+      },
+      "fuzzy": {
+        "engine": "tlsh-python/0.1.0 ppdeep/20260221",
+        "artifact": "279d0104511d2850"
+      },
+      "yara_x": {
+        "engine": "1.20.0",
+        "artifact": "55ccec8463af1166"
+      },
+      "clamav": {
+        "engine": "ClamAV 1.5.4",
+        "artifact": "28148"
+      },
+      "lightgbm": {
+        "engine": "LightGBM/4.6.0 EMBER2024/v3",
+        "artifact": "13f35d8cd69b71e1f07f205b4ec633aafacce80423a10ebf4052293aa100b6f5:general"
+      }
+    }
+  },
+  "cost": {
+    "task_file_elapsed_ms": 3937.183,
+    "orchestration_row_elapsed_ms": 3968.2729539999855,
+    "whole_wrapper_wall_ms": 4061.3951690000363,
+    "scan_tree_peak_bytes": 382922752,
+    "scan_tree_cap_bytes": 2147483648,
+    "clamd_separate_peak_bytes": 1347874816,
+    "clamd_separate_cap_bytes": 2684354560,
+    "oom_events": 0,
+    "engine_elapsed_ms": {
+      "sha256": 1.16224,
+      "fuzzy": 241.036784,
+      "yara_x": 12.174,
+      "clamav": 495.325,
+      "lightgbm": 2023.949
+    },
+    "cache": "Application cold; OS and daemon caches not flushed; engine durations overlap"
+  },
+  "shadow": {
+    "profile": "win64_low_fpr",
+    "production_activated": false,
+    "raw_files": 66,
+    "primary_case": 1,
+    "previous_presumed_benign": 65,
+    "win64_routed": 37,
+    "general_fallback": 29,
+    "completed": 66,
+    "failed": 0,
+    "abstained": 0,
+    "matched": 0,
+    "feature_digest_schema_implementation_parity": 66,
+    "general_score_threshold_parity": 29,
+    "new_detection_gain": 0,
+    "wall_ms": 84153.64717099999,
+    "whole_cgroup_peak_bytes": 237273088,
+    "scope": "ML only; fresh guarded per-file processes; OS warm; no clamd; not comparable to full five-engine scan"
+  },
+  "formal_metrics": {
+    "recall": null,
+    "fpr": null,
+    "precision": null,
+    "f1": null,
+    "roc_auc": null,
+    "pr_auc": null,
+    "recall_at_fpr_001": null,
+    "reason": "One previously dated case, pending human review, incomplete training independence; benign labels are proxies. No final generalization or low-FPR claim."
+  },
+  "safety": {
+    "original_vm_only": true,
+    "malware_on_host": false,
+    "malware_executed": false,
+    "offline_before_unpack_and_scan": true,
+    "final_offline_boot_met_10gib_gate": true,
+    "trusted_network_prep_low_memory_exception": true,
+    "vm_ram_changed": false,
+    "snapshots_deleted": 0,
+    "snapshots_preserved": 6,
+    "normal_shutdown": true
+  },
+  "final_resources": {
+    "host_available_bytes": 10413867008,
+    "disks": [
+      {
+        "Name": "C",
+        "Free": 29365911552
+      },
+      {
+        "Name": "D",
+        "Free": 109536718848
+      }
+    ],
+    "vm_normal_shutdown": true
+  },
+  "failures": [
+    "Initial collector dependency mismatch before credential read/API request; fixed and regression tested",
+    "Four metadata hash_not_found records retained, never counted negative",
+    "Windows ACL fixture test previously denied; not retried; human credential installer executed by user"
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/analyst-case-20261017/acquire-resources.json",
+      "sha256": "8a2f89dc8c36036bb83b7ee720147a4fbd27dcebb58cc0d27e7e1c1a3929fd3b"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/acquire.json",
+      "sha256": "b513c9399238cbaf2ecbb335120c4a6496d78fc41bfb6e6d3a58b8867232d0ff"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/additional-metadata.json",
+      "sha256": "198be94b9b68abeed2efa9ea3701570a444ace9e69dbb7ab0a2ef93869ca4b52"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/encrypted-download-journal.json",
+      "sha256": "2db1fbbb762bd2b49bba85b8dfee8ef128f1be5ccf6f95602ec87f3a0a31b3df"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/frozen-profile-shadow-v1.json",
+      "sha256": "f38702c956eac5b8b675263467790d45a40d65296a1e6f78fb71a5d63e53d886"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/overlap-audit.json",
+      "sha256": "4daeee3a011fa6026381d273730be1f9eaee83a6fd008d7a363b113a5a58cd06"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/pilot-metadata.json",
+      "sha256": "a490b7025026507ab1c285221b5e35030fac94b2a9f2ee42234781c8e5c61b95"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/scan-resources.json",
+      "sha256": "a297761e0cae51b3837c0ab1f979f865f52daaf3093d071abb56b976c69d9070"
+    },
+    {
+      "path": "artifacts/analyst-case-20261017/scan.json",
+      "sha256": "c654309b865dce7dee8ff3762182cf0937c6f28c0b7a79db5d61e1918adf190f"
+    }
+  ],
+  "tests": {
+    "local_passed": 247,
+    "local_skipped": 6,
+    "existing_warning": 1,
+    "public_gate_tests": 9,
+    "production_runtime_models_rules_ui_unchanged": true
+  },
+  "tested_source_sha256": {
+    "vm/collect_analyst_cases.py": "580ef82129f1fa268a30b23c655fb4abf9ce1879a390b41bf3515e5fd85573f8",
+    "vm/measure_analyst_case.py": "94590fc3fcd6abb4bec7d68d92868c0e7652786cd277a3cddda9b4bb7d2ec2dc",
+    "vm/evaluate_frozen_profiles.py": "a4a9cdbe32752963461b64215c8f659dab1004589020336af437536b9c817cf6",
+    "vm/stage_e_checkpoint.py": "07027b69316b825f7a42f4e4674e10cb81ba7d2075957614c7c61afec8cae8fd",
+    "experiments/label_admission.py": "84bc7e21ddfe444d92f94f9921933f08e14e54cf2c8a00d7c17349f1b1e4b5b4"
+  }
+}

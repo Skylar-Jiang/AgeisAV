@@ -1,0 +1,353 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "status": "opt_in_candidate_not_enabled_by_default",
+  "comparison": "same native SSDeep/rules/model/threshold/fusion, repeated compilation vs pinned precompiled YARA bundle",
+  "independent_accuracy_evaluation": false,
+  "development_validation_rows_used": 0,
+  "final_test_rows_used": 0,
+  "raw_malware_read_or_executed": false,
+  "vm_changed": false,
+  "bundle_bytes": 1503918,
+  "bundle_sha256": "30482453c1c844ee953886ba460cec1e2389781f475e56b55231535f3cb38e43",
+  "http": {
+    "healthy": {
+      "task_pairs": 15,
+      "rounds_per_scenario": 5,
+      "all_report_pairs_equal": true,
+      "sqlite_reload_equal": true,
+      "cancel_and_following_task_recovery": true,
+      "scenarios": {
+        "small": {
+          "baseline": {
+            "p50_ms": 2656.2360000098124,
+            "p95_ms": 3106.1903999652714,
+            "throughput_inputs_per_second": 0.3661698166994956
+          },
+          "candidate": {
+            "p50_ms": 1925.0669999746606,
+            "p95_ms": 2107.7083999989554,
+            "throughput_inputs_per_second": 0.5153134991103963
+          },
+          "p50_reduction_percent": 27.526507435049098,
+          "throughput_change_percent": 40.730741751250974
+        },
+        "large": {
+          "baseline": {
+            "p50_ms": 8331.9750999799,
+            "p95_ms": 9916.017300100066,
+            "throughput_inputs_per_second": 0.1228939099199998
+          },
+          "candidate": {
+            "p50_ms": 6875.829900032841,
+            "p95_ms": 7040.679999976419,
+            "throughput_inputs_per_second": 0.14554932590539463
+          },
+          "p50_reduction_percent": 17.47659087400023,
+          "throughput_change_percent": 18.43493790712887
+        },
+        "batch": {
+          "baseline": {
+            "p50_ms": 8748.670400003903,
+            "p95_ms": 15427.840899908915,
+            "throughput_inputs_per_second": 0.4016688852145682
+          },
+          "candidate": {
+            "p50_ms": 6059.64180000592,
+            "p95_ms": 6822.408100008033,
+            "throughput_inputs_per_second": 0.6507124976488073
+          },
+          "p50_reduction_percent": 30.736425960186853,
+          "throughput_change_percent": 62.00221665195751
+        }
+      },
+      "measured_runner_sha256": "f96dff573f256770ff03a7df0a5b277e16524d47c307c5084baa80702584cf3e"
+    },
+    "unavailable": {
+      "task_pairs": 15,
+      "rounds_per_scenario": 5,
+      "all_report_pairs_equal": true,
+      "sqlite_reload_equal": true,
+      "cancel_and_following_task_recovery": true,
+      "scenarios": {
+        "small": {
+          "baseline": {
+            "p50_ms": 2786.677199997939,
+            "p95_ms": 6011.4530000137165,
+            "throughput_inputs_per_second": 0.2913144022496297
+          },
+          "candidate": {
+            "p50_ms": 2027.585900039412,
+            "p95_ms": 2934.9430999718606,
+            "throughput_inputs_per_second": 0.4548189992243296
+          },
+          "p50_reduction_percent": 27.2400154549328,
+          "throughput_change_percent": 56.12650652081099
+        },
+        "large": {
+          "baseline": {
+            "p50_ms": 8545.32969999127,
+            "p95_ms": 9576.396199990995,
+            "throughput_inputs_per_second": 0.11738206811443742
+          },
+          "candidate": {
+            "p50_ms": 7176.596699981019,
+            "p95_ms": 13983.316499972716,
+            "throughput_inputs_per_second": 0.10477043489125158
+          },
+          "p50_reduction_percent": 16.01732230427165,
+          "throughput_change_percent": -10.744088450452738
+        },
+        "batch": {
+          "baseline": {
+            "p50_ms": 9094.096099957824,
+            "p95_ms": 10883.289500023238,
+            "throughput_inputs_per_second": 0.4247202049997745
+          },
+          "candidate": {
+            "p50_ms": 6443.732999963686,
+            "p95_ms": 8515.223299968056,
+            "throughput_inputs_per_second": 0.5845218064484223
+          },
+          "p50_reduction_percent": 29.143777136976034,
+          "throughput_change_percent": 37.6251469950041
+        }
+      },
+      "measured_runner_sha256": "f96dff573f256770ff03a7df0a5b277e16524d47c307c5084baa80702584cf3e"
+    }
+  },
+  "regression": {
+    "healthy": {
+      "pairs_equal": 11,
+      "distinct_controls": 11,
+      "same_controls_repeated_across_strata": true,
+      "summary": {
+        "compile": {
+          "p50_ms": 3766.1452000029385,
+          "p95_ms": 16778.770599979907,
+          "max_sampled_tree_rss_bytes": 421957632,
+          "sampled_cpu_seconds": 48.71875
+        },
+        "bundle": {
+          "p50_ms": 2457.30780006852,
+          "p95_ms": 11288.232500082813,
+          "max_sampled_tree_rss_bytes": 403755008,
+          "sampled_cpu_seconds": 36.671875
+        }
+      },
+      "statuses": {
+        "compile": {
+          "engines": {
+            "sha256": {
+              "no_match": 11
+            },
+            "fuzzy": {
+              "no_match": 11
+            },
+            "yara_x": {
+              "no_match": 11
+            },
+            "clamav": {
+              "no_match": 11
+            },
+            "lightgbm": {
+              "no_match": 9,
+              "matched": 2
+            }
+          },
+          "verdicts": {
+            "undetermined": 9,
+            "suspicious": 2
+          },
+          "cleanup_all": true
+        },
+        "bundle": {
+          "engines": {
+            "sha256": {
+              "no_match": 11
+            },
+            "fuzzy": {
+              "no_match": 11
+            },
+            "yara_x": {
+              "no_match": 11
+            },
+            "clamav": {
+              "no_match": 11
+            },
+            "lightgbm": {
+              "no_match": 9,
+              "matched": 2
+            }
+          },
+          "verdicts": {
+            "undetermined": 9,
+            "suspicious": 2
+          },
+          "cleanup_all": true
+        }
+      },
+      "faults": {
+        "cancel": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        },
+        "timeout": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        },
+        "crash": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        },
+        "memory": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        }
+      },
+      "recovery": true,
+      "sampling_caveat": "20ms process-tree RSS maxima can miss short peaks and double-count shared pages; clamd excluded"
+    },
+    "unavailable": {
+      "pairs_equal": 11,
+      "distinct_controls": 11,
+      "same_controls_repeated_across_strata": true,
+      "summary": {
+        "compile": {
+          "p50_ms": 3659.564399975352,
+          "p95_ms": 12902.4862999795,
+          "max_sampled_tree_rss_bytes": 421249024,
+          "sampled_cpu_seconds": 48.0625
+        },
+        "bundle": {
+          "p50_ms": 2723.419400048442,
+          "p95_ms": 12070.30699995812,
+          "max_sampled_tree_rss_bytes": 402993152,
+          "sampled_cpu_seconds": 40.046875
+        }
+      },
+      "statuses": {
+        "compile": {
+          "engines": {
+            "sha256": {
+              "no_match": 11
+            },
+            "fuzzy": {
+              "no_match": 11
+            },
+            "clamav": {
+              "unavailable": 11
+            },
+            "yara_x": {
+              "no_match": 11
+            },
+            "lightgbm": {
+              "no_match": 9,
+              "matched": 2
+            }
+          },
+          "verdicts": {
+            "undetermined": 9,
+            "suspicious": 2
+          },
+          "cleanup_all": true
+        },
+        "bundle": {
+          "engines": {
+            "sha256": {
+              "no_match": 11
+            },
+            "fuzzy": {
+              "no_match": 11
+            },
+            "clamav": {
+              "unavailable": 11
+            },
+            "yara_x": {
+              "no_match": 11
+            },
+            "lightgbm": {
+              "no_match": 9,
+              "matched": 2
+            }
+          },
+          "verdicts": {
+            "undetermined": 9,
+            "suspicious": 2
+          },
+          "cleanup_all": true
+        }
+      },
+      "faults": {
+        "cancel": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        },
+        "timeout": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        },
+        "crash": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        },
+        "memory": {
+          "loaded_verified_bundle": true,
+          "cleanup_confirmed": true
+        }
+      },
+      "recovery": true,
+      "sampling_caveat": "20ms process-tree RSS maxima can miss short peaks and double-count shared pages; clamd excluded"
+    }
+  },
+  "owned_clamav": {
+    "minimum_available_bytes": 4999782400,
+    "memory_guard_triggered": false,
+    "completed": true,
+    "version": "ClamAV 1.5.4/28161/Thu Oct 22 14:24:11 2026",
+    "owned_daemon_exited": true,
+    "database_unchanged": true
+  },
+  "protected_assets": {
+    "checked": 264,
+    "all_unchanged": true,
+    "includes": "models,registry,246 YARA rules and metadata,stable ZIP,RC ZIP,course evidence ZIP,VT manifests"
+  },
+  "limitations": [
+    "Five paired rounds on one host; P95 is the maximum of five, not a population guarantee.",
+    "Unavailable large-file throughput regressed; all two slow candidate trials retained; ML feature extraction dominated those observed delays, cause not established.",
+    "Observed benign controls and synthetic positive rule fixture do not establish independent recall/FPR.",
+    "Core loader/worker bytes unchanged by later CLI review fixes; original measured source/digests retained."
+  ],
+  "tests": {
+    "backend": {
+      "passed": 403,
+      "skipped": 8,
+      "warnings": 1
+    },
+    "ml_compatibility": {
+      "passed": 2,
+      "warnings": 13
+    },
+    "review_cli_regressions_observed_red_then_green": true
+  },
+  "post_review_http_smoke": {
+    "completed": true,
+    "pairs_equal": 1,
+    "cancel_recovery_and_sqlite": true,
+    "runner_sha256": "699f224ac3d7bf1a2ac58d22572fb5d7f57279625557fbd7031adb18a27e8fc5",
+    "not_in_five_round_performance_summary": true
+  },
+  "final_source_sha256": {
+    "backend/aegisav/yara_engine.py": "6dbc56493f3ea83fb33e37cf3f762310394f2a1ecd10f85736e02fe9b4a40321",
+    "experiments/yara_bundle.py": "444584b60d838eb38de11af7d79fb0ff81f0e14e66011c65b7544cd831f0217c",
+    "experiments/compare_task_latency.py": "699f224ac3d7bf1a2ac58d22572fb5d7f57279625557fbd7031adb18a27e8fc5",
+    "experiments/validate_yara_bundle.py": "0c4930d387e36814bc34a648a3c86d5f4d1e8e72f99a99ee26147c193625e018"
+  },
+  "measured_source_sha256": {
+    "backend/aegisav/yara_engine.py": "6dbc56493f3ea83fb33e37cf3f762310394f2a1ecd10f85736e02fe9b4a40321",
+    "experiments/yara_bundle.py": "700536a41812c3af986691aaa5a88839dfc02eeb1acd2c75b68d0e9b637cfb21",
+    "experiments/validate_yara_bundle.py": "7dd9e8b91d94b50ad695528c24798c4ed800cec4dc1869019d90e7f426d1a955",
+    "experiments/compare_task_latency.py": "f96dff573f256770ff03a7df0a5b277e16524d47c307c5084baa80702584cf3e"
+  }
+}

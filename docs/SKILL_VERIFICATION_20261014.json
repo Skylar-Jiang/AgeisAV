@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "all_four_installed": true,
+  "installation_needed": false,
+  "installation_method_review": "Existing pinned project-local files; installer downloads/copies only; no third-party install command executed",
+  "skills": [
+    {
+      "skill": "frontend-design",
+      "official_repository": "anthropics/skills",
+      "pinned_commit": "33375500bcea98d610eb30ce10ac4e59b89c390d",
+      "source_url": "https://raw.githubusercontent.com/anthropics/skills/33375500bcea98d610eb30ce10ac4e59b89c390d/skills/frontend-design/SKILL.md",
+      "official_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "local_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "exact_match": true,
+      "loaded_this_session": true
+    },
+    {
+      "skill": "ui-ux-pro-max",
+      "official_repository": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "pinned_commit": "09170eec67eefd46a7ae85de61b40c194020f997",
+      "source_url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/09170eec67eefd46a7ae85de61b40c194020f997/.claude/skills/ui-ux-pro-max/SKILL.md",
+      "official_sha256": "ea087c341bfb5b23195c7302027268ede86da802554c18a5c4896a6017b439f9",
+      "local_sha256": "ea087c341bfb5b23195c7302027268ede86da802554c18a5c4896a6017b439f9",
+      "exact_match": true,
+      "loaded_this_session": true
+    },
+    {
+      "skill": "react-best-practices",
+      "official_repository": "vercel-labs/agent-skills",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "source_url": "https://raw.githubusercontent.com/vercel-labs/agent-skills/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices/SKILL.md",
+      "official_sha256": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355",
+      "local_sha256": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355",
+      "exact_match": true,
+      "loaded_this_session": true
+    },
+    {
+      "skill": "web-design-guidelines",
+      "official_repository": "vercel-labs/agent-skills",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "source_url": "https://raw.githubusercontent.com/vercel-labs/agent-skills/063bee94c3f4df8453406c830b0a7df0f2860278/skills/web-design-guidelines/SKILL.md",
+      "official_sha256": "f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f",
+      "local_sha256": "f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f",
+      "exact_match": true,
+      "loaded_this_session": true
+    }
+  ]
+}

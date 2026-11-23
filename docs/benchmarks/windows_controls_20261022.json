@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "kind": "prospective_operational_presumed_benign_controls",
+  "status": "completed",
+  "strict_independent_final": false,
+  "deployment_fpr_claim": false,
+  "full_inventory": 33,
+  "within_size_limit": 29,
+  "eligible_after_exact_audit": 28,
+  "exclusion_reason_counts": {
+    "over_product_16MiB_limit": 4,
+    "known_historical_or_local_development_overlap": 1
+  },
+  "exact_audit": [
+    {
+      "source_kind": "historical_report",
+      "available": true,
+      "rows": 285,
+      "exact_overlap_count": 0
+    },
+    {
+      "source_kind": "historical_report",
+      "available": true,
+      "rows": 13,
+      "exact_overlap_count": 0
+    },
+    {
+      "source_kind": "historical_report",
+      "available": true,
+      "rows": 600,
+      "exact_overlap_count": 0
+    },
+    {
+      "source_kind": "historical_report",
+      "available": true,
+      "rows": 300,
+      "exact_overlap_count": 0
+    },
+    {
+      "source_kind": "historical_report",
+      "available": true,
+      "rows": 600,
+      "exact_overlap_count": 0
+    },
+    {
+      "source_kind": "local_development",
+      "available": true,
+      "rows": 480000,
+      "exact_overlap_count": 1
+    },
+    {
+      "source_kind": "local_development",
+      "available": true,
+      "rows": 40000,
+      "exact_overlap_count": 0
+    }
+  ],
+  "attempts": 28,
+  "completed_reports": 28,
+  "file_status_counts": {
+    "completed": 28
+  },
+  "engines": {
+    "sha256": {
+      "status_counts": {
+        "no_match": 28
+      },
+      "matched_count": 0,
+      "risk_signal_alert_count": 0,
+      "abstained_or_missing": 0
+    },
+    "fuzzy": {
+      "status_counts": {
+        "no_match": 28
+      },
+      "matched_count": 0,
+      "risk_signal_alert_count": 0,
+      "abstained_or_missing": 0
+    },
+    "yara_x": {
+      "status_counts": {
+        "no_match": 28
+      },
+      "matched_count": 0,
+      "risk_signal_alert_count": 0,
+      "abstained_or_missing": 0
+    },
+    "clamav": {
+      "status_counts": {
+        "no_match": 28
+      },
+      "matched_count": 0,
+      "risk_signal_alert_count": 0,
+      "abstained_or_missing": 0
+    },
+    "lightgbm": {
+      "status_counts": {
+        "no_match": 28
+      },
+      "matched_count": 0,
+      "risk_signal_alert_count": 0,
+      "abstained_or_missing": 0
+    }
+  },
+  "fusion_alert_count": 0,
+  "fusion_malicious_only_count": 0,
+  "fusion_completed_without_alert": 28,
+  "reports_with_engine_abstention": 0,
+  "latency": {
+    "p50_ms": 3008.937199999991,
+    "p95_ms": 4073.6175000000685
+  },
+  "completed_files_per_second": 0.2947868168488709,
+  "max_sampled_owned_tree_rss_bytes": 359366656,
+  "separate_clam_max_sampled_rss_bytes": 1011130368,
+  "separate_clam_max_reported_peak_wset_bytes": 1258913792,
+  "timing_scope": "One native disposable worker per eligible input through cleanup; preloaded bytes, no HTTP. Completed-report latency excludes failed attempts; no warmup/repeats. Daemon memory sampled after each attempt, separate from owned-worker tree. Sampled maxima must not be summed.",
+  "all_attempt_cleanup_confirmed": true,
+  "ml_profile": "general",
+  "ml_threshold": 0.5,
+  "limitations": "Prospective new operational presumed-benign controls, not strict independent final data or a deployment FPR estimate. One publisher release includes third-party components. Full upstream training membership and near-training links remain unknown. No threshold or model selection. No-alert is not a clean verdict. ClamAV was warmed by earlier harmless scans; files are read before timing. No protected raw PE or final metadata/features are accessed.",
+  "final_data_read": false,
+  "protected_raw_PE_read": false
+}

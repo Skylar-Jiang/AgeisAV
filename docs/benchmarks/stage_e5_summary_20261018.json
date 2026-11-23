@@ -1,0 +1,266 @@
+{
+  "schema": 1,
+  "date": "2026-10-18",
+  "status": "R5 real-data research completed; formal independent low-FPR/generalization acceptance remains open",
+  "production_changed": false,
+  "seven_zip": {
+    "files": 2,
+    "fresh_publisher_bytes_equal": true,
+    "published_sha256_equal": true,
+    "authenticode": "NotSigned for both",
+    "human_review": false,
+    "operational_label": "Official publisher artifacts; model false positives under publisher-provenance label, independent human final admission pending",
+    "scores": [
+      0.9290370363448494,
+      0.9107201692347662
+    ],
+    "header_raw_margin_contributions": [
+      1.8981864893651224,
+      1.732510567808434
+    ],
+    "overlay_bytes": [
+      1618514,
+      1325339
+    ],
+    "upstream_2568_vector_equal": 2,
+    "general_score_and_artifact_equal": 2,
+    "win32_inapplicable_win64_model_not_evaluated": true,
+    "mechanism": "Reproducible model decisions with large SFX overlays and positive header-group associations; no feature implementation mismatch found; individual-field causal attribution unresolved"
+  },
+  "intake": {
+    "candidates": 13,
+    "new_source_candidates": 11,
+    "previous_size_exclusion_candidates": 2,
+    "queried": 13,
+    "requests": 16,
+    "downloaded": 3,
+    "raw_verified": 3,
+    "unavailable": 10,
+    "download_failures_of_eligible": 0,
+    "actual_families": 2,
+    "actual_primary_organizations": 2,
+    "new_family": "FormBook",
+    "size_recovered_bytes": [
+      2442240,
+      2529280
+    ],
+    "new_other_raw_bytes": 626688,
+    "operational_high_confidence": 3,
+    "human_reviewed": 0,
+    "formal_final_eligible": 0,
+    "formal_independent_validation_eligible": 0,
+    "near_prior_edges": 0,
+    "current_internal_edges": 0,
+    "screening_components": 3,
+    "effective_statistical_independence_established": false,
+    "malicious_quarantine_candidates": 2,
+    "malicious_quarantine_raw": 0
+  },
+  "benign": {
+    "new_raw": 19,
+    "official_projects": 6,
+    "scanned": 13,
+    "unscored_quarantine": 6,
+    "valid_signatures": 15,
+    "not_signed": 4,
+    "prior_exact_matches": 0,
+    "prior_near_linked_in_original18": 6,
+    "screening_components_in_original18": 15,
+    "screening_components_in_current19": 16,
+    "initial_validation_candidates_scanned": 9,
+    "observed_development_scanned": 3,
+    "installer_extension_scanned": 1,
+    "installer_extension_training_audit_timing": "after baseline scan;0localWin64matches; not a prescore independence claim",
+    "human_reviewed": 0,
+    "formal_final_eligible": 0,
+    "strict_independent_validation_eligible": 0,
+    "label": "presumed_benign; publisher provenance, checksums and signatures evidence, not absolute truth",
+    "category_coverage": [
+      "installer",
+      "portable_gui",
+      "command_line",
+      "runtime_dll/pyd"
+    ],
+    "potential_general_false_positive_projects": [
+      "SQLite"
+    ],
+    "initial_vendor_http_wrapper_attempt": "WinSCP HTML was refused as non-PE; later official CDN checksum+signature verified"
+  },
+  "paired": {
+    "malicious_development": {
+      "files": 3,
+      "signals": {
+        "sha256": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "fuzzy": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "yara_x": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "clamav": {
+          "positive": 2,
+          "abstained": 0
+        },
+        "lightgbm": {
+          "positive": 3,
+          "abstained": 0
+        }
+      },
+      "cost": {
+        "task_files": 3,
+        "total_task_ms": 10411.464,
+        "p50_ms": 3286.514,
+        "p95_ms": 4463.345,
+        "quantile": "linear; workload observation, no controlled speedup claim"
+      }
+    },
+    "presumed_benign": {
+      "files": 13,
+      "signals": {
+        "sha256": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "fuzzy": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "yara_x": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "clamav": {
+          "positive": 0,
+          "abstained": 0
+        },
+        "lightgbm": {
+          "positive": 2,
+          "abstained": 0
+        }
+      },
+      "cost": {
+        "task_files": 13,
+        "total_task_ms": 62998.786,
+        "p50_ms": 3286.121,
+        "p95_ms": 11441.621799999994,
+        "quantile": "linear; workload observation, no controlled speedup claim"
+      }
+    },
+    "known_same_version_paired_files": 16,
+    "scan_failures": 0,
+    "engine_abstentions": 0,
+    "formal_recall": null,
+    "formal_fpr": null,
+    "formal_precision": null,
+    "formal_f1": null,
+    "formal_fixed_low_fpr_recall": null,
+    "reason": "No independent human admission/full training-temporal clearance and insufficient representative benign denominator; positive counts are exploratory"
+  },
+  "frozen_profile": {
+    "profile": "win64_low_fpr",
+    "files": 16,
+    "feature_digest_equal": 16,
+    "general_fallback_score_threshold_equal": 5,
+    "malicious_positive_general": 3,
+    "malicious_positive_routed": 3,
+    "benign_positive_general": 2,
+    "benign_positive_routed": 0,
+    "errors": 0,
+    "activated": false,
+    "new_thresholds_tried": 0,
+    "new_models_trained": 0,
+    "wall_ms": 33207.37714200004,
+    "memory_peak_bytes": 300752896,
+    "interpretation": "Two fewer official-control positive signals under previously frozen routing, no new malicious signal gain or proven deployment FPR"
+  },
+  "acquisition": {
+    "policy": "bounded-acquisition-v2-16mib",
+    "writer_regular_file_cap_bytes": 16777216,
+    "writer_max_address_space_bytes": 536870912,
+    "writer_cpu_seconds": 30,
+    "writer_fd_cap": 64,
+    "production_report_cap_bytes": 2097152,
+    "production_scan_input_cap_bytes": 16777216,
+    "production_scanner_limits_changed": false,
+    "archive_single_member_and_sha_atomic_commit_preserved": true,
+    "fixture_passed": 15,
+    "fixture_total": 15,
+    "old_writer_actual_reject_bytes": 2097152,
+    "new_writer_actual_reject_bytes": 16777216,
+    "crash_and_timeout_markers_required": true,
+    "root_controlled_prescore_freeze_sha_bound": true,
+    "cgroup_cap_bytes": 2147483648
+  },
+  "independence": {
+    "local_win64_fit_rows": 480000,
+    "local_win64_validation_rows": 40000,
+    "local_win64_test_rows": 119993,
+    "all_selected_exact_matches": 0,
+    "full_generic_author_training_cleared": false,
+    "near_training_cleared": false,
+    "source_date_metadata_corrections": true,
+    "formal_final_or_independent_validation": 0,
+    "withheld_benign_prediction_rows": 0
+  },
+  "resources": {
+    "raw_acquisition": {
+      "action": "acquire",
+      "wall_ms": 2086.8326420000008,
+      "memory_peak_bytes": 70180864,
+      "memory_max": "2147483648",
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "cpu_stat": "usage_usec 2114638\nuser_usec 1712997\nsystem_usec 401640\ncore_sched.force_idle_usec 0\nnr_periods 22\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "scope": "whole analysis cgroup; separate clamd excluded"
+    },
+    "raw_scan": {
+      "action": "scan",
+      "wall_ms": 20447.80505,
+      "memory_peak_bytes": 397111296,
+      "memory_max": "2147483648",
+      "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "cpu_stat": "usage_usec 10334445\nuser_usec 8274580\nsystem_usec 2059865\ncore_sched.force_idle_usec 0\nnr_periods 118\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "scope": "whole analysis cgroup; separate clamd excluded"
+    },
+    "clamd": "MemoryCurrent=1194819584\nMemoryPeak=1354366976\nCPUUsageNSec=13450993000\n",
+    "benign_tree_peak_captured": false,
+    "worker_reuse_or_production_change": false,
+    "final_vm_ram_mib": 6144,
+    "host_reserve_gib": 2,
+    "start_gate_gib": 8,
+    "serial": true,
+    "final_vm_power": "off",
+    "snapshots_retained": 6,
+    "kernel_oom_entries_in_checked_final_analysis_boot": 0,
+    "final_guest_available_bytes": 5747802112,
+    "final_guest_root_available_bytes": 51647234048,
+    "final_corpus_available_bytes": 11566010368,
+    "removed_regenerable_fixture_transport_bytes": 116262453,
+    "sqlite_quick_check_stores": 3,
+    "sqlite_ok": 3,
+    "host_c_remaining_bytes": 28976947200,
+    "host_d_remaining_bytes": 105212272640
+  },
+  "tests": {
+    "local_passed": 282,
+    "local_skipped": 6,
+    "existing_warnings": 1,
+    "guest_fixture_passed": 15,
+    "review_issues_corrected": [
+      "EffectiveUID root refusal",
+      "Fixture startup-error false-pass",
+      "Root-controlled once-read split freeze SHA and manager preflight ordering"
+    ]
+  },
+  "next": [
+    "Independent human label review and full generic training/temporal audit",
+    "Find additional obtainable technical-case sources beyond current two-family raw coverage",
+    "Preserve unscored quarantine, exclude prior-linked candidates from future final admission",
+    "Assess header feature ablation on training+independent validation before any new policy; no tuning on observed7Zip/SQLite",
+    "No formal low-FPR claim or production route switch from current sample size"
+  ]
+}

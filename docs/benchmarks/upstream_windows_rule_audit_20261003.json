@@ -1,0 +1,1735 @@
+{
+  "upstream_revision": "e0a0be54aa1e11ccfd6854e4f19e9476f328fd84",
+  "source_archive_sha256": "8572f9efc8f5b196e8343a9bb74a5da2c403665670a891f1b0ac7d3fa54eefd0",
+  "scope": "all upstream Win32/Win64/MSIL rule source files; no selection by test outcomes",
+  "license": "MIT",
+  "active_detection_rules_changed": false,
+  "source_file_count": 246,
+  "compiled_source_count": 246,
+  "warning_count": 0,
+  "elapsed_seconds": 1.9139168999972753,
+  "sources": [
+    {
+      "source": "yara/backdoor/Win32.Backdoor.Konni.yara",
+      "sha256": "65d58c6c5932d9be2bc3379fd543c5e00ac49f126d5f2e64ffec2a5694211ceb",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.BackConnect.yara",
+      "sha256": "04caad9a456b45712a3f1efff376d1dc16b0d10203a0e5465e433e7c82ed885f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.EggStremeFuel.yara",
+      "sha256": "776b989c2e22b8fe21dd1426c4a14084f6e96f6fcef4ab88e220de3a323a4aec",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.Konni.yara",
+      "sha256": "ff76606ee18d15a6de590dbdbbb55e9b75efedf38f9c1bac7c54fa3cc68e7e28",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.Minodo.yara",
+      "sha256": "8ba9d4051e0f81f14118c1e6dbe082111958a82ac864f5bb2c4c2a9b5b750757",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.MiyaRAT.yara",
+      "sha256": "774c8df0f403cb7f7b6edd7c6421c22dfeeed9108fd4d58b5ad18e50ea770807",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.SideTwist.yara",
+      "sha256": "801deaef65ec02d48b9a8feec2c8d87f114cbf26cf3f52dc49f7faa9491162a9",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.Voldemort.yara",
+      "sha256": "e8874906bd89b94d2c1c589f29cf3de9012bee3214c74252a4f123317d6e043a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/backdoor/Win64.Backdoor.wmRAT.yara",
+      "sha256": "c70afc36253e5fdafe4cd948093edb2a370a718993393b78316ae14fa8d9a59a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/downloader/Win32.Downloader.dlMarlboro.yara",
+      "sha256": "abb2f1e2cda49b2011815917d699e86a7d03fbffbcb27b9b1476583658774680",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/exploit/Win32.Exploit.CVE20200601.yara",
+      "sha256": "0693dfc62c4c397cdec5573fe5fe41b3bf445cd634b0a2b278a6f5ba8cf8e43b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win32.Infostealer.LumarStealer.yara",
+      "sha256": "7945d24a6578df97eb1cae81fa65eb8681cf164feeef9c7027f9ee3448195730",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win32.Infostealer.MultigrainPOS.yara",
+      "sha256": "2e353e8b0a938aef7b4cfc9ef7fe442bf9f6418f3f8ef6a676bf1bfef99189c5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win32.Infostealer.ProjectHookPOS.yara",
+      "sha256": "3fb527a13f2c39d1e84f03c143bc59060d322d4bc72d692bf5a891877249b3c6",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win32.Infostealer.StealC.yara",
+      "sha256": "be63d6aecc38d123fb74fcc36a2ef15d647c41b2525c1f42d096bf73977bfa76",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win64.Infostealer.Daolpu.yara",
+      "sha256": "68ed8dd25401b00a2d0c5adc0dae396d1748b98bfb009201123fefc09721bb76",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win64.Infostealer.Skuld.yara",
+      "sha256": "3d00b5d8f71140ea8b3b145249cc250854e2938ca4582b29bedf3f35cb57a715",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/infostealer/Win64.Infostealer.WeaselStore.yara",
+      "sha256": "72f2fea93afc71108c3ee4bd480d7df18139ee0e2c57b357d34c3028af8eaef3",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/pua/Win32.PUA.Domaiq.yara",
+      "sha256": "b5a918c1d491842400c1f1c8c081f036df994a4ef2c39b9ded4bc9b4b9080476",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.5ss5c.yara",
+      "sha256": "5dca60728ed760001d1bcf973bcb70cd6ef8f417c250a003ac08b288d40c17dc",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.ASN1Encoder.yara",
+      "sha256": "1edb608652d817074548fdd41dbae46343684d21b4233d670ec6916e7ff84aeb",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Acepy.yara",
+      "sha256": "41162df95eff134d30249ae6409bb69373562d091b5d5c3984d209ec49829fd3",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Afrodita.yara",
+      "sha256": "5b125b67c93091f38ed7def35a027c10b436696f691631ae5f6d0df13596c18d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ako.yara",
+      "sha256": "a6f406158600e9d20cf753024834068ad6f700d5b70151f3fb34801e61930fe5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Alcatraz.yara",
+      "sha256": "e936eef0f065f928e048d1cd3db43436cfa88754f090400d6ba5ffab5d20a00e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.AnteFrigus.yara",
+      "sha256": "3f6386792796c590f4045d201a535869bb4cca3ba9fa80368bde21a4f714f625",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Archiveus.yara",
+      "sha256": "d6240e7409a927259fd7ec1d98594cd59106c59a758d7e67c0c1a9b39472f6c7",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Armage.yara",
+      "sha256": "2527da25717027e38d90459c2c7fbdc93565f9bef666005ba289380aa9e949aa",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Atlas.yara",
+      "sha256": "c92f53e687c01c9002aa13ec4807a229f834c669f5ba058109a645a85ff233ff",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Avaddon.yara",
+      "sha256": "f44411bb37595195e72ca4a4098427882147a5115c7d86cdf7c6fe98efdc8b9c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.AvosLocker.yara",
+      "sha256": "fba577be9c664712bda995f24f62f90261473499f3e707f8fa57e1bcb0ef08e2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BKRansomware.yara",
+      "sha256": "c3f50744c0092ab40720229aa7057bd5d47035273445e1a6c97aa6e8ae4adf88",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Babuk.yara",
+      "sha256": "f31fef8a0ec3d3857c900ed124d50bd7c4199d3909b76bb71b59b9b8f0ced05a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BadBlock.yara",
+      "sha256": "519662985d7eb18ed09425434c4717877c53e0b7635a7ce0403c00ca915a3471",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Badbeeteam.yara",
+      "sha256": "9418a2ee3930590a2660484b38d3d93ec72e8d06e3265193ec8580a49d0e14fd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Balaclava.yara",
+      "sha256": "59f1f96e8e4f75ef1ab6884869ab84c054ad214034fafb55f43ab7504b611ba8",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Bam2021.yara",
+      "sha256": "1306dfa9c47d10d1a53ddaab2d1ab2aca3c1d99bbd516f9aced25a74c281a5c2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BananaCrypt.yara",
+      "sha256": "1ee3c5558dbdd9734d1baea0f903a8289d7ad5a9fac6efbd5d0b8918e9d202e0",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BandarChor.yara",
+      "sha256": "d4b0b98f383b8c7dc0fcbcfbec7ab95286ee8d630852544a080b709a3129446f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BitCrypt.yara",
+      "sha256": "9ba11092f278e7d29cdd399189398bfe8ed1cc36cb8d1c553bcaab6be4705529",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BlackBasta.yara",
+      "sha256": "4349d6e56f5bf8ec601b4822b078d93e164ac039583143c7febb20b3488dcd1f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BlackCat.yara",
+      "sha256": "06e7c925272803d4623a95d227b1c2bfaea2ead94ca2bf4e0fc514f00576d9f0",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BlackMoon.yara",
+      "sha256": "3d4fb62a9633b2c616c2adb1df50796584f9aad7186081248f79738437bc3fa2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Blitzkrieg.yara",
+      "sha256": "7862d7d124b83538b9fe6a0a1a85621eb5f7b22ae189375f65c52fd83cc7c149",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BlueLocker.yara",
+      "sha256": "f101820567c32f4fc28ba8ce845af98a6f86b4df541a45dda662bc200c243014",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.BrainCrypt.yara",
+      "sha256": "4214114202811a10b2ec5b35697c1acdedfe3f5a5ade56946e4b4f1fb0461dda",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Buran.yara",
+      "sha256": "1c4c78730c5d3d3b2be2caf203d222bc3f4204bec30fa4f333ed2244666f4396",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.ChiChi.yara",
+      "sha256": "4e7c782ff823aa5f495f895dd804586db2c72f6b8ad6ec19ff07b2876c7d402f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Cicada3301.yara",
+      "sha256": "8200548f6142639d0ea2a511804c32b9d72e20b1e6fdff6161fc8a7e66338813",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Cincoo.yara",
+      "sha256": "2a89edb0132e36a2cf631b3d24a3c07b93eb58e4bba579cf57a73d442cc14db7",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Clop.yara",
+      "sha256": "2713c03900cdaa98b2f7e44928df35c02110c07cf67b20feb37cd2ca94bcc151",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Conti.yara",
+      "sha256": "0e15843153384f4dac9fc53101bcfa79fdc5d4cce1da3bffd738f2503aa9fb23",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Cryakl.yara",
+      "sha256": "93e01316ee45ec8e358b7c804dbe8dc4cbd3bbb44396e920a1c952decfdcaebe",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Crypmic.yara",
+      "sha256": "226a4f9762913a09c188fc4a40e17d85f10d7c650b28daff21c2635e74a8d0bc",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Crypren.yara",
+      "sha256": "ae5083328f43cb46353470070d3e30f1bff1894c0140f68bd3ee721de177bda6",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.CryptoBit.yara",
+      "sha256": "e4d77e26802bbf86ba3148eee7f609f1926d4dd1c1997af9db844382d83c92b0",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.CryptoFortress.yara",
+      "sha256": "e207615c24f6e1636e35532e58e601d8a7abcacb8bd2b22cc3a41a2ba830e7b1",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.CryptoJoker.yara",
+      "sha256": "fdbc3db1201c1b27c6b01d70729aeee4eada64bdf250e2d29545c1fe2c491883",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.CryptoLocker.yara",
+      "sha256": "94abf0e030807a686386bec99a7b218b3631db31aa7f96cdaf280d01f5727d14",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.CryptoWall.yara",
+      "sha256": "286a94bdf34539b614dc56b6a302a990fa1200dbd6b9b82a5cdbe471a715cd6b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Crysis.yara",
+      "sha256": "ee4079601b59f8183f5bb82edc38a04ee835ddf20e9d80f4b6e0a102bae98eda",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Cuba.yara",
+      "sha256": "03040b11cf96efc59f4ea90885d9c4161148e67a85c16fcb4901d5c4a08f2ab4",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.CyberVolk.yara",
+      "sha256": "c617dd2e5dc52eb1cf52a4c31e578c13468f1519488b54cc021ee184d08d215a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DMALocker.yara",
+      "sha256": "db75494ea9f8c1165b5918dcfb726250075874bdc64bb7316f2cb87eec995e84",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DMR.yara",
+      "sha256": "08a926705161c471bb0205eb6a78393c0a19d240a7159d80315fd113bbf3316f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DarkSide.yara",
+      "sha256": "597154d17afab5d9b684dfbac62ba95c4afe38196dd9d87daf8295cfa11d97da",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DearCry.yara",
+      "sha256": "0cda5e9bf7bc4942dd21e14a3d403ee45e06f763efe5ea6e9dbbfa0fd1f5fe82",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Defray.yara",
+      "sha256": "1bffe335313320eb445a5e54b75ed87cc9bbd9c22eb3716b7fb85d4a3772109e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Delphimorix.yara",
+      "sha256": "bc22daaafe27894260f1fdf85125d26f9feb5d778a1dfb4d7b2a3ee635e91b0b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DenizKizi.yara",
+      "sha256": "0dd73312adac37222fa64ecb8df9f889f8652c2a0ad8b2201f4c044c4708ddf4",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DesuCrypt.yara",
+      "sha256": "f68bc79e8509d963ed66b8332fc4957ab1179a7cc50c6e77fdec63a0897a8ee2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Dharma.yara",
+      "sha256": "9f2786a2c6f7b29c42e5508123c44b8a11f3c2a9a4f8399dc393ccce7faeb26b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DirtyDecrypt.yara",
+      "sha256": "a4eeb20302270f7cd7c8d007363dcf797441954d209099284d1375a16a64ccb3",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.District.yara",
+      "sha256": "7afa42dde1f3bec6942f46599d12a9595e69eb4a840c4aa3748e12da40597d52",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.DogeCrypt.yara",
+      "sha256": "1563872736eb49cbe373b1dd415fcd33286cbc097866bd9496089696000c99a0",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Dragon.yara",
+      "sha256": "f8b6ef2b6eeedbaf50db71bc592bc48dc7838abcbb84bbb9399df2e672776a0b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Dualshot.yara",
+      "sha256": "56e02f75e6ffabd2cc825aa9c9f2e28101c9746e6382835be2db528b8090df52",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Elpaco.yara",
+      "sha256": "6d9218ac3ee5facd66a77b1f65cc08d71a580de0116405749cf7d36ffaae709d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Encoded01.yara",
+      "sha256": "a3965a49fc8838f54ca8ad9f0e26a6df983523de7042528dd920d4cd9e693659",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Erica.yara",
+      "sha256": "9413e8cef1a81db3fdf423d5cf09be587b9dc80cbfb4fe819681e49273a9cceb",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.FCT.yara",
+      "sha256": "6b8f81031e99ee1459453cf67f6ab4711208c2edaf4d387f2ac87d5a2a29508d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.FLKR.yara",
+      "sha256": "0519d0928f6b011fb421418c263a9139e7feee26ddedaabb98393ad45c817813",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.FarAttack.yara",
+      "sha256": "04c064ed3a2330fff86e927834e3b2002eac36b3fb980bb59baf0238c020d77c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.FenixLocker.yara",
+      "sha256": "e2718149b04ed8645961da6f35688207c653f24e80bd5328f3eed55ad2986888",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ferrlock.yara",
+      "sha256": "da43b49be6c75f4ec89d9a30541e53998ae53967f0ec8783747fa1a2ac13081c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Flamingo.yara",
+      "sha256": "8a33c3add541334a68f86fd200e2fbde2fe730c7a5c8dc40afc422aa05b57e79",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.FuxSocy.yara",
+      "sha256": "fc3869e85e07262ebe5767f720943cfab33a0e81cd77afd79c64ea045d42a1e6",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.GPGQwerty.yara",
+      "sha256": "0b84c8ef295af94a7d4a945affeffbc08a64b9aa2f7095a20033bb42e07bcb0e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.GandCrab.yara",
+      "sha256": "20233be9e20e61c2f15b89071c97c2afd76d62401380691869cb3fb8a5ef7473",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.GarrantyDecrypt.yara",
+      "sha256": "533d2f0e655b085564bab703f799195473f259679e77c9affc6a7e417521667a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Gibon.yara",
+      "sha256": "4ee215353d4e51e7b8b3fec7bb19f4a98450812b88da666a55f67cd1043998c7",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.GlobeImposter.yara",
+      "sha256": "6cc3f98d9a8d1b408ca25b24c6d2855864190228be48a47913929402914cb306",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Gomer.yara",
+      "sha256": "4a375e67f35d5fccf8aed9aa88e27b00ebb8eb38b1a6db7158b53d79a5eecf95",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Good.yara",
+      "sha256": "9188b5965f5753c2e7374375b41e21cc9b0961074d05be1756cd1008397563f5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Gpcode.yara",
+      "sha256": "cf75ef6c934996d3860dc96c18c7c83daacd0597b7f51d155c7ad2652508fde1",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.GusCrypter.yara",
+      "sha256": "c465060118a1b1149ac04a383d8a638631ad603ff30ab15fec3949ced15a9553",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.HDDCryptor.yara",
+      "sha256": "bc26c17ce58ef4bb1f55e39edec899928a22597fdcc10a9bbd6d911b54218831",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.HDMR.yara",
+      "sha256": "03095f48516adac713e788672e0bb8b7213312642264d761748154f453d6d7aa",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.HakunaMatata.yara",
+      "sha256": "378e0f201ec1b76f6cd14847b8465d4b6c35f6558f05afbfdbb66f14b3a2e57e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Henry.yara",
+      "sha256": "8f96b73df6c4c573055ab96fa9dd348ef5397a18fb28691950ec9f18df4cdca1",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.HentaiOniichan.yara",
+      "sha256": "cbbc40eb26745eafa0acccb32019e3f3e1d4715b0a0c664532bc0472dea1bbf6",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Hermes.yara",
+      "sha256": "5f98e94afbc53c349ded4bad2fe226dabdc261c48e0035b4cbc1724f45ff04cb",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Horsedeal.yara",
+      "sha256": "91a78a78e039acb2705e67b224560988658bd57d5865e57641b09991a6f71f52",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.HowAreYou.yara",
+      "sha256": "6ee0ad81ffd153b138d0122e035d47f7d7d0848c0e153f6558d39edc59002949",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.HydraCrypt.yara",
+      "sha256": "e00df9f7b502ccb69fdb1a323ba5635f408f15bf48985c13a78ffddc12d192bd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.IFN643.yara",
+      "sha256": "134ff48b706196c277d05dc51be68374f40e84ea970804821d95d0ef3be677d5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.InfoDot.yara",
+      "sha256": "8c6cde557d5bdac46923d3b051cb03d8016bd2a514f373493e70020f090baf99",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.JSWorm.yara",
+      "sha256": "3bd3eafb16e87d702ce818e065f619c2d288f29db26cda6dc0bb92d1bfc478a2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Jamper.yara",
+      "sha256": "ed4b012e177ea0d9a2f4ea4fda4918640f589899c179b8e8b185ddcc6cb55805",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Jemd.yara",
+      "sha256": "948087434d916963d2abd94887f6a778fcd0ce3304a3f54920702a8b047e56a4",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Jormungand.yara",
+      "sha256": "5bbf7c03956115ea57b564a5930c294caf95b4c042cb5243dfd63904f47f00e8",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.JuicyLemon.yara",
+      "sha256": "2d8d392e801824485620efe8efff8314f67946747e6b46b793841eaa262126b3",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Kangaroo.yara",
+      "sha256": "d722cefb3ba6b58518c5633259329a52fb4deb988faf813e41e8ded705adce7b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.KawaiiLocker.yara",
+      "sha256": "d18067566e17a1d34943360a25e30f7d29f1a2d3c6846c97288adaea906b13ff",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.KillDisk.yara",
+      "sha256": "494128464b00e37f31b35746a6f211a78ef7d579b280147d8425d907907f2d31",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Knot.yara",
+      "sha256": "c73790f969c5ce2b7e5aa1e2d55ab6119b47ed87630bf6bdf61d2096a411f692",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Kovter.yara",
+      "sha256": "0e003876fa4165e50ff53f15cadd2d31dfed4f5add8cd28371e4b59252dc2207",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Koxic.yara",
+      "sha256": "443cb9255f8d680b870fb7277f3d441d305f5d4d8fee61c215e810725f3a782f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Kraken.yara",
+      "sha256": "3a5241f91ce1f6e3708ee156d427440051525bd14c1657084b3c8fd433e0bb0c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ladon.yara",
+      "sha256": "f10c0bd99d68100a074a199ebeca71db257e725300f4b2215bdb0b5ae71080cd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.LeChiffre.yara",
+      "sha256": "2df023e85394e8286271b24f66524b359b7988114718fe78408c2298889a1f5a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.LockBit.yara",
+      "sha256": "fa3bb2a9cb674aacf2755152fee239bce0086094c7614756ac97b7f8586b4195",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Lolkek.yara",
+      "sha256": "bf83df1d7fe0f61bcfc838cadef55725f376c23dfa12d345b24d54271f1cb3fd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.LooCipher.yara",
+      "sha256": "09485178e4082a59bedc673fb61fc4fc1f5006667addc2847d45085f83208ff2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Lorenz.yara",
+      "sha256": "54d885d10473853b5469b626c23bb66bea2337e275b0981f98425cf15b68b1c9",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.MRAC.yara",
+      "sha256": "cc2847045b8333b23c989d5052b2fece06c6a4fd925410083dc6a233c1a2e57d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.MZP.yara",
+      "sha256": "46839ba6304028eaab8642fca379309fef8a0f74d2ebcb25ab30e7563df5ac76",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Mafia.yara",
+      "sha256": "e1c64b989757176f76b0aab8b0e250ca6a1fdabbf21022bd3f84ce9100f4f753",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Magniber.yara",
+      "sha256": "2b277cf0aa88b792c830467dcf4080eb22eb12dc5a9b13e266e428a7b5ae5e57",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Major.yara",
+      "sha256": "fc0819ffcbceb9e4deb9f068ffc6059e8f4c63d006454157de8bf7ed4d1e1aca",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Makop.yara",
+      "sha256": "27dc72176ab51eebf7b59d2e14143a2801645ca80b503c87d0a31de94e7afbdd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Maktub.yara",
+      "sha256": "a61b29ec2fddd182eb1e85d53dc1fcfb940bb6b6a8af62b1e89450233df78f7f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Marlboro.yara",
+      "sha256": "00b08230007eccc4f73486a9f814749060f0a72d7d3acf312a8c2c1980cbcc98",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.MarsJoke.yara",
+      "sha256": "3f19b8393717da113f9551f9e287941637b0f131a05ddaff07688d072fd9897d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Matsnu.yara",
+      "sha256": "2f5cfe73a7606b1f5581a09b403733ccd558dfcd1bfe18393ff0378031c2bdbd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.MedusaLocker.yara",
+      "sha256": "c328aacf16fb80d62693044f15c138cbeb0bba48a69036d7b7bf838f340d0f24",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Meow.yara",
+      "sha256": "ef1850d956224dc607114d374e41a8b406119f1f361bab9c5e48e112362a137c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Monalisa.yara",
+      "sha256": "c54b54c20f927639f4cfd127f1588831d78fb6e0d2040e91c8b1a027b9937aed",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Montserrat.yara",
+      "sha256": "bcaf337182b001b9270a277fd1b3c629e3a2f195cdf81b1d154834cde014ea04",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Motocos.yara",
+      "sha256": "8a411f3b4722cd4b5ad4b380521255c4f62516ec9cff65950056b8431120158e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.MountLocker.yara",
+      "sha256": "e48800a016392c3066261c006fb586943f7af68a7adf6320924d57872ff46520",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.NB65.yara",
+      "sha256": "a171935e76f8443caf2f52977f49b884f3ffce71c92c40bf29cad95d8f8959b2",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.NanoLocker.yara",
+      "sha256": "1b7c56119d3cc02c825a378ff1aa562572367a70f7fc1a3d8f5bdb23817db943",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Nefilim.yara",
+      "sha256": "9317528d42439f8fd050bd9cd292b66266134327f6be8981c3cad00cd219020c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Nemty.yara",
+      "sha256": "16863032044a37521e7b8b536e0f39240d8ddd5c910bb5c70f70e6f93776f05e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Networm.yara",
+      "sha256": "08edd762cb72ef48c016a3fdfe611329cbd1d7cd6def5b82dc9003809376fb80",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.NotPetya.yara",
+      "sha256": "d1e415f2310e4da4642731230304290b22ed12a617e09fce49580fbff4972772",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Oni.yara",
+      "sha256": "c1c6549804a98dd3168b5d68d5397d71ec4c105967e162f2ef23da228c68a618",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.OphionLocker.yara",
+      "sha256": "7957e2ad72aacf6c1e50082691e627f0461781dc77225952dbd2b1bb80ec4243",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ouroboros.yara",
+      "sha256": "d3b253c48564bc7a2b8fc58382952362f404a9ba1394c036f4fba1a21554ba72",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Outsider.yara",
+      "sha256": "04c00fca8806f3896a13ac1b33970f9c6350f19f85c53db6e546d61b92d0d0f4",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.PXJ.yara",
+      "sha256": "4198d9d3fd1905f217e9231ab72f092806e2bfb74b349f84649b5fdbfea9f6bf",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Paradise.yara",
+      "sha256": "72563c030de3b5f81647809968d9bac465795180eb0475aa1ed45bdc596ccd6e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Pay2Key.yara",
+      "sha256": "2491683f883f6a454edfc9ba7c9a868d35e8f5c8ff9bab1992412145c30b4c09",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Petya.yara",
+      "sha256": "cb1c3b8f170e50719b46d14c8d11825d84c44a813fe4094dd7f71dcf5f8d8aad",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Plague17.yara",
+      "sha256": "2ec3900d7030512de566502250e897792433e40aa81be5050be49fde8a44e9ff",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.PrincessLocker.yara",
+      "sha256": "f3aba3b9b61464f701f0f8882b24e777677fcd4ddcbe1bb8178a8206b00b78fe",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Prometey.yara",
+      "sha256": "71671461cd72c3625940bdef4c1a9b7997438ab2935498434931b5d90af2348c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.RagnarLocker.yara",
+      "sha256": "65c3b50a2d3ff480a59486e335a5bf2dda3b608667dc78e22c80b537ef0c53dd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ragnarok.yara",
+      "sha256": "0adf94d0affa46121cf6326cbd7d25d50f3a4672b4ed4d1dd36a4f0dbc202d29",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ransoc.yara",
+      "sha256": "36a9a6b3a8ac90da90d8ab439074f6d59c499f1545f613eb1f330067d3b7f8bb",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.RansomPlus.yara",
+      "sha256": "e00526ea759169f4eaab8628b22807e63ed94342a667c63444644857085190f8",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ransomexx.yara",
+      "sha256": "03e6b155692182ea3bf3d109f047ba62f64e7244ab0865df75a98885d37f22ad",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Redeemer.yara",
+      "sha256": "127067061985572b22cbdbd3375330f7fc7827e675edee2598c99931db8808ec",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.RegretLocker.yara",
+      "sha256": "4d38accef37bb86949788a9c731f02ea7bc47d7f67edff172f3ce8fd0436fd70",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.RetMyData.yara",
+      "sha256": "f463e7163fe045df47dd7060208e560c5c8c9eb9b893b08008de4803ff0525bd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Reveton.yara",
+      "sha256": "bbd255a67b646b492575f7a45b4493c77ad6aa1f78bd20190d4266227906344d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Revil.yara",
+      "sha256": "f5a4ecb0fa66d7f321c00ca9e787d754ad5486a620bab6efba9c40bb3c72fe7a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Rokku.yara",
+      "sha256": "7ad29e20d368cf3afc8fe4cbb7ce56aaf7f18f8a1e4ea80afdfbe197525e087b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Ryuk.yara",
+      "sha256": "6949236acef545aae81a30f538b3f64f97bdb1a3c803c79c5710846a1303293c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sage.yara",
+      "sha256": "02c12c3656671ee29a5d1a87214d9df0562cb369754632177d43c4df764a981c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sanwai.yara",
+      "sha256": "98dfe144afaa457de526761b38a5ef4ce33fb783cd3fdd14241af27dde27db83",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sarbloh.yara",
+      "sha256": "8ce0fb29a149aaf5abd5447277d5b2a354e3bd9224b914a3f34c213ca3151312",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Satan.yara",
+      "sha256": "b48d9af33898399366e562cde9d43143adc590be81da1d9789bb0eb9b707eb16",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Satana.yara",
+      "sha256": "2e69fb1ba04cb4f4e4ae6ee014c171ecdf05c6d621d28637bc48415693d1c91d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Saturn.yara",
+      "sha256": "211e8100fcbe7d669133b94c159da665f96b52de4dc5dd3a7d23a46592f42e1c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sepsis.yara",
+      "sha256": "4b56e29217da810d91c966fdd35280650f1925673c00e5276e669e9b2103f682",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Serpent.yara",
+      "sha256": "bf41c1f0c71344018e7550d21fa23989b864cddd208a05022c6b103a9b64f84c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.SevenSevenSeven.yara",
+      "sha256": "a3bb87b6f594a5ae2f80e9f755c1b98059862a253f719724fc15d6640efdb72e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.ShadowCryptor.yara",
+      "sha256": "721496e363ae017f2f07e132191d148e390742600965dda915476b6dd419551a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sherminator.yara",
+      "sha256": "61c57677e7b698c34985ff5cff9db4500ee9e9695611c077c66dd24e15325c43",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sifrelendi.yara",
+      "sha256": "60b09180835b9e8a14de9bf2a7a8d1eb4743e6e195fb008c08a3c2aba3da6e00",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sifreli.yara",
+      "sha256": "f29cf0004c3ed1a5173f26b3846fa6f0a3a12355af9710e667760806c5b0eece",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Sigrun.yara",
+      "sha256": "002cda55a63f578eb7b8f31944b76f096c3982430eb9a8a2485e5f29fb39b161",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Skystars.yara",
+      "sha256": "c5eb5a4beee43b4c430d6155d0efb3fe52686f0d18394687a4d935bf86274882",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Spora.yara",
+      "sha256": "4ce457290ffbb46b40cc405f0a65d59e31d099bd8ca3feb7be66628a74486a1d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.TBLocker.yara",
+      "sha256": "cabb212fadb74c60acde34aa475f8085b90731160772177ff2d6e302aa707692",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.TargetCompany.yara",
+      "sha256": "bfe8f7349dde83ef7285309a618405d57c61883525e03764c8aae9eafd233a01",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.TechandStrat.yara",
+      "sha256": "20cc72be751bfdbf3c6508bce0f46887b8a92db1ee85399457c3183be9209840",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.TeleCrypt.yara",
+      "sha256": "284a3a1e35590e04b09639516b931851774f39ab9234f082e0c7f0cab330f08e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Termite.yara",
+      "sha256": "54ae05c9a891066dbf1648ee65c7281039665d596e3c250de329d41dfe91e30b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Teslacrypt.yara",
+      "sha256": "fdc368cbec950e734d72533e200665cde4df408bcff876c9efc2f1133f75615f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Teslarvng.yara",
+      "sha256": "99d4c64e0b3dd906dd026e0b82ae67b01bdec321261892a90289dcba4f4207d9",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Thanatos.yara",
+      "sha256": "640ae2ee013243e1571739b7e945b0094fde1d8f273a991208367290e5d1bd70",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.TorrentLocker.yara",
+      "sha256": "48fe93b70c5328195c806eb94aaa44f7ad20ddc88259db2c987421afd08dcd45",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.VHDLocker.yara",
+      "sha256": "2c4abc9ed9244eba33cc8f8188f5a1e8cee6cedcfb836768db602d9c9eb46ff3",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.VanHelsing.yara",
+      "sha256": "0b7f1475cf9a45e6ec8395d762084ba611015fafa01baa97e116d3bb7481526b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.VegaLocker.yara",
+      "sha256": "718d011eb47471e355d3576494b1f3e88b3ed70f3a62ee2dfc317c4a3b02900d",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Velso.yara",
+      "sha256": "91a4c5367b4239ce081fe9a270e742e16da8a630c3de5b52dce0e0d83139d88b",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.WannaCry.yara",
+      "sha256": "620a3a157121c9db704dd9716cbfd98d7a7a2e9a7fdaa90433e7507976765ec0",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.WaspLocker.yara",
+      "sha256": "76247dc093ac8fe644f2899ab4931e6691b0d005d7c14ea57f21d595c54a7ec4",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Wastedlocker.yara",
+      "sha256": "7faacf86c6813788f5954bef4b9ceb90e338d20bceae309569e7b3c19678b82f",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.WinWord64.yara",
+      "sha256": "e4c61195eee7fb703fa0dd2f9e1d80c9daa59b7e700f0ad36d52599f7f79607a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.WsIR.yara",
+      "sha256": "519b2a786610b9e7be29466a01c0e7ec9842a58c6d1cd0d0fc503bcfa39be172",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Xorist.yara",
+      "sha256": "019461964c2b3842ac8d20e5c368f643f3e351be2c311cf4bd112fe817b89b00",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Zeoticus.yara",
+      "sha256": "9eec2b7ac462907feccbc23b3b1a7fae9f68533dfef5ed8f3d1ffcae5698d4e9",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Zeppelin.yara",
+      "sha256": "c6d31075ab498df3c806350c0d628abbeef5f7401e307727500a10c3ea399e53",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.ZeroCrypt.yara",
+      "sha256": "24f734b8bca149c4fe340a07a642ef1cad99f68fb2a5a499e0fefe2b85b79002",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Zhen.yara",
+      "sha256": "3c059d23bee490fdec3403a16e2596ada86f46fd9efaa07083fab47fcd5a0ded",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win32.Ransomware.Zoldon.yara",
+      "sha256": "bf8c7ef47660644c544b12b3942178ffe6a4262b6f6ae27df70a40fb560fd2c7",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Ako.yara",
+      "sha256": "5346f251d3e7b05fbcea4a3b347b0916bc899b44c0974bc2a266ddae4b343346",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Albabat.yara",
+      "sha256": "1364e8ac86a2562d57616fd8ac294454485ae3b05550af01e6e89f56d98fe36c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.AntiWar.yara",
+      "sha256": "38f7a409702e95b9247f188a1f8404d1e48a65ef505ec9a56ca652d778afc03a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.AwesomeScott.yara",
+      "sha256": "7887d208891b088ba2a7c050d985e038a48994df88b53541782478af53d4493a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.BlackBasta.yara",
+      "sha256": "da39458b480e93b600442f602b851fbde54c5e415ac92012db96126d38c10f82",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Cactus.yara",
+      "sha256": "a454ddcfe5b6ffe22fd09957bb071f4064994d2b9ae324376c25880bb001c7d5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Curator.yara",
+      "sha256": "c624e31d54474d4d184887f27efa8216eb364266ea6c5b48277f71709b086b5c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.DST.yara",
+      "sha256": "6dbc46f4b00d7a5b1a2839987815b1a974baeee6a4abb1d6b81be01b585dda07",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.HermeticRansom.yara",
+      "sha256": "ba197e289d155a3af00997e8fcafab4799445fd4a31a30dd8c7a48749e299777",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.HotCoffee.yara",
+      "sha256": "48a5ce326e73beef055ac7c44542bf112956ba7f7bfe99990af3b202a7acceda",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Nokoyawa.yara",
+      "sha256": "86c7103eec0d910bc3a3f4f1d53c3024bf7df2c767c7248db5077df5a6726bae",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Pandora.yara",
+      "sha256": "f2696bb72a5d4b038dc979f317b9926de3b1b9a520e5648abd92a35551ad28bc",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.RedRoman.yara",
+      "sha256": "7b00dba6a3d7c3251ae70483ee56bfe920497b0d79372d5d55e1aade366ba9dd",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Rook.yara",
+      "sha256": "f76f796cb6c834fe9bafb9578c4d20038a232542ed3ad16f43daf12282f95b86",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.SeedLocker.yara",
+      "sha256": "6bd9aa986d3aaff00371537e32e2b389b5a01b182cd8fd80686cc17af2a4d7b5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Seth.yara",
+      "sha256": "b4d618892ba1f5043c1124081138cc1acdbefd4c77416696200a918b0ddbfef7",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Solaso.yara",
+      "sha256": "c6f8be2b924a7a124f023bc20e6aa80c806ea57b8473a82f6322baad1c39bf30",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Vovalex.yara",
+      "sha256": "02b18f27fd3a2ecec8ff605a1813ca4b63f4342745a1eb838b96c5ca414b3866",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Warlock.yara",
+      "sha256": "580112df7013902596c34cc001370270965325609952c8324cebe834316290ac",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.WhiteBlackCrypt.yara",
+      "sha256": "c1cecd6df5a23e019c2b06b1f7373cec1f75b9fe3514447b15a8e9f4eb23fe5a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/ransomware/Win64.Ransomware.Wintenzz.yara",
+      "sha256": "39b0f623d6584e59585b3975841eff5e7bc93f4ddb891871d155670dc2c15dc0",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.BiBiWiper.yara",
+      "sha256": "ed9403c246023339f6cd60e640e737fc9ca13403211c122488b60d3bd3911c7a",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.CaddyWiper.yara",
+      "sha256": "f8ec3c8b660e566962b8e3c342b5642d6cb9e47655bdca8bd0aef242c48e7b62",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.Dridex.yara",
+      "sha256": "cf5557eea1de1792c0d53cbfa489ceb858facf0a7d2875ebc05afdaa4fe1d352",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.Emotet.yara",
+      "sha256": "990a5f92fcd4ff544c3fe1dc281f52238120216e49138ccf98da849217102347",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.HermeticWiper.yara",
+      "sha256": "555520faa6696fff03d705d4c4d758f5467810199eae4d84575efa1999c5e855",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.IsaacWiper.yara",
+      "sha256": "9c8ccd047840bfd24a00a1455645656a76590f8f56a774c3d0416cfeaebc376e",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.PathWiper.yara",
+      "sha256": "31711adb42d9714a90a51cb4ee9b864479e022d693035e36d01341f02e86651c",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/trojan/Win32.Trojan.TrickBot.yara",
+      "sha256": "e21ede0f6afe8e3a2c1375fff72030b73a344ab1ab3d5cb8d511349e8fc2d963",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.Awfull.yara",
+      "sha256": "8d3f490e99275766c995dc051d092884719637bf9dc34d0d9ed27924ef841b80",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.Cmay.yara",
+      "sha256": "8a7206e7ea5499564f4ba6b4681a6df92eba4fd4a6c4a22e718fc180863c9833",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.DeadCode.yara",
+      "sha256": "ce881b1da292e9d1c20cdc8a1b1a2e5a9a3399c0ca7469dac765894bc71cadc8",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.Elerad.yara",
+      "sha256": "bc40c21d0de6045899f3f931baf27ea9b09bb58c699ac72920be7f3cedb57f26",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.Greenp.yara",
+      "sha256": "31157c38f709fc4fb067f0895f83d45c7dcb163a0e7b69e63c0e45f1341bb8d5",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.Mocket.yara",
+      "sha256": "ae5386280ef7e0bc8e3132a32d9aec9575adef7522126d16bd4079dd9c6c84f7",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "source": "yara/virus/Win32.Virus.Negt.yara",
+      "sha256": "4c28ce6d878f1ab3327b95b206cb820a7707c416fca2f8c028595315375e02c1",
+      "status": "compiled",
+      "warnings": [],
+      "errors": []
+    }
+  ]
+}

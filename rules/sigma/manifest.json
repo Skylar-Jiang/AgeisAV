@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "version": "sigma-offline-v1",
+  "upstream_revision": "b7920ed31356fb7f6a9275b34737d8604c65bac3",
+  "license": "DRL-1.1",
+  "license_source": "https://raw.githubusercontent.com/SigmaHQ/Detection-Rule-License/bcbdc605172d00390572cd774ba395ec9e975dfc/LICENSE.Detection.Rules.md",
+  "rules": [
+    {
+      "file": "proc_creation_win_certutil_download.yml",
+      "sha256": "1262c65c22592b28f2c63906462f07f9c0d95e8fa065405505d18979a5f278af",
+      "source": "https://github.com/SigmaHQ/sigma/blob/b7920ed31356fb7f6a9275b34737d8604c65bac3/rules/windows/process_creation/proc_creation_win_certutil_download.yml"
+    },
+    {
+      "file": "proc_creation_win_whoami_groups_discovery.yml",
+      "sha256": "9811f214ced5d77bc91b9ba4656513fd488a4c98e25f058fd43c3b86cb190cc1",
+      "source": "https://github.com/SigmaHQ/sigma/blob/b7920ed31356fb7f6a9275b34737d8604c65bac3/rules/windows/process_creation/proc_creation_win_whoami_groups_discovery.yml"
+    }
+  ]
+}

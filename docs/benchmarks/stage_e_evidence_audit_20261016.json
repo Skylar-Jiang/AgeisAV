@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "captured_at_utc": "2026-10-16T15:57:17.859573+00:00",
+  "vm": {
+    "status": "deferred_memory",
+    "guest_memory_bytes": 8589934592,
+    "required_host_available_bytes": 10737418240,
+    "host_available_at_gate_bytes": 6881472512,
+    "guest_validation_performed": false,
+    "vm_modified": false,
+    "historical_sampled_two_service_memory_max_bytes": 1816391680,
+    "historical_complete_memory_samples": 60,
+    "historical_missing_memory_samples": 1,
+    "memory_budget_limitation": "Historical 5-second scan/clamd cgroup samples omit guest OS, current task service and new guard. Cannot justify a smaller VM or treat RLIMIT_AS as measured RSS."
+  },
+  "official_benign": {
+    "candidates": 149,
+    "source_count": 1,
+    "valid_publisher_signatures": 149,
+    "verified_global_first_seen": 0,
+    "labels": {
+      "presumed_benign": 149
+    },
+    "full_training_membership_verified": false,
+    "local_win64_membership_matches": {
+      "fit": 0,
+      "validation": 0,
+      "test": 0
+    },
+    "prior_near_matches": 0,
+    "near_edges": 301,
+    "screening_components": 81,
+    "component_size_counts": {
+      "1": 68,
+      "8": 1,
+      "20": 1,
+      "22": 1,
+      "9": 1,
+      "2": 6,
+      "3": 2,
+      "4": 1
+    },
+    "paired_five_engine_scans": 0,
+    "independent_final_eligible": 0
+  },
+  "reference_coverage": {
+    "exact_malicious_references": 4,
+    "families": {
+      "StealC": 4
+    },
+    "tlsh_references": 2,
+    "ssdeep_references": 2,
+    "yara_files": 246,
+    "ransomware_description_files": 212,
+    "limitation": "Rule-description taxonomy and reference counts explain coverage limits; neither establish runtime functionality or justify new rules."
+  },
+  "primary_case_candidates": {
+    "count": 2,
+    "raw_pe_acquired": 0,
+    "labels_promoted": 0,
+    "independent_final_eligible": 0
+  },
+  "thresholds_changed": false,
+  "model_rule_engine_files_changed": false,
+  "new_raw_malicious_pe": 0,
+  "input_sha256": {
+    "official_benign_candidates_manifest_20261012.jsonl": "76dc6b60b645b1ff0d28c08c5598c79f3474786b96e24af0e5406547a42e7661",
+    "official_benign_candidate_similarity_20261012.json": "453f41b43008ecba600fa981bcbaf7938bfc35c566094e22b8d8821bc0640f5a",
+    "official_benign_candidate_training_20261012.json": "d54ef9af0aff794081a82fb878fd1b9014bec3e3ea3ecbe28dfe490974b989c3",
+    "collection_expansionresources_20261013.json": "260677ead7980cfc294e7b1e212987c83a5c9d4e9b7f28373472c63ed646a504",
+    "analyst_report_candidates_20261016.jsonl": "833e836918109d5a26ec1565a5341b550bcf8d92ca42ab5cde4b85bc7c621377"
+  },
+  "host_end": {
+    "captured_at_utc": "2026-10-16T16:00:57.9884593Z",
+    "available_ram_bytes": 7754514432,
+    "c_free_bytes": 28771364864,
+    "d_free_bytes": 107786694656,
+    "project_scan_workers": 0,
+    "vm_started": false
+  }
+}

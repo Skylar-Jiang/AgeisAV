@@ -1,0 +1,464 @@
+{
+  "schema": 1,
+  "synthetic_ui_only": true,
+  "real_detector_metrics": false,
+  "checks": [
+    {
+      "direction": "paper",
+      "view": "workspace",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-workspace-1440.png"
+    },
+    {
+      "direction": "paper",
+      "view": "workspace",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-workspace-768.png"
+    },
+    {
+      "direction": "paper",
+      "view": "workspace",
+      "width": 375,
+      "height": 812,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-workspace-375.png"
+    },
+    {
+      "direction": "paper",
+      "view": "workspace",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-workspace-812.png"
+    },
+    {
+      "direction": "paper",
+      "view": "detail",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-detail-1440.png"
+    },
+    {
+      "direction": "paper",
+      "view": "detail",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-detail-768.png"
+    },
+    {
+      "direction": "paper",
+      "view": "detail",
+      "width": 375,
+      "height": 812,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-detail-375.png"
+    },
+    {
+      "direction": "paper",
+      "view": "detail",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 13.56173333923988
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.815760902248624
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.288970948623042
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.5346179203652275
+        }
+      ],
+      "screenshot": "output/playwright/paper-detail-812.png"
+    },
+    {
+      "direction": "paper",
+      "interactions": [
+        "search-empty-reset",
+        "error-retry",
+        "loading",
+        "file-name-only-selection",
+        "demo-progress",
+        "unsupported-architecture",
+        "non-PE-detail",
+        "visible-clipboard-failure",
+        "evidence-expand",
+        "demo-JSON-export",
+        "keyboard-skip"
+      ],
+      "passed": true
+    },
+    {
+      "direction": "linen",
+      "view": "workspace",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-workspace-1440.png"
+    },
+    {
+      "direction": "linen",
+      "view": "workspace",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-workspace-768.png"
+    },
+    {
+      "direction": "linen",
+      "view": "workspace",
+      "width": 375,
+      "height": 812,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-workspace-375.png"
+    },
+    {
+      "direction": "linen",
+      "view": "workspace",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-workspace-812.png"
+    },
+    {
+      "direction": "linen",
+      "view": "detail",
+      "width": 1440,
+      "height": 1000,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-detail-1440.png"
+    },
+    {
+      "direction": "linen",
+      "view": "detail",
+      "width": 768,
+      "height": 1024,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-detail-768.png"
+    },
+    {
+      "direction": "linen",
+      "view": "detail",
+      "width": 375,
+      "height": 812,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-detail-375.png"
+    },
+    {
+      "direction": "linen",
+      "view": "detail",
+      "width": 812,
+      "height": 375,
+      "page_overflow": false,
+      "contrast": [
+        {
+          "pair": "foreground/background",
+          "ratio": 12.114383936905782
+        },
+        {
+          "pair": "muted-foreground/card",
+          "ratio": 5.690217863249696
+        },
+        {
+          "pair": "primary/primary-foreground",
+          "ratio": 6.588835646262039
+        },
+        {
+          "pair": "warning/card",
+          "ratio": 6.558038765582833
+        }
+      ],
+      "screenshot": "output/playwright/linen-detail-812.png"
+    },
+    {
+      "direction": "linen",
+      "interactions": [
+        "search-empty-reset",
+        "error-retry",
+        "loading",
+        "file-name-only-selection",
+        "demo-progress",
+        "unsupported-architecture",
+        "non-PE-detail",
+        "visible-clipboard-failure",
+        "evidence-expand",
+        "demo-JSON-export",
+        "keyboard-skip"
+      ],
+      "passed": true
+    },
+    {
+      "motion": "entry and five-step scanning, reduced-motion fallback",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "console_errors": [],
+  "unexpected_uploads": 0
+}
