@@ -1,12 +1,6 @@
-# ML 产品集成：范围、版本与失败语义
+# 外置 ML 集成与冻结路由
 
-> 2026-10-12：正式 root 只读部署与实际服务验证已完成，当前 release `c699902f19640593`；
-> 新 `chunked-histogram-v1` 通过完整向量/分数一致性验证，权重与阈值不变。
-> 下文“临时目录/待正式部署”属于 10-11 历史状态；当前以
-> [发布运行说明](PRODUCT_RELEASE_RUNBOOK_20261012.md)与[本轮结果](ROUND_REPORT_20261012.md)为准。
-
-本轮不改变现有权重、训练/验证/测试划分或部署阈值。开发归档 OR 109/109
-只保留为错误分析证据，不是最终准确率。
+整理日期：2026-11-22。当前 API 有认证；以下配置沿用冻结模型，不引入新权重或阈值。
 
 ## 选择策略
 
@@ -49,22 +43,19 @@ scikit-learn 1.6.1、pefile 2024.8.26、signify 0.7.1。完整依赖及 Linux Op
   审定恶意 SHA 可裁决恶意，其他阳性形成可疑证据；可信良性 SHA 不能覆盖阳性。
   全阴性仍不等于已证实良性。ML 分数不是已校准的部署恶意概率。
 
-## 启动和验证
+## 源码服务配置
+
+先取得合法授权的 registry、全部权重及匹配的独立 ML Python；公开仓库不提供这些私有资产。
 
 ```powershell
-.\.venv\Scripts\python.exe -m experiments.build_ml_bundle
-$env:AEGISAV_MODEL_DIR = 'D:\2026fall\badcode\aegisav\models\ember2024'
-$env:AEGISAV_ML_PYTHON = 'D:\2026fall\badcode\aegisav\.venv-ml\Scripts\python.exe'
+$env:AEGISAV_MODEL_DIR = '<absolute model directory containing registry.json>'
+$env:AEGISAV_ML_PYTHON = '<absolute ML Python executable>'
 $env:AEGISAV_ML_PROFILE = 'general'
-.\.venv\Scripts\python.exe -m uvicorn aegisav.main:app --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m experiments.serve_local
 ```
 
-也可 `pip install -e ".[ml]"` 为 API 环境安装固定依赖。资产缺失时服务仍明确
-报告 ML 不可用。`GET /v1/engines` 返回版本、策略和资产检查；依赖在实际 worker 检查。
-API 无认证，仅绑定回环。Windows/WSL 只用良性文件验证；真实恶意文件只允许在
-已确认隔离的 Ubuntu 内静态解析，不执行。
-
-[主机 API 实测](../benchmarks/ml_api_benign_smoke_20261011.json)验证通用与 Win64 路由，
-主机 ClamAV 缺失仍明确报告；[Ubuntu 完整 HTTP 实测](../benchmarks/ml_api_guest_five_engine_smoke_20261011.json)
-验证真实五引擎和缓存。均为少量功能测试，不能估计新最终 Recall/FPR 或整体 P95。
-逐文件进程启动开销已记入总耗时；驻留 worker 是后续工程研究，不阻塞检测融合研究。
+通过已认证 `GET /v1/engines` 核对可用性，再用良性文件验证；状态探测不能代替真实 Worker 依赖检查。
+也可安装固定 `.[ml]` 依赖，但必须匹配 registry 所记录实现，不能混用不同 EMBER 特征版本。
+便携包用 `aegisav.desktop configure` 写包外配置，见 [部署](DELIVERY_RUNBOOK.md)。
+旧 VM root 只读部署过程属于历史研究，不作为 Windows 安装命令；见 Git 历史中的部署运行说明。
+Windows/WSL 只用良性控制，真实恶意 PE 仅留既有隔离 Ubuntu VM 静态分析。

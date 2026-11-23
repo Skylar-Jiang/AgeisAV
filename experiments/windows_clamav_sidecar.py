@@ -1,7 +1,7 @@
 """Optional, isolated Windows ClamAV 1.5.4 sidecar; never installs a service.
 
 The pinned archive digest was verified against Cisco Talos' detached signature.
-See docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md for provenance and commands.
+See docs/DELIVERY_RUNBOOK.md for provenance and commands.
 """
 import argparse
 import ctypes

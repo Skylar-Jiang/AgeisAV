@@ -20,7 +20,7 @@
 
 便携包是维护者保留的本地交付物，**公开 Git 源码不附带 ZIP、私有模型、样本、报告数据库或 VM**。
 首次克隆可以运行基础引擎和无害测试；完整五引擎需要另行配置外置组件。
-版本证据见 [0.2.1 发布准备度](docs/RELEASE_021_COURSE_READINESS.md) 和 [原生 SSDeep RC 结果](docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md)。
+版本证据见 [发布状态](docs/RELEASE_STATUS.md)，配对速度与退化见 [性能结果](docs/PERFORMANCE.md)。
 
 后续开发从 `main` 创建新的功能分支；不要将带私有研究历史的本地分支直接推送或合入公开仓库。
 历史 `export_public_delta` 工具绑定旧公开分支名，清理该分支后须先适配并复核导出目标，不能绕过父提交和敏感内容检查。
@@ -71,8 +71,8 @@ npm --prefix frontend run build
 上述启动器统一托管 API 与构建后的前端，不需要再同时启动占用同一端口的前端开发服务器。
 
 首次克隆缺少 ML 或 ClamAV 时会明确弃权，其他可用引擎仍可工作。
-ML 的独立解释器、合法取得的模型和冻结 registry 按 [ML 集成说明](docs/research/ML_PRODUCT_INTEGRATION_20261011.md) 配置；
-ClamAV 通过本机 `127.0.0.1:3310` 连接已有 sidecar，见 [Windows ClamAV 方案](docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md)。
+ML 的独立解释器、合法取得的模型和冻结 registry 按 [ML 集成说明](docs/ML_INTEGRATION.md) 配置；
+ClamAV 通过本机 `127.0.0.1:3310` 连接已有 sidecar，见 [Windows ClamAV 方案](docs/DELIVERY_RUNBOOK.md)。
 不要把研究用完整 VM 脚本当作通用安装器直接运行。
 
 ### 使用已有便携包
@@ -115,7 +115,7 @@ ClamAV 通过本机 `127.0.0.1:3310` 连接已有 sidecar，见 [Windows ClamAV 
 
 在线 VT 仅从受保护进程环境读取 `VT_API_KEY`（兼容 `VIRUSTOTAL_API_KEY`）。已有报告优先离线导入，
 续跑使用原输出目录与 `--resume`；404、限流和查不到的报告保持真实状态。
-用法与合规边界见 [SHA 查询说明](docs/COURSE_HASH_QUERY.md)，教学导出见 [静态报告说明](docs/COURSE_STATIC_ANALYSIS.md)。
+用法与合规边界见 [SHA 查询说明](docs/COURSE_HASH_QUERY.md)，教学导出见 [静态报告说明](docs/COURSE_GUIDE.md)。
 
 ## 课程交付与接手材料
 
@@ -135,7 +135,7 @@ CVERC 的 100 份真实报告仍未补齐；现有阻塞记录不是检测报告
 | 私有报告数据库与备份 | 含敏感路径/事件，按部署说明迁移；不要只复制运行中的 SQLite 主文件 |
 | 已有隔离 VM 与快照说明 | 原始恶意 PE 仅在该授权环境内静态处理；禁止搬到 Windows/WSL 或执行 |
 
-完整逐项验收见 [课程验收清单](docs/COURSE_ACCEPTANCE_20261023.md)、[Sigma 课程实验](docs/COURSE_SIGMA_LAB.md)、[课程演示](docs/DEMO_GUIDE.md)。
+逐项验收、静态导出、Sigma 实验和演示统一见 [课程指南](docs/COURSE_GUIDE.md)。
 雨课堂提交、个人账号状态和最终人工确认不由仓库自动完成。
 
 ## 评测现状与下一步
@@ -153,8 +153,7 @@ CVERC 的 100 份真实报告仍未补齐；现有阻塞记录不是检测报告
 - 粗化模型及同容量低分箱候选已淘汰，不以推理变快掩盖低误报预算下的检出损失。
 
 优先继续：解释大文件 ML 特征提取波动、验证独立便携候选及目标机器首次运行、补可信标签与来源/家族/时间/训练泄漏审计。
-影响判断的模型、阈值或融合变更仍需更严格证据。近期结果见 [2026-11-01 YARA 实验](docs/research/YARA_BUNDLE_RESULTS_20261101_PUBLIC.md)
-和 [2026-10-23 原生 RC](docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md)；不同实验的耗时不能混池或相乘。
+影响判断的模型、阈值或融合变更仍需更严格证据。近期工程结果见 [性能](docs/PERFORMANCE.md)，数据角色及模型实验见 [评测](docs/EVALUATION.md)；不同实验的耗时不能混池或相乘。
 
 ## 目录与验证
 
@@ -166,7 +165,7 @@ rules/             参考哈希、带来源的 YARA 和 Sigma 规则
 distribution/      便携启动脚本、运行时锁定和第三方许可
 experiments/       评测、构建与显式候选工具；不是全部都应直接运行
 vm/                绑定已有隔离环境的研究脚本，先审查与适配
-docs/              使用、架构、部署、课程验收和带日期的研究记录
+docs/              按主题维护的现行文档、课程指南与必要聚合证据
 models/ artifacts/ output/  本地私有资产与结果，公开 Git 不附带
 ```
 
@@ -178,7 +177,7 @@ npm --prefix frontend run typecheck
 
 完整回归需先安装 `.[test]`，其中包括加密归档无害夹具需要的 `pyzipper`；基础启动依赖不包含所有测试依赖。
 公开分发缺少私有模型/归档时，相关测试会明确跳过；应查看原因，不将跳过记为检测成功。
-历史文档保留当时路径、状态和测试数字；当前交接先读本 README，再查看相应模块的最新带日期证据。
+完整文档入口见 [docs/README](docs/README.md)。旧阶段报告已合并或从当前目录移除，可通过整理前的 Git 快照恢复。
 
-更多入口：[用户手册](docs/USER_GUIDE.md) · [系统设计](docs/SYSTEM_DESIGN.md) · [已知限制](docs/KNOWN_LIMITATIONS.md) · [进度](docs/PROGRESS.md)。
+更多入口：[用户手册](docs/USER_GUIDE.md) · [系统设计](docs/SYSTEM_DESIGN.md) · [已知限制](docs/KNOWN_LIMITATIONS.md) · [文档索引](docs/README.md)。
 第三方许可按各自文件保留；AegisAV 自身尚未指定统一开源许可证，不把所有内容默认标为 MIT，模型再分发需另行确认授权。

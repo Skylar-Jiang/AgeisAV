@@ -101,7 +101,7 @@ def render_guide(text):
         elif line.strip(): output.append('<p>'+html.escape(line)+'</p>')
     return ('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>AegisAV 使用文档</title><style>body{background:#f3f2ed;color:#30352c;font:16px/1.9 system-ui,sans-serif;max-width:880px;margin:40px auto;padding:0 24px}h1,h2,h3{line-height:1.4;margin-top:36px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e8e9e1;padding:20px;border-radius:8px}a{color:#43593a}p{overflow-wrap:anywhere}</style>'
-        '<nav><a href="USER_GUIDE.html">用户手册</a> · <a href="DELIVERY_RUNBOOK.html">部署与故障排除</a> · <a href="DEMO_GUIDE.html">课程演示</a> · <a href="SYSTEM_DESIGN.html">架构</a> · <a href="KNOWN_LIMITATIONS.html">限制</a></nav>'+''.join(output)+'</html>').encode()
+        '<nav><a href="USER_GUIDE.html">用户手册</a> · <a href="DELIVERY_RUNBOOK.html">部署与故障排除</a> · <a href="COURSE_GUIDE.html">课程演示</a> · <a href="SYSTEM_DESIGN.html">架构</a> · <a href="KNOWN_LIMITATIONS.html">限制</a></nav>'+''.join(output)+'</html>').encode()
 
 
 def copy_npm_licenses(package,frontend):
@@ -178,7 +178,7 @@ def build(source,frontend,runtime_archive,runtime_lock,output,native_bundle=None
             relative=path.relative_to(frontend)
             if path.suffix in {'.map','.zip','.exe','.dll','.sqlite3'}: raise ValueError('Unexpected frontend output')
             write(package/'app/frontend/out'/relative,path.read_bytes())
-    for name in ('USER_GUIDE.md','SYSTEM_DESIGN.md','DELIVERY_RUNBOOK.md','DEMO_GUIDE.md','KNOWN_LIMITATIONS.md','BEHAVIOR_ANALYSIS.md','STAGE_E_CLOSEOUT.md','research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md'):
+    for name in ('README.md','USER_GUIDE.md','SYSTEM_DESIGN.md','DELIVERY_RUNBOOK.md','COURSE_GUIDE.md','COURSE_HASH_QUERY.md','KNOWN_LIMITATIONS.md','BEHAVIOR_ANALYSIS.md','TASK_RELIABILITY.md','ML_INTEGRATION.md','RELEASE_STATUS.md','EVALUATION.md','PERFORMANCE.md'):
         path=source/'docs'/name
         if not path.is_file(): raise ValueError('Missing delivery document: '+name)
         write(package/'docs'/path.name,path.read_bytes())
@@ -189,10 +189,6 @@ def build(source,frontend,runtime_archive,runtime_lock,output,native_bundle=None
             if path.suffix=='.cmd': data=data.replace(b'\r\n',b'\n').replace(b'\n',b'\r\n')
             write(package/path.relative_to(source/'distribution'),data)
     if native:
-        for name in ('NATIVE_SSDEEP_RC_20261022.md','COURSE_EVALUATION_20261022.md','WINDOWS_CLAMAV_SIDECAR_20261022.md'):
-            path=source/'docs/research'/name
-            write(package/'docs'/name,path.read_bytes())
-            write(package/'docs'/Path(name).with_suffix('.html'),render_guide(path.read_text(encoding='utf-8')))
         for name,action in (('Start-AegisAV.cmd','start'),('Stop-AegisAV.cmd','stop'),('Access-Key.cmd','key')):
             command=('@echo off\r\n"%~dp0runtime\\python.exe" -I -B -m aegisav.desktop '+action+
                 ' --data-dir "%LOCALAPPDATA%\\AegisAVDesktop-Candidate" --port 3420 %*\r\nif errorlevel 1 pause\r\n')
