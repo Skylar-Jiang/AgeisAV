@@ -23,7 +23,7 @@ flowchart TB
   LINK --> UI
 ```
 
-可编辑源见 `diagrams/architecture.mmd`。静态与行为结果分开；哈希声明只关联，不触发阈值变更。
+可编辑源见 [architecture.mmd](../distribution/diagrams/architecture.mmd)。静态与行为结果分开；哈希声明只关联，不触发阈值变更。
 
 ## 静态扫描流程
 

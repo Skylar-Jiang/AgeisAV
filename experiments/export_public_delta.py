@@ -13,46 +13,7 @@ import subprocess
 
 from experiments.export_public_source import ROOT, PREFIXES, ROOT_FILES, DOCS, OVERRIDES, FORBIDDEN
 
-ADDITIONAL_DOCS={'docs/research/ROUND_REPORT_20261017_STAGE_E_R3_PUBLIC.md',
-                 'docs/benchmarks/stage_e3_summary_20261017.json',
-                 'docs/research/ROUND_REPORT_20261017_STAGE_E_R4_PUBLIC.md',
-                 'docs/benchmarks/stage_e4_summary_20261017.json',
-                 'docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md',
-                 'docs/benchmarks/stage_e4_vm_summary_20261017.json',
-                 'docs/research/ROUND_REPORT_20261018_STAGE_E_R5_PUBLIC.md',
-                 'docs/benchmarks/stage_e5_summary_20261018.json',
-                 'docs/DATASET_ADMISSION_R6.md',
-                 'docs/research/ROUND_REPORT_20261018_STAGE_E_R6_PUBLIC.md',
-                 'docs/benchmarks/stage_e6_summary_20261018.json',
-                 'docs/research/ROUND_REPORT_20261019_STAGE_E_R7_PUBLIC.md',
-                 'docs/benchmarks/stage_e7_summary_20261019.json',
-                 'docs/STAGE_E_CLOSEOUT.md','docs/BEHAVIOR_ANALYSIS.md','docs/LOCAL_DEPLOYMENT.md',
-                 'docs/research/ROUND_REPORT_20261019_STAGE_F_PUBLIC.md',
-                 'docs/benchmarks/stage_f_summary_20261019.json',
-                 'docs/USER_GUIDE.md','docs/SYSTEM_DESIGN.md','docs/DELIVERY_RUNBOOK.md',
-                 'docs/DEMO_GUIDE.md','docs/KNOWN_LIMITATIONS.md',
-                 'docs/research/ROUND_REPORT_20261019_STAGE_G_PUBLIC.md',
-                 'docs/benchmarks/stage_g_summary_20261019.json',
-                 'docs/research/OPTIMIZATION_RESULTS_20261022_PUBLIC.md',
-                 'docs/benchmarks/optimization_20261022.json',
-                 'docs/research/NATIVE_SSDEEP_RC_20261022.md',
-                 'docs/research/COURSE_EVALUATION_20261022.md',
-                 'docs/research/WINDOWS_CLAMAV_SIDECAR_20261022.md',
-                 'docs/benchmarks/course_evaluation_20261022.json',
-                 'docs/research/NATIVE_SSDEEP_RESULTS_20261023_PUBLIC.md',
-                 'docs/research/WINDOWS_CONTROLS_20261022.md',
-                 'docs/benchmarks/windows_controls_20261022.json',
-                 'docs/benchmarks/native_rc_20261023.json',
-                 'docs/benchmarks/model_binning_20261022.json',
-                 'docs/COURSE_ACCEPTANCE_20261023.md',
-                 'docs/COURSE_HASH_QUERY.md',
-                 'docs/COURSE_SIGMA_LAB.md',
-                 'docs/COURSE_STATIC_ANALYSIS.md',
-                 'docs/RELEASE_021_COURSE_READINESS.md',
-                 'docs/examples/course-query/README.md',
-                 'docs/examples/course-query/sha256.txt',
-                 'docs/research/YARA_BUNDLE_RESULTS_20261101_PUBLIC.md',
-                 'docs/benchmarks/yara_bundle_20261101.json'}
+ADDITIONAL_DOCS=set()
 
 
 def check_blob(name,data,private_hashes):

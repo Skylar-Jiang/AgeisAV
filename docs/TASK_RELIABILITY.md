@@ -103,15 +103,15 @@ node frontend/scripts/check-live-api.cjs
 Linux 无害进程探针：`PYTHONPATH=backend python3 -m experiments.check_linux_process_guard`。
 验收服务 `experiments.task_reliability_fixture` 需要显式开关，只供本机故障注入；不部署为正式服务。
 
-## 现有 VM 验收前置检查
+## 既有 VM 的历史资源验收边界
 
-`vm/Get-TaskGuardReadiness.ps1` 仅查询既有专用 VM 的离线 VMX、关机状态和宿主机资源，
-不会启动/停止 VM、读取凭据、修改配置或恢复快照。输出 `guest_validation_performed=false`。
-8 GiB VM 需至少 10 GiB 可用宿主机内存（保留 2 GiB）；不足返回 deferred_memory，
-这不是客户机隔离或分析通过。资源充足后仍需 VMware Tools 客户机隔离、空闲任务核验和无害进程测试。
-不得因为前置检查 ready 就直接处理真实恶意样本；既有 VM 的新进程层尚未部署验证。
+`vm/Get-TaskGuardReadiness.ps1` 只读检查既有专用 VM 的离线 VMX、电源和宿主资源，不启动/停止 VM、读取凭据、改配置或恢复快照。
+`guest_validation_performed=false` 或前置检查 ready 都不是客户机隔离/分析通过；deferred_memory 也不是检测失败。
 
+2026-10-17 曾获准仅将既有客户机 memsize 改为 6144 MiB，冷启动保留至少 2 GiB 宿主余量（当时需 8 GiB 可用）。
+串行无害检查和隔离静态工作负载通过，扫描 cgroup 2 GiB、独立 clamd 2.5 GiB；这不是最坏情况容量保证。
+未更改 swap、并发或 Worker，不新增 VM，不强制回收其他进程。本次文档整理没有启动 VM 或重新确认其现时配置。
 
-## 2026-10-17 approved VM capacity experiment
-
-The original guest is now6144MiB by explicit user approval (only memsize changed). Keep2GiB host reserve:8GiB available for cold start, no forced resource reclamation or extra VM. Actual serial harmless-then-offline-static workloads passed at scan cgroup2GiB and separate clamd2.5GiB; this is workload evidence, not a worst-case capacity guarantee. No swap/concurrency/Worker changes. Guest memtotal is about5.79GiB; normal shutdown remains required. Offline units needing TCP ClamAV must allow only localhost while denying other addresses; the physical guest must independently have no non-loopback interface/routes. Wait for exact frozen clamd version readiness before starting comparable measurements, and retain failed/interrupted/version-unknown attempts separately. See research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md.
+真实实验前仍须核对实际配置和资源门槛、VMware Tools 客户机隔离、无非回环接口/路由、空闲任务和无害进程检查。
+需要 TCP ClamAV 的离线 unit 只允许 localhost；等精确冻结库版本就绪后再比较，保留失败/中断/版本未知尝试。
+正常关机和快照边界不变。完整历史记录见 [R4 VM 资源实验](https://github.com/Skylar-Jiang/AgeisAV/blob/cd6bb64ea96c1ebde17eecece7854e0fa248a451/docs/research/ROUND_REPORT_20261017_STAGE_E_R4_VM_PUBLIC.md)。

@@ -1,19 +1,19 @@
 # AegisAV VMware 静态分析机
 
-## 当前产品基线（2026-10-12）
+## 历史产品基线（2026-10-12，未在本次整理中启动复验）
 
 当前推荐点 `clean-product-lowmem-off-20261012-v2` 包含 root 只读 release `c699902f19640593`，
 已实际恢复、新 boot 隔离检查及完整服务复验，最终正常关机。
 过时产品 v1 已经由 VMware 删除，保留下述三个既有回滚点，共四个快照。
 部署使用 `Publish-ProductRelease.ps1`，只能在无真实样本的干净 Host-only 准备阶段运行；
 正式检测前关机切离线并在客户机验证。操作与边界见
-[发布运行说明](../docs/research/PRODUCT_RELEASE_RUNBOOK_20261012.md)。
+[发布运行说明](https://github.com/Skylar-Jiang/AgeisAV/blob/cd6bb64ea96c1ebde17eecece7854e0fa248a451/docs/research/PRODUCT_RELEASE_RUNBOOK_20261012.md)。
 MalwareBazaar 目前仅 Windows 元数据查询，不下载文件；真实恶意 PE 的新来源导入通道尚待验证。
 
 ## 历史检查点与快照维护（2026-10-11）
 
 当前检查点基线是 `clean-tools-ml-checkpoint-off-20261011-v3`，已离线启动并完成厂商 600 文件遍历，
-操作见[断点恢复说明](../docs/research/BENIGN_CHECKPOINT_RUNBOOK_20261011.md)。
+操作见维护者保留的私有 `BENIGN_CHECKPOINT_RUNBOOK_20261011.md`（公开仓库不附带）。
 上一轮 ML 回滚点 `clean-tools-ml-off-20261010-v2` 包含分块 TLSH 修复；
 `clean-tools-benign-off-20261003-v2` 保留为更新前的阶段 1 回滚点。
 下方安装清单及签名版本属于历史批次。当前 ClamAV daily 为 28148，活动 YARA
@@ -30,10 +30,10 @@ MalwareBazaar 目前仅 Windows 元数据查询，不下载文件；真实恶意
 D 盘可用空间增加 8,870,068,224 字节（约 8.26 GiB），VM 目录文件逻辑长度
 减少 8,870,654,025 字节。两者均在 VM 关机后测量，未将关机释放的活动内存算入清理收益。
 空间会受稀疏文件与宿主机其他活动影响，不能用 60 GB 虚拟盘容量代替实际占用。
-记录见 [快照清理审计](../docs/benchmarks/vm_snapshot_cleanup_20261011_081818.json)。
+记录见 私有 `vm_snapshot_cleanup_20261011_081818.json`。
 两个保留点均已实际恢复并通过新 boot 的离线探针、无害 ZIP 与良性 PE 扫描；
 阶段 1 四引擎和 ML 五引擎均无命中/错误。最终恢复干净 ML 基线并正常关机，
-见[恢复验证](../docs/benchmarks/vm_snapshot_validation_20261011.json)。
+见私有 `vm_snapshot_validation_20261011.json`。
 脚本将执行记录保存在含 UTC 时间的独立 JSON 中，空清理计划不会覆盖原始审计。
 保护检查已验证 LF/CRLF 元数据，并拒绝错误或重复的当前快照身份。
 
