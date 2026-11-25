@@ -38,7 +38,7 @@ async function json(route, method = 'GET', body) {
 }
 (async () => {
   await fs.mkdir(output, { recursive: true });
-  try { await fs.copyFile(path.join(root, 'docs/benchmarks/product_pages_check_20261016.json'), path.join(output, `previous-${Date.now()}.json`)); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  try { await fs.copyFile(path.join(output, 'check.json'), path.join(output, `previous-${Date.now()}.json`)); } catch (error) { if (error.code !== 'ENOENT') throw error; }
   state = await fs.mkdtemp(path.join(os.tmpdir(), 'aegisav-product-pages-'));
   await new Promise((resolve, reject) => { const probe = require('node:net').createServer(); probe.once('error', reject); probe.listen(3420, '127.0.0.1', () => probe.close(resolve)); });
   try {
@@ -134,6 +134,6 @@ async function json(route, method = 'GET', body) {
     record.formal_private_evidence_preserved = true;
     await fs.writeFile(path.join(output, 'private-state-location.txt'), state + '\n');
   } catch (error) { record.failures.push(error.message.replaceAll(key || '\0', '[redacted]')); }
-  finally { if (browser) await browser.close(); await stop(); await fs.writeFile(path.join(root, 'docs/benchmarks/product_pages_check_20261016.json'), JSON.stringify(record, null, 2) + '\n'); }
+  finally { if (browser) await browser.close(); await stop(); await fs.writeFile(path.join(output, 'check.json'), JSON.stringify(record, null, 2) + '\n'); }
   console.log(JSON.stringify({ checks: record.checks.length, failures: record.failures })); assert.equal(record.failures.length, 0);
 })().catch(error => { console.error(error.message); process.exitCode = 1; });

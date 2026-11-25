@@ -2,8 +2,6 @@
 /vm/collect_malwarebazaar.py -text
 /vm/collection_boundary.py -text
 /vm/collect_analyst_cases.py -text whitespace=cr-at-eol
-/vm/measure_analyst_case.py -text whitespace=cr-at-eol
-/vm/evaluate_frozen_profiles.py -text whitespace=cr-at-eol
 /vm/diagnose_static_case.py -text whitespace=cr-at-eol
 /vm/scan_official_runtime_pe.py -text whitespace=cr-at-eol
 /vm/acquisition_limits.py -text whitespace=cr-at-eol
