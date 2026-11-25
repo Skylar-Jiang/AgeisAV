@@ -78,7 +78,7 @@ async function stop() {
 }
 (async () => {
   await fs.mkdir(output, { recursive: true });
-  try { await fs.copyFile(path.join(root, 'docs/benchmarks/task_reliability_check_20261016.json'), path.join(output, `previous-${Date.now()}.json`)); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  try { await fs.copyFile(path.join(output, 'check.json'), path.join(output, `previous-${Date.now()}.json`)); } catch (error) { if (error.code !== 'ENOENT') throw error; }
   state = await fs.mkdtemp(path.join(os.tmpdir(), 'aegisav-reliability-'));
   await new Promise((resolve, reject) => { const probe = require('node:net').createServer(); probe.once('error', reject); probe.listen(3419, '127.0.0.1', () => probe.close(resolve)); });
   try {
@@ -190,7 +190,7 @@ async function stop() {
   finally {
     if (browser) await browser.close();
     await stop();
-    await fs.writeFile(path.join(root, 'docs/benchmarks/task_reliability_check_20261016.json'), JSON.stringify(record, null, 2) + '\n');
+    await fs.writeFile(path.join(output, 'check.json'), JSON.stringify(record, null, 2) + '\n');
   }
   console.log(JSON.stringify({ checks: record.checks.length, failures: record.failures, engines: record.engine_statuses }));
   assert.equal(record.failures.length, 0);

@@ -78,4 +78,4 @@ node frontend/scripts/check-behavior.cjs
 
 公开日志：OTRF Security-Datasets，MIT，固定 `d9d40ef123d2c87d5d3df28c96bcab4f0faccc87` 的 IE 注册表查询回放；只读取 ZIP 中唯一受限 JSON 成员到内存，不解压文件到磁盘。结果保存在忽略的 artifacts；不提交原日志、主机标识或私有报告。保留来源、压缩包/成员/转换后 SHA；排除非 Sysmon 事件数显式报告。此测试既不是执行样本，也不是恶意真值评测。
 
-历史行为验收聚合见 [行为证据摘要](benchmarks/stage_f_summary_20261019.json)，可复现课程回放见 [课程指南](COURSE_GUIDE.md#sigma-lab)。EVTX 原生解析、完整 Sigma correlation、日志签名/防篡改采集及任何 Windows 动态执行沙箱均未实现；后者需另行明确授权、安全与资源方案。
+历史行为验收聚合见 [行为证据摘要](https://github.com/Skylar-Jiang/AgeisAV/blob/8f24f92d16d40e538e82b5cfdf7f39d40220f50a/docs/benchmarks/stage_f_summary_20261019.json)，可复现课程回放见 [课程指南](COURSE_GUIDE.md#sigma-lab)。EVTX 原生解析、完整 Sigma correlation、日志签名/防篡改采集及任何 Windows 动态执行沙箱均未实现；后者需另行明确授权、安全与资源方案。

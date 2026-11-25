@@ -108,7 +108,7 @@ YARA 现有规则来源和历史实扫见 [规则来源审计](benchmarks/upstre
 .\.venv\Scripts\python.exe -B -m experiments.course_sigma_demo '<全新私有输出目录>'
 ```
 
-Sigma 案例覆盖、输入字段限制与输出解释见 [课程 Sigma 实验](#sigma-lab)。真实 Windows 进程创建 / Event 1 规则匹配与其他 Sysmon 时间线证据应分别说明；`incomplete` / `not_observed` 不表示安全。[发布就绪盘点](RELEASE_STATUS.md) 另列 RC、便携运行与尚未完成的发布步骤。
+Sigma 案例覆盖、输入字段限制与输出解释见 [课程 Sigma 实验](#sigma-lab)。真实 Windows 进程创建 / Event 1 规则匹配与其他 Sysmon 时间线证据应分别说明；`incomplete` / `not_observed` 不表示安全。[发布就绪盘点](DELIVERY_RUNBOOK.md) 另列 RC、便携运行与尚未完成的发布步骤。
 
 ### 本轮完整验证
 

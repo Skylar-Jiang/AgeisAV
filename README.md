@@ -3,7 +3,7 @@
 面向课程实验和研究的 **Windows PE 多引擎静态检测与离线行为证据平台**。
 程序名为 AegisAV，GitHub 仓库名为 [Skylar-Jiang/AgeisAV](https://github.com/Skylar-Jiang/AgeisAV)。
 
-**状态核对：2026-11-22；最近一轮检测流水线实验：2026-11-01。**
+**文档整理：2026-11-25；最近一轮检测流水线实验：2026-11-01。**
 已有可运行的软件、课程工具和独立便携候选；独立恶意检出率、低误报率与跨家族泛化仍待验证。
 本项目提供静态分析和离线日志回放，不是实时防护、自动隔离清除或运行恶意软件的动态沙箱。
 
@@ -20,10 +20,10 @@
 
 便携包是维护者保留的本地交付物，**公开 Git 源码不附带 ZIP、私有模型、样本、报告数据库或 VM**。
 首次克隆可以运行基础引擎和无害测试；完整五引擎需要另行配置外置组件。
-版本证据见 [发布状态](docs/RELEASE_STATUS.md)，配对速度与退化见 [性能结果](docs/PERFORMANCE.md)。
+版本证据见 [发布状态](docs/DELIVERY_RUNBOOK.md#release)，配对速度与退化见 [性能结果](docs/PERFORMANCE.md)。
 
 后续开发从 `main` 创建新的功能分支；不要将带私有研究历史的本地分支直接推送或合入公开仓库。
-历史 `export_public_delta` 工具绑定旧公开分支名，清理该分支后须先适配并复核导出目标，不能绕过父提交和敏感内容检查。
+旧私有历史导出器及一次性采集/诊断脚本已退役；需要追溯时从 Git 历史恢复，不能将私有历史直接推送到公开仓库。
 
 ## 已有功能
 
@@ -71,9 +71,9 @@ npm --prefix frontend run build
 上述启动器统一托管 API 与构建后的前端，不需要再同时启动占用同一端口的前端开发服务器。
 
 首次克隆缺少 ML 或 ClamAV 时会明确弃权，其他可用引擎仍可工作。
-ML 的独立解释器、合法取得的模型和冻结 registry 按 [ML 集成说明](docs/ML_INTEGRATION.md) 配置；
+ML 的独立解释器、合法取得的模型和冻结 registry 按 [ML 集成说明](docs/DELIVERY_RUNBOOK.md#ml) 配置；
 ClamAV 通过本机 `127.0.0.1:3310` 连接已有 sidecar，见 [Windows ClamAV 方案](docs/DELIVERY_RUNBOOK.md)。
-不要把研究用完整 VM 脚本当作通用安装器直接运行。
+不要把研究用完整 VM 工具当作通用安装器直接运行。
 
 ### 使用已有便携包
 
@@ -93,7 +93,7 @@ ClamAV 通过本机 `127.0.0.1:3310` 连接已有 sidecar，见 [Windows ClamAV 
 | `POST /v1/tasks/{id}/cancel` | 取消并终止本次拥有的扫描进程树 |
 | `GET /v1/engines`、`GET /v1/statistics` | 实际引擎可用性与运行统计 |
 
-行为接口与会话接口、请求示例及任务可靠性见 [架构](docs/SYSTEM_DESIGN.md)、[行为模块](docs/BEHAVIOR_ANALYSIS.md)、[任务可靠性](docs/TASK_RELIABILITY.md)。
+行为接口与会话接口、请求示例及任务可靠性见 [系统设计](docs/SYSTEM_DESIGN.md) 和 [行为模块](docs/BEHAVIOR_ANALYSIS.md)。
 接口需要本地认证，不要将私有访问密钥或 VT 凭据放进命令行参数。
 
 独立工具无需启动网页服务：
@@ -164,7 +164,7 @@ frontend/          Next.js / React / TypeScript / Tailwind 的 Linen 前端
 rules/             参考哈希、带来源的 YARA 和 Sigma 规则
 distribution/      便携启动脚本、运行时锁定和第三方许可
 experiments/       评测、构建与显式候选工具；不是全部都应直接运行
-vm/                绑定已有隔离环境的研究脚本，先审查与适配
+vm/                既有隔离环境的静态工具、审计边界与测试依赖；先审查
 docs/              按主题维护的现行文档、课程指南与必要聚合证据
 models/ artifacts/ output/  本地私有资产与结果，公开 Git 不附带
 ```
@@ -177,7 +177,7 @@ npm --prefix frontend run typecheck
 
 完整回归需先安装 `.[test]`，其中包括加密归档无害夹具需要的 `pyzipper`；基础启动依赖不包含所有测试依赖。
 公开分发缺少私有模型/归档时，相关测试会明确跳过；应查看原因，不将跳过记为检测成功。
-完整文档入口见 [docs/README](docs/README.md)。旧阶段报告已合并或从当前目录移除，可通过整理前的 Git 快照恢复。
+完整文档入口见 [docs/README](docs/README.md)。旧阶段报告和一次性工具已合并或退役，可通过 Git 快照恢复。前端检查的新结果写入被忽略的 `output/`，不再追加到正式文档目录。
 
-更多入口：[用户手册](docs/USER_GUIDE.md) · [系统设计](docs/SYSTEM_DESIGN.md) · [已知限制](docs/KNOWN_LIMITATIONS.md) · [文档索引](docs/README.md)。
+更多入口：[用户手册与限制](docs/USER_GUIDE.md) · [系统设计](docs/SYSTEM_DESIGN.md) · [文档索引](docs/README.md)。
 第三方许可按各自文件保留；AegisAV 自身尚未指定统一开源许可证，不把所有内容默认标为 MIT，模型再分发需另行确认授权。

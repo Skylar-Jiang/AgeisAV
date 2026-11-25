@@ -95,7 +95,7 @@ compare_task_latency、evaluate_windows_controls、summarize_native_rc与实际c
 这些不完整研究没有填入完成指标或偷偷覆盖。所有原始恶意PE均未进入Windows/WSL，VM与快照未改。
 
 
-候选 `0.2.1rc1` 的便携、浏览器、SQLite、取消、异常恢复和实际回退证据见 [发布状态](RELEASE_STATUS.md)。
+候选 `0.2.1rc1` 的便携、浏览器、SQLite、取消、异常恢复和实际回退证据见 [发布状态](DELIVERY_RUNBOOK.md)。
 准确性与模型淘汰结论集中在 [评测](EVALUATION.md)，不以报告一致性冒充泛化准确率。
 
 ## YARA bundle：2026-11-01
