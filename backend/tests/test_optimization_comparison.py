@@ -1,8 +1,37 @@
 import copy
+import os
+import sys
+from pathlib import Path
 
 import pytest
 
 from experiments.compare_scan_latency import normalized
+
+
+def test_http_study_preserves_explicit_external_ml_components(tmp_path, monkeypatch):
+    from experiments import compare_task_latency as study
+
+    components = {'AEGISAV_MODEL_DIR': str(tmp_path / 'external-model'),
+                  'AEGISAV_ML_PYTHON': str(tmp_path / 'external-python.exe')}
+    for name, value in components.items():
+        monkeypatch.setenv(name, value)
+    monkeypatch.setenv('AEGISAV_ML_PROFILE', 'general')
+    monkeypatch.setenv('PYTHONDONTWRITEBYTECODE', '1')
+    monkeypatch.setattr(sys, 'argv', ['study', '--baseline-root', str(study.ROOT),
+                                    '--output', str(tmp_path / 'new-result.json')])
+    monkeypatch.setattr(Path, 'read_bytes', lambda self: b'inert setup-only fixture')
+    monkeypatch.setattr(study, 'ProcessScanner', lambda *args: None)
+
+    class ConfigurationChecked(Exception):
+        pass
+
+    def check_before_starting_services():
+        assert {name: os.environ[name] for name in components} == components
+        raise ConfigurationChecked()
+
+    monkeypatch.setattr(study, 'build_scanner', check_before_starting_services)
+    with pytest.raises(ConfigurationChecked):
+        study.main()
 
 
 @pytest.mark.parametrize('field,value', [('status', 'matched'), ('score', .9),

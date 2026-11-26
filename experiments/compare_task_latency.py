@@ -75,8 +75,8 @@ def main():
         for name in ('api.py', 'tasks.py', 'task_store.py'):
             if (root / 'backend/aegisav' / name).read_bytes() != (ROOT / 'backend/aegisav' / name).read_bytes():
                 raise ValueError('Controller source differs; use separate packaged services for this comparison')
-    os.environ['AEGISAV_MODEL_DIR'] = str(ROOT / 'models/ember2024')
-    os.environ['AEGISAV_ML_PYTHON'] = str(ROOT / '.venv-ml/Scripts/python.exe')
+    os.environ.setdefault('AEGISAV_MODEL_DIR', str(ROOT / 'models/ember2024'))
+    os.environ.setdefault('AEGISAV_ML_PYTHON', str(ROOT / '.venv-ml/Scripts/python.exe'))
     os.environ['AEGISAV_ML_PROFILE'] = 'general'
     # Match desktop. -B on the scan worker does not propagate to external ML.
     os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
@@ -98,6 +98,8 @@ def main():
               'shared_native_root': str(args.shared_native_root) if args.shared_native_root else None,
               'comparison_excludes_expected_native_version_suffix': args.native_candidate,
               'worker_interpreters': {'baseline': str(args.baseline_python), 'candidate': str(args.candidate_python)},
+              'ml_components': {key: os.environ[key] for key in
+                                ('AEGISAV_MODEL_DIR', 'AEGISAV_ML_PYTHON', 'AEGISAV_ML_PROFILE')},
               'inputs': [{'name': str(p), 'size_bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
                          for p, raw in data.items()], 'observations': [], 'summary': {}, 'fault_checks': {}}
     args.output.parent.mkdir(parents=True, exist_ok=True)

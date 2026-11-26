@@ -1,7 +1,44 @@
 import hashlib
 
+import pytest
+
 from aegisav.hashes import HashDatabase, compute_fuzzy
 from aegisav.scanner import StaticScanner
+
+
+@pytest.mark.parametrize('clam_ready', [False, True])
+def test_ml_probe_is_only_needed_before_reusing_a_cached_report(pe_bytes, clam_ready):
+    class Engine:
+        artifact_version = 'fixture-v1'
+        probes = 0
+        calls = 0
+        ready = True
+
+        def probe(self):
+            self.probes += 1
+            return self.ready
+
+        def scan(self, data):
+            self.calls += 1
+            return {'engine_id': 'fixture', 'engine_version': '1', 'artifact_version': self.artifact_version,
+                    'status': 'no_match', 'elapsed_ms': 0., 'evidence': [], 'risk_signal': None}
+
+    clam, ml = Engine(), Engine()
+    clam.ready = clam_ready
+    scanner = StaticScanner(HashDatabase.from_records([]), yara_engine=Engine(), clamav_engine=clam, ml_engine=ml)
+    assert scanner.scan(pe_bytes)['cached'] is False
+    assert ml.probes == 0
+    if clam_ready:
+        assert scanner.scan(pe_bytes)['cached'] is True
+        assert ml.probes == 1 and ml.calls == 1
+        assert scanner.scan(pe_bytes + b'other')['cached'] is False
+        assert ml.probes == 1 and ml.calls == 2
+        ml.ready = False
+        assert scanner.scan(pe_bytes)['cached'] is False
+        assert ml.probes == 2 and ml.calls == 3
+    else:
+        assert scanner.scan(pe_bytes)['cached'] is False
+        assert ml.probes == 0 and ml.calls == 2
 
 
 def test_trusted_exact_hash_can_be_malicious_without_rules(pe_bytes):
