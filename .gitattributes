@@ -1,15 +1,4 @@
-# Checkpoint identities bind the exact deployed bytes, including line endings.
-/vm/collect_malwarebazaar.py -text
-/vm/collection_boundary.py -text
-/vm/collect_analyst_cases.py -text whitespace=cr-at-eol
-/vm/diagnose_static_case.py -text whitespace=cr-at-eol
-/vm/scan_official_runtime_pe.py -text whitespace=cr-at-eol
-/vm/acquisition_limits.py -text whitespace=cr-at-eol
-/vm/collect_primary_cases_v2.py -text whitespace=cr-at-eol
-/vm/verify_acquisition_v2.py -text whitespace=cr-at-eol
-/vm/collect_available_cases.py -text whitespace=cr-at-eol
-/vm/evaluate_paired_development.py -text
-/experiments/availability_sampling.py -text whitespace=cr-at-eol
-# Reviewed rule provenance hashes bind exact source bytes too.
-/rules/yara/** -text
-rules/sigma/*.yml -text
+# Source/model/delivery manifests bind exact Git blob bytes on every platform.
+* -text
+# Some frozen guest Python tools intentionally retain CRLF.
+*.py whitespace=trailing-space,space-before-tab,cr-at-eol

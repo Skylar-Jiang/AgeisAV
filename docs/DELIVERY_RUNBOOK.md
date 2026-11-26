@@ -43,11 +43,12 @@
 
 先从当前公开分支筛选源码，安装开发固定依赖并构建前端；取得 `distribution/runtime-lock.json` 指定的运行时归档并核对SHA。
 
-源码目录须保持清单绑定的原始字节。Windows 的自动 CRLF 转换可能让工作树与 Git 内容不同；
+源码目录须保持清单绑定的原始字节。当前属性禁止自动换行转换；旧工作树或其他工具重写过的副本仍可能不符，
+冻结 registry 会拒绝摘要不同的适配器。应恢复审核过的原始字节，不回填摘要或跳过校验。
 从已提交且审核过的公开提交导出到新目录，再将该目录作为 `--source`，不放宽摘要检查：
 
 ```powershell
-git archive --format=zip --output "<new source ZIP path>" HEAD
+git -c core.autocrlf=false archive --format=zip --output "<new source ZIP path>" HEAD
 Expand-Archive -LiteralPath "<new source ZIP path>" -DestinationPath "<new reviewed source directory>"
 ```
 

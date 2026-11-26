@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".gitattributes",
-      "sha256": "d6707e210326714d4cf0b48434464e4648fe1fb2771b2048a24b17b58dca6b7f",
-      "bytes": 757
+      "sha256": "1a701abf7b51a2a7f723cbc4326a21b77d97358a617f2fa79c0947d96b6c0472",
+      "bytes": 205
     },
     {
       "path": ".gitignore",
@@ -14,8 +14,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "fb5774db233fd29edcc5f801444f1e6dd1e48e857fcaa6f8fdf93058661a4e38",
-      "bytes": 13338
+      "sha256": "5fed794c22f632abf1cb67b67a78447996b518ce790475685f508a45e8829460",
+      "bytes": 13551
     },
     {
       "path": "backend/aegisav/__init__.py",
@@ -139,8 +139,8 @@
     },
     {
       "path": "backend/aegisav/scanner.py",
-      "sha256": "117f62cc45aaf9eea20969af4aea4b44fb9de1cd0eea08ad2d5dbab0fda819ed",
-      "bytes": 7919
+      "sha256": "1092d820cf6ab17bbc82a2c462a44dd902e52304cbe1553641eb856dbb452f09",
+      "bytes": 8015
     },
     {
       "path": "backend/aegisav/task_store.py",
@@ -419,8 +419,8 @@
     },
     {
       "path": "backend/tests/test_optimization_comparison.py",
-      "sha256": "17051d70976f278000b3e97afd4cd74b7663e34ac84e9575286929bafd802c5c",
-      "bytes": 1001
+      "sha256": "cd3c0c7b1f887e4fee0b609f017727a089fcc797fa6ddc2dd8740e528c9f2813",
+      "bytes": 2223
     },
     {
       "path": "backend/tests/test_product_release.py",
@@ -454,13 +454,18 @@
     },
     {
       "path": "backend/tests/test_scanner.py",
-      "sha256": "d2504edfd0f56717e716f724f91403908fe35e3694281ad98a54fcfca249aaef",
-      "bytes": 7259
+      "sha256": "55d0b534218ab17e191d9fba180ce5460886bd81f14e5308131337d6ee23161f",
+      "bytes": 8625
     },
     {
       "path": "backend/tests/test_service_startup.py",
       "sha256": "d89a819683f038cc4e8a0c44e21afb8047e9f6cd31efc73e17ecbca3247f6563",
       "bytes": 551
+    },
+    {
+      "path": "backend/tests/test_source_checkout.py",
+      "sha256": "679d3d9f41b0593dcd176405e130f97ca4f16281dbd5f983af4df758fded6524",
+      "bytes": 1676
     },
     {
       "path": "backend/tests/test_stage_e_checkpoint.py",
@@ -599,23 +604,23 @@
     },
     {
       "path": "docs/DELIVERY_RUNBOOK.md",
-      "sha256": "50f2f7bca05ac500373e6207283cc5cf431085b9df2dca1e01b653a18c313535",
-      "bytes": 26598
+      "sha256": "c5d657f949fd9121de3e7c871807ca9498b500fca3cede7a6dc41bccfb05eaec",
+      "bytes": 26775
     },
     {
       "path": "docs/EVALUATION.md",
-      "sha256": "212452ed7c80f1524b0889275ac07980a0a94fa8bd7fcb318a825c6d4bf29557",
-      "bytes": 14815
+      "sha256": "3f8d8f13deecd31584bb45787352c353d19fd5480d9bb25b070290498b875f2e",
+      "bytes": 16101
     },
     {
       "path": "docs/PERFORMANCE.md",
-      "sha256": "82aeab37ffca30227adfa2d1d506de198eb83e5e7768d60a183d478f1c222ec5",
-      "bytes": 15532
+      "sha256": "0db7c2169cd35086e5df3ee3b02362d26129d5575f9e7c8cd7498d3130a9d299",
+      "bytes": 17545
     },
     {
       "path": "docs/README.md",
-      "sha256": "0be71acdcdd4ef93e2dbbb03b5f6a51f66761db0b07cbe75ca13c231f4a13039",
-      "bytes": 2151
+      "sha256": "7b692f81dc2d57443b5a83d99a840b3564f61fd81e42e8c698e33190957b49be",
+      "bytes": 2278
     },
     {
       "path": "docs/SYSTEM_DESIGN.md",
@@ -656,6 +661,11 @@
       "path": "docs/benchmarks/optimization_20261022.json",
       "sha256": "1ed027d7c9f7034d029827dd1a9f09dbb8abf4c1ac32f029810a805466272e95",
       "bytes": 9305
+    },
+    {
+      "path": "docs/benchmarks/research_20261126.json",
+      "sha256": "ead2ffbf7f1bf298468a8db6bede1198941d774431e1a45f72295d8c423d568c",
+      "bytes": 7801
     },
     {
       "path": "docs/benchmarks/stage_e6_summary_20261018.json",
@@ -804,8 +814,8 @@
     },
     {
       "path": "experiments/compare_task_latency.py",
-      "sha256": "699f224ac3d7bf1a2ac58d22572fb5d7f57279625557fbd7031adb18a27e8fc5",
-      "bytes": 14924
+      "sha256": "9bb0cad8545bc8cae60198d31fb63b5efb73df497702298f0c7bc6ea08a79e7f",
+      "bytes": 15107
     },
     {
       "path": "experiments/course_evaluation_summary.py",
@@ -2687,18 +2697,16 @@
   "changed_paths": [
     ".gitattributes",
     "README.md",
-    "docs/BEHAVIOR_ANALYSIS.md",
-    "docs/COURSE_GUIDE.md",
+    "backend/aegisav/scanner.py",
+    "backend/tests/test_optimization_comparison.py",
+    "backend/tests/test_scanner.py",
+    "backend/tests/test_source_checkout.py",
     "docs/DELIVERY_RUNBOOK.md",
+    "docs/EVALUATION.md",
     "docs/PERFORMANCE.md",
     "docs/README.md",
-    "docs/SYSTEM_DESIGN.md",
-    "docs/USER_GUIDE.md",
-    "experiments/build_windows_delivery.py",
-    "frontend/scripts/check-product-pages.cjs",
-    "frontend/scripts/check-task-reliability.cjs",
-    "vm/README.md",
-    "vm/SAMPLE_WORKFLOW.md"
+    "docs/benchmarks/research_20261126.json",
+    "experiments/compare_task_latency.py"
   ],
   "secret_values_read": false,
   "secrets_checked": 0,
@@ -2708,10 +2716,10 @@
   "private_history_included": false,
   "limitation": "Generic checks plus review; no assertion of exact secret-value exclusion for changed blobs.",
   "public_update": {
-    "date": "2026-11-25",
-    "parent_revision": "8f24f92d16d40e538e82b5cfdf7f39d40220f50a",
-    "removed_files": 200,
-    "scope": "Remove obsolete tools, bundled agent material and redundant docs; repair document consumers. Runtime and detector assets unchanged.",
+    "date": "2026-11-26",
+    "parent_revision": "e957f1bdb14d1d6cea506d69ceb57648abee7f7c",
+    "removed_files": 0,
+    "scope": "Preserve exact source bytes, skip redundant ML cache-miss probes, honor benchmark component configuration; L2 candidate rejected without detector asset changes.",
     "source_revision_semantics": "source_revision retains original export provenance; files bind the staged public tree.",
     "private_identity_catalog_read": false,
     "checks": "Staged blob SHA256/size and generic checks for modified public blobs. Private-identity exclusion inherited from baseline; no new private-catalog or credential read."

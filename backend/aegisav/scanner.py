@@ -44,8 +44,9 @@ class StaticScanner:
                      getattr(self.ssdeep_backend, "engine_version", None))
         key = (digest, artifacts)
         cached = None
-        ml_ready = self.ml_engine is None or not hasattr(self.ml_engine, 'probe') or self.ml_engine.probe()
-        if clamav_ready and ml_ready:
+        # A miss cannot reuse stale evidence; inference still verifies its assets.
+        if clamav_ready and key in self.cache and (
+                self.ml_engine is None or not hasattr(self.ml_engine, 'probe') or self.ml_engine.probe()):
             with self.cache_lock:
                 cached = self.cache.get(key)
                 if cached is not None:

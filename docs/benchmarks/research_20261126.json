@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "baseline_public_revision": "e957f1bdb14d1d6cea506d69ceb57648abee7f7c",
+  "source_fidelity": {
+    "old_attribute_lines": 15,
+    "new_attribute_lines": 4,
+    "original_checkout_model_ready": false,
+    "exact_bytes_model_ready": true,
+    "model_assets_modified": false,
+    "reproduction": "Two Git autocrlf=true checkout/archive regressions; real frozen registry before/after; no integrity bypass."
+  },
+  "engineering": {
+    "change": "ML integrity probe only for a possible cache hit; normal inference/worker integrity checks unchanged.",
+    "standalone_probe_p50_ms": 9.248,
+    "standalone_probe_observations": 11,
+    "http": {
+      "clamav": "unavailable",
+      "ml": "healthy frozen general model",
+      "rounds": 5,
+      "unique_installed_benign_files": 1,
+      "measurement": "Authenticated HTTP encoding/upload/queue/disposable worker/report/SQLite through terminal response; original Python SSDeep and source YARA in both arms.",
+      "summary": {
+        "small": {
+          "baseline": {
+            "p50_ms": 3131.7269999999553,
+            "p95_ms": 3573.0812000110745,
+            "throughput_inputs_per_second": 0.31203814454132833
+          },
+          "candidate": {
+            "p50_ms": 3060.8201999857556,
+            "p95_ms": 3214.0015000186395,
+            "throughput_inputs_per_second": 0.3239552352955617
+          }
+        }
+      },
+      "candidate_minus_baseline_ms": [
+        -359.07969999243505,
+        -77.05309998709708,
+        -26.73400001367554,
+        -92.22049999516457,
+        -34.363500017207116
+      ],
+      "all_report_pairs_equal": true,
+      "real_api_cancel_and_recovery": {
+        "baseline": {
+          "worker_pid_observed_before_cancel": 20100,
+          "real_api_cancel_tree_cleanup": true,
+          "following_task_completed": true
+        },
+        "candidate": {
+          "worker_pid_observed_before_cancel": 46572,
+          "real_api_cancel_tree_cleanup": true,
+          "following_task_completed": true
+        }
+      },
+      "sqlite_reload_equal": true,
+      "services_and_workers_closed": true,
+      "engine_statuses": {
+        "sha256": [
+          "no_match"
+        ],
+        "fuzzy": [
+          "no_match"
+        ],
+        "clamav": [
+          "unavailable"
+        ],
+        "yara_x": [
+          "no_match"
+        ],
+        "lightgbm": [
+          "no_match"
+        ]
+      },
+      "memory_peak": "Not remeasured for this HTTP study.",
+      "limitations": "One known benign file, five alternating repeats on one host; P95 is observed maximum, not a population tail guarantee. No healthy-ClamAV or large/batch extrapolation."
+    }
+  },
+  "model_experiment": {
+    "factor": "lambda_l2:1→5; all other parameters fixed",
+    "trees": 500,
+    "num_leaves": 64,
+    "min_data_in_leaf": 100,
+    "max_bin": 255,
+    "fit_rows": 96000,
+    "fit_source": "Existing balanced 96k subset of the 480k EMBER2024 Win64 FIT vectors used by the previous binning control.",
+    "reused_development_validation_rows": 40000,
+    "validation_per_class": 20000,
+    "final_data_read": false,
+    "independent_validation": false,
+    "production_models_changed": false,
+    "models": {
+      "baseline_l2_1": {
+        "model_bytes": 3736757,
+        "inference_p50_ms": 3509.745599993039,
+        "paired_inference_ms": [
+          4245.038300025044,
+          3509.745599993039,
+          4297.080700023798,
+          3267.8292999917176,
+          3063.8328000204638
+        ],
+        "operating_points": {
+          "20": {
+            "threshold": 0.9981979635564487,
+            "tp": 17354,
+            "fp": 20,
+            "tn": 19980,
+            "fn": 2646,
+            "weekly_tp": {
+              "48": 4314,
+              "49": 4301,
+              "50": 4501,
+              "51": 4238
+            }
+          },
+          "100": {
+            "threshold": 0.9730370282702724,
+            "tp": 18700,
+            "fp": 100,
+            "tn": 19900,
+            "fn": 1300,
+            "weekly_tp": {
+              "48": 4689,
+              "49": 4666,
+              "50": 4755,
+              "51": 4590
+            }
+          },
+          "200": {
+            "threshold": 0.8724640567256798,
+            "tp": 19200,
+            "fp": 200,
+            "tn": 19800,
+            "fn": 800,
+            "weekly_tp": {
+              "48": 4804,
+              "49": 4776,
+              "50": 4831,
+              "51": 4789
+            }
+          }
+        },
+        "trees": 500
+      },
+      "candidate_l2_5": {
+        "model_bytes": 3736350,
+        "inference_p50_ms": 4710.993200016674,
+        "paired_inference_ms": [
+          4215.071099984925,
+          4902.648000017507,
+          5374.469400005182,
+          4710.993200016674,
+          3316.3042000087444
+        ],
+        "operating_points": {
+          "20": {
+            "threshold": 0.9972633944125431,
+            "tp": 17075,
+            "fp": 20,
+            "tn": 19980,
+            "fn": 2925,
+            "weekly_tp": {
+              "48": 4236,
+              "49": 4235,
+              "50": 4437,
+              "51": 4167
+            }
+          },
+          "100": {
+            "threshold": 0.9607093344425192,
+            "tp": 18674,
+            "fp": 100,
+            "tn": 19900,
+            "fn": 1326,
+            "weekly_tp": {
+              "48": 4681,
+              "49": 4643,
+              "50": 4749,
+              "51": 4601
+            }
+          },
+          "200": {
+            "threshold": 0.8501325315842199,
+            "tp": 19142,
+            "fp": 199,
+            "tn": 19801,
+            "fn": 858,
+            "weekly_tp": {
+              "48": 4802,
+              "49": 4773,
+              "50": 4829,
+              "51": 4738
+            }
+          }
+        },
+        "trees": 500
+      }
+    },
+    "baseline_predictions_equal_previous": true,
+    "repeated_predictions_equal": true,
+    "resources": {
+      "reserve_bytes": 2147483648,
+      "peak_rss_bytes": 1339334656,
+      "minimum_available_bytes": 5173338112,
+      "sampling_interval_seconds": 0.1,
+      "rss_scope": "Single training Python process; sampled maximum, not a simultaneous host peak."
+    },
+    "construction_seconds": 24.01500000001397,
+    "candidate_fit_seconds": 349.56299999999464,
+    "versions": {
+      "lightgbm": "4.6.0",
+      "numpy": "2.2.6"
+    },
+    "decision": "Rejected: -279 TP at the same FP20; all four development weeks regress; no deployment.",
+    "limitations": "In-sample threshold selection on already reused validation, conditional 96k research baseline rather than the production general model. No new independent Recall/FPR, family generalization, or end-to-end model acceleration claim."
+  },
+  "validation": {
+    "base": "398 passed / 9 skipped",
+    "with_isolated_ml_packages": "406 passed / 2 skipped",
+    "existing_tests_deleted": 0,
+    "additional_regression_cases": 5,
+    "warnings": "One existing AnyIO deprecation warning in each matrix.",
+    "stable_and_rc_zip_sha256_unchanged": {
+      "windows-delivery-20261019-release": "caba52afdbcfb9bc597447b7cb8ac75eb025972b400639a389d3565cf15c6e43",
+      "windows-delivery-20261022-rc1": "b4ae9d64f6fa27a2d4ff97a024771603f1e9d7d6022f71b6e99f0708036b9b04"
+    },
+    "existing_native_bundle_source_gate": "passed; DLL and C source bytes match the frozen candidate"
+  },
+  "reproduction": {
+    "private_root": "artifacts/research-20261126",
+    "private_runner": "run_regularization.py",
+    "runner_sha256": "223b480fbc64e52d1b6d5aaf2eb9605801c39db40ec87fb0510284d2818cd94d",
+    "protocol": "regularization/protocol.json",
+    "raw_http": "http-small-git-bytes.json",
+    "failures_retained": [
+      "http-small.log"
+    ],
+    "no_raw_malware_or_vm_action": true
+  }
+}
